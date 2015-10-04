@@ -1,0 +1,49 @@
+%%% cshelpers - a simple collection of a few useful LaTeX helpers
+%%%
+%%% Use \csAdvisors to set the advisors for the project, use \\ for
+%%% multiple advisors.
+%%%
+%%% \todo{Mark this that needs to be done like this}
+%%%
+%%% \begin{bottompar}Place something at the bottom of a page. \end{bottompar}
+%%%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cshelpers}[20015/04/16 Basic formatting for CS documents]
+
+\RequirePackage{titling,graphicx,epstopdf}
+
+\newenvironment{bottompar}{\par\vspace*{\fill}}{\clearpage}
+\newcommand{\todo}[1]{{\color[rgb]{.5,0,0}\textbf{$\blacktriangleright$#1$\blacktriangleleft$}}}
+
+\newcommand\csAdvisors[1]{\renewcommand\@csAdvisors{#1}}
+\newcommand\@csAdvisors{\@latex@error{No \noexpand\csAdvisors given}\@ehc}
+
+\pretitle{
+  \pagestyle{empty}
+  \pagenumbering{gobble}
+  \noindent{\rule{\linewidth}{1mm}}
+  \begin{center}
+  \Huge\sf
+}
+\posttitle{
+  \end{center}
+}
+%\preauthor{}
+\postauthor{
+  \end{tabular}
+  \\[2ex]
+  \noindent\rule{\linewidth}{1mm}\\[4ex]
+  \noindent{\Large\sf Master's Thesis, Computer Science\\[1ex]}
+  \end{center}
+}
+%\predate{}
+\postdate{
+  \\[1em]
+  {\large Advisors: \begin{tabular}[h]{c}\@csAdvisors \end{tabular}}
+  \end{center}
+  \begin{bottompar} \includegraphics{logo.eps} \end{bottompar}
+  \setcounter{page}{1}
+}
+
+\endinput

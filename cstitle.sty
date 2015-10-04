@@ -1,0 +1,45 @@
+%foo
+%
+%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cstitle}  [2015/04/16 v0.01 LaTeX for CS Master thesis setup]
+\RequirePackage{titling}
+
+\newenvironment{bottompar}{\par\vspace*{\fill}}{\clearpage}
+
+\newcommand\csAdvisor[1]{\renewcommand\@csAdvisor{#1}}
+\newcommand\@csAdvisor{\@latex@error{No \noexpand\csAdvisor given}\@ehc}
+
+\pretitle{
+  \pagestyle{empty}
+  \pagenumbering{roman}
+  \noindent{\rule{\linewidth}{1mm}\\[1ex]}
+  \begin{center}
+  \Huge\sf
+}
+\posttitle{
+  \end{center}
+}
+%\preauthor{}
+\postauthor{
+  \end{tabular}
+  \\[2ex]
+  \noindent\rule{\linewidth}{1mm}\\[4ex]
+  \noindent{\Large\sf Master's Thesis, Computer Science\\[1ex]}
+  \end{center}
+}
+%\predate{}
+\postdate{
+  \\[1em]
+  {\large Advisor: \@csAdvisor}
+  \end{center}
+  \begin{bottompar}
+  \epsfig{file=logo.eps}
+  \end{bottompar}
+}
+
+\newcommand{\todo}[1]{{\color[rgb]{.5,0,0}\textbf{$\blacktriangleright$#1$\blacktriangleleft$}}}
+
+% Finally, we'll use \endinput to indicate that LaTeX can stop reading this file. LaTeX will ignore anything after this line.
+\endinput
