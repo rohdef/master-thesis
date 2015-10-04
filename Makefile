@@ -34,7 +34,10 @@ thesis:
 		biber --output-directory=${out} ${thesis}; \
 		pdflatex --output-directory=${out} ${thesis_file}; \
 		pdflatex --output-directory=${out} ${thesis_file}
-	mv ${work_dir}/${out} .
+
+	if [ "${work_dir}" != "." ]; then \
+		mv ${work_dir}/${out} .; \
+	fi
 
 latex-diff-git: latex-diff-clean
 # Setup the git details

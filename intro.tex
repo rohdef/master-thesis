@@ -1,4 +1,23 @@
 \section{BibTeX format}
+BibTeX is a commonly used format for managing lists of references in
+academic circles \remark{Now now, can we prove this?}.  The format is
+designed for use with {\LaTeX}, but plugins for other formats do
+exist. \autocite{bibtex_resource}
+
+The format itself is fairly simple, at it's main level we got
+$@STING$, $@PREAMPLE$, $@COMMENT$ and $entries$.  $@STRING$ is for
+abbreviations that can be used later in the BibTeX, $@PREAMPLE$ is for
+defining how to format the text and $@COMMENT$ is for comments and
+$entries$ are the actual entries \autocite{bibtex_resource}.
+
+Since $@PREAMPLE$ and $@COMMENT$ doesn't affect the contents they
+won't be considered further in this document. \remark{Double check
+  preample, recall reading somewhere that it's just LaTeX macros.}
+
+Tags is case insensitive. If the contents needs to be enclosed in
+either \{ and \} or quotes (depending on the persons taste), numbers
+can be written without them and @sting abbreviations has to be without
+them. Concatenation is done using \#.\autocite{bibtex_resource}
 
 Designed by Oren Patashnik and Leslie Lamport in 1985
 
