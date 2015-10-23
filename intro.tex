@@ -1,12 +1,33 @@
-\section{BibTeX format}
-BibTeX is a commonly used format for managing lists of references in
+\remark{A first try at capturing the thesis in a single sentence}
+
+This dissertation shows a tool for automated detection lexical
+and inconsistency concerns i Bib{\TeX} references.
+
+
+\section{The issue}
+\remark{I'm not overly satisfied with the formulation, but it's a
+  start, then I'll have to tighten it and make it sharper later}
+
+When working with bibliographies various kinds of errors tends to
+appear.  Just as when writing any other text spelling errors in both
+titles and names can appear, these will be classified as lexical
+concerns.  Inconsistencies is also likely to come in forms like some
+journal names, author names etc.\ written with abbreviations where it
+will be written in full other places, and some references are not
+uniform, these will be referenced as inconsistency concerns.
+
+\remark{Should probably write a bit more about the parts, to highlight
+  various aspects of them etc.}
+
+\section{Bib{\TeX} format}
+Bib{\TeX} is a commonly used format for managing lists of references in
 academic circles \remark{Now now, can we prove this?}.  The format is
 designed for use with {\LaTeX}, but plugins for other formats do
 exist. \autocite{bibtex_resource}
 
 The format itself is fairly simple, at it's main level we got
 $@STING$, $@PREAMPLE$, $@COMMENT$ and $entries$.  $@STRING$ is for
-abbreviations that can be used later in the BibTeX, $@PREAMPLE$ is for
+abbreviations that can be used later in the Bib{\TeX}, $@PREAMPLE$ is for
 defining how to format the text and $@COMMENT$ is for comments and
 $entries$ are the actual entries \autocite{bibtex_resource}.
 
@@ -29,8 +50,6 @@ Designed by Oren Patashnik and Leslie Lamport in 1985
   ``Second''. This should be an ordinal, and should have the first
   letter capitalized, as shown here; the standard styles convert to
   lower case when necessary. \autocite{bibtex_description}}
-
-\remark{http://tutex.tug.org/pracjourn/2006-4/fenn/fenn.pdf}
 
 \remark{http://tug2000.tug.org/TUGboat/Articles/tb24-1/patashnik.pdf}
 
