@@ -1,7 +1,3 @@
-%foo
-%
-%
-
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{cstitle}  [2015/04/16 v0.01 LaTeX for CS Master thesis setup]
 \RequirePackage{titling}
@@ -35,7 +31,9 @@
   {\large Advisor: \@csAdvisor}
   \end{center}
   \begin{bottompar}
-  \epsfig{file=logo.eps}
+  \def\svgwidth{75pt}
+  \input{graphics/AU-logo.pdf_tex}
+%  \epsfig{file=logo.eps}
   \end{bottompar}
 }
 
