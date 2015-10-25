@@ -8,13 +8,65 @@ and inconsistency concerns i Bib{\TeX} references.
 \remark{I'm not overly satisfied with the formulation, but it's a
   start, then I'll have to tighten it and make it sharper later}
 
-When working with bibliographies various kinds of errors tends to
-appear.  Just as when writing any other text spelling errors in both
-titles and names can appear, these will be classified as lexical
-concerns.  Inconsistencies is also likely to come in forms like some
-journal names, author names etc.\ written with abbreviations where it
-will be written in full other places, and some references are not
-uniform, these will be referenced as inconsistency concerns.
+In academic and research there are a lot of documents being written,
+when those documents are meant for others to read, such as in a
+journal, the authors want that work to not only be correct but also to
+look good.  Having inconsistencies, spellling errors and alike can
+make otherwise correct scientific work look sloppy.  This includes the
+references, which are almost certian to be evaluated by researchers
+interested in the work.  However unlike the content of the document
+itself references are often not read as thoroughly through and even
+when it is mistakes may not even be seen since the current reference
+style may hide them through abbreviations and styling.  These errors
+can then be carried on to other documents as reference libraries are
+often reused and inconsistencies get harder to spot by hand as the
+library gets larger over the years.
+
+When gathering references people will usually, extract it from a PDF
+file (or similar), copy and paste it from an online resource or write
+them by hand.  Thus these types of errors can arise from bad
+extractions from the PDF, by them being present in the PDF, mistakes
+in the online resources or simply mistyping.  This leads to two ways
+of approaching the issues: either try to prevent them from ever
+happening or handling them when they have been entered into a library.
+
+Most of the sources of input are intangible to control, as it is hard
+(if not impossible) to prevent spelling errors in PDF files you get,
+it is impossible to prevent people from making typos or being
+uncertain if they have been using abbreviations and even if the online
+resources did never have those errors, not everyone would use them.
+Thus it is more interesting to focus on handling these when they have
+entered the library.
+
+As a lot of \remark{can we find how many} scientific work are done in
+{\LaTeX}, and thus Bib{\TeX} has become a de facto standard for
+references.  Having some tool to detect these errors would be a help
+to authors of scientific documents.  Such a tool:
+
+\remark{Keep up to date with what could be done (if something turns
+  up).  Remember to argue what has been done and use rest for further
+  work}
+
+\begin{itemize}
+\item Lexical concerns
+  \begin{itemize}
+  \item Titles with misspellings
+  \item Names of people with misspellings
+  \item Names of locations with misspellings
+  \end{itemize}
+\item Inconsistent entries
+  \begin{itemize}
+  \item Names with different formatting: different
+    abbreviations of the name and name in full
+  \item Entries that are not uniform, for instance some mention the
+    publisher others do not.
+  \end{itemize}
+\item In addition
+  \begin{itemize}
+  \item Detection of never revisions
+  \item Journal version or reports of conference papers
+  \end{itemize}
+\end{itemize}
 
 \remark{Should probably write a bit more about the parts, to highlight
   various aspects of them etc.}
