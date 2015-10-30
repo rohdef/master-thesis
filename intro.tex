@@ -1,51 +1,56 @@
-\remark{A first try at capturing the thesis in a single sentence}
+\remark{Trying to capturing the thesis in a single sentence}
 
 This dissertation shows a tool for automated detection lexical
 and inconsistency concerns i Bib{\TeX} references.
 
 
 \section{The issue}
-\remark{I'm not overly satisfied with the formulation, but it's a
-  start, then I'll have to tighten it and make it sharper later}
+\remark{I'm still not entirely satisfied, but not it at least have a
+  flow from what the issue is to what the focus is etc.}
 
-In academic and research there are a lot of documents being written,
-when those documents are meant for others to read, such as in a
-journal, the authors want that work to not only be correct but also to
-look good.  Having inconsistencies, spellling errors and alike can
-make otherwise correct scientific work look sloppy.  This includes the
-references, which are almost certian to be evaluated by researchers
-interested in the work.  However unlike the content of the document
-itself references are often not read as thoroughly through and even
-when it is mistakes may not even be seen since the current reference
-style may hide them through abbreviations and styling.  These errors
-can then be carried on to other documents as reference libraries are
-often reused and inconsistencies get harder to spot by hand as the
-library gets larger over the years.
+In academic and research there are a lot of documents being written.
+When those documents are meant for others to read, such as in a
+journal, the authors want that work to be correct and to look good.
+Having inconsistencies, spellling errors and alike can make otherwise
+correct scientific work look sloppy.  This includes the references,
+which are almost certain to be evaluated by researchers interested in
+the work.  However unlike the content of the document itself
+references are often not proofread as thoroughly and the errors may
+not be visible since the current reference style may hide them through
+abbreviations and styling.  Then errors can be carried on to other
+documents, as reference libraries are often reused, furthermore
+inconsistencies get harder to spot by hand, as the library grows over
+the years.
 
-When gathering references people will usually, extract it from a PDF
-file (or similar), copy and paste it from an online resource or write
-them by hand.  Thus these types of errors can arise from bad
-extractions from the PDF, by them being present in the PDF, mistakes
-in the online resources or simply mistyping.  This leads to two ways
-of approaching the issues: either try to prevent them from ever
-happening or handling them when they have been entered into a library.
+When gathering references people will usually, extract them from PDF
+files (or similar), copy and paste it from an online resource or write
+them by hand.  Thus the errors can arise from erroneous extractions
+from the PDF, by them being present in the first place, mistakes in
+the online resources or simply mistyping.  This leads to two ways of
+approaching the issues: either try to prevent them from ever happening
+or handling them when they have been entered into a library.
 
 Most of the sources of input are intangible to control, as it is hard
-(if not impossible) to prevent spelling errors in PDF files you get,
-it is impossible to prevent people from making typos or being
-uncertain if they have been using abbreviations and even if the online
-resources did never have those errors, not everyone would use them.
-Thus it is more interesting to focus on handling these when they have
-entered the library.
+(if not impossible) to prevent misspelling in external documents, it
+is impossible to prevent people from making typos or being
+inconsistent in their use of abbreviations.  For online resources the
+errors can also be present and even if this could be corrected, it is
+unlikely to get everyone to use them all the time and it would not
+correct already existing libraries.  It is therefore more
+interesting to focus on handling these when they have entered the
+library.
 
 As a lot of \remark{can we find how many} scientific work are done in
-{\LaTeX}, and thus Bib{\TeX} has become a de facto standard for
+{\LaTeX}, Bib{\TeX} has become a de facto standard for
 references.  Having some tool to detect these errors would be a help
-to authors of scientific documents.  Such a tool:
+to authors of scientific documents.  Such a tool has a lot of
+potential focus areas:
 
-\remark{Keep up to date with what could be done (if something turns
-  up).  Remember to argue what has been done and use rest for further
-  work}
+%\remark{Keep up to date with what could be done (if something turns
+%  up).  Remember to argue what has been done and use rest for further
+%  work}
+\remark{This list is both for what is going to be done and for further
+  work (as I don't expect to empty it :p )}
 
 \begin{itemize}
 \item Lexical concerns
@@ -68,8 +73,17 @@ to authors of scientific documents.  Such a tool:
   \end{itemize}
 \end{itemize}
 
-\remark{Should probably write a bit more about the parts, to highlight
-  various aspects of them etc.}
+\remark{Still need a formulation for: It's the goal of this
+  dissertation to
+
+  \begin{itemize}
+  \item review the field of bibrefs
+  \item observe the shortcomings in published bibrefs
+  \item designing a simple tool to analyze bibfiles to spot the
+  occurrences of the shortcomings identified at Level 1, and to identify
+  the problems
+  \end{itemize}
+}
 
 \section{Bib{\TeX} format}
 Bib{\TeX} is a commonly used format for managing lists of references in
