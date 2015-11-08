@@ -1,8 +1,32 @@
 \section{Bib{\TeX} tools}
+There are a few pure Bib{\TeX} tools for handling reference databases.
 
-http://tex.stackexchange.com/questions/174509/is-there-a-tool-service-that-can-enrich-a-bibtex-database
+\subsection{Bibcleaner}
+Bibcleaner is a tool developed by Joos Buijs for his own use in his
+PhD studies and made publicly available in case someone can get a use
+for it.  The purpose of the tool is to clean Bib{\TeX} files by using
+online look ups in the DBLP database\cite{bibcleaner_question,
+  bibcleaner_source}.
 
-https://github.com/joosbuijs/bibcleaner
+Usage of Bibcleaner is quite simple, it runs through each entry
+comparing it with the DBLP database and suggests improvements if it
+can find the current key in the database.  The functionality of the
+tool is currently limited to computer science, as it only uses DBLP
+for lookups\cite{bibcleaner_source}.
+
+\subsection{BibTooL}
+BibTooL is a Bib{\TeX} that was developed by Charalampos Nikolaou from
+University of Athens.  The last version of the tool is from July 2012
+and there is no indication of further development being done.  BibTooL
+is a set of shell scripts to assist in cleaning, organizing and
+ensuring consistency in Bib{\TeX} files\cite{bibtool_site}.
+
+The only method for handling of abbreviations in BibTooL is by
+DBLP-lookup, like Bibcleaner.  However unlike Bibcleaner it also
+provides some tools for correcting inconsistencies.  Mostly it is
+inconsistencies in the formatting, such as trailing spaces and
+capitalization of the entry types (such as @article) together with a
+tool for detecting duplicate entries.
 
 \subsection{JabRef}
 JabRef is an open source project, currently developed and maintained
@@ -41,11 +65,12 @@ nothing that JabRef has a system for finding duplicate entries, and
 does some validation of Bib{\TeX}-files when opened to ensure valid
 data.
 
-\section{Other bibliography tools}
-There are a lot of different bibliography management software.  Some
-of these provides partial solutions for the lexical and consistency
-concerns.  All of the tools have been tested for relevant features
-that are not described on their respective feature overviews.
+\section{Bibliography managers}
+There are a lot of products for bibliography management that are not
+directly targeted at Bib{\TeX}.  Some of these provides partial
+solutions for the lexical and consistency concerns.  All of the tools
+have been tested for relevant features that are not described on their
+respective feature overviews.
 
 \subsection{Mendeley}
 Mendeley is a bibliography management tool developed by Mendeley Ltd.
@@ -127,24 +152,27 @@ part solved by most modern browsers, because they tend to include
 spell checkers for input fields.
 
 \subsection{Zotero}
-Zotero has a built in spell checker for notes, however the spell
-checker is not applied for things like titles, which prevents it from
-detecting those errors.  Also it does not seem that it does anything
-to detect abbreviations.  Unfortunately Zotero does not have a list of
-features directly, apart from some very superficial texts on the front
-page \cite{zotero_features}.
+Zotero is a reference manager developed by Roy Rosenzweig Center for
+History and New Media.  It is targeted at people doing research
+\remark{talk about wide terms ><}.  The organization and collaboration
+aspects are in focus for Zotero\cite{zotero_features}.
 
-Unlike the other systems Zotero has a plugin system, which makes it
-possible that a user created plugin for these features exists, however
-none was found using the official list of plugins
-\cite{zotero_plugins} nor by a normal search engine.
-
-There is a limited mechanism for detecting abbreviations in Zotero, in
-its jar-file there is a list of known abbreviations which it can use
-to chose the correct abbreviation when exporting, entering a known
+There is a built in spell checker for notes written in Zotero, however
+the spell checker is not applied for things like titles, which
+prevents it from detecting those errors.  Like JabRef, Zotero has a
+plugin system, on found using the official list of plugins
+\cite{zotero_plugins} nor by a normal search engine. There is a
+limited mechanism for detecting abbreviations in Zotero, in its
+jar-file there is a list of known abbreviations which it can use to
+chose the correct abbreviation when exporting, entering a known
 abbreviation does not seem to correct it to the non-abbreviated
 version.  This list can be manually edited, and overruled
-\cite{zotero_abbreviations}
+\cite{zotero_abbreviations}.
+
+It is possible (but not tested) that Zotero can be used to import an
+Bib{\TeX}-file, then export it using the lists of known abbreviations
+and correct the abbreviations already known.  As other tools such as
+JabRef and Mendeley will already allow this, it has not been tested.
 
 %%% Local Variables:
 %%% mode: latex

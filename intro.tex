@@ -8,25 +8,24 @@ and inconsistency concerns i Bib{\TeX} references.
 \remark{I'm still not entirely satisfied, but not it at least have a
   flow from what the issue is to what the focus is etc.}
 
-In academic and research there are a lot of documents being written.
-When those documents are meant for others to read, such as in a
-journal, the authors want that work to be correct and to look good.
-Having inconsistencies, spellling errors and alike can make otherwise
-correct scientific work look sloppy.  This includes the references,
-which are almost certain to be evaluated by researchers interested in
-the work.  However unlike the content of the document itself
-references are often not proofread as thoroughly and the errors may
-not be visible since the current reference style may hide them through
-abbreviations and styling.  Then errors can be carried on to other
-documents, as reference libraries are often reused, furthermore
-inconsistencies get harder to spot by hand, as the library grows over
-the years.
+When writing research documents, for instance an article for a
+journal, it is desired to have such documents to be properly
+presentable to reflect the professionalism of the work.  Having
+inconsistencies, spellling errors and alike can make otherwise correct
+scientific work look sloppy.  This includes the references, which are
+almost certain to be evaluated by researchers interested in the work.
+However unlike the content of the document itself references are often
+not proofread as thoroughly and the errors may not be visible since
+the current reference style may hide them through abbreviations and
+styling.  Then errors can be carried on to other documents, as
+reference libraries are often reused, furthermore inconsistencies get
+harder to spot by hand, as the library grows over the years.
 
 When gathering references people will usually, extract them from PDF
-files (or similar), copy and paste it from an online resource or write
-them by hand.  Thus the errors can arise from erroneous extractions
-from the PDF, by them being present in the first place, mistakes in
-the online resources or simply mistyping.  This leads to two ways of
+files (or similar), get them from an online resource or write them by
+hand.  Thus the errors can arise from erroneous extractions from the
+files used, by them being present in the first place, mistakes in the
+online resources or simply mistyping.  This leads to two ways of
 approaching the issues: either try to prevent them from ever happening
 or handling them when they have been entered into a library.
 
@@ -40,18 +39,15 @@ correct already existing libraries.  It is therefore more
 interesting to focus on handling these when they have entered the
 library.
 
-As a lot of \remark{can we find how many} scientific work are done in
-{\LaTeX}, Bib{\TeX} has become a de facto standard for
-references.  Having some tool to detect these errors would be a help
-to authors of scientific documents.  Such a tool has a lot of
-potential focus areas:
+As a lot of \remark{can we find how many, and is it actually the
+  mostly used format outside natural sciences?} scientific work are
+done in {\LaTeX}, Bib{\TeX} has become a de facto standard for
+references.  Having some tool to detect these errors would help
+authors of scientific documents to keep their documents presentable.
+Some of the possible issues such tool can focus are:
 
-%\remark{Keep up to date with what could be done (if something turns
-%  up).  Remember to argue what has been done and use rest for further
-%  work}
 \remark{This list is both for what is going to be done and for further
-  work (as I don't expect to empty it :p )}
-
+  work}
 \begin{itemize}
 \item Lexical concerns
   \begin{itemize}
@@ -73,6 +69,7 @@ potential focus areas:
       good point}
   \item Detection of never revisions
   \item Journal version or reports of conference papers
+  \item Missing fields
   \end{itemize}
 \end{itemize}
 
@@ -81,6 +78,19 @@ references, observe the shortcomings in published references and to
 design a tool to analyze bibliographies for occurrences of the
 shortcomings identified.
 
+%\remark{People who request similar
+%http://stackoverflow.com/questions/13630584/the-best-method-for-handling-bibtex-files
+%http://stackoverflow.com/questions/32838020/awk-how-to-clean-bibtex-files
+%http://cgi.di.uoa.gr/~charnik/oss/bibtool/
+%http://www.latex-community.org/forum/viewtopic.php?f=50&t=12043
+%http://tex.stackexchange.com/questions/76420/cleaning-up-a-bib-file
+%http://tex.stackexchange.com/questions/174509/is-there-a-tool-service-that-can-enrich-a-bibtex-database
+
+%Tools, mayhaps relevant
+%http://cgi.di.uoa.gr/~charnik/oss/bibtool/
+%http://www.development.root-1.de/Bibcut.php
+%https://code.google.com/p/bibtex-check/
+%}
 
 \section{Bib{\TeX} format}
 Bib{\TeX} is a commonly used format for managing lists of references in
@@ -96,7 +106,7 @@ $entries$ are the actual entries \autocite{bibtex_resource}.
 
 Since $@PREAMPLE$ and $@COMMENT$ doesn't affect the contents they
 won't be considered further in this document. \remark{Double check
-  preample, recall reading somewhere that it's just LaTeX macros.}
+  preample, recall reading somewhere that it's just {\LaTeX} macros.}
 
 Tags is case insensitive. If the contents needs to be enclosed in
 either \{ and \} or quotes (depending on the persons taste), numbers
