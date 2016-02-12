@@ -1,5 +1,9 @@
 \section{Bib{\TeX} tools}
+\label{sec:bibtex_tools}
 There are a few pure Bib{\TeX} tools for handling reference databases.
+A lot of these tools targets some of the issues described.  The
+various tools has either been tested or their functionality verified
+by code inspection.
 
 \subsection{Bibcleaner}
 Bibcleaner is a tool developed by Joos Buijs for his own use in his
@@ -45,12 +49,13 @@ project is in the planning phase and suggested features hints that it
 might end up correcting some of the issues, as there is some focus on
 correctly filled Bib{\TeX} references and corrections for those.
 
-Looking through the lists of JabRef plugins does not reveal any that provide
-solutions to the given issues.  There are a lot of plugins for lookups
-in online databases, which can offer a partial solution (provided the
-online information is correct and that it is there for the reference)
-for new entries\cite{jabref_resources}.  Since JabRef uses Bib{\TeX}
-for storage, tools for Bib{\TeX} can be used too.
+Looking through the lists of JabRef plugins does not reveal any that
+provide solutions to the issues of this dissertation.  There are a lot
+of plugins for lookups in online databases, which can offer a partial
+solution (provided the online information is correct and that it is
+there for the reference) for new entries\cite{jabref_resources}.
+Since JabRef uses Bib{\TeX} for storage, tools for Bib{\TeX} can be
+used too.
 
 When using JabRef it is very easy to switch between journal
 abbreviations and full names, provided that the abbreviation is
@@ -65,7 +70,31 @@ nothing that JabRef has a system for finding duplicate entries, and
 does some validation of Bib{\TeX}-files when opened to ensure valid
 data.
 
+\subsection{Bibcut}
+Bibcut is a tool to arrange and modify Bib{\TeX} files in ways that
+will assist scientists.  It is developed by Dr. Clemens Barth with the
+latest release from 2014.  Bibcut can be used to clean author strings
+to ensure consistent formatting, compare Bib{\TeX} files, for instance
+to find duplicates and ways of handling journal names and change them
+from abbreviations to full names or vice versa\cite{bibcut_site}.
+
+\remark{Do testing, author correction is bad for instance}
+
+\subsection{Bib{\TeX} Check}
+Bib{\TeX} Check was developed by Fabian Beck to validate if required
+fields are present, to do consistency checks on conference proceedings
+and to provide an easy overview in html with links to relevant sources
+such as Google Scholar and DBLP.
+
+The way Bib{\TeX} Check works is by running some very simple checks to
+find flaws in bibliographies, the check is things like if the authors
+contains a period(.) then it assumes that the author name has been
+abbreviated and to check if the mandatory fields are present and for
+instance if a proceedings contains the ``pages'' field, to suggest
+that the author might have meant inproceedins in stead.
+
 \section{Bibliography managers}
+\label{sec:bib_managers}
 There are a lot of products for bibliography management that are not
 directly targeted at Bib{\TeX}.  Some of these provides partial
 solutions for the lexical and consistency concerns.  All of the tools
@@ -153,9 +182,9 @@ spell checkers for input fields.
 
 \subsection{Zotero}
 Zotero is a reference manager developed by Roy Rosenzweig Center for
-History and New Media.  It is targeted at people doing research
-\remark{talk about wide terms ><}.  The organization and collaboration
-aspects are in focus for Zotero\cite{zotero_features}.
+History and New Media.  It is targeted at people doing research.  The
+organization and collaboration aspects are in focus for
+Zotero\cite{zotero_features}.
 
 There is a built in spell checker for notes written in Zotero, however
 the spell checker is not applied for things like titles, which
@@ -173,6 +202,62 @@ It is possible (but not tested) that Zotero can be used to import an
 Bib{\TeX}-file, then export it using the lists of known abbreviations
 and correct the abbreviations already known.  As other tools such as
 JabRef and Mendeley will already allow this, it has not been tested.
+
+\subsection{Papers}
+Papers is a reference manager developed by Mekentosj B.V., targeted
+for science and research.  It provides a tool set for searching online
+libraries for references, collaboration and various ways of
+organizing \cite{papers_features}.
+
+It does not highlight any features of relevance \cite{papers_features}
+and as it is developed for Mac OS, it has not been possible to test if
+there is relevant features apart from what they mention on their page.
+
+\section{Research \remark{better headline name would be ideal}}
+It has not been possible to find research covering the issues of
+interest, such as inconsistencies and spelling errors, in Bib{\TeX}
+documents.  The issues has been partially handled on the practical
+level, which can be seen in sections \ref{sec:bibtex_tool} and
+\ref{sec:bib_managers}.  However issues such how to disambiguate
+abbreviations has been a concern in others contexts.
+
+\subsection{Abbreviation disambiguation using Machine Learning}
+In \cite{okazaki2010_building} machine learning is used to classify
+abbreviations to allow disambiguation.  The method they used has the
+expanded forms and the abbreviations, since there may be multiple
+expanded forms concerning the same abbreviation (eg. ``polymerase
+chain reaction `` and ``polymerization chain reaction``), they
+introduce a sense inventory which is a cluster for things having the
+same meaning.
+
+The technique is quite powerful and has
+
+\subsection{ALICE}
+ALICE is an abbreviation detection system for bio articles. It uses a
+lot of rules to detect abbreviation styles.
+
+Perhaps some of those rules can be reused in my project?
+
+\subsection{Overview}
+\remark{I know, needs work}
+
+Abbreviation detection in Bib{\TeX} will usually only have one
+expanded form for each use of an abbreviation.  There may be a journal
+named FooBar and one named FooBaz, both using the abbreviation FB,
+however if FB is expanded to FooBar it will not occur that it is in
+the sense of FooBar's or other variations, since the journal name is
+just the name and not in a textual context where variations will
+occur.  Thus a clustering based system like in
+\cite{okazaki2010_building} will be overkill.  It is possible that a
+machine learning approach will acchieve more accuracy, but the
+approach has been put aside in this dissertation for simplicity.
+
+The work in \cite{?} has a more practical approach as it uses simple
+rules for when something can be considered an abbreviation.  However
+they make the assumption that the expansion of an abbreviation will be
+located close to it at one of its uses.  However in Bib{\TeX} it is
+likely that it is either located elsewhere in the file or not in the
+file at all.
 
 %%% Local Variables:
 %%% mode: latex

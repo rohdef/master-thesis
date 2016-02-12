@@ -1,7 +1,7 @@
 \remark{Trying to capturing the thesis in a single sentence}
 
-This dissertation shows a tool for automated detection lexical
-and inconsistency concerns i Bib{\TeX} references.
+This dissertation shows a tool for automated detection of lexical and
+inconsistency concerns in Bib{\TeX} references.
 
 
 \section{The issue}
@@ -9,25 +9,152 @@ and inconsistency concerns i Bib{\TeX} references.
   flow from what the issue is to what the focus is etc.}
 
 When writing research documents, for instance an article for a
-journal, it is desired to have such documents to be properly
-presentable to reflect the professionalism of the work.  Having
+journal, it is desired to have such documents to be presented
+properly.  This is out of respect for the work referred to, for the
+ones reading the work and it is a requirement from journals.  Having
 inconsistencies, spellling errors and alike can make otherwise correct
 scientific work look sloppy.  This includes the references, which are
 almost certain to be evaluated by researchers interested in the work.
-However unlike the content of the document itself references are often
-not proofread as thoroughly and the errors may not be visible since
-the current reference style may hide them through abbreviations and
-styling.  Then errors can be carried on to other documents, as
-reference libraries are often reused, furthermore inconsistencies get
-harder to spot by hand, as the library grows over the years.
 
-When gathering references people will usually, extract them from PDF
-files (or similar), get them from an online resource or write them by
-hand.  Thus the errors can arise from erroneous extractions from the
-files used, by them being present in the first place, mistakes in the
-online resources or simply mistyping.  This leads to two ways of
-approaching the issues: either try to prevent them from ever happening
-or handling them when they have been entered into a library.
+% However unlike the content of the document itself references are often
+% not proofread as thoroughly and the errors may not be visible since
+% the current reference style may hide them through abbreviations and
+% styling.  Then errors can be carried on to other documents, as
+% reference libraries are often reused, furthermore inconsistencies get
+% harder to spot by hand, as the library grows over the years.
+
+\subsection{What \remark{working title}}
+Misspellings and mistypings is a common issue in Bib{\TeX}, the
+information about an entry should match the information from the given
+source.  Having misspellings can be an issue when people want to look
+up a references.
+
+The use of abbreviations leads to non-uniform entries, and prevents
+the capability of Bib{\TeX} formatting to use shortenings according to
+various specifications.  Having abbreviations can provide challenges
+for tools that use Bib{\TeX} files, for instance when searching and
+doing cross referencing.  Having entries that use abbreaviations will
+provide challenges when you need to output references with full names.
+
+A lot of the entries are incorrect, having missing fields or fields
+that are not specified.  This can be an issue when one output style
+needs different fields than other styles, or if needing to look up
+details later on.  Also people use tags that are not specified for an
+entry type, for instance having a $volume$ for $InProceedings$.  Some
+of these can have practical use, even though they are not specified.
+
+Lastly there are a huge range of inconsistencies, for instance
+references from the same journal may not be formatted uniformly.
+\remark{reasoning}
+\remark{Add that it's relevant to journals!}
+
+\subsection{Why/how \remark{working title}}
+The sources for this range of errors are wide.  First off by design
+Bib{\TeX} does not prevent this use of the format, it just warns about
+missing tags and bad usage, furthermore it completely ignores
+unspecified tags.  An example of this can be seen from the Bib{\TeX}
+output in figure \ref{fig:bibtex_out}, this is from a file that does
+not conform to the specifications and contains unspecified fields,
+Bib{\TeX} just warns about the missing fields and that the book has
+both author and editor, but completely ignores all the unspecified
+tag.  That Bib{\TeX} ignores unspecified tags also enable useful de
+facto standards such as prefixing a tag with OPT to comment it out and
+adding $crossref$ to the files for easy referencing between entries,
+but in turn provides no way of ensuring consistency or that the
+entries are even correct.
+
+\begin{figure}[h]
+  \centering
+  \begin{verbatim}
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+The top-level auxiliary file: doc.aux
+The style file: plain.bst
+Database file #1: mybib.bib
+Warning--can't use both author and editor fields in book
+Warning--empty publisher in book
+Warning--empty year in book
+Warning--empty journal in Nobody06
+Warning--empty year in Nobody06
+\end{verbatim}
+  \caption{Example of error output from Bib{\TeX}}
+  \label{fig:bibtex_out}
+\end{figure}
+
+Having this relaxed policy causes a lot of sloppiness with regard to
+the use of the format.  A lot people who are using a tool do not care
+about following the rules strictly, they do not care whether a journal
+name is abbreviated or not, as long as it is there. What they want is
+something that works and do not need to bother too much about, so they
+can focus on what they care about: their research.
+
+When adding entries to Bib{\TeX} there are various sources of errors.
+The simplest way is manual entry, which easily leads to spelling
+errors and as the file grows large inconsistencies.  Furthermore when
+entering by hand doing copy and paste can cause the mistakes to be
+repeated over, if the user is not careful.  Using online resources,
+one may be expecting the entries to be correct enough for their use,
+but is no way guaranteed so, the entries will be no better than the
+source used.  Also automatic tools can extract meta data from articles
+and may be prone to further errors.
+
+Another challenge is that some tools for editing Bib{\TeX}-files do
+not necessarily follow the specification, and does not assist in
+ensuring consistency.  A lot of the tools will converting between
+abbreviated and full form, essentially motivating to store
+abbreviations in the files rather than having the output formatting
+handling how to display information.  Some even suggest tags that does
+not belong in the entry type, this has its pros and cons, as remarked
+earlier for most users the primary focus is something that works.
+
+\subsection{What can be done - general \remark{working title}}
+Addressing the human factor in it is one possibile way of solving
+these issues.  ``Simply'' motivating people to do things right.  Alas
+people are not machines and thus this approach will be impossible, for
+most people the interest is not the tools they use but what they use
+them for, so the interest in Bib{\TeX} will for most people being in
+ensuring that their articles contain the relevant references.
+
+Using the digital approach is another option.  This can be done in
+various ways.
+
+One option would be to change Bib{\TeX}, so it enforce the
+specifications.  This would take care of some of the inconsistencies,
+ensure that the specification is followed.  However this does not
+address abbreviations, misspellings or the overall inconsistency.
+Also this would require changes in the specifications to accommodate
+the de facto standards that have arisen over time.  Furthermore this
+would be immensely invasive as it would cause existing Bib{\TeX} files
+not to work and it would impose the tool on the users with
+requirements they may not desire nor care about.
+
+Along the lines of changing Bib{\TeX} there are also a few attempts to
+make a new and improved bibliography systems.  These mostly address
+either annoyance at the format (eg. preferring XML) or to provide more
+modern options (support for URLs and UTF-8).  This could be taken one
+step further introducing the improved checks.  The disadvantage of
+this is that it requires people to chance the format, some tools like
+Bib{\LaTeX} is designed, so it's compatible with Bib{\TeX} allowing a
+smooth transition, this compatibility would however be lost by that
+design.  Also like the previous suggestion it would only take care of
+a limited amount of the issues.
+
+In stead of changing or replacing Bib{\TeX} a supportive tool is
+another option.  Such a tool can relatively easy check if the
+Bib{\TeX} specification is followed, and supportive rules for de facto
+standards be provided.  This would allow analyzing the provided
+Bib{\TeX}-files, trying to detect inconsistencies, doing online
+lookups etc.
+
+\subsection{What can be done - analyzing tool \remark{working title}}
+
+
+
+\subsection{From old}
+
+
+This leads to two ways of approaching the issues: either try to
+prevent them from ever happening or handling them when they have been
+entered into a library.
 
 Most of the sources of input are intangible to control, as it is hard
 (if not impossible) to prevent misspelling in external documents, it
@@ -70,6 +197,7 @@ Some of the possible issues such tool can focus are:
   \item Detection of never revisions
   \item Journal version or reports of conference papers
   \item Missing fields
+  \item Detection special characters?
   \end{itemize}
 \end{itemize}
 
@@ -78,18 +206,16 @@ references, observe the shortcomings in published references and to
 design a tool to analyze bibliographies for occurrences of the
 shortcomings identified.
 
+
 %\remark{People who request similar
 %http://stackoverflow.com/questions/13630584/the-best-method-for-handling-bibtex-files
 %http://stackoverflow.com/questions/32838020/awk-how-to-clean-bibtex-files
-%http://cgi.di.uoa.gr/~charnik/oss/bibtool/
 %http://www.latex-community.org/forum/viewtopic.php?f=50&t=12043
 %http://tex.stackexchange.com/questions/76420/cleaning-up-a-bib-file
 %http://tex.stackexchange.com/questions/174509/is-there-a-tool-service-that-can-enrich-a-bibtex-database
-
-%Tools, mayhaps relevant
-%http://cgi.di.uoa.gr/~charnik/oss/bibtool/
-%http://www.development.root-1.de/Bibcut.php
-%https://code.google.com/p/bibtex-check/
+%<http://tex.stackexchange.com/questions/128989/how-can-one-validate-a-bib-file
+%http://tex.stackexchange.com/questions/173621/how-to-validate-check-a-biblatex-bib-file
+%http://stackoverflow.com/questions/13630584/the-best-method-for-handling-bibtex-files
 %}
 
 \section{Bib{\TeX} format}

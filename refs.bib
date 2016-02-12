@@ -1,5 +1,9 @@
 @string{thomp = {Thompson Reuters}}
 
+%
+% Reference managers etc.
+%
+
 @online{bibtex_description,
   author = {Dana Jacobsen},
   title = {BibTeX},
@@ -14,6 +18,14 @@
   year = 2006,
   url = {http://www.bibtex.org/},
   urldate = {2015-10-03}
+}
+
+@online{bibtex_encoding,
+  author = "{LyX} wiki",
+  title = "{BibTeX} / Tips",
+  year = 2014,
+  url = {http://wiki.lyx.org/BibTeX/Tips#encoding},
+  urldate = {2015-12-08}
 }
 
 @online{mendeley_features,
@@ -229,4 +241,76 @@
   year = {2012},
   url = {http://cgi.di.uoa.gr/~charnik/oss/bibtool/}.
   urldate = {2015-11-08}
+}
+
+@online{bibcut_site,
+  author = {Dr. Clemens Barth},
+  title = {Bibcut LaTeX BibTeX},
+  year = {2014},
+  url = {http://www.development.root-1.de/Bibcut.php},
+  urldate = {2015-11-10}
+}
+
+@online{bibtex_check_site,
+  author = {Fabian Beck},
+  title = {BibTeX Check},
+  year = {2012},
+  url = {https://code.google.com/p/bibtex-check/},
+  urldate = {2015-11-10}
+}
+
+@online{papers_features,
+  author = {Mekentosj B.V.},
+  title = {Papers - Your personal library of research},
+  year = {2015},
+  url = {http://papersapp.com/},
+  urldate = {2015-11-28}
+}
+
+%
+% Articles
+%
+
+% remark: are we happy with the authors?
+% google scholar entry
+%@article{okazaki2010building,
+%  title={Building a high-quality sense inventory for improved abbreviation disambiguation},
+%  author={Okazaki, Naoaki and Ananiadou, Sophia and Tsujii, Jun'ichi},
+%  journal={Bioinformatics},
+%  volume={26},
+%  number={9},
+%  pages={1246--1253},
+%  year={2010},
+%  publisher={Oxford Univ Press},
+%}
+
+% remark: compare with this
+% entry from database
+@article{okazaki2010_building,
+  author = {Okazaki, Naoaki and Ananiadou, Sophia and Tsujii, Jun'ichi},
+  title = {Building a high-quality sense inventory for improved abbreviation disambiguation},
+  volume = {26},
+  number = {9},
+  pages = {1246-1253},
+  year = {2010},
+  doi = {10.1093/bioinformatics/btq129},
+  abstract ={Motivation: The ultimate goal of abbreviation management is to disambiguate every occurrence of an abbreviation into its expanded form (concept or sense). To collect expanded forms for abbreviations, previous studies have recognized abbreviations and their expanded forms in parenthetical expressions of bio-medical texts. However, expanded forms extracted by abbreviation recognition are mixtures of concepts/senses and their term variations. Consequently, a list of expanded forms should be structured into a sense inventory, which provides possible concepts or senses for abbreviation disambiguation.Results: A sense inventory is a key to robust management of abbreviations. Therefore, we present a supervised approach for clustering expanded forms. The experimental result reports 0.915 F1 score in clustering expanded forms. We then investigate the possibility of conflicts of protein and gene names with abbreviations. Finally, an experiment of abbreviation disambiguation on the sense inventory yielded 0.984 accuracy and 0.986 F1 score using the dataset obtained from MEDLINE abstracts.Availability: The sense inventory and disambiguator of abbreviations are accessible at http://www.nactem.ac.uk/software/acromine/ and http://www.nactem.ac.uk/software/acromine_disambiguation/Contact: okazaki@chokkan.org},
+  URL = {http://bioinformatics.oxfordjournals.org/content/26/9/1246.abstract},
+  eprint = {http://bioinformatics.oxfordjournals.org/content/26/9/1246.full.pdf+html},
+  journal = {Bioinformatics}
+}
+
+@article{Ao_2005,
+  title={ALICE: An Algorithm to Extract Abbreviations from MEDLINE},
+  volume={12},
+  ISSN={1527-974X},
+  url={http://dx.doi.org/10.1197/jamia.M1757},
+  DOI={10.1197/jamia.m1757},
+  number={5},
+  journal={Journal of the American Medical Informatics Association},
+  publisher={Oxford University Press (OUP)},
+  author={Ao, H.},
+  year={2005},
+  month={May},
+  pages={576–586}
 }
