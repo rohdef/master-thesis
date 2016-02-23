@@ -222,13 +222,13 @@ shortcomings identified.
 Bib{\TeX} is a commonly used format for managing lists of references in
 academic circles \remark{Now now, can we prove this?}.  The format is
 designed for use with {\LaTeX}, but plugins for other formats do
-exist. \autocite{bibtex_resource}
+exist\cite{bibtex_resource}.
 
 The format itself is fairly simple, at it's main level we got
 $@STING$, $@PREAMPLE$, $@COMMENT$ and $entries$.  $@STRING$ is for
 abbreviations that can be used later in the Bib{\TeX}, $@PREAMPLE$ is for
 defining how to format the text and $@COMMENT$ is for comments and
-$entries$ are the actual entries \autocite{bibtex_resource}.
+$entries$ are the actual entries\cite{bibtex_resource}.
 
 Since $@PREAMPLE$ and $@COMMENT$ doesn't affect the contents they
 won't be considered further in this document. \remark{Double check
@@ -237,7 +237,7 @@ won't be considered further in this document. \remark{Double check
 Tags is case insensitive. If the contents needs to be enclosed in
 either \{ and \} or quotes (depending on the persons taste), numbers
 can be written without them and @sting abbreviations has to be without
-them. Concatenation is done using \#.\autocite{bibtex_resource}
+them. Concatenation is done using \#.\cite{bibtex_resource}
 
 Designed by Oren Patashnik and Leslie Lamport in 1985
 
@@ -248,7 +248,7 @@ Designed by Oren Patashnik and Leslie Lamport in 1985
   appropriate edition: The edition of a book---for example,
   ``Second''. This should be an ordinal, and should have the first
   letter capitalized, as shown here; the standard styles convert to
-  lower case when necessary. \autocite{bibtex_description}}
+  lower case when necessary. \cite{bibtex_description}}
 
 \remark{http://tug2000.tug.org/TUGboat/Articles/tb24-1/patashnik.pdf}
 
@@ -257,11 +257,14 @@ Designed by Oren Patashnik and Leslie Lamport in 1985
 There is a lot of both variants and alternatives to BibTeX (out there in the wild :P ).
 
 \begin{itemize}
-\item mlbibtex - multi language http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.107.3886
+\item mlbibtex - multi language\newline
+      http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.107.3886
 \item biblatex
 \item biber
-\item bibtexml - YUCK, what a horrible idea! http://www.xj2z.net/UpLoadFile/cms/Ebook/305/ts305045.PDF
-\item application managed (Mendeley, EndNote, RefMan, RefWorks, Zotero)
+\item bibtexml - YUCK, what a horrible idea!\newline
+      http://www.xj2z.net/UpLoadFile/cms/Ebook/305/ts305045.PDF
+\item application managed \newline
+      (Mendeley, EndNote, RefMan, RefWorks, Zotero)
 \end{itemize}
 
 \section{Lookup services}

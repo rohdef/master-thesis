@@ -28,17 +28,21 @@
     pdfborder = {0 0 0}
 }
 \newcommand{\remark}[1]{{ \bf [ \footnotesize #1 ]}}
+\newcommand{\Orangutan}{Orangutan}
 
 \graphicspath{ {graphics/} {./} }
 % see http://imf.au.dk/system/latex/bog/
 
 \begin{document}
+\pagestyle{empty}
+\pagenumbering{Alph}
+\begin{titlepage}
 \author{Rohde Fischer - 20052356}
 \csAdvisor{Olivier Danvy}
-\title{Orangutan:\\Automated organization of Bib\TeX}
-
-\pagestyle{empty}
+\title{{\Orangutan}:\\Automated organization of Bib\TeX}
 \maketitle
+
+\end{titlepage}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -47,8 +51,6 @@
 
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
-
-\todo{in English\dots}
 
 \chapter*{Resum\'e}
 \addcontentsline{toc}{chapter}{Resum\'e}
@@ -67,17 +69,21 @@
 %\end{flushright}
 %
 \tableofcontents
+
 \pagenumbering{arabic}
 \setcounter{secnumdepth}{2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\chapter{About Bib{\TeX}}
+\label{ch:about}
+
+\input{about.tex}
+
 \chapter{Introduction}
 \label{ch:intro}
 
 \input{intro.tex}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Related work}
 \label{ch:related}
@@ -99,5 +105,5 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\printbibliography
+\printbibliography{}
 \end{document}

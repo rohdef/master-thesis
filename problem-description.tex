@@ -1,0 +1,457 @@
+Inspired by economics, the challenges in Bib{\TeX} can be divided into
+structural and conjunctural issues.  The structural issues are the
+ones intrinsic to Bib{\TeX}, thus it is caused by the design of and
+the standard tools for Bib{\TeX} and information that can not be
+found.  The conjunctural issues are the combination of circumstances,
+for instance if the source used not having the complete information
+(eg. extracting a references from an article where the author only
+have initials even though the name is known) or the users having other
+priorities than be bibliographies.
+
+Whether an issue is seen as conjectural or structural is in part a
+matter of opinion, as the difference can be stretched in either
+direction - an issue also faced in economics.  Most of the issues are
+arguably a combination the two as they could be fixed by careful labor
+or by having the right tools available, eg. most bibliography managers
+have tools to switch between abbreviated and full journal names.  The
+ultimate goal of {\Orangutan} is essentially to move the issues to the
+point where they are purely conjectural as it would be a matter of
+using the tool to ensure a well structured Bib{\TeX} document.
+
+An interesting point is that not all of the structural issues are
+necessarily bad.  As pointed out earlier there are a lot of ways to
+make use of the relaxed properties of Bib{\TeX}, for instance that it
+ignores unknown tags is useful in de facto standards such as
+commenting entries out by prefixing with $OPT$ or adding information
+that are not a part of the Bib{\TeX} specification, such as ISSN, DOI
+or the crossref, which is technically not specified by Bib{\TeX} but
+still is part of the tool.  In figure-\ref{fig:mendeley_output}
+an example is provided by a PhD student from the Chemistry Department
+at Århus University, this example is created from Mendeley and shows a
+lot of additional information about the article.
+
+\begin{figure}[ht]
+  \centering
+\begin{small}
+\begin{verbatim}
+@article{Acatrinei2003,
+author = {Acatrinei, Alice I and Browne, D and Losovyj, Y B 
+          and Young, D P and Moldovan, M and Chan, Julia Y
+          and Sprunger, P T and Kurtz, Richard L},
+doi = {10.1088/0953-8984/15/33/101},
+file = {:C$\backslash$:/Users/[...]pdf},
+issn = {0953-8984},
+journal = {Journal of Physics: Condensed Matter},
+month = {aug},
+number = {33},
+pages = {L511--L517},
+title = {{Angle-resolved photoemission study 
+          and first-principles calculation 
+          of the electronic structure of LaSb 2}},
+url = {http://iopscience.iop.org/[...]},
+volume = {15},
+year = {2003}
+}
+\end{verbatim}
+\end{small}
+  \caption{Output from Mendeley containing additional information}
+  \label{fig:mendeley_output}
+\end{figure}
+
+This is an issue, if strict conformity to the specification is desired,
+however as this is a very practical and widely used feature a strict
+validation would be counterproductive.  Also some formatting styles
+actually make use of some of the unspecified tags as can be seen in
+figure-\ref{fig:entry_with_issn}. It is still interesting to find tags
+that does not conform to the specification and the de facto standards
+in use, thus treating de facto standards as a feature and only treating
+further deviations as actual issues seems to make most sense. 
+
+% Some issues such as spelling errors are by nature conjunctural, these
+% errors could be prevented by having a watchful eye and doing a spell
+% check of a bib file.
+
+%%
+%% Internal ref 4
+%%
+
+Most, if not all, journals require that journal names should be
+abbreviated when publishing.  However internally in the Bib{\TeX} file
+the owner's personal priorities are consistent and correct naming.  As
+Bib{\TeX} can be seen as a database of references, it would make most
+sense to consider full names as the most correct and the abbreviations
+to be a matter of formatting.  Unfortunately Bib{\TeX} does not handle
+abbreviations at all, which for instance is apparent in articles from
+arXiv.org, as can be seen in the bbl output in
+figure-\ref{fig:inconsistent_naming}.
+
+\begin{figure}[ht]
+  \centering
+\begin{small}
+\begin{verbatim}
+\bibitem[\protect\citename{Baroni \bgroup et al.\egroup }2014b]
+          {baroni2014don}
+          Marco Baroni, Georgiana Dinu, and Germ{\'a}n Kruszewski.
+\newblock 2014b.
+\newblock Don't count, predict!
+          a systematic comparison of context-counting vs.
+          context-predicting semantic vectors.
+\newblock In {\em Proceedings of the 52nd Annual Meeting of
+          the Association for Computational Linguistics},
+          volume~1, pages 238--247.
+
+\bibitem[\protect\citename{Bruni \bgroup et al.\egroup}2014]
+          {bruni2014multimodal}
+          Elia Bruni, Nam-Khanh Tran, and Marco Baroni.
+\newblock 2014.
+\newblock Multimodal distributional semantics.
+\newblock {\em J. Artif. Intell. Res. (JAIR)}, 49:1--47.
+
+[...]
+
+\bibitem[\protect\citename{Collobert \bgroup et al.\egroup}2011]
+          {collobert2011natural}
+          Ronan Collobert, Jason Weston, L{\'e}on Bottou,
+          Michael Karlen, Koray Kavukcuoglu, and Pavel Kuksa.
+\newblock 2011.
+\newblock Natural language processing (almost) from scratch.
+\newblock {\em The Journal of Machine Learning Research},
+          12:2493--2537.
+
+[...]
+
+\bibitem[\protect\citename{Kalchbrenner \bgroup et al.\egroup}2014]
+          {kalchbrenner2014convolutional}
+          Nal Kalchbrenner, Edward Grefenstette, and Phil Blunsom.
+\newblock 2014.
+\newblock A convolutional neural network for modelling sentences.
+\newblock In {\em Proceedings of EMNLP}.
+\end{verbatim}
+\end{small}
+  \caption{Inconsistent naming of journal and conference names}
+\label{fig:inconsistent_naming}
+\end{figure}
+
+From the point of view that the style of Bib{\TeX} should format
+abbreviations properly the issue seen here is structural, as the long
+names should have been formatted by the tool.  In cases where the
+abbreviation is wrong (eg. due to a typo) the issue would move towards
+being conjectural again, unless some kind of abbreviation specific
+spell checker is being used.  Using full names and then formatting
+them accordingly seems like the most sensible idea, since the style of
+abbreviation could be interchanged, should the need arise, it is more
+readable and it would create better conditions for output tools to
+provide consistent formatting.
+
+Currently there are multiple strategies for ensuring consistency in
+abbreviations, some do a complete search and replace on the bib-file
+depending on the formatting they need, a bit more structured approach
+is the use of strings in Bib{\TeX} to ensure a consistent naming of a
+journal which can further be combined with the use of crossref.
+Another approach is the use of Bib{\LaTeX} and biber, which provides
+the solution in the formatting
+options\cite{koppensteiner2011abbreviate}, provided that the
+abbreviation handing of the style is correct.  This causes it to
+become a more conjectural issue, as the issue now is if the right
+names are written, however how conjectural depends on the correctness
+of the tools.  Reference mangers such as JabRef, Mendeley etc. tend to
+go with the strategy that it stores the references using full names
+and then export it to a Bib{\TeX}-file (or whatever format you decide
+to export to) having the desired abbreviation style applied to the
+export, this again moves the issue towards being conjectural, for the
+same reasons as the Bib{\LaTeX} and biber solution.
+
+As the purpose of {\Orangutan} is to work on the Bib{\TeX} file
+itself, the formatting in the end is technically not the primary
+concern.  The concern would optimally just be to ensure a consistent
+document, so the style can do its work.  Since Bib{\TeX} styles
+currently does not take care of abbreviations directly, there might be
+the need for considerations on how to easily and consistently ensuring
+abbreviations according to a desired format.  Having a solution that
+ensures a consistent structure, which is easy to modify to a desired
+style of abbreviations, would move the issue towards the conjectural.
+Having the styles actually handling the abbreviations (such as the
+Bib{\LaTeX} and biber combination does) would make the issue entirely
+conjectural if there is a an easy way to ensure that all journal
+names, conference names etc. are always in correct full names.
+
+%%
+%% Internal ref 1
+%% journal unknown oO
+%%
+
+Take the inconsistency in figure-\ref{fig:entry_with_issn}, found in a
+article on arXiv.org, have two references from the same conference,
+but different years.  The inconsistency is easy to identify due to the
+consistent naming, which in turn affects how the mistake is percieved.
+Correct and consistent naming will make it possible for tools to
+detect inconsistencies when some fields are missing.  This exposes a
+structural part of the issue, as no such tools exists (to the authors
+knowledge).
+
+\begin{figure}[ht]
+  \centering
+  \begin{small}
+\begin{verbatim}
+\bibitem[Bernardy and Claessen(2015)]{bernardy_efficient_2015}
+J.-P. Bernardy and K.~Claessen.
+\newblock Efficient parallel and incremental parsing
+          of practical context-free languages.
+\newblock \emph{J. of Funct. Prog.}, 25, 2015.
+\newblock ISSN 1469-7653.
+\newblock \doi{10.1017/S0956796815000131}.
+
+[...]
+
+\bibitem[Mu et~al.(2009)Mu, Ko, and Jansson]{MuKoJansson2009AoPA}
+S.-C. Mu, H.-S. Ko, and P.~Jansson.
+\newblock Algebra of programming in {Agda}:
+          dependent types for relational program derivation.
+\newblock \emph{J. Funct. Program.}, 19:\penalty0 545--579, 2009.
+\newblock \doi{10.1017/S0956796809007345}.
+\end{verbatim}
+  \end{small}
+  \caption{Additional tag ISSN is provided in one of the entries}
+\label{fig:entry_with_issn}
+% consider the pages
+\end{figure}
+
+It might be the case that an ISSN simply does not exist for the
+$MuKoJansson2009AoPA$-entry, in this case a structural detection
+system might be the cause of new structural issue, either the removal
+of relevant data or forcing entries for cases where it is not
+relevant.  In this specific case the search result in
+figure-\ref{fig:entry_issn_found} reveals that the missing ISSN do
+exist and thus a tool pointing out the inconsistency would in thise
+case make the issue conjunctional.
+
+% Source http://journals.cambridge.org/action/displayAbstract?fromPage=online&aid=6171388&fileId=S0956796809007345#
+\begin{figure}[ht]
+  \centering
+\begin{verbatim}
+@article{Mu:2009:APA:1630623.1630627,
+ author = {Mu, Shin-cheng and Ko, Hsiang-shang 
+           and Jansson, Patrik},
+ title = {Algebra of Programming in Agda: 
+          Dependent Types for Relational Program Derivation},
+ journal = {J. Funct. Program.},
+ issue_date = {September 2009},
+ volume = {19},
+ number = {5},
+ month = sep,
+ year = {2009},
+ issn = {0956-7968},
+ pages = {545--579},
+ numpages = {35},
+ url = {http://dx.doi.org/10.1017/S0956796809007345},
+ doi = {10.1017/S0956796809007345},
+ acmid = {1630627},
+ publisher = {Cambridge University Press},
+ address = {New York, NY, USA},
+ }
+\end{verbatim}
+  \caption{Search revealing the ISSN}
+\label{fig:entry_issn_found}
+\end{figure}
+
+%%
+%% Internal ref 2
+%% Source Electronic Proceedings in Theoretical Computer Science
+%%
+
+Provided a reliable way to look up correct entries a tool could move
+the issues towards being conjuntural, since it would then just being a
+matter of doing the lookup on all entries and then be done (apart from
+the abbreviation issues above).  In the utopic case all entries could
+be looked up at all times, but this is not likely as unpublished works
+would need a reliable way to be registered.  Also even though the
+databases out there are really good, most of the time, erronous
+results can be found.  A lookup on Google Scholar in the beginning of
+February 2016 for: ``Results and Analysis of SyGuS-Comp’15'' can be
+seen in figure-\ref{fig:scholar_bad_result}.
+
+\begin{figure}[ht]
+  \centering
+\begin{verbatim}
+@article{alurresults,
+  title={Results and Analysis of SyGuS-Comp’15},
+  author={Alur, Rajeev and Fisman, Dana and Singh, Rishabh
+          and Solar-Lezama, Armando}
+}
+\end{verbatim}
+  \caption{Bad result from Google Scholar}
+\label{fig:scholar_bad_result}
+\end{figure}
+
+Having found the article originally on arXiv.org the source of the
+article is known to be EPTCS - Electronic Proceedings in Theoretical
+Computer Science.  So not only does the Google Scholar result actually
+not conform to the requirements of an article, the resource are in
+fact not an article at all, but in the proceedings to a conference.
+Finding the correct entry details at the EPTCS page reveals the entry
+in figure-\ref{fig:eptcs_lookup}.  Relying on these being correct
+would cause structural issues as it would the tools would now
+automatically introduce new errors.
+
+\begin{figure}[ht]
+  \centering
+\begin{small}
+\begin{verbatim}
+@Inproceedings{EPTCS202.3,
+  author    = "Alur, Rajeev and Fisman, Dana  and Singh, Rishabh 
+               and Solar-Lezama, Armando",
+  year      = "2016",
+  title     = "Results and Analysis of SyGuS-Comp'15",
+  editor    = "\v{C}ern\'y, Pavol and Kuncak, Viktor 
+               and Parthasarathy, Madhusudan"b,
+  booktitle = "{\rm Proceedings Fourth Workshop on}
+               Synthesis,
+               {\rm San Francisco, CA, USA, 18th July 2015}",
+  series    = "Electronic Proceedings in 
+               Theoretical Computer Science",
+  volume    = "202",
+  publisher = "Open Publishing Association",
+  pages     = "3-26",
+  doi       = "10.4204/EPTCS.202.3",
+}
+\end{verbatim}
+\end{small}
+  \caption{Correct lookup on EPTCS, after failed lookup on Google Scholar}
+\label{fig:eptcs_lookup}
+\end{figure}
+
+% mark
+
+\begin{figure}[ht]
+  \centering
+  \begin{small}
+\begin{verbatim}
+\bibitem[Bernardy and Claessen(2013)]{bernardy_efficient_2013}
+J.-P. Bernardy and K.~Claessen.
+\newblock Efficient divide-and-conquer parsing 
+          of practical context-free languages.
+\newblock In \emph{Proc. of ICFP 2013}, pages 111--122, 2013.
+
+[...]
+
+\bibitem[Danielsson(2010)]{danielsson_total_2010}
+N.~A. Danielsson.
+\newblock Total parser combinators.
+\newblock In \emph{Proc. of ICFP 2010}, ICFP '10,
+          pages 285--296. ACM, 2010.
+\end{verbatim}
+  \end{small}
+  \caption{Capt}
+\label{fig:inconsistent_proceedings}
+\end{figure}
+
+A search for Bib{\TeX} entries give then entries in
+figure-\ref{fig:missing_org_scholar_lookup} for the two articles, which
+provides one possible option for a set of consistent entries.
+
+\begin{figure}[ht]
+  \centering
+\begin{verbatim}
+@inproceedings{bernardy2013efficient,
+  title={Efficient divide-and-conquer parsing
+         of practical context-free languages},
+  author={Bernardy, Jean-Philippe and Claessen, Koen},
+  booktitle={ACM SIGPLAN Notices},
+  volume={48},
+  number={9},
+  pages={111--122},
+  year={2013},
+  organization={ACM}
+}
+
+@inproceedings{danielsson2010total,
+  title={Total parser combinators},
+  author={Danielsson, Nils Anders},
+  booktitle={ACM Sigplan Notices},
+  volume={45},
+  number={9},
+  pages={285--296},
+  year={2010},
+  organization={ACM}
+}
+\end{verbatim}
+  \caption{Scholar lookup}
+\label{fig:missing_org_scholar_lookup}
+\end{figure}
+
+As can be seen $ACM$ is the name of the organization and is probably
+missing in the original Bib{\TeX} that produced the bbl file inspected
+above.  The Denielsson has an additional tag with the content ``ICFP
+'10'', which got added \remark{Olivier: do you happen to know what tag
+  might have produced this?}
+
+% ref 3
+
+Following this example from arXiv.org we have entries with the same
+conference where it can be seen that the conference name is different
+in one of the entries in figure-\ref{fig:entry_journal_name_authors}
+\remark{additional meta information perhaps}.  Also the list of author
+names are in the second entry so heavily abbreviated that you cannot
+realistically distinguish who the authors are, even if you know the
+affiliation.
+
+\begin{figure}[ht]
+  \centering
+\begin{small}
+\begin{verbatim}
+\bibitem{stanifordchen96grids}
+S.~S.-C. \emph{et al}.
+\newblock {GrIDS} -- {A} graph-based intrusion detection system 
+          for large networks.
+\newblock In {\em Proceedings of the 19th
+          National Information Systems Security Conference},
+          1996.
+
+[...]
+
+\bibitem{porras97emerald}
+P.~A. Porras and P.~G. Neumann.
+\newblock {EMERALD}: Event monitoring enabling responses 
+          to anomalous live disturbances.
+\newblock In {\em Proc. 20th {NIST}-{NCSC}
+          National Information Systems Security Conference},
+          pages 353--365, 1997.
+
+\end{verbatim}
+\end{small}
+  \caption{Inconsistent reference to the conference and heavily abbreviated author names}
+\label{fig:entry_journal_name_authors}
+\end{figure}
+
+% http://csrc.nist.gov/nissc/
+% Different ways of writing it (Proc vs Proceedings, {NIST}--{NCSC} in one, pages omitted)
+% even better, consider this entry:
+Furthermore, consider the case where we use these proceedings to infer
+some consistent way of writing the entries, based on the journal
+names.  It turns out that ``National Information Systems Security
+Conference'' used to be named ``National Computer Security
+Conference'', which is probably the reason for the
+$\{NIST\}--\{NCSC\}$ part of the first entry.  This results is that to
+correctly identify potentiel areas of inconsistencies it should also
+recognize entries such as the one in figure-\ref{fig:conference_name}.
+
+\begin{figure}[ht]
+  \centering
+\begin{small}
+\begin{verbatim}
+\bibitem{snapp91dids}
+S.~R.~S. \emph{et al}.
+\newblock {DIDS} (distributed intrusion detection system) -
+          motivation, architecture, and an early prototype.
+\newblock In {\em Proceedings of the 14th
+          National Computer Security Conference},
+          pages 167--176, Washington, DC, 1991.
+\end{verbatim}
+\end{small}
+  \caption{Name change of a conference}
+\label{fig:conference_name}
+\end{figure}
+
+
+\remark{There should be some information about Bib{\TeX} creating a bbl
+file, since me references come from there}
