@@ -1,34 +1,36 @@
-Inspired by economics, the challenges in Bib{\TeX} can be divided into
-structural and conjunctural issues.  The structural issues are the
-ones intrinsic to Bib{\TeX}, thus it is caused by the design of and
-the standard tools for Bib{\TeX} and information that can not be
-found.  The conjunctural issues are the combination of circumstances,
-for instance if the source used not having the complete information
-(eg. extracting a references from an article where the author only
-have initials even though the name is known) or the users having other
-priorities than be bibliographies.
+Unfortunately, even though {\bibtex} has made life a lot better for
+scientific authors, it is far from perfect and there are a lot of
+issues that can be found.  Inspired by economics, the challenges in
+{\bibtex} can be divided into structural and conjunctural issues.  The
+structural issues are the ones intrinsic to {\bibtex}, thus it is
+caused by the design, the standard tools for {\bibtex} and information
+that can not be found.  The conjunctural issues are the combination of
+circumstances, for instance if the source used does not the complete
+information (eg. extracting a references from an article where the
+author only have initials even though the full name is known) or the
+users having other priorities than be bibliographies.
 
-Whether an issue is seen as conjectural or structural is in part a
-matter of opinion, as the difference can be stretched in either
+Whether an issue is seen as conjunctural or structural is in part a
+matter of opinion, as the definitions can be stretched in either
 direction - an issue also faced in economics.  Most of the issues are
 arguably a combination the two as they could be fixed by careful labor
 or by having the right tools available, eg. most bibliography managers
 have tools to switch between abbreviated and full journal names.  The
 ultimate goal of {\Orangutan} is essentially to move the issues to the
-point where they are purely conjectural as it would be a matter of
-using the tool to ensure a well structured Bib{\TeX} document.
+point where they are purely conjunctural as it would be a matter of
+using the tool to ensure a well structured {\bibtex} document.
 
 An interesting point is that not all of the structural issues are
-necessarily bad.  As pointed out earlier there are a lot of ways to
-make use of the relaxed properties of Bib{\TeX}, for instance that it
-ignores unknown tags is useful in de facto standards such as
-commenting entries out by prefixing with $OPT$ or adding information
-that are not a part of the Bib{\TeX} specification, such as ISSN, DOI
-or the crossref, which is technically not specified by Bib{\TeX} but
-still is part of the tool.  In figure-\ref{fig:mendeley_output}
-an example is provided by a PhD student from the Chemistry Department
-at Århus University, this example is created from Mendeley and shows a
-lot of additional information about the article.
+necessarily bad.  There are a lot of ways to make use of the relaxed
+properties of {\bibtex}, for instance that it ignores unknown tags is
+useful in de facto standards such as commenting entries out by
+prefixing with $OPT$ or adding information that are not a part of the
+{\bibtex} specification, such as ISSN, DOI or the crossref, which is
+technically not specified by {\bibtex} but still is part of the tool.
+In figure-\ref{fig:mendeley_output} an example is provided by a PhD
+student from the Chemistry Department at Århus University, this
+example is created from Mendeley and shows a lot of additional
+information about the article.
 
 \begin{figure}[ht]
   \centering
@@ -55,7 +57,7 @@ year = {2003}
 \end{verbatim}
 \end{small}
   \caption{Output from Mendeley containing additional information}
-  \label{fig:mendeley_output}
+\label{fig:mendeley_output}
 \end{figure}
 
 This is an issue, if strict conformity to the specification is desired,
@@ -132,11 +134,11 @@ figure-\ref{fig:inconsistent_naming}.
 \label{fig:inconsistent_naming}
 \end{figure}
 
-From the point of view that the style of Bib{\TeX} should format
+From the point of view that the style of {\bibtex} should format
 abbreviations properly the issue seen here is structural, as the long
 names should have been formatted by the tool.  In cases where the
 abbreviation is wrong (eg. due to a typo) the issue would move towards
-being conjectural again, unless some kind of abbreviation specific
+being conjunctural again, unless some kind of abbreviation specific
 spell checker is being used.  Using full names and then formatting
 them accordingly seems like the most sensible idea, since the style of
 abbreviation could be interchanged, should the need arise, it is more
@@ -144,35 +146,35 @@ readable and it would create better conditions for output tools to
 provide consistent formatting.
 
 Currently there are multiple strategies for ensuring consistency in
-abbreviations, some do a complete search and replace on the bib-file
-depending on the formatting they need, a bit more structured approach
-is the use of strings in Bib{\TeX} to ensure a consistent naming of a
-journal which can further be combined with the use of crossref.
+abbreviations, some do a search and replace on the bib-file depending
+on the formatting they need, an approach that is a bit more structured
+is the use of strings in {\bibtex} to ensure a consistent naming of a
+journal which can further be combined with the usage of crossref.
 Another approach is the use of Bib{\LaTeX} and biber, which provides
 the solution in the formatting
 options\cite{koppensteiner2011abbreviate}, provided that the
 abbreviation handing of the style is correct.  This causes it to
-become a more conjectural issue, as the issue now is if the right
-names are written, however how conjectural depends on the correctness
+become a more conjunctural issue, as the issue now is if the right
+names are written, however how conjunctural depends on the correctness
 of the tools.  Reference mangers such as JabRef, Mendeley etc. tend to
 go with the strategy that it stores the references using full names
-and then export it to a Bib{\TeX}-file (or whatever format you decide
+and then export it to a {\bibtex} file (or whatever format you decide
 to export to) having the desired abbreviation style applied to the
-export, this again moves the issue towards being conjectural, for the
+export, this again moves the issue towards being conjunctural, for the
 same reasons as the Bib{\LaTeX} and biber solution.
 
-As the purpose of {\Orangutan} is to work on the Bib{\TeX} file
-itself, the formatting in the end is technically not the primary
-concern.  The concern would optimally just be to ensure a consistent
-document, so the style can do its work.  Since Bib{\TeX} styles
-currently does not take care of abbreviations directly, there might be
-the need for considerations on how to easily and consistently ensuring
-abbreviations according to a desired format.  Having a solution that
-ensures a consistent structure, which is easy to modify to a desired
-style of abbreviations, would move the issue towards the conjectural.
-Having the styles actually handling the abbreviations (such as the
+As the purpose is to work on the {\bibtex} files, the formatting in
+the end is technically not the primary concern.  The concern would
+optimally just be to ensure a consistent document, so the style can do
+its work.  Since {\bibtex} styles currently does not take care of
+abbreviations directly, there might be the need for considerations on
+how to easily and consistently ensuring abbreviations according to a
+desired format.  Having a solution that ensures a consistent
+structure, which is easy to modify to a desired style of
+abbreviations, would move the issue towards the conjunctural.  Having
+the styles actually handling the abbreviations (such as the
 Bib{\LaTeX} and biber combination does) would make the issue entirely
-conjectural if there is a an easy way to ensure that all journal
+conjunctural if there is a an easy way to ensure that all journal
 names, conference names etc. are always in correct full names.
 
 %%
@@ -183,11 +185,11 @@ names, conference names etc. are always in correct full names.
 Take the inconsistency in figure-\ref{fig:entry_with_issn}, found in a
 article on arXiv.org, have two references from the same conference,
 but different years.  The inconsistency is easy to identify due to the
-consistent naming, which in turn affects how the mistake is percieved.
-Correct and consistent naming will make it possible for tools to
-detect inconsistencies when some fields are missing.  This exposes a
-structural part of the issue, as no such tools exists (to the authors
-knowledge).
+consistent naming, which will make the issue even more visible to the
+reader.  Correct and consistent naming will make it possible for tools
+to detect inconsistencies when some fields are missing.  This exposes
+a structural part of the issue, as no such tools exists (to the
+authors knowledge).
 
 \begin{figure}[ht]
   \centering
@@ -222,8 +224,8 @@ system might be the cause of new structural issue, either the removal
 of relevant data or forcing entries for cases where it is not
 relevant.  In this specific case the search result in
 figure-\ref{fig:entry_issn_found} reveals that the missing ISSN do
-exist and thus a tool pointing out the inconsistency would in thise
-case make the issue conjunctional.
+exist and thus a tool pointing out the inconsistency would in this
+case make the issue conjunctural.
 
 % Source http://journals.cambridge.org/action/displayAbstract?fromPage=online&aid=6171388&fileId=S0956796809007345#
 \begin{figure}[ht]
@@ -262,65 +264,10 @@ case make the issue conjunctional.
 Provided a reliable way to look up correct entries a tool could move
 the issues towards being conjuntural, since it would then just being a
 matter of doing the lookup on all entries and then be done (apart from
-the abbreviation issues above).  In the utopic case all entries could
-be looked up at all times, but this is not likely as unpublished works
-would need a reliable way to be registered.  Also even though the
-databases out there are really good, most of the time, erronous
-results can be found.  A lookup on Google Scholar in the beginning of
-February 2016 for: ``Results and Analysis of SyGuS-Comp’15'' can be
-seen in figure-\ref{fig:scholar_bad_result}.
-
-\begin{figure}[ht]
-  \centering
-\begin{verbatim}
-@article{alurresults,
-  title={Results and Analysis of SyGuS-Comp’15},
-  author={Alur, Rajeev and Fisman, Dana and Singh, Rishabh
-          and Solar-Lezama, Armando}
-}
-\end{verbatim}
-  \caption{Bad result from Google Scholar}
-\label{fig:scholar_bad_result}
-\end{figure}
-
-Having found the article originally on arXiv.org the source of the
-article is known to be EPTCS - Electronic Proceedings in Theoretical
-Computer Science.  So not only does the Google Scholar result actually
-not conform to the requirements of an article, the resource are in
-fact not an article at all, but in the proceedings to a conference.
-Finding the correct entry details at the EPTCS page reveals the entry
-in figure-\ref{fig:eptcs_lookup}.  Relying on these being correct
-would cause structural issues as it would the tools would now
-automatically introduce new errors.
-
-\begin{figure}[ht]
-  \centering
-\begin{small}
-\begin{verbatim}
-@Inproceedings{EPTCS202.3,
-  author    = "Alur, Rajeev and Fisman, Dana  and Singh, Rishabh 
-               and Solar-Lezama, Armando",
-  year      = "2016",
-  title     = "Results and Analysis of SyGuS-Comp'15",
-  editor    = "\v{C}ern\'y, Pavol and Kuncak, Viktor 
-               and Parthasarathy, Madhusudan"b,
-  booktitle = "{\rm Proceedings Fourth Workshop on}
-               Synthesis,
-               {\rm San Francisco, CA, USA, 18th July 2015}",
-  series    = "Electronic Proceedings in 
-               Theoretical Computer Science",
-  volume    = "202",
-  publisher = "Open Publishing Association",
-  pages     = "3-26",
-  doi       = "10.4204/EPTCS.202.3",
-}
-\end{verbatim}
-\end{small}
-  \caption{Correct lookup on EPTCS, after failed lookup on Google Scholar}
-\label{fig:eptcs_lookup}
-\end{figure}
-
-% mark
+the abbreviation issues above).  Take the inconsistency in
+figure-\ref{fig:inconsistent_proceedings} where two entries from the
+same conference has different information.  One has an additional
+``ICFP '10'' and ``ACM'' in there, the other one does not.
 
 \begin{figure}[ht]
   \centering
@@ -345,9 +292,13 @@ N.~A. Danielsson.
 \label{fig:inconsistent_proceedings}
 \end{figure}
 
-A search for Bib{\TeX} entries give then entries in
-figure-\ref{fig:missing_org_scholar_lookup} for the two articles, which
-provides one possible option for a set of consistent entries.
+An online search for {\bibtex} information give the entries in
+figure-\ref{fig:missing_org_scholar_lookup} for the two articles,
+which provides one possible option for a set of consistent entries.
+As can be seen $ACM$ is the name of the organization and is probably
+missing in the original {\bibtex} that produced the bbl file inspected
+above.  The Danielsson has an additional tag with the content ``ICFP
+'10'', which is not apparent in the search result.
 
 \begin{figure}[ht]
   \centering
@@ -379,21 +330,73 @@ provides one possible option for a set of consistent entries.
 \label{fig:missing_org_scholar_lookup}
 \end{figure}
 
-As can be seen $ACM$ is the name of the organization and is probably
-missing in the original Bib{\TeX} that produced the bbl file inspected
-above.  The Denielsson has an additional tag with the content ``ICFP
-'10'', which got added \remark{Olivier: do you happen to know what tag
-  might have produced this?}
+In the utopic case all entries could be looked up at all times, but
+this is not likely as unpublished works would need a reliable way to
+be registered.  Also even though the databases out there are really
+good, most of the time, erronous results can be found.  A lookup on
+Google Scholar in the beginning of February 2016 for: ``Results and
+Analysis of SyGuS-Comp’15'' can be seen in
+figure-\ref{fig:scholar_bad_result}, which contains erronous output.
+
+\begin{figure}[ht]
+  \centering
+\begin{verbatim}
+@article{alurresults,
+  title={Results and Analysis of SyGuS-Comp’15},
+  author={Alur, Rajeev and Fisman, Dana and Singh, Rishabh
+          and Solar-Lezama, Armando}
+}
+\end{verbatim}
+  \caption{Bad result from Google Scholar}
+\label{fig:scholar_bad_result}
+\end{figure}
+
+Having found the article originally on arXiv.org the source of the
+article is known to be EPTCS - Electronic Proceedings in Theoretical
+Computer Science.  So not only does the Google Scholar result actually
+not conform to the requirements of an article, the resource are in
+fact not an article at all, but in the proceedings to a conference.
+Finding the correct entry details at the EPTCS page reveals the entry
+in figure-\ref{fig:eptcs_lookup}.  Relying blindly on these being
+correct would cause structural issues as the tools could automatically
+introduce new errors.  Using it for suggestions can move the issue
+towards being conjunctural for most cases.
+
+\begin{figure}[ht]
+  \centering
+\begin{small}
+\begin{verbatim}
+@Inproceedings{EPTCS202.3,
+  author    = "Alur, Rajeev and Fisman, Dana  and Singh, Rishabh 
+               and Solar-Lezama, Armando",
+  year      = "2016",
+  title     = "Results and Analysis of SyGuS-Comp'15",
+  editor    = "\v{C}ern\'y, Pavol and Kuncak, Viktor 
+               and Parthasarathy, Madhusudan"b,
+  booktitle = "{\rm Proceedings Fourth Workshop on}
+               Synthesis,
+               {\rm San Francisco, CA, USA, 18th July 2015}",
+  series    = "Electronic Proceedings in 
+               Theoretical Computer Science",
+  volume    = "202",
+  publisher = "Open Publishing Association",
+  pages     = "3-26",
+  doi       = "10.4204/EPTCS.202.3",
+}
+\end{verbatim}
+\end{small}
+  \caption{Correct lookup on EPTCS, after failed lookup on Google Scholar}
+\label{fig:eptcs_lookup}
+\end{figure}
 
 % ref 3
 
-Following this example from arXiv.org we have entries with the same
-conference where it can be seen that the conference name is different
-in one of the entries in figure-\ref{fig:entry_journal_name_authors}
-\remark{additional meta information perhaps}.  Also the list of author
-names are in the second entry so heavily abbreviated that you cannot
-realistically distinguish who the authors are, even if you know the
-affiliation.
+In figure-\ref{fig:missing_org_scholar_lookup} spotting the
+consistency issues were relatively simple, and a tool that can find it
+is possible, since the conference have the same name.  When looking at
+figure-\ref{fig:entry_journal_name_authors} it can be seen that the
+conference name is slightly different in one of the entries, but so
+close that they are probably the same conference.
 
 \begin{figure}[ht]
   \centering
@@ -423,17 +426,15 @@ P.~A. Porras and P.~G. Neumann.
 \label{fig:entry_journal_name_authors}
 \end{figure}
 
-% http://csrc.nist.gov/nissc/
-% Different ways of writing it (Proc vs Proceedings, {NIST}--{NCSC} in one, pages omitted)
-% even better, consider this entry:
-Furthermore, consider the case where we use these proceedings to infer
-some consistent way of writing the entries, based on the journal
-names.  It turns out that ``National Information Systems Security
+Diving into that additional information a visit to the homepage of the
+conference reveals that ``National Information Systems Security
 Conference'' used to be named ``National Computer Security
 Conference'', which is probably the reason for the
-$\{NIST\}--\{NCSC\}$ part of the first entry.  This results is that to
-correctly identify potentiel areas of inconsistencies it should also
-recognize entries such as the one in figure-\ref{fig:conference_name}.
+$\{NIST\}--\{NCSC\}$ part of the first entry\cite{nist2014_nissc}.  In
+the same source it turns out that there are also references to the
+conference from before the name change, as seen in
+figure-\ref{fig:conference_name}, so to correctly identify potential
+areas of inconsistencies it should also recognize this.
 
 \begin{figure}[ht]
   \centering
@@ -452,6 +453,22 @@ S.~R.~S. \emph{et al}.
 \label{fig:conference_name}
 \end{figure}
 
+In {\bibtex} there is no way of specifying that the same conference
+has different names so there is a big structural part as there is no
+support for identifying this issues, furthermore the owner of the
+{\bibtex} file might not even be aware which arguably could be
+conjunctural as the user could do his research or structural because
+the user should have a tool that can assist.  If a tool could reliably
+detect inconsistencies from the same conference with different names
+this would become conjunctural.
 
-\remark{There should be some information about Bib{\TeX} creating a bbl
-file, since me references come from there}
+Another issue in figure-\ref{fig:conference_name} is the list of
+author names that are so heavily abbreviated that you cannot
+realistically distinguish who the authors are.  This might come from
+the used style which will make the issue structural.  However if
+someone decides to copy this reference it may again be conjuncural, if
+the user does not check the names.  A structural issue might be if the
+reference if copies by a tool, if that tool should try to detect this,
+another is the lack of a way to try to detect this, where a tool for
+detecting it in {\bibtex} files may again move this towards being
+conjuncural.

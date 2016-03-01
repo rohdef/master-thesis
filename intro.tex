@@ -1,67 +1,68 @@
 \remark{Trying to capturing the thesis in a single sentence}
 
 This dissertation shows a tool for automated detection of lexical and
-inconsistency concerns in Bib{\TeX} references.
-
-
-\section{The issue}
-\remark{I'm still not entirely satisfied, but not it at least have a
-  flow from what the issue is to what the focus is etc.}
-
-When writing research documents, for instance an article for a
-journal, it is desired to have such documents to be presented
-properly.  This is out of respect for the work referred to, for the
-ones reading the work and it is a requirement from journals.  Having
-inconsistencies, spellling errors and alike can make otherwise correct
-scientific work look sloppy.  This includes the references, which are
-almost certain to be evaluated by researchers interested in the work.
-
-% However unlike the content of the document itself references are often
-% not proofread as thoroughly and the errors may not be visible since
-% the current reference style may hide them through abbreviations and
-% styling.  Then errors can be carried on to other documents, as
-% reference libraries are often reused, furthermore inconsistencies get
-% harder to spot by hand, as the library grows over the years.
+inconsistency concerns in {\bibtex} references.
 
 \subsection{What \remark{working title}}
-Misspellings and mistypings is a common issue in Bib{\TeX}, the
+
+{\bibtex} has changed the landscape for scientific writing and eased a
+lot of peoples lives, however it is not without issues.  The
+challenges range widely:
+
+Having files that does not conform with specifications is a
+double-edged sword.  On one hand it gives a powerful tool for useful
+de facto standards.  On the other hand it leads to inconsistencies,
+missing fields and fields that might not even make sense.
+
+The use of abbreviations can lead to non-uniform entries.  Having
+abbreviations can provide challenges for tools that use {\bibtex}
+files, for instance when searching and doing cross referencing.
+
+Misspellings and mistypings is a common issue in {\bibtex}, the
 information about an entry should match the information from the given
 source.  Having misspellings can be an issue when people want to look
 up a references.
 
-The use of abbreviations leads to non-uniform entries, and prevents
-the capability of Bib{\TeX} formatting to use shortenings according to
-various specifications.  Having abbreviations can provide challenges
-for tools that use Bib{\TeX} files, for instance when searching and
-doing cross referencing.  Having entries that use abbreaviations will
-provide challenges when you need to output references with full names.
-
-A lot of the entries are incorrect, having missing fields or fields
-that are not specified.  This can be an issue when one output style
-needs different fields than other styles, or if needing to look up
-details later on.  Also people use tags that are not specified for an
-entry type, for instance having a $volume$ for $InProceedings$.  Some
-of these can have practical use, even though they are not specified.
-
-Lastly there are a huge range of inconsistencies, for instance
-references from the same journal may not be formatted uniformly.
-\remark{reasoning}
-\remark{Add that it's relevant to journals!}
 
 \subsection{Why/how \remark{working title}}
-The sources for this range of errors are wide.  First off by design
-Bib{\TeX} does not prevent this use of the format, it just warns about
-missing tags and bad usage, furthermore it completely ignores
-unspecified tags.  An example of this can be seen from the Bib{\TeX}
-output in figure \ref{fig:bibtex_out}, this is from a file that does
-not conform to the specifications and contains unspecified fields,
-Bib{\TeX} just warns about the missing fields and that the book has
-both author and editor, but completely ignores all the unspecified
-tag.  That Bib{\TeX} ignores unspecified tags also enable useful de
-facto standards such as prefixing a tag with OPT to comment it out and
-adding $crossref$ to the files for easy referencing between entries,
-but in turn provides no way of ensuring consistency or that the
-entries are even correct.
+
+The sources of the issues can be considered from the perspective of
+structural vs conjunctural, which shows that there is no uniform way
+of considering the reason for the challenges.  Using this approach has
+uncovered a lot of the underlying reasons.
+
+By design {\bibtex} does not prevent using the format however the user
+desires, for good or bad.  This results in both a lot of
+inconsistencies and missing information, but also in useful de facto
+standards.
+
+When adding entries to {\bibtex} there are various sources of errors.
+Manual entry easily leads to spelling errors and as the file grows
+large inconsistencies.  Entering by hand using copy and paste can
+cause existing issues to be repeated.  Using online resources, one may
+expect the entries to be correct, but is not given that they are.  The
+entries will be no better than the source used.  Using the automatic
+tools for extraction of meta data, from articles, may be prone to
+further errors.
+
+Some tools for editing Bib{\TeX}-files do not necessarily follow the
+specification, and does not assist in ensuring consistency.  A lot of
+the tools can convert between abbreviated and full form in the files,
+essentially motivating to store abbreviations rather than full names.
+Some even suggest tags that does not belong in the entry type.
+
+
+
+An example of this can be seen from the {\bibtex} output in figure
+\ref{fig:bibtex_out}, this is from a file that does not conform to the
+specifications and contains unspecified tags, {\bibtex} just warns
+about the missing tags and that the book has both author and editor,
+but completely ignores all the unspecified tags.  That {\bibtex}
+ignores unspecified tags also enable useful de facto standards such as
+prefixing a tag with OPT to comment it out and adding $crossref$ to
+the files for easy referencing between entries, but in turn provides
+no way of ensuring consistency or that the entries are even
+correct. \remark{rewrite}
 
 \begin{figure}[h]
   \centering
@@ -77,34 +78,8 @@ Warning--empty journal in Nobody06
 Warning--empty year in Nobody06
 \end{verbatim}
   \caption{Example of error output from Bib{\TeX}}
-  \label{fig:bibtex_out}
+\label{fig:bibtex_out}
 \end{figure}
-
-Having this relaxed policy causes a lot of sloppiness with regard to
-the use of the format.  A lot people who are using a tool do not care
-about following the rules strictly, they do not care whether a journal
-name is abbreviated or not, as long as it is there. What they want is
-something that works and do not need to bother too much about, so they
-can focus on what they care about: their research.
-
-When adding entries to Bib{\TeX} there are various sources of errors.
-The simplest way is manual entry, which easily leads to spelling
-errors and as the file grows large inconsistencies.  Furthermore when
-entering by hand doing copy and paste can cause the mistakes to be
-repeated over, if the user is not careful.  Using online resources,
-one may be expecting the entries to be correct enough for their use,
-but is no way guaranteed so, the entries will be no better than the
-source used.  Also automatic tools can extract meta data from articles
-and may be prone to further errors.
-
-Another challenge is that some tools for editing Bib{\TeX}-files do
-not necessarily follow the specification, and does not assist in
-ensuring consistency.  A lot of the tools will converting between
-abbreviated and full form, essentially motivating to store
-abbreviations in the files rather than having the output formatting
-handling how to display information.  Some even suggest tags that does
-not belong in the entry type, this has its pros and cons, as remarked
-earlier for most users the primary focus is something that works.
 
 \subsection{What can be done - general \remark{working title}}
 Addressing the human factor in it is one possibile way of solving
@@ -132,7 +107,7 @@ make a new and improved bibliography systems.  These mostly address
 either annoyance at the format (eg. preferring XML) or to provide more
 modern options (support for URLs and UTF-8).  This could be taken one
 step further introducing the improved checks.  The disadvantage of
-this is that it requires people to chance the format, some tools like
+this is that it requires people to change the format, some tools like
 Bib{\LaTeX} is designed, so it's compatible with Bib{\TeX} allowing a
 smooth transition, this compatibility would however be lost by that
 design.  Also like the previous suggestion it would only take care of
@@ -147,65 +122,7 @@ lookups etc.
 
 \subsection{What can be done - analyzing tool \remark{working title}}
 
-
-
-\subsection{From old}
-
-
-This leads to two ways of approaching the issues: either try to
-prevent them from ever happening or handling them when they have been
-entered into a library.
-
-Most of the sources of input are intangible to control, as it is hard
-(if not impossible) to prevent misspelling in external documents, it
-is impossible to prevent people from making typos or being
-inconsistent in their use of abbreviations.  For online resources the
-errors can also be present and even if this could be corrected, it is
-unlikely to get everyone to use them all the time and it would not
-correct already existing libraries.  It is therefore more
-interesting to focus on handling these when they have entered the
-library.
-
-As a lot of \remark{can we find how many, and is it actually the
-  mostly used format outside natural sciences?} scientific work are
-done in {\LaTeX}, Bib{\TeX} has become a de facto standard for
-references.  Having some tool to detect these errors would help
-authors of scientific documents to keep their documents presentable.
-Some of the possible issues such tool can focus are:
-
-\remark{This list is both for what is going to be done and for further
-  work}
-\begin{itemize}
-\item Lexical concerns
-  \begin{itemize}
-  \item Titles with misspellings
-  \item Names of people with misspellings
-  \item Names of locations with misspellings
-  \end{itemize}
-\item Inconsistent entries
-  \begin{itemize}
-  \item Names with different formatting: different abbreviations of
-    the name and name in full
-  \item Entries that are not uniform, for instance some mention the
-    publisher others do not.
-  \end{itemize}
-\item In addition
-  \begin{itemize}
-  \item Only putting the initials of authors increases ambiguity
-    \remark{kind of want this at the ambiguity somehow, as it's a
-      good point}
-  \item Detection of never revisions
-  \item Journal version or reports of conference papers
-  \item Missing fields
-  \item Detection special characters?
-  \end{itemize}
-\end{itemize}
-
-For this dissertation the goal is to review the field of bibliographic
-references, observe the shortcomings in published references and to
-design a tool to analyze bibliographies for occurrences of the
-shortcomings identified.
-
+\remark{remember the new revisions desire}
 
 %\remark{People who request similar
 %http://stackoverflow.com/questions/13630584/the-best-method-for-handling-bibtex-files
@@ -217,55 +134,6 @@ shortcomings identified.
 %http://tex.stackexchange.com/questions/173621/how-to-validate-check-a-biblatex-bib-file
 %http://stackoverflow.com/questions/13630584/the-best-method-for-handling-bibtex-files
 %}
-
-\section{Bib{\TeX} format}
-Bib{\TeX} is a commonly used format for managing lists of references in
-academic circles \remark{Now now, can we prove this?}.  The format is
-designed for use with {\LaTeX}, but plugins for other formats do
-exist\cite{bibtex_resource}.
-
-The format itself is fairly simple, at it's main level we got
-$@STING$, $@PREAMPLE$, $@COMMENT$ and $entries$.  $@STRING$ is for
-abbreviations that can be used later in the Bib{\TeX}, $@PREAMPLE$ is for
-defining how to format the text and $@COMMENT$ is for comments and
-$entries$ are the actual entries\cite{bibtex_resource}.
-
-Since $@PREAMPLE$ and $@COMMENT$ doesn't affect the contents they
-won't be considered further in this document. \remark{Double check
-  preample, recall reading somewhere that it's just {\LaTeX} macros.}
-
-Tags is case insensitive. If the contents needs to be enclosed in
-either \{ and \} or quotes (depending on the persons taste), numbers
-can be written without them and @sting abbreviations has to be without
-them. Concatenation is done using \#.\cite{bibtex_resource}
-
-Designed by Oren Patashnik and Leslie Lamport in 1985
-
-\remark{(Note to self:) should probably have half an eye on things
-  like: `G{\"o}del', when working with it}
-
-\remark{(Note to self:) people may use booktitle where title is
-  appropriate edition: The edition of a book---for example,
-  ``Second''. This should be an ordinal, and should have the first
-  letter capitalized, as shown here; the standard styles convert to
-  lower case when necessary. \cite{bibtex_description}}
-
-\remark{http://tug2000.tug.org/TUGboat/Articles/tb24-1/patashnik.pdf}
-
-\section{BibTeX variants and alternatives}
-\remark{So far mostly notes to self}
-There is a lot of both variants and alternatives to BibTeX (out there in the wild :P ).
-
-\begin{itemize}
-\item mlbibtex - multi language\newline
-      http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.107.3886
-\item biblatex
-\item biber
-\item bibtexml - YUCK, what a horrible idea!\newline
-      http://www.xj2z.net/UpLoadFile/cms/Ebook/305/ts305045.PDF
-\item application managed \newline
-      (Mendeley, EndNote, RefMan, RefWorks, Zotero)
-\end{itemize}
 
 \section{Lookup services}
 \remark{So far mostly notes to self}
