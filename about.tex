@@ -1,28 +1,31 @@
-The introduction of {\TeX} has been a huge game changer for scientific
-writing, which can be seen by the amount of articles written in {\TeX}
-(or derivatives such as {\LaTeX}), for instance on arXiv.org almost
-all articles have {\LaTeX} sources.  Apart from being grateful to
-Donald Knuth for providing a robust system for articles, {\TeX} has
-also given the base for Oren Patashnik and Leslie Lamport to create
-{\bibtex} for bibliography managements.
+The goal of this chapter is to introduce the importance of {\bibtex}
+followed by how it works
 
-{\bibtex} is a simple way of managing references in scientific
-writing, using a simple file format for the reference database.
-Inside the file the various information about a reference is
-specified, such as the author, title, year, what kind of medium was
-used and, depending on the medium, relevant information to identify
-the source, for instance for an article there is a journal.  The
-{\bibtex} format is designed for use with {\LaTeX} and it has plugins
-for other formats as well\cite{bibtex_resource}.
+The advent of {\TeX} has been a game changer for scientific writing,
+witness the number of articles written in {\TeX} (or derivatives such
+as {\LaTeX}).  For instance, on arXiv.org, almost all articles have
+{\LaTeX} sources.  Apart from being grateful to Donald Knuth for
+providing a robust system for articles, {\TeX} has also given the
+basis for Oren Patashnik and Leslie Lamport to create {\bibtex} for
+bibliography managements.
 
-The references is then simply used by in {\LaTeX} by citing a name
-given in the {\bibtex}, for instance if you have a reference named
+In the same spirit as {\LaTeX}, {\bibtex} is a simple way of managing
+references in scientific writing, using an ASCII file format for the
+reference database.  Inside this file, the various information about a
+reference are specified, such as the author, title, year, what kind of
+medium was used and, depending on the medium, relevant information to
+identify the source, for instance for an article there is a journal.
+The {\bibtex} format is designed for use with {\LaTeX} and it has
+plugins for other formats as well~\cite{bibtex_resource}.
+
+The references are then simply used by in {\LaTeX} by citing a name
+given in the {\bibtex}, for instance if one has a reference named
 $some\_article$ then the reference is used by writing:
 ${\backslash}cite\{some\_article\}$.  When the {\bibtex} tool is run
 it recognizes the entries and give them unique and uniform labels,
-such as a number as seen in figure-\ref{fig:bibtex_example_acm} or
+such as a number as seen in Figure~\ref{fig:bibtex_example_acm} or
 author initials followed by a year as seen in
-figure-\ref{fig:bibtex_example_alpha}.  When {\bibtex} then prints the
+Figure~\ref{fig:bibtex_example_alpha}.  When {\bibtex} then prints the
 references it uses the labels to allow a reader to quickly identify
 the correct source, as can also be seen in the figures.
 
@@ -105,19 +108,19 @@ with the labels.
 The combination of these two tools has changed the landscape of
 scientific publishing.  Before the wake of {\bibtex} references was
 managed entirely by hand and a lot of manual labor was spent on
-managing references.  For instance in A Handbook for
-Scholars\cite{leunen1992_handbook} almost half of the book is spent on
-how to cite, manage and write references, 150 pages out of 335 pages
-(excluding the index).  A lot of the text in How to Write a Thesis has
-also been spent on how to manage and cite references and ensuring a
-proper bibliography.  All this manual labor has been almost completely
-obsoleted by {\bibtex}, it takes care of the citing styles, it ensures
-a correct formatting in the reference list and provides a way of
-having complete database of references, but only printing the ones
-used in an article.  Also today {\bibtex} has enabled huge online
-resources with references that can be used for looking up references,
-automated extraction tools, sharing of references and easy version
-control.
+managing references.  For instance, nearly half of Mary-Claire van
+Leunen's book, A Handbook for Scholars~\cite{leunen1992_handbook}, is
+dedicated to how to cite, manage and write references, 150 pages out
+of 335 pages (excluding the index).  A significant fraction of Umberto
+Eco's book, How to Write a Thesis, is also dedicated to how to manage
+and cite references and ensuring a proper bibliography.  All this
+manual labor has almost been made obsolete by {\bibtex}, which takes
+care of the citing styles, ensures a correct formatting in the
+reference list, and provides a way of having complete database of
+references, but only printing the ones used in an article.  Also today
+{\bibtex} has enabled huge online resources with references that can
+be used for looking up references, automated extraction tools, sharing
+of references and easy version control.
 
 
 %\remark{(Note to self:) should probably have half an eye on things
