@@ -1,29 +1,29 @@
 \section{Bib{\TeX} tools}
 \label{sec:bibtex_tools}
-There are a few pure {\bibtex} tools for handling reference databases.
-A lot of these tools targets some of the issues described.  The tools
-has either been tested or their functionality verified by code
-inspection.
+There are a few pure Bib{\TeX} tools for handling reference databases.
+A lot of these tools targets some of the issues described.  The
+various tools has either been tested or their functionality verified
+by code inspection.
 
 \subsection{Bibcleaner}
 Bibcleaner is a tool developed by Joos Buijs for his own use in his
 PhD studies and made publicly available in case someone can get a use
-for it.  The purpose of the tool is to clean {\bibtex} files by
-searching online in DBLP\cite{bibcleaner_question, bibcleaner_source}.
+for it.  The purpose of the tool is to clean Bib{\TeX} files by using
+online look ups in the DBLP database\cite{bibcleaner_question,
+  bibcleaner_source}.
 
 Usage of Bibcleaner is quite simple, it runs through each entry
 comparing it with the DBLP database and suggests improvements if it
 can find the current key in the database.  The functionality of the
-tool is currently limited to computer science, since DBLP does not
-concern other areas of science\cite{bibcleaner_source}.
+tool is currently limited to computer science, as it only uses DBLP
+for lookups\cite{bibcleaner_source}.
 
 \subsection{BibTooL}
-BibTooL is a set of {\bibtex} scripts that was developed by
-Charalampos Nikolaou from University of Athens.  The last version of
-the BibTooL is from July 2012 and there is no indication of further
-development being done.  BibTooL is a set of shell scripts to assist
-in cleaning, organizing and ensuring consistency in Bib{\TeX}
-files\cite{bibtool_site}.
+BibTooL is a Bib{\TeX} that was developed by Charalampos Nikolaou from
+University of Athens.  The last version of the tool is from July 2012
+and there is no indication of further development being done.  BibTooL
+is a set of shell scripts to assist in cleaning, organizing and
+ensuring consistency in Bib{\TeX} files\cite{bibtool_site}.
 
 The only method for handling of abbreviations in BibTooL is by
 DBLP-lookup, like Bibcleaner.  However unlike Bibcleaner it also
@@ -59,26 +59,24 @@ used too.
 
 When using JabRef it is very easy to switch between journal
 abbreviations and full names, provided that the abbreviation is
-already known and custom abbreviations can be
-added\cite{jabref_abbreviations}.  The spell check was not found in
-the beta release of JabRef.  Doing lookups online for details can in
-theory be done during PDF-import using Mr. DLib, which supposedly
-should search for entries based on similarity to PDF-files, the
-project seems to be abandoned as the site has not been updated since
-2012\cite{jabref_mrdlib,jabref_mrdlib_notice}.  It is worth nothing
-that JabRef has a system for finding duplicate entries, and does some
-validation of Bib{\TeX}-files when opened to ensure valid data.
-
-\remark{Check their survey for relevant details}
+already known, custom abbreviations can be
+added\cite{jabref_abbreviations}.  The supposed spell check was not to
+be found in the beta release of JabRef.  Doing lookups online for
+details can in theory be done during PDF-import using Mr. DLib, which
+supposedly should search for entries based on similarity to PDF-files,
+the project seems to be abandoned as the site has not been updated
+since 2012\cite{jabref_mrdlib,jabref_mrdlib_notice}.  It is worth
+nothing that JabRef has a system for finding duplicate entries, and
+does some validation of Bib{\TeX}-files when opened to ensure valid
+data.
 
 \subsection{Bibcut}
 Bibcut is a tool to arrange and modify Bib{\TeX} files in ways that
 will assist scientists.  It is developed by Dr. Clemens Barth with the
 latest release from 2014.  Bibcut can be used to clean author strings
-to ensure consistent formatting, ways of handling journal names and
-change them from abbreviations to full names or vice
-versa and compare Bib{\TeX} files, for instance
-to find duplicates\cite{bibcut_site}.
+to ensure consistent formatting, compare Bib{\TeX} files, for instance
+to find duplicates and ways of handling journal names and change them
+from abbreviations to full names or vice versa\cite{bibcut_site}.
 
 \remark{Do testing, author correction is bad for instance}
 
@@ -98,9 +96,10 @@ that the author might have meant inproceedins in stead.
 \section{Bibliography managers}
 \label{sec:bib_managers}
 There are a lot of products for bibliography management that are not
-directly targeted at {\bibtex}.  All of the tools have been tested for
-relevant features that are not described on their respective feature
-overviews.
+directly targeted at Bib{\TeX}.  Some of these provides partial
+solutions for the lexical and consistency concerns.  All of the tools
+have been tested for relevant features that are not described on their
+respective feature overviews.
 
 \subsection{Mendeley}
 Mendeley is a bibliography management tool developed by Mendeley Ltd.
@@ -111,25 +110,25 @@ updating entries from online databases using, for instance the DOI.
 The target group for Mendeley is students and researchers
 \cite{mendeley_features}.
 
-Mendeley does not facilitate any systems for detecting inconsistencies
-such as spelling errors, revision numbers or initials.  Mendeley can
-download meta information based on a DOI which in part remodies this.
-Mendeley does not have any plugin system, so it's unlikely that there
-is any third party tools to remedy this. A search through Mendeley's
-request database reveals the same as the testing and features page.
-On Mendeleys online request system there are requests for features
-such as: spell checking, fixing capitalization inconsistencies and
-bulk DOI lookups.  \cite{mendeley_request_spellcheck,
-  mendeley_request_lowercase, mendeley_request_capitalization,
-  mendeley_request_bulk_doi}.
+Like BibTeX, Mendeley does not facilitate any systems for detecting
+inconsistencies such as spelling errors, revision numbers or initials.
+Mendeley can download metainformations based on a DOI which in part
+remodies this.  Mendeley does not have any plugin/add on system, so
+it's unlikely that there is any third party tools to remedy this. A
+search through Mendeley's request database reveals the same as the
+testing and features page.  On Mendeleys online request system there
+are requests for features such as: spell checking, fixing
+capitalization inconsistencies and bulk DOI lookups.
+\cite{mendeley_request_spellcheck, mendeley_request_lowercase,
+  mendeley_request_capitalization, mendeley_request_bulk_doi}.
 
 \subsection{EndNote and RefMan}
 EndNote and RefMan also tools for reference mangement, made by
 Thompson Reuters.  RefMan is an older product and Thompson Reuters
 recommends using EndNote in stead \cite{refman_switch,
   refman_features}.  There is a lot of focus on the sharing
-capabilities and it provides tools for PDF import and management,
-online lookup of references and Journal abbreviation dection
+capabilities and provides tools for PDF import and management, online
+lookup of references and Journal abbreviation dection
 \cite{endnote_basic_features, endnote_x7_features}.  Their target
 group is students and university related groups.  EndNote also
 provides a spell check feature that is not mentioned in the feature
@@ -156,13 +155,13 @@ RefWorks is a web based reference manager developed by ProQuest, meant
 for students, researchers and librarians.  The focus of the tool is to
 have the simplicity of a web based solution, which makes the resources
 easy to share and available everywhere.  The features include online
-look ups, statistics and collaboration
+look ups, statistics systems and collaboration
 features\cite{refworks_features}.
 
 As with the other tools testing shows that the error detection
 features is limited.  In RefWorks the work flow for adding references
-is either to enter them manually or to use a browser link called
-``RefGrab-It'' to import from homepages.  As with the DOI look ups
+is to either enter them manually or to use a browser link called
+``RefGrab-It'' to import from homepages.  As with the DOI lookups
 (which it can import if you look up a DOI resource in your browser)
 this in part remedy the errors, provided the original source does not
 have them.  Contrary to the other tools RefWorks tries to detect if
@@ -170,7 +169,7 @@ the author name is malformed, although it only seems to detect if you
 type ``John Doe'' rather than ``Doe, John'' as it expects, as can be
 seen at figure-\ref{fig:refworks-detect-formatting}.
 
-\begin{figure}[ht]
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{refworks-detect-formatting}
     \caption{RefWorks detects some formatting on the name field}
@@ -181,30 +180,28 @@ In RefWorks itself there seems to be no spell checker, but this is in
 part solved by most modern browsers, because they tend to include
 spell checkers for input fields.
 
-
 \subsection{Zotero}
 Zotero is a reference manager developed by Roy Rosenzweig Center for
-History and New Media.  It is targeted at people doing research, with
-the organization and collaboration aspects as the focus for
+History and New Media.  It is targeted at people doing research.  The
+organization and collaboration aspects are in focus for
 Zotero\cite{zotero_features}.
 
 There is a built in spell checker for notes written in Zotero, however
 the spell checker is not applied for things like titles, which
 prevents it from detecting those errors.  Like JabRef, Zotero has a
-plugin system, using the official list of plugins
-\cite{zotero_plugins} and a normal search engine did not provide any
-results assisting with the issues. There is a limited mechanism for
-detecting abbreviations in Zotero, in its jar-file there is a list of
-known abbreviations which it can use to chose the correct abbreviation
-when exporting, entering a known abbreviation does not seem to correct
-it to the non-abbreviated version.  This list can be manually edited,
-and overruled \cite{zotero_abbreviations}.
+plugin system, on found using the official list of plugins
+\cite{zotero_plugins} nor by a normal search engine. There is a
+limited mechanism for detecting abbreviations in Zotero, in its
+jar-file there is a list of known abbreviations which it can use to
+chose the correct abbreviation when exporting, entering a known
+abbreviation does not seem to correct it to the non-abbreviated
+version.  This list can be manually edited, and overruled
+\cite{zotero_abbreviations}.
 
 It is possible (but not tested) that Zotero can be used to import an
 Bib{\TeX}-file, then export it using the lists of known abbreviations
 and correct the abbreviations already known.  As other tools such as
 JabRef and Mendeley will already allow this, it has not been tested.
-
 
 \subsection{Papers}
 Papers is a reference manager developed by Mekentosj B.V., targeted
@@ -216,55 +213,13 @@ It does not highlight any features of relevance \cite{papers_features}
 and as it is developed for Mac OS, it has not been possible to test if
 there is relevant features apart from what they mention on their page.
 
-
-\section{{\bibtex} alternatives}
-There are also a lot of both variants and alternatives to {\bibtex}.
-A quick overview of a few of the options is provided.  Mostly they do
-not provide many new options.
-
-\subsection{{\bibtex}ml}
-{\bibtex}ml is a version of {\bibtex} where the entries are formatted
-with XML.  It is by design made with strict schemas and conversion
-tools to convert from {\bibtex}.  Having a system using strict schemas
-will enable an easy way to enforce correct entries that conform to the
-specification.  Also it will prevent usage of non-conforming tags, on
-the down side this also prevents the introduction of new de facto
-standards when they are needed\cite{gunhen2007_bibtexml}.
-
-
-\subsection{MLBIBTEX}
-MLBIBTEX is an attempt from Jean-Michael Hufflen to create a multi
-language version of {\bibtex}.  The focus is this is to add support
-for having entries in different language, accounting for appropriate
-naming of language specific content (such as months).  This has been
-done to account for authors writing in different languages, such as a
-scientist who writes a book for the students in a French, but
-otherwise normally writes articles in English.  It does not seem that
-this takes care of the issues that arise from the lack of encoding
-support in {\bibtex}\cite{hufflen2001_mlbibtex}.
-
-
-\subsection{Bib{\LaTeX} and biber}
-Bib{\LaTeX} is a {\LaTeX} package intended to replace {\bibtex}, but
-with backward compatibility with {\bibtex}.  It is designed to be able
-to run with the {\bibtex} backend, but defaults to use biber in stead.
-The idea behind Bib{\LaTeX} and biber is to overcome some of the
-limitations of {\bibtex} such as the limited character support,
-limited options for sorting and the need for new entry types (for
-instance {\bibtex} does not have an entry for online resources).  Most
-notably the Bib{\LaTeX} and biber combination adds the support for
-mappings of the entry content, for instance to ensure that journal
-names get abbreviated when printing the bibliography.
-
-
 \section{Research \remark{better headline name would be ideal}}
 It has not been possible to find research covering the issues of
 interest, such as inconsistencies and spelling errors, in Bib{\TeX}
 documents.  The issues has been partially handled on the practical
-level, which can be seen in sections \ref{sec:bibtex_tools} and
+level, which can be seen in sections \ref{sec:bibtex_tool} and
 \ref{sec:bib_managers}.  However issues such how to disambiguate
 abbreviations has been a concern in others contexts.
-
 
 \subsection{Abbreviation disambiguation using Machine Learning}
 In \cite{okazaki2010_building} machine learning is used to classify
@@ -297,12 +252,12 @@ occur.  Thus a clustering based system like in
 machine learning approach will acchieve more accuracy, but the
 approach has been put aside in this dissertation for simplicity.
 
-%The work in \cite{?} has a more practical approach as it uses simple
-%rules for when something can be considered an abbreviation.  However
-%they make the assumption that the expansion of an abbreviation will be
-%located close to it at one of its uses.  However in Bib{\TeX} it is
-%likely that it is either located elsewhere in the file or not in the
-%file at all.
+The work in \cite{?} has a more practical approach as it uses simple
+rules for when something can be considered an abbreviation.  However
+they make the assumption that the expansion of an abbreviation will be
+located close to it at one of its uses.  However in Bib{\TeX} it is
+likely that it is either located elsewhere in the file or not in the
+file at all.
 
 %%% Local Variables:
 %%% mode: latex
