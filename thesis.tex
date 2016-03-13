@@ -30,6 +30,8 @@
 \newcommand{\remark}[1]{{ \bf [ \footnotesize #1 ]}}
 \newcommand{\Orangutan}{Orangutan}
 \newcommand{\bibtex}{Bib{\TeX}}
+\newcommand{\chapref}[1]{\textit{\nameref{#1}}}
+\newcommand{\figref}[1]{Figure~\ref{#1}}
 
 \graphicspath{ {graphics/} {./} }
 % see http://imf.au.dk/system/latex/bog/
@@ -40,7 +42,7 @@
 \begin{titlepage}
 \author{Rohde Fischer - 20052356}
 \csAdvisor{Olivier Danvy}
-\title{An automated approach\\to organizing {\bibtex} files}
+\title{An automated approach\\to organizing {\bibtex}-files}
 \maketitle
 
 \end{titlepage}
@@ -52,11 +54,6 @@
 
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
-
-\chapter*{Resum\'e}
-\addcontentsline{toc}{chapter}{Resum\'e}
-
-\todo{in Danish\dots}
 
 %\chapter*{Acknowledgements}
 %\addcontentsline{toc}{chapter}{Acknowledgments}
@@ -76,30 +73,27 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{About Bib{\TeX}}
+\chapter{{\bibtex}}
 \label{ch:about}
-
 \input{about.tex}
 
-\chapter{The challenges in bibliographic references}
+\chapter{The challenges in using {\bibtex}}
 \label{ch:problem-description}
-
 \input{problem-description.tex}
 
-\chapter{Introduction}
+\chapter{Our approach \remark{to {\bibtex}?}}
 \label{ch:intro}
-
 \input{intro.tex}
 
 \chapter{Related work}
 \label{ch:related}
-
 \input{related.tex}
 
+\chapter{Analyzing {\bibtex}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Organizing {\bibtex}-files}
 
-\chapter{Conclusion}
+\chapter{Conclusion and perspectives}
 \label{ch:conclusion}
 
 \todo{\dots}
