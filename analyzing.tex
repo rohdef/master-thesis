@@ -1,0 +1,41 @@
+\section{Introduction}
+The goal of this chapter is?
+
+\section{Content}
+
+The parsing of {\bibtex} is done using a standard recursive parser.
+It outputs the {\bibtex} in the JSON-format which is easily to
+manipulate with a programming language.
+
+A simple way of specifying options is provided that feels natural for
+a {\bibtex} user.  $OPTorangutan = {@lang=FR, @OK}$
+
+Throws each entry at an analyzing module that handles the specific
+goals.  Current modules is spell checking, abbreviation checking and
+conformity checking.  If no issues found it can delete the entries to give a
+clean output that only tells what one need to change, so it will not
+complain.
+
+Spell checker runs through all titles using a standard aspell module,
+the module can be configured via $@lang=DA$ no multilang support.
+
+The abbreviation checker uses known abbreviation lists and strings to
+detect possible abbreviations.
+
+When checking for conformity it has a simple rule based system.  It
+validates according to the specification of {\bibtex}, further more it
+allows for de facto standards, and ignores tags starting with $OPT$,
+and it ignores $doi$, $issn$ and for books it ignores $isbn$.
+Configurable via JSON, to be configurable via {\bibtex} files.
+
+Two-phase parsing most sensible since detecting consistency makes more
+sense once all conference names are de-abbreviated.
+
+
+When searching for issues in {\bibtex} it is desired to get an final
+output that says all go.
+
+% Is there already fitting string for an journal name?
+% Suggest strings for journal names, matching easier
+
+\section{Summary and conclusions}
