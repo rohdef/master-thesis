@@ -1,0 +1,204 @@
+\section{Introduction}
+The goal of this chapter is to organize the previously identified
+problems and reach a suitable approach for how to handle them.
+
+The goal of this chapter is to organize the issues people have with
+{\bibtex}, answering \chapref{sec:intro_what_issues},
+\chapref{sec:intro_whyhow}, \chapref{sec:intro_what_to_do}
+
+\section{What are the issues in {\bibtex}}
+\label{sec:intro_what_issues}
+
+{\bibtex} has changed the landscape for scientific writing and eased a
+lot of peoples lives, however it is not without issues.  The
+challenges range widely, trying to group similar looking issues we
+have:
+
+The use of abbreviations for journal names and the use of initials in
+author names are fairly similar apart from {\bibtex} being able to make
+names into initials whereas it cannot abbreviate journal names.
+Misspellings and {\bibtex} strings that end up being text is also
+similar.  As all of these issues are related to the words these will
+be considered as lexical concerns.
+
+Having inconsistent use of tags, inconsistent entry keys, names that
+change, lack of conformance to the desired rules (specification and de
+facto standards) and duplicate entries also seems similar.  Together
+these will be considered as conformity concerns.
+
+The Utopian goal is to provide a structural solution for all these
+issues so that if any further issues exist they would be purely
+conjunctural.
+
+%Lexical:
+%- Journal abbreviations
+%- Initials
+%- Spelling errors
+%- Strings that end up as text
+%
+%Consistency:
+%- Inconsistent tags
+%- Duplicate entries
+%- Inconsistent entry keys
+%- Name changes in conferences, journals etc.
+%- Conformity
+%
+%Online look ups
+
+
+\section{Why are the {\bibtex} issues there and how do they come into
+  existence}
+\label{sec:intro_whyhow}
+
+The sources of the issues can be considered from the perspective of
+structural vs conjunctural, which shows that there is no uniform way
+of considering the reason for the challenges.  Using this approach has
+uncovered a lot of the underlying reasons.
+
+By design {\bibtex} does not prevent using the format however the user
+desires, for good or bad.  This design results in both a lot of
+inconsistencies and missing information, but also in useful de facto
+standards.
+
+An example of that {\bibtex} does not prevent deviations from the
+format can be seen from output in \figref{fig:bibtex_out}, the output
+is from a file that does not conform to the specifications and
+contains unspecified tags.  {\bibtex} just warns about the missing
+tags, it warns that the book has both author and editor and it
+completely ignores all the unspecified tags.
+
+\begin{figure}
+  \centering
+  \begin{verbatim}
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+The top-level auxiliary file: doc.aux
+The style file: plain.bst
+Database file #1: mybib.bib
+Warning--can't use both author and editor fields in book
+Warning--empty publisher in book
+Warning--empty year in book
+Warning--empty journal in Nobody06
+Warning--empty year in Nobody06
+\end{verbatim}
+  \caption{Example of error output from {\bibtex}}
+\label{fig:bibtex_out}
+\end{figure}
+
+When adding entries to {\bibtex} there are various sources of errors.
+Manual entry easily leads to spelling errors and as the file grows
+large inconsistencies.  Entering by hand using copy and paste can
+cause existing issues to be repeated.  Using online resources, one may
+expect the entries to be correct, but is not given that they are.  The
+entries will be no better than the source used.  Using the automatic
+tools for extraction of meta data, from articles, may be prone to
+further errors.
+
+Some tools for editing {\bibtex} files do not necessarily follow the
+specification, and does not assist in ensuring consistency.  A lot of
+the tools can convert between abbreviated and full form in the files,
+essentially motivating to store abbreviations rather than full names.
+Some even suggest tags that does not belong in the entry type.
+
+
+\section{What can be done about the {\bibtex} issues}
+\label{sec:intro_what_to_do}
+
+\remark{Hmm this is actually the reason why we will address this
+  structurally}
+
+Addressing the human factor in it is one theoretically possibile way
+of solving these issues.  ``Simply'' motivating people to do things
+right.  Alas people are not machines and thus this approach will be
+impossible in practice, for most people the interest is not the tools
+they use but what they use them for, so the interest in {\bibtex} will
+for most people being in ensuring that their articles contain the
+relevant references.
+
+
+As previously stated the structural approach to the issues is desired.
+This choice of approach basically means ensuring that the tools around
+{\bibtex} supports handling the issues, preferably to the level where
+all issues are solved.  Naturally, as touched upon shortly when
+inspecting the problems, it is not likely that all issues can be
+solved perfectly.
+
+\subsection{Updating {\bibtex}}
+
+One way of handling the issues structurally would be to change or even
+replace {\bibtex}, so it handles all lexical and consistency concerns.
+This way would include changing the {\bibtex} specification to account
+for relevant de facto standards, enforcing conformity, handling
+abbreviations and controlling all data.  The updated version of
+{\bibtex} could then either correct the issues when running into them
+or fail building the bbl-file with appropriate error messages for
+issues that the user need to take care of.
+
+
+
+The lack of a reliable way to actually control all data and that it
+would be impossible to both account for current and future de facto
+standards would be an issue.  The current and future standards could
+be solved by having an option for the standards.  Furthermore this
+approach would be probably be perceived as invasive as it would cause
+existing {\bibtex} files not to work and it would impose the tool on
+the users with requirements they may not desire nor care about.  The
+perception would of course depend of perspective because the user
+wanting structure and control might find it good that it is being
+enforced.
+
+As will be inspected in \nameref{ch:related} there is actually a few
+attempts at both changing and replacing {\bibtex}.
+
+\subsection{Augmenting {\bibtex}}
+
+In stead of changing or replacing {\bibtex} an augmenting tool is
+another option.  Such a tool would have to analyze a {\bibtex} file
+and either provide or suggest improvements.  As covered in
+\nameref{ch:problem-description} there are a lot of cases where
+automatically providing solutions would introduce new structural
+issues.
+
+%\subsection{What can be done - analyzing tool \remark{working title}}
+
+%\remark{remember the new revisions desire}
+
+%\remark{People who request similar
+%http://stackoverflow.com/questions/13630584/the-best-method-for-handling-bibtex-files
+%http://stackoverflow.com/questions/32838020/awk-how-to-clean-bibtex-files
+%http://www.latex-community.org/forum/viewtopic.php?f=50&t=12043
+%http://tex.stackexchange.com/questions/76420/cleaning-up-a-bib-file
+%http://tex.stackexchange.com/questions/174509/is-there-a-tool-service-that-can-enrich-a-bibtex-database
+%<http://tex.stackexchange.com/questions/128989/how-can-one-validate-a-bib-file
+%http://tex.stackexchange.com/questions/173621/how-to-validate-check-a-biblatex-bib-file
+%http://stackoverflow.com/questions/13630584/the-best-method-for-handling-bibtex-files
+%}
+
+%\section{Lookup services}
+%\remark{So far mostly notes to self}
+%DOI
+
+\section{What to be done}
+\subsection{Introduction}
+\subsection{Filler}
+\subsection{\nameref{sec:problems_de_facto}}
+\subsection{\nameref{sec:problems_abbreviations}}
+\subsection{\nameref{sec:problems_inconsistent_tags}}
+\subsection{\nameref{sec:problems_duplicates}}
+\subsection{\nameref{sec:problems_look_ups}}
+\subsection{\nameref{sec:problems_inconsistent_keys}}
+\subsection{\nameref{sec:problems_name_changes}}
+\subsection{\nameref{sec:problems_initials}}
+\subsection{Summary  and conclusions}
+
+
+\section{Summary and conclusions}
+
+To summarize: in practice {\bibtex} contains lexical and inconsistency
+concerns.  These concerns arise from a variety of sources, in part
+from the design and tools and in part because a lot of users are not
+concerned with writing good {\bibtex}.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "thesis"
+%%% End:

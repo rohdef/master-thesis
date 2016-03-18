@@ -1,3 +1,4 @@
+\section{Introduction}
 The goal of this chapter is to show that there is a lot of tools and
 ways to manage bibliographies and how these tools tries to handle the
 before mentioned issues, if they do so.
@@ -114,25 +115,25 @@ There are also a lot of both variants and alternatives to {\bibtex}.
 A quick overview of a few of the options is provided.  Mostly they do
 not provide many new options.
 
-\subsection{{\bibtex}ml}
-{\bibtex}ml is a version of {\bibtex} where the entries are formatted
-with XML.  It is by design made with strict schemas and conversion
-tools to convert from {\bibtex}.  Having a system using strict schemas
-will enable an easy way to enforce correct entries that conform to the
-specification.  Also it will prevent usage of non-conforming tags, on
-the down side this also prevents the introduction of new de facto
-standards when they are needed~\cite{gunhen2007_bibtexml}.
+\subsection{{\bibtex}ml} {\bibtex}ML is a version of {\bibtex} where
+the entries are formatted with XML.  It is by design made with strict
+schemas and conversion tools to convert from {\bibtex}.  Having a
+system using strict schemas enables enforcing correct entries that
+conform to the specification.  The strict approach will prevent usage
+of non-conforming tags, on the down side this approach also makes it
+hard to introduce of new de facto standards when they are
+needed~\cite{gunhen2007_bibtexml}.
 
 \subsection{MLBIBTEX}
-MLBIBTEX is an attempt from Jean-Michael Hufflen to create a multi
-language version of {\bibtex}.  The focus is this is to add support
-for having entries in different language, accounting for appropriate
-naming of language specific content (such as months).  This has been
-done to account for authors writing in different languages, such as a
-scientist who writes a book for the students in a French, but
-otherwise normally writes articles in English.  It does not seem that
-this takes care of the issues that arise from the lack of encoding
-support in {\bibtex}~\cite{hufflen2001_mlbibtex}.
+MLBIBTEX is an variant of {\bibtex} from Jean-Michael Hufflen to
+create support for multiple languages.  The focus of MLBIBTEX is to
+add support for entries in different language, accounting for
+appropriate naming of language specific content (such as months).
+This variant has been made to account for authors writing in different
+languages, such as a scientist who writes a book for the students in a
+French.  It does not seem that MLBIBTEX takes care of the issues that
+arise from the lack of encoding support in
+{\bibtex}~\cite{hufflen2001_mlbibtex}.
 
 
 \subsection{Bib{\LaTeX} and biber}
@@ -150,13 +151,17 @@ names get abbreviated when printing the bibliography.
 
 \section{Bibliography managers}
 \label{sec:bibliography_managers}
-There are a lot of products for bibliography management that are not
-directly targeted at {\bibtex}.  Some of these provides partial
-solutions for the lexical and consistency concerns.  All of the tools
-have been tested for relevant features that are not described on their
+
+Bibliography managers, some times also called reference managers, are
+software tools for bibliography management that are not directly
+targeted at {\bibtex}.  Some of these provides partial solutions for
+the lexical and consistency concerns.  All of the tools have been
+tested for relevant features that are not described on their
 respective feature overviews.
 
 \subsection{Mendeley}
+\label{sec:related_mendeley}
+
 Mendeley is a bibliography management tool developed by Mendeley Ltd.
 The focus of the tool is to make it easy to manage and share
 references.  Mendeley provides features such as importing PDF-files
@@ -167,13 +172,14 @@ researchers~\cite{mendeley_features}.
 
 Like {\bibtex}, Mendeley does not facilitate any systems for detecting
 inconsistencies such as spelling errors, revision numbers or initials.
-Mendeley can download metainformations based on a DOI which in part
-remodies this.  Mendeley does not have any plugin/add on system, so
-it's unlikely that there is any third party tools to remedy this. A
-search through Mendeley's request database reveals the same as the
-testing and features page.  On Mendeleys online request system there
-are requests for features such as: spell checking, fixing
-capitalization inconsistencies and bulk DOI
+Mendeley can download meta-information based on a DOI which in part
+remodies the lack of these tools.  Mendeley does not have any
+plugin/add on system, so it's unlikely that there is any third party
+tools to further handle the {\bibtex} issues. A search through
+Mendeley's request database reveals the same as the testing and
+features page.  On Mendeleys online request system there are requests
+for features such as: spell checking, fixing capitalization
+inconsistencies and bulk DOI
 lookups~\cite{mendeley_request_spellcheck, mendeley_request_lowercase,
   mendeley_request_capitalization, mendeley_request_bulk_doi}.
 
@@ -206,39 +212,38 @@ support, however no downloads were found to remedy neither the lexical
 nor the consistency concerns further~\cite{endnote_downloads}.
 
 \subsection{RefWorks}
-RefWorks is a web based reference manager developed by ProQuest, meant
-for students, researchers and librarians.  The focus of the tool is to
-have the simplicity of a web based solution, which makes the resources
-easy to share and available everywhere.  The features include online
-look ups, statistics systems and collaboration
+RefWorks is a web based bibliography manager developed by ProQuest,
+meant for students, researchers and librarians.  The focus of the tool
+is to have the simplicity of a web based solution, which makes the
+resources easy to share and available everywhere.  The features
+include online look ups, statistics systems and collaboration
 features~\cite{refworks_features}.
 
 As with the other tools testing shows that the error detection
-features is limited.  In RefWorks the work flow for adding references
+features is limited.  In RefWorks the work flow for adding references,
 is to either enter them manually or to use a browser link called
-``RefGrab-It'' to import from homepages.  As with the DOI lookups
-(which it can import if you look up a DOI resource in your browser)
-this in part remedy the errors, provided the original source does not
-have them.  Contrary to the other tools RefWorks tries to detect if
-the author name is malformed, although it only seems to detect if you
-type ``John Doe'' rather than ``Doe, John'' as it expects, as can be
-seen at Figure~\ref{fig:refworks-detect-formatting}.
+``RefGrab-It'' to import from homepages.  RefGrab-It can be used for
+DOI look ups which enables the same advantages as Mendeey and EndNote.
+Contrary to the other tools RefWorks try to detect if the author name
+is malformed, although it only seems to detect if one types ``John
+Doe'' rather than ``Doe, John'' as it expects, as can be seen at
+Figure~\ref{fig:refworks-detect-formatting}.
 
-\begin{figure}[h]
+\begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{refworks-detect-formatting}
     \caption{RefWorks detects some formatting on the name field}
     \label{fig:refworks-detect-formatting}
 \end{figure}
 
-In RefWorks itself there seems to be no spell checker, but this is in
-part solved by most modern browsers, because they tend to include
-spell checkers for input fields.
+In RefWorks itself there seems to be no spell checker, but the
+spelling errors is in part solved by most modern browsers, because
+they often include a spell checker for input fields.
 
 \subsection{Zotero}
-Zotero is a reference manager developed by Roy Rosenzweig Center for
-History and New Media.  It is targeted at people doing research.  The
-organization and collaboration aspects are in focus for
+Zotero is a bibliography manager developed by Roy Rosenzweig Center
+for History and New Media.  It is targeted at people doing research.
+The organization and collaboration aspects are in focus for
 Zotero~\cite{zotero_features}.
 
 There is a built in spell checker for notes written in Zotero, however
@@ -254,12 +259,13 @@ version.  This list can be manually edited, and
 overruled~\cite{zotero_abbreviations}.
 
 It is possible (but not tested) that Zotero can be used to import an
-{\bibtex}-file, then export it using the lists of known abbreviations
-and correct the abbreviations already known.  As other tools such as
-JabRef and Mendeley will already allow this, it has not been tested.
+{\bibtex} file, then export it using the lists of known abbreviations
+and correct the abbreviations already known.  As other tools, such as
+JabRef and Mendeley, already allow this procedure, it has not been
+tested.
 
 \subsection{Papers}
-Papers is a reference manager developed by Mekentosj B.V., targeted
+Papers is a bibliography manager developed by Mekentosj B.V., targeted
 for science and research.  It provides a tool set for searching online
 libraries for references, collaboration and various ways of
 organizing~\cite{papers_features}.
@@ -282,7 +288,7 @@ there is relevant features apart from what they mention on their page.
 %In~\cite{okazaki2010_building} machine learning is used to classify
 %abbreviations to allow disambiguation.  The method they used has the
 %expanded forms and the abbreviations, since there may be multiple
-%expanded forms concerning the same abbreviation (eg. ``polymerase
+%expanded forms concerning the same abbreviation (\eg, ``polymerase
 %chain reaction `` and ``polymerization chain reaction``), they
 %introduce a sense inventory which is a cluster for things having the
 %same meaning.
@@ -317,11 +323,11 @@ there is relevant features apart from what they mention on their page.
 %file at all.
 
 
-\section{Summary and conclusion}
-To summarize there are a lot of alternative ways to handle
+\section{Summary and conclusions}
+To summarize: there are a lot of alternative ways to handle
 bibliographic references.  Right from a multitude of tools that strive
 to assist with maintenance of ones {\bibtex} library, alternatives to
-{\bibtex} and reference managers that strive to replace the entire
+{\bibtex} and bibliography managers that strive to replace the entire
 management process.  Some of these help by doing online look-ups to
 double check entries, finding duplicates, assisting in transforming to
 and from abbreviated forms, enforcing strict rules and spell checking.
@@ -331,7 +337,7 @@ A lot of these tools do provide partial solutions to the issues with
 them combines the solutions into a more general solution.  The pure
 {\bibtex} tools can of course be combined and since Bib{\LaTeX} is
 designed to be close to {\bibtex} there is a chance that some of the
-{\bibtex} tools work on that too (this has not been tested).  The
+{\bibtex} tools work on Bib{\LaTeX} too (which has not been tested).  The
 alternative formats provide some ways to gain strictness and to manage
 abbreviations but apart from that not much consolidation on the
 issues.  The reference mangers in general has a focus collaboration
