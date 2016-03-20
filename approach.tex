@@ -1,130 +1,48 @@
 \section{Introduction}
-The goal of this chapter is to organize the previously identified
-problems and reach a suitable approach for how to handle them.
-
 The goal of this chapter is to organize the issues people have with
-{\bibtex}, answering \chapref{sec:intro_what_issues},
-\chapref{sec:intro_whyhow}, \chapref{sec:intro_what_to_do}
+{\bibtex}.  Answering what the issues in {\bibtex} are
+\chapref{sec:intro_what_issues} and how to approach the {\bibtex}
+issues \chapref{sec:intro_what_to_do}
 
 \section{What are the issues in {\bibtex}}
 \label{sec:intro_what_issues}
 
 {\bibtex} has changed the landscape for scientific writing and eased a
-lot of peoples lives, however it is not without issues.  The
-challenges range widely, trying to group similar looking issues we
-have:
+lot of peoples lives, however not without any issues.  The challenges
+range widely, trying to group similar looking issues we have:
 
-The use of abbreviations for journal names and the use of initials in
-author names are fairly similar apart from {\bibtex} being able to make
-names into initials whereas it cannot abbreviate journal names.
-Misspellings and {\bibtex} strings that end up being text is also
-similar.  As all of these issues are related to the words these will
-be considered as lexical concerns.
+\remark{We may want the same order as in the list of issues, probably
+  reformulate this}
 
-Having inconsistent use of tags, inconsistent entry keys, names that
-change, lack of conformance to the desired rules (specification and de
-facto standards) and duplicate entries also seems similar.  Together
-these will be considered as conformity concerns.
+Conforming to the specification and de-facto standards is considered
+as a correctness concern.  The use of abbreviations for journal names,
+initials in author names, misspellings and {\bibtex} strings that end
+up being text, is similar and will be considered as lexical concerns.
+All of these issues will be considered combined as \newdef{correctness
+  and lexical concerns}.
+
+Inconsistent use of tags, inconsistent entry keys, forum names that
+change and duplicate entries also seems similar.  Together these will
+be considered as \newdef{consistency concerns}.
 
 The Utopian goal is to provide a structural solution for all these
 issues so that if any further issues exist they would be purely
 conjunctural.
 
-%Lexical:
-%- Journal abbreviations
-%- Initials
-%- Spelling errors
-%- Strings that end up as text
-%
-%Consistency:
-%- Inconsistent tags
-%- Duplicate entries
-%- Inconsistent entry keys
-%- Name changes in conferences, journals etc.
-%- Conformity
-%
-%Online look ups
-
-
-\section{Why are the {\bibtex} issues there and how do they come into
-  existence}
-\label{sec:intro_whyhow}
-
-The sources of the issues can be considered from the perspective of
-structural vs conjunctural, which shows that there is no uniform way
-of considering the reason for the challenges.  Using this approach has
-uncovered a lot of the underlying reasons.
-
-By design {\bibtex} does not prevent using the format however the user
-desires, for good or bad.  This design results in both a lot of
-inconsistencies and missing information, but also in useful de facto
-standards.
-
-An example of that {\bibtex} does not prevent deviations from the
-format can be seen from output in \figref{fig:bibtex_out}, the output
-is from a file that does not conform to the specifications and
-contains unspecified tags.  {\bibtex} just warns about the missing
-tags, it warns that the book has both author and editor and it
-completely ignores all the unspecified tags.
-
-\begin{figure}
-  \centering
-  \begin{verbatim}
-This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
-The top-level auxiliary file: doc.aux
-The style file: plain.bst
-Database file #1: mybib.bib
-Warning--can't use both author and editor fields in book
-Warning--empty publisher in book
-Warning--empty year in book
-Warning--empty journal in Nobody06
-Warning--empty year in Nobody06
-\end{verbatim}
-  \caption{Example of error output from {\bibtex}}
-\label{fig:bibtex_out}
-\end{figure}
-
-When adding entries to {\bibtex} there are various sources of errors.
-Manual entry easily leads to spelling errors and as the file grows
-large inconsistencies.  Entering by hand using copy and paste can
-cause existing issues to be repeated.  Using online resources, one may
-expect the entries to be correct, but is not given that they are.  The
-entries will be no better than the source used.  Using the automatic
-tools for extraction of meta data, from articles, may be prone to
-further errors.
-
-Some tools for editing {\bibtex} files do not necessarily follow the
-specification, and does not assist in ensuring consistency.  A lot of
-the tools can convert between abbreviated and full form in the files,
-essentially motivating to store abbreviations rather than full names.
-Some even suggest tags that does not belong in the entry type.
-
 
 \section{What can be done about the {\bibtex} issues}
 \label{sec:intro_what_to_do}
 
-\remark{Hmm this is actually the reason why we will address this
-  structurally}
-
-Addressing the human factor in it is one theoretically possibile way
-of solving these issues.  ``Simply'' motivating people to do things
-right.  Alas people are not machines and thus this approach will be
-impossible in practice, for most people the interest is not the tools
-they use but what they use them for, so the interest in {\bibtex} will
-for most people being in ensuring that their articles contain the
-relevant references.
-
-
 As previously stated the structural approach to the issues is desired.
-This choice of approach basically means ensuring that the tools around
-{\bibtex} supports handling the issues, preferably to the level where
-all issues are solved.  Naturally, as touched upon shortly when
-inspecting the problems, it is not likely that all issues can be
-solved perfectly.
+This choice basically means ensuring that the tools handles the
+issues, preferably to the level where all issues are solved.  As
+touched upon shortly when inspecting the problems, it is not likely
+that all issues can be solved perfectly.
 
-\subsection{Updating {\bibtex}}
 
-One way of handling the issues structurally would be to change or even
+\subsection{Updating or replacing {\bibtex}}
+
+One way of handling the issues structurally would be to change or
 replace {\bibtex}, so it handles all lexical and consistency concerns.
 This way would include changing the {\bibtex} specification to account
 for relevant de facto standards, enforcing conformity, handling
@@ -133,34 +51,261 @@ abbreviations and controlling all data.  The updated version of
 or fail building the bbl-file with appropriate error messages for
 issues that the user need to take care of.
 
+This approach would be probably be perceived as invasive as it would
+cause existing {\bibtex} files not to work and it would impose the
+tool on the users with requirements they may not desire.  The
+perception would of course depend of perspective because the user who
+wants structure and control might find it good that it is enforced.
 
+As will be inspected in Chapter~\ref{ch:related} there is actually a
+few attempts at both changing and replacing {\bibtex}.
 
-The lack of a reliable way to actually control all data and that it
-would be impossible to both account for current and future de facto
-standards would be an issue.  The current and future standards could
-be solved by having an option for the standards.  Furthermore this
-approach would be probably be perceived as invasive as it would cause
-existing {\bibtex} files not to work and it would impose the tool on
-the users with requirements they may not desire nor care about.  The
-perception would of course depend of perspective because the user
-wanting structure and control might find it good that it is being
-enforced.
-
-As will be inspected in \nameref{ch:related} there is actually a few
-attempts at both changing and replacing {\bibtex}.
 
 \subsection{Augmenting {\bibtex}}
 
 In stead of changing or replacing {\bibtex} an augmenting tool is
 another option.  Such a tool would have to analyze a {\bibtex} file
-and either provide or suggest improvements.  As covered in
-\nameref{ch:problem-description} there are a lot of cases where
-automatically providing solutions would introduce new structural
-issues.
+and either provide or suggest improvements.
 
-%\subsection{What can be done - analyzing tool \remark{working title}}
+The advantages of an augmenting tool are that it supplements current
+use of {\bibtex} and in being optional.  On the downside the user
+would have to acquire the tool first and would have to remember to use
+it.
 
-%\remark{remember the new revisions desire}
+
+\section{How do we approach the {\bibtex} issues}
+\subsection{Introduction}
+
+The goal of this section is to introduce our choice of solutions for
+the issues.
+
+
+\subsection{Lexical and correctness concerns vs consistency concerns}
+\label{sec:approach_lexical_consistency}
+
+The goal of this subsection is to show that most consistency concerns
+is way easier when the lexical and correctness concerns are solved
+
+\begin{itemize}
+\item For inconsistent use of tags, a way to determine if entries are
+  from the same forum is needed.  A way to detect the same forum, such
+  as consistent naming of the forum, is needed.  The issues for name
+  changes would be nice to have handled as well.
+
+\item For duplicate entries having unique identifiers such as arXiv
+  numbers, ISSN or DOI will make the detection trivial.  For other
+  cases, having correct and identical meta-information will make
+  duplicate detection easier.  However if duplicates are present it is
+  possible that the meta-information vary, having the basic
+  information (such as, title and author) without abbreviations, being
+  correct and being consistent will make detection easier.
+
+\item Inconsistent naming of entry keys can be handled by a naming
+  scheme.  Such a naming scheme is usually based on the information in
+  the entries.  So having the relevant tags and correct content in
+  them will ensure a way to ensure consistent entry keys.
+
+\item Name changes of forums are a bit more subtle, because two parts
+  are needed: first off we need to be able to recognize the names
+  which, as the other issues, is easier with correct and consistent
+  names, secondly some mapping from name to name would be needed.
+\end{itemize}
+
+A common property about the consistency concerns is that they are
+easier to handle, once the lexical and correctness concerns have been
+handled.  This property indicates that a two phase solution may be
+desired: first handling the lexical and correctness concerns, then
+handling the consistency concerns.
+
+
+\subsection{\nameref{sec:problems_de_facto}}
+
+As stated in Section~\ref{sec:problems_de_facto} it is desired to be
+able to validate if the file conforms to the specification and the
+desired de-facto standards.  Validating conformity to the
+specification is a simple task, as the specification is just a set of
+rules.  A set of de-facto standards, likewise, is also a simple set of
+rules.
+
+De-facto standards however provide challenges, as they are the
+standards currently in use.  This means that they both depends on who
+the user is and the standards are subject to change.
+
+A tool handling conformity to the specification and de-facto standards
+should thus be configurable to account for changes in de-facto
+standards.  For practicality the de-facto standards that are not
+likely to change (such as ISSN and DOI) could be accounted for with a
+default setting.
+
+
+\subsection{\nameref{sec:problems_abbreviations}}
+
+Ensuring a consistent use of either abbreviations or full names is
+desired.  From the point of having the information in a complete
+version converting full names, \newdef{de-abbreviating} is desired.
+Using a database of standard abbreviations for forums will be useful
+to de-abbreviate.  Taking care of a consistent way to switch between
+full names and abbreviations is also desired.  Making use of strings
+to handle the switching between full names and abbreviations is
+probably the best approach since this will keep it clear which forum
+is which.
+
+
+\subsection{\nameref{sec:problems_inconsistent_tags}}
+
+Detecting inconsistent use of tags require a way of detecting when
+entries are from the same forum.  When such a way is provided it is
+possible to check if the set of fields are the same.  Having some kind
+of statistics on the usage may further improve the feedback, since it
+will be possible to suggest that the shortest path to consistency: if
+it is by adding, or removing tags.
+
+Since a lot of the forums are continuous, such as a conference being
+held each year, the detail level of the information may change over
+time.  Also in some cases a single item can have additional
+information that are not general to the forum or for some reason not
+have information according to the general standard.  Optimally there
+should be a way to account for these cases, either by the user
+enforcing conformity or having options for when a deviation occur.
+
+
+\subsection{\nameref{sec:problems_duplicates}}
+\label{sec:approach_duplicates}
+
+Duplicate entries are fairly straight forward if the tags and the
+contents are identical.  If the content and tags deviate a way of
+detecting ``similarity'' will be needed, the easiest definition of
+similarity is if the title and author is identical, however this
+definition might need to take things like revisions and year into
+account, as an author may decide to write a new version later or if
+one for some reason desires to refer to different revisions.  Further
+challenges may arise if there is lexical and correctness challenges as
+per Section~\ref{sec:approach_lexical_consistency} fixing these first
+is desired.
+
+
+\subsection{\nameref{sec:problems_look_ups}}
+\label{sec:approach_look_ups}
+
+Online database look ups can be a very useful tool for handling the
+lexical and correctness concerns, but getting incorrect data can cause
+problems.  The best approach to ensure correct look ups is if it is
+possible to use services that are known to be correct.
+
+A situation where relatively reliable look ups is possible, as in the
+``EPTCS'' look up seen in \figref{fig:eptcs_lookup}, can be used to
+improve the reliability of the results.  However there is still no
+certain way to know if the database of the service is correct, so it
+is still not certain.  Most likely the ID systems, such as arXiv
+numbers, DOI and ISSN, will also provide a relatively reliable look up
+mechanism, but it is still not guaranteed.
+
+Another way to approach the bad look ups could be by doing the same
+look up in multiple databases and then have some kind of voting system
+that decides on which entry to trust.  This would however require
+knowledge information sources each online service use, because their
+source of information may be the same and then the same error could
+get multiple votes.  The approach can be refined by having increased
+trust in databases that are likely to be correct.
+
+The most appropriate strategy is probably selecting the database most
+likely to be correct and then have the user select if one agrees with
+the result.  Doing the vote system would be overkill in most
+situations, and the user still have to validate the result, since the
+voting system will not provide a certain correct result.  Having the
+user validate the result will make issues partly conjunctural, if one
+just accept any result from the look up.
+
+
+\subsection{\nameref{sec:problems_inconsistent_keys}}
+
+Provided that the lexical and correctness concerns has been solved,
+handling inconsistent entry keys require very little effort.  Having a
+rule for how the key names should be formatted is all that is needed.
+Like in Section~\ref{sec:approach_duplicates} there is the issue of
+similar, but different, entries.  Similar entries could result in the
+same entry key, so there is the need for a way to disambiguate the key
+names.  Since a lot of users already have databases in use, support
+for one specifying a naming scheme would be appropriate.
+
+
+\subsection{\nameref{sec:problems_name_changes}}
+
+Handling name changes of forums is supportive to ensuring consistency.
+Since name changes cannot be derived automatically one approach would
+be a database of known name changes, which has the disadvantage that
+it needs to be maintained.  Adding a configuration to specify name
+changes may also be appropriate.
+
+
+\subsection{\nameref{sec:problems_initials}}
+
+Finding the initials is a matter of being able to detect single
+letters with or without a period after it.  However if one for some
+reason group initials together, \eg, making George R. R. Martin into
+George RR Martin, then further detection will be needed.  Replacing
+the initials with full names is appropriate whenever possible, but
+since the full names may not be known some way of specifying that
+initials is the only thing available is needed.
+
+
+\subsection{\nameref{sec:problems_spelling}}
+
+To detect misspellings a spell checker can be used.  Alternatively
+checking the resources in online databases is an option.  If a spell
+checker is used one should be aware false positives.  Domain specific
+terms might not be present in the dictionary and if the original
+source is misspelled, it would be a mistake to correct it (once
+published the name published is the correct name of the reference!).
+Provided a solution for the issues in online look ups the correct
+spelling will be a matter of looking up, but references may not be in
+the databases, and as stated in Section-\ref{sec:approach_look_ups}
+there is no good way to ensure correct look ups.  So a spell checker
+seems like a good way to get an indication of possible errors, but one
+would still have to verify them.  As entries may be in different
+languages a way of specifying the language should be considered.
+
+
+\subsection{\nameref{sec:problems_strings_as_text}}
+
+A {\bibtex} string can end up being part of a text by mistake, in the
+example used in Section~\ref{sec:problems_strings_as_text} where the
+month ended up as a text rather than a string a simple check is
+possible, because for a month we know what to expect.  Whenever
+something in the middle of the text should have been a string, the
+text would have to be checked for potential strings.  Automatically
+correcting it would introduce a potential source of errors, because a
+text being identical to a string name could just be a coincidence, so
+it has to be the user's choice.
+
+
+%\subsection{Summary  and conclusions}
+%To summarize:
+
+\section{Summary and conclusions}
+
+To summarize:
+
+
+
+
+%\begin{figure}
+%  \centering
+%  \begin{verbatim}
+%This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+%The top-level auxiliary file: doc.aux
+%The style file: plain.bst
+%Database file #1: mybib.bib
+%Warning--can't use both author and editor fields in book
+%Warning--empty publisher in book
+%Warning--empty year in book
+%Warning--empty journal in Nobody06
+%Warning--empty year in Nobody06
+%\end{verbatim}
+%  \caption{Example of error output from {\bibtex}}
+%\label{fig:bibtex_out}
+%\end{figure}
+
 
 %\remark{People who request similar
 %http://stackoverflow.com/questions/13630584/the-best-method-for-handling-bibtex-files
@@ -173,30 +318,6 @@ issues.
 %http://stackoverflow.com/questions/13630584/the-best-method-for-handling-bibtex-files
 %}
 
-%\section{Lookup services}
-%\remark{So far mostly notes to self}
-%DOI
-
-\section{What to be done}
-\subsection{Introduction}
-\subsection{Filler}
-\subsection{\nameref{sec:problems_de_facto}}
-\subsection{\nameref{sec:problems_abbreviations}}
-\subsection{\nameref{sec:problems_inconsistent_tags}}
-\subsection{\nameref{sec:problems_duplicates}}
-\subsection{\nameref{sec:problems_look_ups}}
-\subsection{\nameref{sec:problems_inconsistent_keys}}
-\subsection{\nameref{sec:problems_name_changes}}
-\subsection{\nameref{sec:problems_initials}}
-\subsection{Summary  and conclusions}
-
-
-\section{Summary and conclusions}
-
-To summarize: in practice {\bibtex} contains lexical and inconsistency
-concerns.  These concerns arise from a variety of sources, in part
-from the design and tools and in part because a lot of users are not
-concerned with writing good {\bibtex}.
 
 %%% Local Variables:
 %%% mode: latex

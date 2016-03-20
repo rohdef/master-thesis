@@ -1,7 +1,7 @@
 \section{Introduction}
-The goal of this chapter is to show that there is a lot of tools and
-ways to manage bibliographies and how these tools tries to handle the
-before mentioned issues, if they do so.
+The goal of this chapter is to show the tools for managing
+bibliographies and how these tools tries to handle the issues covered,
+if they do so.
 
 In this chapter some of the bibliography tools will be surveyed, with
 a focus on how they tackle the issues covered.  The chapter is
@@ -211,36 +211,9 @@ a lot of extra downloads to provide features such as {\bibtex}
 support, however no downloads were found to remedy neither the lexical
 nor the consistency concerns further~\cite{endnote_downloads}.
 
-\subsection{RefWorks}
-RefWorks is a web based bibliography manager developed by ProQuest,
-meant for students, researchers and librarians.  The focus of the tool
-is to have the simplicity of a web based solution, which makes the
-resources easy to share and available everywhere.  The features
-include online look ups, statistics systems and collaboration
-features~\cite{refworks_features}.
-
-As with the other tools testing shows that the error detection
-features is limited.  In RefWorks the work flow for adding references,
-is to either enter them manually or to use a browser link called
-``RefGrab-It'' to import from homepages.  RefGrab-It can be used for
-DOI look ups which enables the same advantages as Mendeey and EndNote.
-Contrary to the other tools RefWorks try to detect if the author name
-is malformed, although it only seems to detect if one types ``John
-Doe'' rather than ``Doe, John'' as it expects, as can be seen at
-Figure~\ref{fig:refworks-detect-formatting}.
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\textwidth]{refworks-detect-formatting}
-    \caption{RefWorks detects some formatting on the name field}
-    \label{fig:refworks-detect-formatting}
-\end{figure}
-
-In RefWorks itself there seems to be no spell checker, but the
-spelling errors is in part solved by most modern browsers, because
-they often include a spell checker for input fields.
 
 \subsection{Zotero}
+
 Zotero is a bibliography manager developed by Roy Rosenzweig Center
 for History and New Media.  It is targeted at people doing research.
 The organization and collaboration aspects are in focus for
@@ -263,6 +236,36 @@ It is possible (but not tested) that Zotero can be used to import an
 and correct the abbreviations already known.  As other tools, such as
 JabRef and Mendeley, already allow this procedure, it has not been
 tested.
+
+
+\subsection{RefWorks}
+RefWorks is a web based bibliography manager developed by ProQuest,
+meant for students, researchers and librarians.  The focus of the tool
+is to have the simplicity of a web based solution, which makes the
+resources easy to share and available everywhere.  The features
+include online look ups, statistics systems and collaboration
+features~\cite{refworks_features}.
+
+As with the other tools testing shows that the error detection
+features is limited.  In RefWorks the work flow for adding references,
+is to either enter them manually or to use a browser link called
+``RefGrab-It'' to import from homepages.  RefGrab-It can be used for
+DOI look ups which enables the same advantages as Mendeey and EndNote.
+Contrary to the other tools RefWorks try to detect if the author name
+is malformed, although it only seems to detect if one types ``John
+Doe'' rather than ``Doe, John'' as it expects, as can be seen at
+Figure~\ref{fig:refworks-detect-formatting}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.85\textwidth]{refworks-detect-formatting}
+    \caption{RefWorks detects some formatting on the name field}
+    \label{fig:refworks-detect-formatting}
+\end{figure}
+
+In RefWorks itself there seems to be no spell checker, but the
+spelling errors is in part solved by most modern browsers, because
+they often include a spell checker for input fields.
 
 \subsection{Papers}
 Papers is a bibliography manager developed by Mekentosj B.V., targeted

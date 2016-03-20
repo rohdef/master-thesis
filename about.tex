@@ -90,7 +90,7 @@ where the labels are different, the abbreviation of author names are
 different and some of the visual formatting is different.
 
 To build a {\LaTeX}-document with {\bibtex} references in it, one
-first runs the $latex$-command (or one of the derivatives) to produce
+first runs the $latex$ command (or one of the derivatives) to produce
 (among other things) an aux file.  The aux file contains auxiliary
 information from the {\LaTeX}-compiler.  Then run the $bibtex$ command
 which uses the aux file to find the entries in use and to give them
@@ -114,15 +114,18 @@ type, there are a specification of tags relevant to the given medium
 where some of them are mandatory. For instance for an $@ARTICLE$ the
 tags $author$, $title$, $year$ and $journal$ are mandatory and
 supplementary information such as the $pages$ for the article and
-$volume$ of the journal can be added.
+$volume$ of the journal can be added.  For ease of use {\bibtex}
+provides predefined strings for the months: $jan$, $feb$, $mar$ and so
+on.
 
-Tags and entries are case insensitive. The contents needs to be
-enclosed in either \{ and \} or quotes and numbers can be written
-without. $@STRING$ shortenings has to be without quotes and curly
-brackets.  Concatenation of $@STRING$ and/or literal content is done
-using \#~\cite{bibtex_resource}.  {\bibtex} is designed to ignore
-unknown entries and tags, so it allows additional information.  An
-example {\bibtex} file can be seen in \figref{fig:bibtex_example}
+Tags and entries are case insensitive. The literal content
+(\newdef{text}) needs to be enclosed in either \{ and \} or quotes and
+numbers can be written without.  $@STRING$ shortenings has to be
+without quotes and curly brackets.  Concatenation of $@STRING$ and/or
+text is done using \#~\cite{bibtex_resource}.  {\bibtex} is designed
+to ignore unknown entries and tags, so it allows additional
+information.  An example {\bibtex} file can be seen in
+\figref{fig:bibtex_example}
 
 \begin{figure}
   \centering
@@ -194,16 +197,16 @@ keep track of what they read.
 
 That {\bibtex} ignores unknown tags is also widely used, both for de
 facto standards and to add additional information that the format does
-not specify, such as the before mentioned arXiv numbers, DOI and ISSN.
-It is so widely used that is is common to see article search engines
-make have tags that are not specified by {\bibtex} and there is
-libraries that provide citing styles that make use of these tags.
+not specify, such as arXiv numbers, DOI and ISSN.  It is so widely
+used that is is common to see article search engines make have tags
+that are not specified by {\bibtex} and there is libraries that
+provide citing styles that make use of these tags.
 
 
 \section{Summary and conclusions}
 \label{sec:about_conclusion}
 
-To summarize: {\bibtex} is a product of the advent of {\TeX} and the
+{\bibtex} is a product of the advent of {\TeX} and the
 need for managing references, {\TeX} made it possible to automate,
 through this simple format.  {\bibtex} provides a simple way to manage
 references and it is fairly flexible and thus allows for useful de
@@ -213,7 +216,7 @@ medium it represents and having tags relevant to that medium.
 {\bibtex} has become widely used and given rise to useful de facto
 standards and tools to assist with bibliographic references.
 
-So {\bibtex} have been a game changer, and something for every
+{\bibtex} have been a game changer, and is something for every
 scientific author to be happy about, so has {\bibtex} solved the
 problem of bibliographic references? It would seem so, had it not been
 for Murphy's Law, as detailed in the next chapter.
