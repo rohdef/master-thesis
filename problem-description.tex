@@ -31,10 +31,10 @@ issues that can be found.  Inspired by economics, the challenges in
   information that can not be found.
 
 \item The conjunctural issues are the combination of circumstances,
-  for instance if the source used does not the complete information
-  (\eg, extracting a references from an article where the author only
-  have initials even though the full name is known) or the users
-  having other priorities than bibliographies.
+  for instance if the source used does not contain complete
+  information (\eg, extracting a references from an article where the
+  author only have initials even though the full name is known) or the
+  users having other priorities than bibliographies.
 \end{itemize}
 
 Whether an issue is seen as conjunctural or structural is in part a
@@ -49,30 +49,30 @@ Addressing the human factor, \ie, a conjunctural solution, is one
 theoretically possibile way of solving these issues.  ``Simply''
 motivating people to do things right.  Alas people are not machines
 and thus this approach will be impossible in practice, for most people
-the interest is not the tools they use but what they use them for, so
-the interest in {\bibtex} will for most people being in ensuring that
-their articles contain the relevant references.
+the interest is not the tools they use, but what they use them for.
+The interest in {\bibtex} will for most people be to ensure that their
+documents contain the relevant references.
 
 Since a conjunctural solution is not realistic, the goal is to provide
 a structural solution to the issues.  In the perfect world the
 structural solution will be so complete that if there is any issues
 left then they will be entirely conjunctural, because one is either:
-not using or misusing the structural solution.
+not using, or misusing the structural solution.
 
 
 \section{De-facto standards and specification conformity}
 \label{sec:problems_de_facto}
 
-An interesting point is that not all of the structural issues are
-necessarily bad.  There are a lot of ways to make use of the relaxed
-properties of {\bibtex}, for instance that by design {\bibtex} ignores
-unknown tags is useful in de-facto standards such as commenting
-entries out by prefixing with $OPT$ or adding information that are not
-a part of the {\bibtex} specification, such as ISSN, DOI or the
-crossref, which is technically not specified by {\bibtex} but still is
-part of the tool.  In \figref{fig:mendeley_output}, an example is
-provided by a PhD student from the Chemistry Department at Aarhus
-University, this example is created from Mendeley (see
+An interesting point is that not all the structural issues are bad.
+There are practical ways to use the relaxed properties of {\bibtex}.
+For instance {\bibtex} ignores unknown tags by design which is useful
+in de-facto standards such as commenting entries out by prefixing with
+$OPT$ or adding information that are not a part of the {\bibtex}
+specification, such as ISSN and DOI.  The $crossref$ tag is
+technically not specified in {\bibtex}, but still is part of the tool.
+In \figref{fig:mendeley_output}, an example is provided by a PhD
+student from the Chemistry Department at Aarhus University, this
+example is created from Mendeley (see
 Section~\ref{sec:related_mendeley}) and shows a lot of additional
 information about the article.
 
@@ -109,10 +109,8 @@ specification is desired, however as it is a very practical and widely
 used feature a strict validation would be counterproductive.  Also
 some formatting styles actually make use of some of the unspecified
 tags as can be seen in \figref{fig:entry_with_issn}. It is still
-interesting to find tags that do not conform to the specification and
-the de-facto standards in use, thus treating de-facto standards as a
-feature and only treating further deviations as actual issues seems to
-make most sense.
+interesting to find tags that are not desired, \ie, tags that do not
+conform to the specification and the de-facto standards in use.
 
 % Some issues such as spelling errors are by nature conjunctural, these
 % errors could be prevented by having a watchful eye and doing a spell
@@ -131,12 +129,11 @@ make most sense.
 Most, if not all, journals require that journal names should be
 abbreviated when publishing.  However internally in the {\bibtex} file
 the owner's personal priorities are: consistent and correct naming.
-As {\bibtex} can be seen as a database of references, it would make
-most sense to consider full names as the most correct and the
-abbreviations to be a matter of formatting.  Unfortunately {\bibtex}
-does not handle abbreviations at all, which for instance is apparent
-in articles from arXiv.org, as can be seen in the bbl output in
-\figref{fig:inconsistent_naming}.
+As {\bibtex} can be seen as a database of references, it makes sense
+to consider full names as correct and the abbreviations to be a matter
+of formatting.  Unfortunately {\bibtex} does not handle abbreviations
+at all, which for instance is apparent in articles from arXiv.org, as
+can be seen in the bbl output in \figref{fig:inconsistent_naming}.
 
 \begin{figure}
   \centering
@@ -186,27 +183,26 @@ in articles from arXiv.org, as can be seen in the bbl output in
 \end{figure}
 
 From the point of view that the style of {\bibtex} should format
-abbreviations properly, the issue seen here is structural.  In cases
-where the abbreviation is wrong (\eg, due to a typo), the issue would
-move towards being conjunctural again, unless some kind of
-abbreviation specific spell checker is being used.  Using full names
-and then formatting them accordingly seems like the most sensible
-idea, since the style of abbreviation could be interchanged, should
-the need arise, it is more readable and it would create better
-conditions for output tools to provide consistent formatting.
+abbreviations properly, the issue is structural.  In cases where the
+abbreviation is wrong (\eg, due to a typo), the issue moves towards
+being conjunctural, unless some kind of abbreviation specific spell
+checker is being used.  Using full names and then formatting them
+accordingly is the most sensible idea, since the style of abbreviation
+could be interchanged, should the need arise, it is more readable and
+it would create better conditions for output tools to provide
+consistent formatting.
 
 Currently there are multiple strategies for ensuring consistency in
-abbreviations, some do a search and replace on the bib-file depending
-on the formatting they need, an approach that is a bit more structured
-is the use of strings in {\bibtex} to ensure a consistent naming of a
-journal which can further be combined with the usage of crossref.
-Another approach is the use of Bib{\LaTeX} and biber, which provide
-the solution in the formatting
+abbreviations, some do a search and replace on the bib-file, an
+approach that is a bit more structured is the use of strings in
+{\bibtex} to ensure a consistent naming of a journal which can further
+be combined with the usage of crossref.  Another approach is the use
+of Bib{\LaTeX} and biber, which provide the solution in the formatting
 options\cite{koppensteiner2011abbreviate}, provided that the
-abbreviation handing of the style is correct.  This causes it to
-become a more conjunctural issue, as the issue now is if the right
-names are written, however how conjunctural depends on the correctness
-of the tools.  Bibliography managers (see
+abbreviation handing of the style is correct.  This causes the
+formatting issue to become a conjunctural, as the issue will then be
+is if the correct names are written, however how conjunctural depends
+on the correctness of the tools.  Bibliography managers (see
 Section~\ref{sec:bibliography_managers}) such as JabRef, Mendeley
 etc. tend to go with the strategy that it stores the references using
 full names and then exports it to a {\bibtex} file (or whatever format
@@ -239,11 +235,10 @@ names, conference names etc. are always in correct full names.
 Take the inconsistency in \figref{fig:entry_with_issn}, found in a
 article on arXiv.org: two references from the same conference, but
 different years.  The inconsistency is easy to identify due to the
-consistent naming, which will make the issue even more visible to the
-reader.  Correct and consistent naming will make it possible for tools
-to detect inconsistencies when some fields are missing.  This exposes
-a structural part of the issue, as no such tools exist (to the
-authors knowledge).
+consistent content, which will make the issue even more visible to the
+reader.  Correct and consistent content will help tools in detecting
+inconsistencies.  This exposes a structural part of the issue, as no
+such tools exist (to the authors knowledge).
 
 \begin{figure}
   \centering
@@ -275,7 +270,7 @@ S.-C. Mu, H.-S. Ko, and P.~Jansson.
 The ISSN might not exist for the $MuKoJansson2009AoPA$-entry, in this
 case a structural detection system might be the cause of new
 structural issue, either the removal of relevant data or forcing
-entries for cases where it is not relevant.  In this specific case the
+entries when the data does not exist.  In this specific case the
 search result in \figref{fig:entry_issn_found} reveals that the
 missing ISSN does exist and thus a tool pointing out the inconsistency
 would in this case make the issue conjunctural.
@@ -315,12 +310,10 @@ would in this case make the issue conjunctural.
 %%
 
 Provided a reliable way to look up correct entries a tool could move
-the issues towards being conjunctural, since it would then just being a
-matter of doing the lookup on all entries and then be done (apart from
-the abbreviation issues above).  Take the inconsistency in
-\figref{fig:inconsistent_proceedings} where two entries from the
-same conference has different information.  One has an additional
-``ICFP '10'' and ``ACM'' in there, the other one does not.
+the issues towards being conjunctural.  Take the inconsistency in
+\figref{fig:inconsistent_proceedings} where two entries from the same
+conference has different information.  One has an additional ``ICFP
+'10'' and ``ACM'' in there, the other one does not.
 
 \begin{figure}
   \centering
@@ -404,8 +397,8 @@ corresponding document should also be corrected. A challenge in this
 case is when similar entries, that are still different entries, occur.
 
 A similar issue, which actually happened in one of the drafts for this
-document, is when an author copy pastes a template for en entry with
-the intend to adjust for a new entry.  Then giving it a key and
+document, is when an author copy and pastes a template for en entry
+with the intend to adjust for a new entry.  Then giving it a key and
 forgetting to adjust the entry.  This will also result in a duplicate
 entry, but unlike the situation above the duplicate should not be
 merged but contain different content.
@@ -419,13 +412,11 @@ Thus the solution should not merge automatically.
 \section{Online look ups}
 \label{sec:problems_look_ups}
 
-In the utopic case all entries could be looked up at all times, but
-this care is not likely as unpublished works would need a reliable way
-to be registered.  Also even though the databases out there are really
-good, most of the time, erronous results can be found.  A lookup on
-Google Scholar in the beginning of February 2016 for: ``Results and
-Analysis of SyGuS-Comp’15'' can be seen in
-\figref{fig:scholar_bad_result}, which contains erronous output.
+In the utopic case all entries could be looked up at all times.  Even
+though the databases out there are really good, erroneous results can
+be found.  A lookup on Google Scholar in the beginning of February
+2016 for: ``Results and Analysis of SyGuS-Comp’15'' can be seen in
+\figref{fig:scholar_bad_result}, which contains an erroneous output.
 
 \begin{figure}
   \centering
@@ -446,10 +437,23 @@ Computer Science.  So not only does the Google Scholar result actually
 not conform to the requirements of an article, the resource are in
 fact not an article at all, but in the proceedings to a conference.
 Finding the correct entry details at the EPTCS page reveals the entry
-in \figref{fig:eptcs_lookup}.  Relying blindly on these being
-correct would cause structural issues as the tools could automatically
-introduce new errors.  Using it for suggestions can move the issue
-towards being conjunctural for most cases.
+in \figref{fig:eptcs_lookup}.  Relying blindly on these being correct
+causes a structural issue as the tools could automatically introduce
+new errors.
+
+The entries in those search engines cannot account for unpublished
+work either, and expecting all published work to be represented in the
+databases would be naive.  Having a reliable way to ensure that all
+entries are present, is not a likely scenario.
+
+Apart from the desire to detect erroneous entries from bad look ups,
+using look ups for suggestions to most of the other issues can be a
+useful part of a structural solution.  An optimal structural solution
+to the bad look ups would be if it was possible to detect the users
+intended result.  As there is no way to know for certain what the user
+intends this is an Utopian idea.  A realistic idea would be to provide
+a solution that limits the risk of bad look ups which is not only a
+partial structural solution as the user would still have to verify.
 
 \begin{figure}
   \centering
@@ -485,35 +489,32 @@ towards being conjunctural for most cases.
 The naming scheme for entry keys may vary throughout a bib-file, for
 instance one of the users collaborating earlier might use entries from
 various online databases getting keys corresponding to
-\figref{fig:missing_org_scholar_lookup} and \figref{fig:eptcs_lookup}
-in one big mess.  Had the user been working alone this inconsistency
-would arguably be one's own headache, after all one might not even
-remember the entries by their given key. But as the user is
-collaborating with others they might influenced by it.  Another
-potential challenge could be avoiding duplicate key names which with a
-consistent structure would be easier and a duplicate key could give an
-indicator of a duplicate entry.  One of the users collaborating might
-also be new to using {\bibtex} (could be a student learning) and need
-to find a nice an consistent way of writing the keys.
+\figref{fig:missing_org_scholar_lookup}, \figref{fig:eptcs_lookup} and
+other structures in one big mess.  One of the users collaborating
+might also be new to using {\bibtex} (could be a student learning) and
+need to find a nice an consistent way of writing the keys.
+
+A challenge could be to avoid duplicate key names, which with a
+consistent structure is more likely.  The duplicate entry keys can
+have the advantage that it can be an indicator of a duplicate entry
+Section~\ref{sec:problems_look_ups}.
 
 Inconsistencies in keys might range from not a problem at all to fully
-conjectural or structural, highly depending on the users point of
-view.  The user who does not use they keys to search for entries may
-simply not care and apart from the potential to detect duplicate
-entries may not have a reason to.  However in the collaboration
-scenario others might be affected by it, and an additional way of
-detecting duplicates (see Section~\ref{sec:problems_duplicates}).  In
-this case it arguably becomes conjunctural as the authors should have
-agreed on a style - which might also have helped a newcomer to have a
-good practice, but it can yet again be argued that it is structural as
-{\bibtex} does not provide naming guidelines nor tools for ensuring
-those.
+conjectural or structural, highly depending on the one's point of
+view.  A user may simply not care and apart from the potential to
+detect duplicate entries may not feel a reason to.  In the
+collaboration scenario the additional way of detecting duplicates may
+be valuable.  In this case it arguably becomes conjunctural as the
+authors should have agreed on a style - which might also have helped a
+newcomer to have a good practice, but it can yet again be argued that
+it is structural as {\bibtex} does not provide naming guidelines nor
+tools for ensuring those.
 
 To make this issue structural a naming convention would have to be
-agreed upon and some way of enforcing it provided.  This could result
-in two entries with the same key, causing a key name clash, provided
-a that a solution for the duplicate entry issue is already in place a
-need for way to handle key name clashes.
+specified and some way of detecting deviations provided.  This could
+result in two entries with the same key, causing a key name clash,
+provided a that a solution for the duplicate entry issue is already in
+place a need for way to handle key name clashes.
 
 
 % ref 3
@@ -521,8 +522,7 @@ need for way to handle key name clashes.
 \label{sec:problems_name_changes}
 
 In \figref{fig:missing_org_scholar_lookup} spotting the consistency
-issues were relatively simple, a tool will also be able to find it,
-since the conference have the same name.  When looking at
+issues were relatively simple.  When looking at
 \figref{fig:entry_journal_name_authors} it can be seen that the
 conference name is slightly different in one of the entries, but so
 close that they are probably the same conference.
@@ -559,10 +559,10 @@ A visit to the homepage of the conference reveals that ``National
 Information Systems Security Conference'' used to be named ``National
 Computer Security Conference'', which is probably the reason for the
 $\{NIST\}--\{NCSC\}$ part of the first entry\cite{nist2014_nissc}.  In
-the same source it turns out that there are also references to the
-conference from before the name change, as seen in
-\figref{fig:conference_name}, so to correctly identify potential
-inconsistencies it should also recognize name changes and variations.
+the same source it turns out that there are also references to the old
+conference name, as seen in \figref{fig:conference_name}, so to
+correctly identify potential inconsistencies it should also recognize
+name changes and variations.
 
 \begin{figure}
   \centering
@@ -606,23 +606,22 @@ just written like that, it is conjunctural, as the user did not ensure
 full names.  A structural variant of the copying issue is if the
 reference is copied by a tool, then it can be argued that such a tool
 should try to detect initials.  Having a way to detect the initials
-may again move the issue towards conjunctural however to make it
-entirely conjunctural we would need a reliable way to know when the
-initials are deliberate or not, as some people never use or reveal
-that part of their name.
+and the full names will provide a structural solution.  However to
+make an entirely structural solution a reliable way to know when the
+initials are deliberate or not is needed.
 
 
 \section{Spelling errors}
 \label{sec:problems_spelling}
 
 In almost, if not, all cases where people type text, spelling errors
-will arise sooner or later, bib-files is no exception.  Extracting
-meta-information automatically from documents may also run into a a
-bad extraction leading to spelling errors.  Furthermore a spelling
-error might not even be in the {\bibtex} document, as the misspelling
-can be from the source, for instance if a title of a document is
-misspelled, then the correct {\bibtex} will have to contain this
-error, as it is the title of the source.
+will arise, sooner or later, bib-files is no exception.  Extracting
+meta-information automatically from documents may also run into a bad
+extraction leading to spelling errors.  Furthermore a spelling error
+might not even be in the {\bibtex} document, as the misspelling can be
+from the source, for instance if a title of a document is misspelled,
+then the correct {\bibtex} will have to contain this error, as it is
+the title of the source.
 
 A user typing the entries manually is arguably the cause of spelling
 errors and thus it can be argued that the issue is conjunctural, since
@@ -639,8 +638,8 @@ corresponds to the source would make this issue conjunctural.
 
 When working with {\bibtex}, strings can accidentally end up being
 textual content rather than a string, for instance if a user is being
-careless or if the friendly PhD student earlier exports from a program
-that does not make use of the strings.  In the output from the
+careless or if the user, as the PhD student earlier, exports from a
+program that does not make use of the strings.  In the output from the
 aforementioned student seen in \figref{fig:mendeley_output} the month
 is actually a text and not a string as one would expect.  The use of
 text over strings prevents re-use of fragments and localization.
@@ -663,21 +662,56 @@ are:
 \begin{itemize}
 \item For de-facto standards and specification conformance desired to
   ensure that entries conform to the {\bibtex} specification, but
-  allowing de-facto standards.
+  allowing de-facto standards.  A structural solution requires
+  something that checks the conformity to a combination of
+  specifications and de-facto standards.
+
 \item Journal abbreviations where they can be cumbersome for analyzing
-  tools and that {\bibtex} does not handle abbreviations fully.
-\item Inconsistent tag usage, resulting in non-uniform bibliographies.
-\item Duplicate entries.
-\item Online look ups which can contain wrong data.
+  tools and that {\bibtex} does not handle abbreviations fully.  A
+  structural solution will be able to ensure that all entries are
+  consistently abbreviated or de-abbreviated, preferably accounting
+  for that people may want to switch between for formats.
+
+\item Inconsistent tag usage in similar entries causes messy
+  bibliographies. A structural solution will detect these
+  inconsistencies and be able so suggest a course of action, the
+  solution may be challenged by deviations in information and forums
+  that change name.
+
+\item Duplicate entries is not desired.  A structural solution will be
+  to detect and merge duplicates, as a duplicate come from missing or
+  wrong data automatically merging may cause issues.
+
+\item Online look ups which can contain wrong data.  Optimally we
+  would be able to detect this reliably, the most realistic idea is to
+  provide a way that limits the likelihood of erroneous results.
+
 \item Inconsistent entry keys which can be an issue in collaboration
-  and may make it harder to detect duplicates.
+  and may make it harder to detect duplicates.  A structural solution
+  could be to apply a naming scheme for the entry keys, accounting for
+  similar entries that would result in identical entry keys.
+
 \item Name change of a forum which can affect detection of
-  inconsistent tag usage.
+  inconsistent tag use.  A structural solution will have some way of
+  detecting when sources are from the same forum, either through a
+  database or some configuration options.
+
 \item Use of initials can hide peoples names to the level where
-  finding a resource is hard.
-\item Spelling errors
+  finding a resource is hard.  A structural solution is to detect
+  initials and the full names, accounting for when the initials are
+  deliberate.
+
+\item Spelling errors.  A structural solution will be able to find and
+  correct the spelling errors, preferably by having the same spelling
+  as the published version.  Alternatively running a spell checker
+  having a way to account for deliberate misspellings, domain specific
+  words and choice of language.
+
 \item {\bibtex} strings that end up as part of the text, in the worst
-  case resulting in wrong data.
+  case resulting in wrong data.  A structural solution will be able to
+  detect and make text into strings when a string is desired, for same
+  cases such as month this is trivial, but inside texts a word sharing
+  the name of a string can just be a coincidence.
 \end{itemize}
 
 With all these problems at hand, {\bibtex} may not seem like the

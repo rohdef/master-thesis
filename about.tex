@@ -94,29 +94,30 @@ first runs the $latex$ command (or one of the derivatives) to produce
 (among other things) an aux file.  The aux file contains auxiliary
 information from the {\LaTeX}-compiler.  Then run the $bibtex$ command
 which uses the aux file to find the entries in use and to give them
-labels according to the reference style in use.  The output from
-{\bibtex} is a bbl file with the formatted references, which is then
-used by subsequent runs by {\LaTeX}, so the document will have labels
-a the appropriate places and an bibliography in accordance with the
-labels.
+labels according to the reference style.  The output from {\bibtex} is
+a bbl file with the formatted references, which is then used by
+subsequent runs by {\LaTeX}, so the document will have labels at the
+appropriate places and an bibliography in accordance with the labels.
 
 
 \subsection{Micro-use}
 
 Inside a {\bibtex} file the format itself is fairly simple. At the
 main level we got $@STRING$, $@PREAMBLE$, $@COMMENT$ and $entries$.
-$@STRING$ is for shortenings that can be used later in the {\bibtex},
-$@PREAMPLE$ is for defining how to format the text and $@COMMENT$ is
-for comments and $entries$.  The $entries$ correspond to the different
-medium types, such as $@ARTICLE$, $@BOOK$ and $@PROCEEDINGS$, which in
-turn contains the relevant tags for the given entry.  For each entry
-type, there are a specification of tags relevant to the given medium
-where some of them are mandatory. For instance for an $@ARTICLE$ the
-tags $author$, $title$, $year$ and $journal$ are mandatory and
-supplementary information such as the $pages$ for the article and
-$volume$ of the journal can be added.  For ease of use {\bibtex}
-provides predefined strings for the months: $jan$, $feb$, $mar$ and so
-on.
+$@STRING$ is for shortenings that can be used later in the {\bibtex}
+filex, $@PREAMPLE$ is for defining how to format the text and
+$@COMMENT$ is for comments and $entries$.  The $entries$ correspond to
+the different medium types, such as $@ARTICLE$, $@BOOK$ and
+$@PROCEEDINGS$, which in turn contains the relevant tags for the given
+entry.  Each entry consist of an identifying key and a set of tags.
+The identifying key will be called \newdef{entry key} to avoid
+ambiguity with the tag $key$.  For each entry type, there are a
+specification of tags relevant to the given medium where some of them
+are mandatory. For instance for an $@ARTICLE$ the tags $author$,
+$title$, $year$ and $journal$ are mandatory and supplementary
+information such as the $pages$ for the article and $volume$ of the
+journal can be added.  For ease of use {\bibtex} provides predefined
+strings for the months: $jan$, $feb$, $mar$ and so on.
 
 Tags and entries are case insensitive. The literal content
 (\newdef{text}) needs to be enclosed in either \{ and \} or quotes and
@@ -163,9 +164,9 @@ information.  An example {\bibtex} file can be seen in
 \label{fig:bibtex_example}
 \end{figure}
 
-When citing inside {\LaTeX} the desired key from the {\bibtex} is used
-inside the ${\backslash}cite$, for example if one has a reference
-named $some\_article$ then the reference is used by writing:
+When citing inside {\LaTeX} the desired entry key from the {\bibtex}
+is used inside the ${\backslash}cite$, for example if one has a
+reference named $some\_article$ then the reference is used by writing:
 ${\backslash}cite\{some\_article\}$.  To link the document and the
 bibliography together the command ${\backslash}bibliography$ is used
 together with a parameter for the {\bibtex} file, for example:
@@ -189,18 +190,18 @@ output.  Many online databases are widely used to look up entries,
 which has also given rise to a lot of ways to identify articles, such
 as: arXiv numbers, DOI and ISSN.
 
-Since {\bibtex} is capable of only printing the references used in a
+Since {\bibtex} is capable of printing only the references used in a
 {\LaTeX}-document most people start using {\bibtex} as a database
-having a complete file with the references they have used.  A lot of
-people also find it practical to use their {\bibtex} file as a way to
-keep track of what they read.
+having a complete file with the references they have used throughout
+time.  A lot of people also find it practical to use their {\bibtex}
+file as a way to keep track of what they read.
 
-That {\bibtex} ignores unknown tags is also widely used, both for de
-facto standards and to add additional information that the format does
-not specify, such as arXiv numbers, DOI and ISSN.  It is so widely
-used that is is common to see article search engines make have tags
-that are not specified by {\bibtex} and there is libraries that
-provide citing styles that make use of these tags.
+That {\bibtex} ignores unknown tags is used for de-facto standards, to
+add additional information and to comment out tags by prefixing them
+with $OPT$.  It is so widely used that is is common to see article
+search engines make have tags that are not specified by {\bibtex} and
+there is libraries that provide citing styles that make use of these
+tags.
 
 
 \section{Summary and conclusions}

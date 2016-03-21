@@ -9,7 +9,7 @@ issues \chapref{sec:intro_what_to_do}
 
 {\bibtex} has changed the landscape for scientific writing and eased a
 lot of peoples lives, however not without any issues.  The challenges
-range widely, trying to group similar looking issues we have:
+range widely and trying to group similar looking issues we have:
 
 \remark{We may want the same order as in the list of issues, probably
   reformulate this}
@@ -17,13 +17,13 @@ range widely, trying to group similar looking issues we have:
 Conforming to the specification and de-facto standards is considered
 as a correctness concern.  The use of abbreviations for journal names,
 initials in author names, misspellings and {\bibtex} strings that end
-up being text, is similar and will be considered as lexical concerns.
+up being text will be considered as lexical concerns.
 All of these issues will be considered combined as \newdef{correctness
   and lexical concerns}.
 
 Inconsistent use of tags, inconsistent entry keys, forum names that
-change and duplicate entries also seems similar.  Together these will
-be considered as \newdef{consistency concerns}.
+change and duplicate entries will be considered as \newdef{consistency
+  concerns}.
 
 The Utopian goal is to provide a structural solution for all these
 issues so that if any further issues exist they would be purely
@@ -37,7 +37,8 @@ As previously stated the structural approach to the issues is desired.
 This choice basically means ensuring that the tools handles the
 issues, preferably to the level where all issues are solved.  As
 touched upon shortly when inspecting the problems, it is not likely
-that all issues can be solved perfectly.
+that all issues can be solved perfectly.  For a structural solution
+there are two approaches:
 
 
 \subsection{Updating or replacing {\bibtex}}
@@ -64,13 +65,10 @@ few attempts at both changing and replacing {\bibtex}.
 \subsection{Augmenting {\bibtex}}
 
 In stead of changing or replacing {\bibtex} an augmenting tool is
-another option.  Such a tool would have to analyze a {\bibtex} file
-and either provide or suggest improvements.
-
-The advantages of an augmenting tool are that it supplements current
-use of {\bibtex} and in being optional.  On the downside the user
-would have to acquire the tool first and would have to remember to use
-it.
+another option.  Such a tool be used together on {\bibtex} file
+provide or suggest improvements, in stead of changing specifications.
+An augmenting tool will be a supplement to current use of {\bibtex}
+and be optional, rather than imposed on the users.
 
 
 \section{How do we approach the {\bibtex} issues}
@@ -83,32 +81,29 @@ the issues.
 \subsection{Lexical and correctness concerns vs consistency concerns}
 \label{sec:approach_lexical_consistency}
 
-The goal of this subsection is to show that most consistency concerns
-is way easier when the lexical and correctness concerns are solved
+The relation between the lexical and correctness concerns and the
+consistency concerns reveals a dependency in the analysis.  Going
+through the consistency concerns observing their relation gives:
 
 \begin{itemize}
 \item For inconsistent use of tags, a way to determine if entries are
-  from the same forum is needed.  A way to detect the same forum, such
-  as consistent naming of the forum, is needed.  The issues for name
-  changes would be nice to have handled as well.
+  from the same forum is needed.  Such a way depends on consistent
+  naming of the forum and a way to detect name changes.
 
 \item For duplicate entries having unique identifiers such as arXiv
-  numbers, ISSN or DOI will make the detection trivial.  For other
-  cases, having correct and identical meta-information will make
-  duplicate detection easier.  However if duplicates are present it is
-  possible that the meta-information vary, having the basic
-  information (such as, title and author) without abbreviations, being
-  correct and being consistent will make detection easier.
+  numbers, ISSN or DOI will make the detection trivial.  Otherwise the
+  detection has to be based on the similarity of the information, at
+  best the information is identical, otherwise it has to be a similar
+  as possible to improve the detection.  Thus solving the lexical
+  concerns will be of use.
 
 \item Inconsistent naming of entry keys can be handled by a naming
   scheme.  Such a naming scheme is usually based on the information in
   the entries.  So having the relevant tags and correct content in
   them will ensure a way to ensure consistent entry keys.
 
-\item Name changes of forums are a bit more subtle, because two parts
-  are needed: first off we need to be able to recognize the names
-  which, as the other issues, is easier with correct and consistent
-  names, secondly some mapping from name to name would be needed.
+\item For name changes of forums we need to be able to recognize the
+  names which is easier with correct and consistent names.
 \end{itemize}
 
 A common property about the consistency concerns is that they are
@@ -148,7 +143,9 @@ to de-abbreviate.  Taking care of a consistent way to switch between
 full names and abbreviations is also desired.  Making use of strings
 to handle the switching between full names and abbreviations is
 probably the best approach since this will keep it clear which forum
-is which.
+is which.  This also allows the user to use string names that are:
+full names, official names or their own style of abbreviations, to
+their choice.
 
 
 \subsection{\nameref{sec:problems_inconsistent_tags}}
