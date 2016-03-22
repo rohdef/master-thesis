@@ -29,7 +29,7 @@ thesis:
 		pdflatex -interaction=batchmode --output-directory=${out} ${thesis_file} 1>/dev/null; \
 		echo -e "\n\e[35m* Running biber\e[0m"; \
 		cp ${refs_file} ${out}/; \
-		biber --q --output-directory=${out} ${thesis}; \
+		biber --output-directory=${out} ${thesis}; \
 		echo -e "\n\e[35m* Second pass\e[0m"; \
 		pdflatex -interaction=batchmode --output-directory=${out} ${thesis_file} 1>/dev/null; \
 		echo -e "\n\e[35m* Third pass\e[0m"; \

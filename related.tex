@@ -75,15 +75,15 @@ used too.
 When using JabRef it is very easy to switch between journal
 abbreviations and full names, provided that the abbreviation is
 already known, custom abbreviations can be
-added~\cite{jabref_abbreviations}.  The supposed spell check was not to
-be found in the beta release of JabRef.  Doing lookups online for
+added~\cite{jabref_abbreviations}.  The supposed spell check was not
+to be found in the beta release of JabRef.  Doing lookups online for
 details can in theory be done during PDF-import using Mr. DLib, which
-supposedly should search for entries based on similarity to PDF-files,
-the project seems to be abandoned as the site has not been updated
-since 2012~\cite{jabref_mrdlib,jabref_mrdlib_notice}.  It is worth
-nothing that JabRef has a system for finding duplicate entries, and
-does some validation of {\bibtex}-files when opened to ensure valid
-data.
+supposedly should search for entries based on similarity to
+\file{PDF}s, the project seems to be abandoned as the site has not
+been updated since 2012~\cite{jabref_mrdlib,jabref_mrdlib_notice}.  It
+is worth nothing that JabRef has a system for finding duplicate
+entries, and does some validation of {\bibtex} files when opened to
+ensure valid data.
 
 \subsection{Bibcut}
 Bibcut is a tool to arrange and modify {\bibtex} files in ways that
@@ -137,6 +137,8 @@ arise from the lack of encoding support in
 
 
 \subsection{Bib{\LaTeX} and biber}
+\label{sec:related_biblatex}
+
 Bib{\LaTeX} is a {\LaTeX} package intended to replace {\bibtex}, but
 with backward compatibility with {\bibtex}.  It is designed to be able
 to run with the {\bibtex} backend, but defaults to use biber in stead.
@@ -164,7 +166,7 @@ respective feature overviews.
 
 Mendeley is a bibliography management tool developed by Mendeley Ltd.
 The focus of the tool is to make it easy to manage and share
-references.  Mendeley provides features such as importing PDF-files
+references.  Mendeley provides features such as importing \file{PDF}s
 and detecting relevant details such as the author, title and DOIs, and
 updating entries from online databases using, for instance the DOI.
 The target group for Mendeley is students and
@@ -225,7 +227,7 @@ prevents it from detecting those errors.  Like JabRef, Zotero has a
 plugin system, on found using the official list of
 plugins~\cite{zotero_plugins} nor by a normal search engine. There is
 a limited mechanism for detecting abbreviations in Zotero, in its
-jar-file there is a list of known abbreviations which it can use to
+\file{jar} there is a list of known abbreviations which it can use to
 chose the correct abbreviation when exporting, entering a known
 abbreviation does not seem to correct it to the non-abbreviated
 version.  This list can be manually edited, and
@@ -327,7 +329,7 @@ there is relevant features apart from what they mention on their page.
 
 
 \section{Summary and conclusions}
-To summarize: there are a lot of alternative ways to handle
+There are a lot of alternative ways to handle
 bibliographic references.  Right from a multitude of tools that strive
 to assist with maintenance of ones {\bibtex} library, alternatives to
 {\bibtex} and bibliography managers that strive to replace the entire

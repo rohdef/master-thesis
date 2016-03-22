@@ -1,8 +1,8 @@
 \section{Introduction}
-The goal of this chapter is to introduce {\bibtex}, the course of
+The goal of this chapter is to introduce {\bibtex}: the course of
 events leading to {\bibtex} \chapref{sec:why_bibtex_came_to_be}, what
 {\bibtex} is \chapref{sec:principles_of_bibtex}, how {\bibtex} is used
-in principle \chapref{sec:practice_of_bibtex} and how {\bibtex} is
+in principle \chapref{sec:practice_of_bibtex}, and how {\bibtex} is
 used in practice \chapref{sec:how_bibtex_is_used_today}.
 
 
@@ -12,17 +12,17 @@ used in practice \chapref{sec:how_bibtex_is_used_today}.
 The advent of {\TeX} has been a game changer for scientific writing,
 witness the number of articles written in {\TeX} (or derivatives such
 as {\LaTeX}).  For instance, on arXiv.org, nearly all articles are
-formatted with \LaTeX.  Apart from being grateful to Donald Knuth
-for providing a robust system for scientific articles, writers can
+formatted with \LaTeX.  Apart from being grateful to Donald Knuth for
+providing such a robust system for scientific articles, writers can
 also be thankful that {\TeX} has given the basis for Oren Patashnik
 and Leslie Lamport to create {\bibtex} for managing scientific
 bibliographies.
 
-Before the wake of {\bibtex}, references were managed entirely by hand
-and required a lot of labor.  For instance, nearly half of Mary-Claire
-van Leunen's book, \textit{A Handbook for
+Before the wake of {\bibtex}, bibliographic references were managed
+entirely by hand and required a lot of labor.  For instance, nearly
+half of Mary-Claire van Leunen's book, \textit{A Handbook for
   Scholars}~\cite{leunen1992_handbook}, is dedicated to citing,
-managing and writing references, \ie, 150 pages out of 335 pages
+managing, and writing references, \ie, 150 pages out of 335 pages
 (excluding the index).  Likewise, a significant fraction of Umberto
 Eco's book, \textit{How to Write a Thesis}~\cite{eco1985_thesis}, is
 also dedicated to managing and citing references and to ensuring a
@@ -37,22 +37,25 @@ principle.
 \label{sec:principles_of_bibtex}
 
 In the same spirit as {\LaTeX}, {\bibtex} is a simple software tool
-for managing references in scientific writing, using an ASCII file to
-write the references.  Inside this file, the components of each
-reference are specified, such as the author, title, year and what kind
-of medium (such as a book or article) was used.
+for managing bibliographic references in scientific writing, using an
+ASCII file to specify theses references.  Inside this ASCII file, the
+components of each reference are specified, such as the author, title,
+year and what kind of medium (\eg, a book or article) was used.  This
+file will be referred to as \newdef{the {\bibtex} file} or
+\newdef{\file{bib}}
 
-Depending on the forum, there are differences in how references should
-be cited and be written.  Each publisher has a mandatory setup.  The
-specific set of rules a publisher has is referred to as a
-\newdef{bibliography style} or \newdef{citing style}.
+Depending on the forum, there are differences in: how references
+should be cited, be written, and the order in which they should be listed.
+Each publisher has a mandatory setup.  The specific set of rules a
+publisher has is referred to as a \newdef{bibliography style} or
+\newdef{citing style}.
 
-When using {\bibtex} on a document, {\bibtex} cites according to the
-selected bibliography style, ensures the formatting in the reference
-list, and ensures that only relevant entries are included.  The
-references are labeled consistently in the document according to the
-citing style, the labels are used when a reference is cited and these
-labels allows the reader to quickly find the reference in the
+When processing a document, {\bibtex} cites according to the selected
+bibliography style, ensures the formatting and the order in the
+reference list, and ensures that only relevant entries are included.
+The references are labeled consistently in the document according to
+the citing style, the labels are used when a reference is cited and
+these labels allows the reader to quickly find the reference in the
 bibliography, as illustrated in \figref{fig:bibtex_example_alpha}.
 
 Today, {\bibtex} has also enabled huge online resources with
@@ -65,7 +68,7 @@ well~\cite{bibtex_resource}.
   \centering
   \includegraphics[width=0.8\textwidth]{bibtex-styles-ex-acm}
   \caption{{\bibtex} output using ACM citing style which uses numbers to
-    index entries}
+    index entries.  Source: ShareLaTeX~\cite{sharelatex2016_styles}}
 \label{fig:bibtex_example_acm}
 \end{figure}
 
@@ -75,11 +78,11 @@ well~\cite{bibtex_resource}.
 \subsection{Macro-use}
 
 A {\bibtex} file consists of entries each corresponding to a
-reference, such an article or a book.  Each entry in turn contains
-meta information about the reference, through tags that specify the
-kind of meta information such as the author or title.  Also, quite
-commonly, a file will contain a lot of shortenings for text fragments
-that are reused.
+bibliographic reference, such as an article or a book.  Each entry in
+turn contains meta information about the reference, through tags that
+specify the kind of meta information such as the author or title.
+Also, quite commonly, a file will contain a lot of shortenings for
+text fragments that are reused.
 
 To select the desired style the command
 ${\backslash}bibliographystyle$ is used, for example
@@ -91,24 +94,24 @@ different and some of the visual formatting is different.
 
 To build a {\LaTeX}-document with {\bibtex} references in it, one
 first runs the $latex$ command (or one of the derivatives) to produce
-(among other things) an aux file.  The aux file contains auxiliary
+(among other things) an \file{aux}.  The \file{aux} contains auxiliary
 information from the {\LaTeX}-compiler.  Then run the $bibtex$ command
-which uses the aux file to find the entries in use and to give them
+which uses the \file{aux} to find the entries in use and to give them
 labels according to the reference style.  The output from {\bibtex} is
-a bbl file with the formatted references, which is then used by
+a \file{bbl} with the formatted references, which is then used by
 subsequent runs by {\LaTeX}, so the document will have labels at the
 appropriate places and an bibliography in accordance with the labels.
 
 
 \subsection{Micro-use}
 
-Inside a {\bibtex} file the format itself is fairly simple. At the
-main level we got $@STRING$, $@PREAMBLE$, $@COMMENT$ and $entries$.
+Inside a {\bibtex} file, the format itself is fairly simple. At the
+main level, we have $@STRING$, $@PREAMBLE$, $@COMMENT$ and $entries$.
 $@STRING$ is for shortenings that can be used later in the {\bibtex}
-filex, $@PREAMPLE$ is for defining how to format the text and
+file, $@PREAMBLE$ is for defining how to format the text and
 $@COMMENT$ is for comments and $entries$.  The $entries$ correspond to
 the different medium types, such as $@ARTICLE$, $@BOOK$ and
-$@PROCEEDINGS$, which in turn contains the relevant tags for the given
+$@PROCEEDINGS$, which in turn contain the relevant tags for the given
 entry.  Each entry consist of an identifying key and a set of tags.
 The identifying key will be called \newdef{entry key} to avoid
 ambiguity with the tag $key$.  For each entry type, there are a
@@ -164,19 +167,20 @@ information.  An example {\bibtex} file can be seen in
 \label{fig:bibtex_example}
 \end{figure}
 
-When citing inside {\LaTeX} the desired entry key from the {\bibtex}
-is used inside the ${\backslash}cite$, for example if one has a
-reference named $some\_article$ then the reference is used by writing:
-${\backslash}cite\{some\_article\}$.  To link the document and the
-bibliography together the command ${\backslash}bibliography$ is used
-together with a parameter for the {\bibtex} file, for example:
-${\backslash}bibliography\{mybib\}$.
+When citing inside a {\LaTeX} file, the desired entry key from the
+{\bibtex} is used inside the ${\backslash}cite$, for example if one
+has a reference named $some\_article$ then the reference is used by
+writing: ${\backslash}cite\{some\_article\}$.  To link the document
+and the bibliography together the command ${\backslash}bibliography$
+is used together with a parameter: the name the {\bibtex} file, for
+example: ${\backslash}bibliography\{mybib\}$.
 
 \begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{bibtex-styles-ex-alpha}
   \caption{{\bibtex} output using alpha citation style which uses
-    author names and year to index entries}
+    author names and year to index entries.  Source:
+    ShareLaTeX~\cite{sharelatex2016_styles}}
 \label{fig:bibtex_example_alpha}
 \end{figure}
 
@@ -184,14 +188,14 @@ ${\backslash}bibliography\{mybib\}$.
 \section{How {\bibtex} is used in practice}
 \label{sec:how_bibtex_is_used_today}
 
-{\bibtex} is to this day routinely used by researchers, witness that
+To this day, {\bibtex} is routinely used by researchers, witness that
 almost all online resources for finding references provide {\bibtex}
 output.  Many online databases are widely used to look up entries,
-which has also given rise to a lot of ways to identify articles, such
-as: arXiv numbers, DOI and ISSN.
+which has also given rise to a variety of ways to identify articles,
+such as: arXiv numbers, DOI and ISSN.
 
 Since {\bibtex} is capable of printing only the references used in a
-{\LaTeX}-document most people start using {\bibtex} as a database
+{\LaTeX}-document, most people start using {\bibtex} as a database
 having a complete file with the references they have used throughout
 time.  A lot of people also find it practical to use their {\bibtex}
 file as a way to keep track of what they read.
@@ -207,18 +211,16 @@ tags.
 \section{Summary and conclusions}
 \label{sec:about_conclusion}
 
-{\bibtex} is a product of the advent of {\TeX} and the
-need for managing references, {\TeX} made it possible to automate,
-through this simple format.  {\bibtex} provides a simple way to manage
-references and it is fairly flexible and thus allows for useful de
-facto standards.  The inside of a {\bibtex} file is simple and
-intuitive, dividing the entries in to types corresponding to the
-medium it represents and having tags relevant to that medium.
-{\bibtex} has become widely used and given rise to useful de facto
+
+{\bibtex} is a product of the advent of {\TeX} and the need for
+managing bibliographic references.  The inside of a {\bibtex} file is
+simple and intuitive, dividing the entries into types corresponding
+to the medium it represents and having tags relevant to that medium.
+{\bibtex} has become widely used and given rise to useful de-facto
 standards and tools to assist with bibliographic references.
 
-{\bibtex} have been a game changer, and is something for every
-scientific author to be happy about, so has {\bibtex} solved the
+Like {\TeX}, {\bibtex} has been a game changer, and is something for
+every scientific author to be happy about.  So has {\bibtex} solved the
 problem of bibliographic references? It would seem so, had it not been
 for Murphy's Law, as detailed in the next chapter.
 

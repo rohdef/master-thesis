@@ -27,20 +27,22 @@
 \hypersetup{
     pdfborder = {0 0 0}
 }
-\newcommand{\remark}[1]{{ \bf [ \footnotesize #1 ]}}
+%\newcommand{\remark}[1]{{ \bf [ \footnotesize #1 ]}}
+\newcommand{\remark}[1]{}
 \newcommand{\Orangutan}{Orangutan}
 \newcommand{\bibtex}{Bib{\TeX}}
 \newcommand{\chapref}[1]{(Section~\ref{#1})}
 \newcommand{\rfquote}[2]{
 \begin{flushright}
 \emph{#1}\\
-- #2
+-- #2
 \end{flushright}}
 
 \newcommand{\figref}[1]{Figure~\ref{#1}}
 \newcommand{\ie}{i.e.}
 \newcommand{\eg}{e.g.}
 \newcommand{\newdef}[1]{`#1'}
+\newcommand{\file}[1]{.#1 file}
 
 \graphicspath{ {graphics/} {./} }
 % see http://imf.au.dk/system/latex/bog/
@@ -102,14 +104,14 @@
 \label{ch:related}
 \input{related.tex}
 
-\chapter{Analyzing {\bibtex}}
-\label{ch:analyzing}
-\input{analyzing.tex}
+%\chapter{Analyzing {\bibtex} files}
+%\label{ch:analyzing}
+%\input{analyzing.tex}
 
-\chapter{Organizing {\bibtex} files}
+%\chapter{Organizing {\bibtex} files}
 
-\chapter{Conclusion and perspectives}
-\label{ch:conclusion}
+%\chapter{Conclusion and perspectives}
+%\label{ch:conclusion}
 
 \printbibliography{}
 \end{document}
