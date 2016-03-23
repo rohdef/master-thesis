@@ -1,10 +1,13 @@
 \rfquote{Testing shows the presence, not the absence of bugs}{Edsger
   W. Dijkstra}
 
+
 \section{Introduction}
 The goal of this chapter is to show how {\bibtex} files are analyzed.
 
+
 \section{What should be done about {\bibtex}}
+\subsection{In principle}
 
 To analyze {\bibtex} one would need to parse a \file{bib} into a
 suitable representation.  This representation would need to sufficient
@@ -80,14 +83,20 @@ tool.
   if two different entries would get the same name.
 \end{itemize}
 
+
+\subsection{In practice}
+\remark{Olivier: I'm not sure if it's a good idea to specify the
+  format fully, just feels the most complete thing to do.}
+
 Configuration should be done via de-facto standards, preferably
-corresponding to the {\bibtex} format.
+corresponding to the {\bibtex} format. \remark{Describe the format}
 
 For forums adding a tag with the name $OLDforum$ and the old forum
 name - or even better the string for the old forum would make sense.
 Only referring to the previous name, in the rare case that multiple
 name changes should be present then the latest previous case in the
-document should be adequate. :/ not sure I agree completely here
+document should be adequate. \remark{:/ not sure I agree completely
+  here}
 
 A way to specify the deviations from the defaults should be done
 through defining a de-facto standard tag containing the accepted
@@ -106,7 +115,8 @@ desired deviations would then be specified:
 \end{itemize}
 
 These tags can be combined using spaces as the separation character.
-An example of an entry can be seen in \figref
+An example of an entry can be seen in
+\figref{fig:analyzing_added_de_facto_standards}
 
 \begin{figure}
   \centering
@@ -127,10 +137,15 @@ The use of de-facto standards should be specifiable through a
 {\bibtex} like format.  A suggested way would be using entries
 identical with {\bibtex} with the desired rules specified as the value
 of the tags.  The idea is illustrated in
-\figref{fig:correctness_checker_bibtex}.  The reason this does not use
-the $OPTanalyze$
+\figref{fig:correctness_checker_bibtex}.  The reason for not using the
+$OPTanalyze$ is that future bibliographic styles may want to make use
+of the knowledge of a previous name of a forum.  One could easily
+imaging a bibliographic style write \texttt{National Information
+  Systems Security Conference \textit{formerly known as} National
+  Computer Security Conference}.
 
-Entry key format should be specified using ....
+Entry key format should be specified using ?. \remark{Probably some
+  kind of general config}.
 
 
 \section{{\orangutan}}
@@ -141,10 +156,6 @@ An attempt at implementing is {\orangutan}.
 
 
 \subsection{Why {\orangutan} came to be}
-
-\remark{Olivier: A bit uncertain if this makes sense, but somehow it feels nice
-  if the structure from Chapter 2 can be followed and to have a short
-  sum up of why we're here. What say you?}
 
 The advent of {\bibtex} has been a game changer for bibliographic
 references, which makes the issues in {\bibtex} undesirable.  There

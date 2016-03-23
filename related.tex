@@ -1,6 +1,6 @@
 \section{Introduction}
 The goal of this chapter is to show the tools for managing
-bibliographies and how these tools tries to handle the issues covered,
+bibliographies and how these tools try to handle the issues covered,
 if they do so.
 
 In this chapter some of the bibliography tools will be surveyed, with
@@ -9,15 +9,15 @@ organized as follows: \chapref{sec:bibtex_tools} contains an overview
 of the pure tools for {\bibtex}, \chapref{sec:bibtex_alternatives}
 contains some of the attempts to replace {\bibtex} with similar
 formats, and \chapref{sec:bibliography_managers} strives to
-completely redesign how to manage bibliographies and in stead
+completely redesign how to manage bibliographies and instead
 exporting the bibliographies to a desired format, such as {\bibtex}
 
 
 \section{{\bibtex} tools}
 \label{sec:bibtex_tools}
 There are a few pure {\bibtex} tools for handling reference databases.
-A lot of these tools targets some of the issues described.  The
-various tools has either been tested or their functionality verified
+A lot of these tools target some of the issues described.  The
+various tools have either been tested or their functionality verified
 by code inspection.
 
 \subsection{Bibcleaner}
@@ -27,11 +27,11 @@ for it.  The purpose of the tool is to clean {\bibtex} files by using
 online look ups in the DBLP database~\cite{bibcleaner_question,
   bibcleaner_source}.
 
-Usage of Bibcleaner is quite simple, it runs through each entry
-comparing it with the DBLP database and suggests improvements if it
-can find the current key in the database.  The functionality of the
-tool is currently limited to computer science, as it only uses DBLP
-for lookups~\cite{bibcleaner_source}.
+Bibcleaner is quite simple: it runs through each entry comparing it
+with the DBLP database and suggests improvements if it can find the
+current key in the database.  The functionality of the tool is
+currently limited to computer science, as it only uses DBLP for
+lookups~\cite{bibcleaner_source}.
 
 \subsection{BibTooL}
 BibTooL is a {\bibtex} that was developed by Charalampos Nikolaou from
@@ -60,7 +60,7 @@ release~\cite{jabref_spellchecker}.
 
 The JabRef team is currently working on a tool named CloudRef which
 has a focus on a web based interface for collaboration.  Currently the
-project is in the planning phase and suggested features hints that it
+project is in the planning phase and suggested features hint that it
 might end up correcting some of the issues, as there is some focus on
 correctly filled {\bibtex} references and corrections for those.
 
@@ -74,16 +74,16 @@ used too.
 
 When using JabRef it is very easy to switch between journal
 abbreviations and full names, provided that the abbreviation is
-already known, custom abbreviations can be
-added~\cite{jabref_abbreviations}.  The supposed spell check was not
-to be found in the beta release of JabRef.  Doing lookups online for
-details can in theory be done during PDF-import using Mr. DLib, which
-supposedly should search for entries based on similarity to
-\file{PDF}s, the project seems to be abandoned as the site has not
-been updated since 2012~\cite{jabref_mrdlib,jabref_mrdlib_notice}.  It
-is worth nothing that JabRef has a system for finding duplicate
-entries, and does some validation of {\bibtex} files when opened to
-ensure valid data.
+already known, with the ability to add custom
+abbreviations~\cite{jabref_abbreviations}.  The supposed spell check
+was not to be found in the beta release of JabRef.  Doing lookups
+online for details can in theory be done during PDF-import using
+Mr. DLib, which supposedly should search for entries based on
+similarity to \file{PDF}s.  The project seems to be abandoned as the
+site has not been updated since
+2012~\cite{jabref_mrdlib,jabref_mrdlib_notice}.  It is worth nothing
+that JabRef has a system for finding duplicate entries, and does some
+validation of {\bibtex} files when opened to ensure valid data.
 
 \subsection{Bibcut}
 Bibcut is a tool to arrange and modify {\bibtex} files in ways that
@@ -120,17 +120,17 @@ the entries are formatted with XML.  It is by design made with strict
 schemas and conversion tools to convert from {\bibtex}.  Having a
 system using strict schemas enables enforcing correct entries that
 conform to the specification.  The strict approach will prevent usage
-of non-conforming tags, on the down side this approach also makes it
-hard to introduce of new de facto standards when they are
+of non-conforming tags.  On the down side this approach also makes it
+hard to introduce new de facto standards when they are
 needed~\cite{gunhen2007_bibtexml}.
 
 \subsection{MLBIBTEX}
 MLBIBTEX is an variant of {\bibtex} from Jean-Michael Hufflen to
 create support for multiple languages.  The focus of MLBIBTEX is to
-add support for entries in different language, accounting for
+add support for entries in different languages, accounting for
 appropriate naming of language specific content (such as months).
 This variant has been made to account for authors writing in different
-languages, such as a scientist who writes a book for the students in a
+languages, such as a scientist who writes a book for the students in
 French.  It does not seem that MLBIBTEX takes care of the issues that
 arise from the lack of encoding support in
 {\bibtex}~\cite{hufflen2001_mlbibtex}.
@@ -141,7 +141,7 @@ arise from the lack of encoding support in
 
 Bib{\LaTeX} is a {\LaTeX} package intended to replace {\bibtex}, but
 with backward compatibility with {\bibtex}.  It is designed to be able
-to run with the {\bibtex} backend, but defaults to use biber in stead.
+to run with the {\bibtex} backend, but defaults to use biber instead.
 The idea behind Bib{\LaTeX} and biber is to overcome some of the
 limitations of {\bibtex} such as the limited character support,
 limited options for sorting and the need for new entry types (for
@@ -154,9 +154,9 @@ names get abbreviated when printing the bibliography.
 \section{Bibliography managers}
 \label{sec:bibliography_managers}
 
-Bibliography managers, some times also called reference managers, are
+Bibliography managers, sometimes also called reference managers, are
 software tools for bibliography management that are not directly
-targeted at {\bibtex}.  Some of these provides partial solutions for
+targeted at {\bibtex}.  Some of these provide partial solutions for
 the lexical and consistency concerns.  All of the tools have been
 tested for relevant features that are not described on their
 respective feature overviews.
@@ -175,8 +175,8 @@ researchers~\cite{mendeley_features}.
 Like {\bibtex}, Mendeley does not facilitate any systems for detecting
 inconsistencies such as spelling errors, revision numbers or initials.
 Mendeley can download meta-information based on a DOI which in part
-remodies the lack of these tools.  Mendeley does not have any
-plugin/add on system, so it's unlikely that there is any third party
+remedies the lack of these tools.  Mendeley does not have any
+plugin/add on system, so it's unlikely that there are any third party
 tools to further handle the {\bibtex} issues. A search through
 Mendeley's request database reveals the same as the testing and
 features page.  On Mendeleys online request system there are requests
@@ -186,7 +186,7 @@ lookups~\cite{mendeley_request_spellcheck, mendeley_request_lowercase,
   mendeley_request_capitalization, mendeley_request_bulk_doi}.
 
 \subsection{EndNote and RefMan}
-EndNote and RefMan also tools for reference mangement, made by
+EndNote and RefMan are also tools for reference mangement, made by
 Thompson Reuters.  RefMan is an older product and Thompson Reuters
 recommends using EndNote in stead~\cite{refman_switch,
   refman_features}.  There is a lot of focus on the sharing
@@ -197,20 +197,19 @@ target group is students and university related groups.  EndNote also
 provides a spell check feature that is not mentioned in the feature
 sets~\cite{endnote_spellcheck}.
 
-The tools for handling abbreviations in EndNote is only used to format
+The tool for handling abbreviations in EndNote is only used to format
 the names when exported or used as references.  This is done using a
-mapping from a predefined set of know abbreviations, the tool does not
-fix the naming issues internally in the
-files~\cite{endnote_terms_journals}.
+mapping from a predefined set of know abbreviations, not fixing the
+naming issues internally in the files~\cite{endnote_terms_journals}.
 
 When trying to remedy the spelling and consistency errors by using DOI
 lookups it seems that the only way of doing that will create duplicate
 entries rather than updating the current one. This is just making the
-issues even worse as the references then ends up with duplications
+issues even worse as the references then end up with duplications
 too.  The spell checker works on a per entry basis and there is no
 apparent way to spell check an entire bibliography.  EndNote provides
 a lot of extra downloads to provide features such as {\bibtex}
-support, however no downloads were found to remedy neither the lexical
+support.  However no downloads were found to remedy neither the lexical
 nor the consistency concerns further~\cite{endnote_downloads}.
 
 
@@ -221,19 +220,19 @@ for History and New Media.  It is targeted at people doing research.
 The organization and collaboration aspects are in focus for
 Zotero~\cite{zotero_features}.
 
-There is a built in spell checker for notes written in Zotero, however
-the spell checker is not applied for things like titles, which
+There is a built in spell checker for notes written in Zotero.
+However the spell checker is not applied for things like titles, which
 prevents it from detecting those errors.  Like JabRef, Zotero has a
-plugin system, on found using the official list of
-plugins~\cite{zotero_plugins} nor by a normal search engine. There is
-a limited mechanism for detecting abbreviations in Zotero, in its
-\file{jar} there is a list of known abbreviations which it can use to
-chose the correct abbreviation when exporting, entering a known
-abbreviation does not seem to correct it to the non-abbreviated
-version.  This list can be manually edited, and
+plugin system.  Plugins to remedy the {\bibtex} issues is neither
+found using the official list of plugins~\cite{zotero_plugins} nor by
+a normal search engine. There is a limited mechanism for detecting
+abbreviations in Zotero, in its \file{jar} there is a list of known
+abbreviations which it can use to chose the correct abbreviation when
+exporting.  Entering an abbreviation does not seem to correct it to
+the non-abbreviated version.  This list can be manually edited, and
 overruled~\cite{zotero_abbreviations}.
 
-It is possible (but not tested) that Zotero can be used to import an
+It is possible (but not tested) that Zotero can be used to import a
 {\bibtex} file, then export it using the lists of known abbreviations
 and correct the abbreviations already known.  As other tools, such as
 JabRef and Mendeley, already allow this procedure, it has not been
@@ -249,7 +248,7 @@ include online look ups, statistics systems and collaboration
 features~\cite{refworks_features}.
 
 As with the other tools testing shows that the error detection
-features is limited.  In RefWorks the work flow for adding references,
+features is limited.  In RefWorks the work flow for adding references
 is to either enter them manually or to use a browser link called
 ``RefGrab-It'' to import from homepages.  RefGrab-It can be used for
 DOI look ups which enables the same advantages as Mendeey and EndNote.
@@ -266,7 +265,7 @@ Figure~\ref{fig:refworks-detect-formatting}.
 \end{figure}
 
 In RefWorks itself there seems to be no spell checker, but the
-spelling errors is in part solved by most modern browsers, because
+spelling errors are in part solved by most modern browsers, because
 they often include a spell checker for input fields.
 
 \subsection{Papers}
@@ -331,7 +330,7 @@ there is relevant features apart from what they mention on their page.
 \section{Summary and conclusions}
 There are a lot of alternative ways to handle
 bibliographic references.  Right from a multitude of tools that strive
-to assist with maintenance of ones {\bibtex} library, alternatives to
+to assist with maintenance of one's {\bibtex} library, alternatives to
 {\bibtex} and bibliography managers that strive to replace the entire
 management process.  Some of these help by doing online look-ups to
 double check entries, finding duplicates, assisting in transforming to

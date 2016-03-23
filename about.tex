@@ -55,7 +55,7 @@ bibliography style, ensures the formatting and the order in the
 reference list, and ensures that only relevant entries are included.
 The references are labeled consistently in the document according to
 the citing style, the labels are used when a reference is cited and
-these labels allows the reader to quickly find the reference in the
+these labels allow the reader to quickly find the reference in the
 bibliography, as illustrated in \figref{fig:bibtex_example_alpha}.
 
 Today, {\bibtex} has also enabled huge online resources with
@@ -89,8 +89,8 @@ ${\backslash}bibliographystyle$ is used, for example
 ${\backslash}bibliographystyle\{alpha\}$.  The style in turn controls
 the formatting and how the references are labeled, as can be seen on
 \figref{fig:bibtex_example_acm} and \figref{fig:bibtex_example_alpha}
-where the labels are different, the abbreviation of author names are
-different and some of the visual formatting is different.
+where the labels are different, along with the abbreviation of author
+names and some of the visual formatting.
 
 To build a {\LaTeX}-document with {\bibtex} references in it, one
 first runs the $latex$ command (or one of the derivatives) to produce
@@ -98,7 +98,7 @@ first runs the $latex$ command (or one of the derivatives) to produce
 information from the {\LaTeX}-compiler.  Then run the $bibtex$ command
 which uses the \file{aux} to find the entries in use and to give them
 labels according to the reference style.  The output from {\bibtex} is
-a \file{bbl} with the formatted references, which is then used by
+a \file{bbl} with the formatted references, which is then used in
 subsequent runs by {\LaTeX}, so the document will have labels at the
 appropriate places and a bibliography in accordance with the labels.
 
@@ -112,7 +112,7 @@ file, $@PREAMBLE$ is for defining how to format the text and
 $@COMMENT$ is for comments and $entries$.  The $entries$ correspond to
 the different medium types, such as $@ARTICLE$, $@BOOK$ and
 $@PROCEEDINGS$, which in turn contain the relevant tags for the given
-entry.  Each entry consist of an identifying key and a set of tags.
+entry.  Each entry consists of an identifying key and a set of tags.
 The identifying key will be called \newdef{entry key} to avoid
 ambiguity with the tag $key$.  For each entry type, there are a
 specification of tags relevant to the given medium where some of them
@@ -203,9 +203,8 @@ file as a way to keep track of what they read.
 That {\bibtex} ignores unknown tags is used for de-facto standards, to
 add additional information and to comment out tags by prefixing them
 with $OPT$.  It is so widely used that it is common to see article
-search engines make have tags that are not specified by {\bibtex} and
-there is libraries that provide citing styles that make use of these
-tags.
+search engines have tags that are not specified by {\bibtex} and there
+are libraries that provide citing styles that make use of these tags.
 
 
 \section{Summary and conclusions}
