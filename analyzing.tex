@@ -1,41 +1,256 @@
+\rfquote{Testing shows the presence, not the absence of bugs}{Edsger
+  W. Dijkstra}
+
 \section{Introduction}
-The goal of this chapter is?
+The goal of this chapter is to show how {\bibtex} files are analyzed.
 
-\section{Content}
+\section{What should be done about {\bibtex}}
 
-The parsing of {\bibtex} is done using a standard recursive parser.
-It outputs the {\bibtex} in the JSON-format which is easily to
-manipulate with a programming language.
+To analyze {\bibtex} one would need to parse a \file{bib} into a
+suitable representation.  This representation would need to sufficient
+for parsing the {\bibtex} entries and strings at a minimum.  If one
+intent to pretty print the result after resolving all issues, the
+parsing also needs the preambles and preferably the comments.
 
-A simple way of specifying options is provided that feels natural for
-a {\bibtex} user.  $OPTorangutan = {@lang=FR, @OK}$
+The easiest approach is to take care of the lexical and correctness
+concerns first then the consistency concerns.  By taking care of the
+lexical and correctness concerns first the optimal conditions for
+taking care of the consistency concerns is made.  After all the
+concerns has been addressed a pretty printing utility will make sense
+to ensure a clear and consistent structure inside one's \file{bib}.
 
-Throws each entry at an analyzing module that handles the specific
-goals.  Current modules is spell checking, abbreviation checking and
-conformity checking.  If no issues found it can delete the entries to give a
-clean output that only tells what one need to change, so it will not
-complain.
+Due to the practical issues in changing/replacing {\bibtex} and to
+ensure separation of concerns such a tool should be an augmenting
+tool.
 
-Spell checker runs through all titles using a standard aspell module,
-the module can be configured via $@lang=DA$ no multilang support.
+\begin{itemize}
+\item Duplicate entries should be detected with certainty when
+  possible, using unique identifiers whenever possible otherwise
+  identical entries defined by: entry tags and content in the tags
+  being the same.  Whenever the entries are not identical a
+  specification of similarity should be used having the title and
+  authors as primary indicators of similarity.
 
-The abbreviation checker uses known abbreviation lists and strings to
-detect possible abbreviations.
+\item Spelling errors in general, should be handled either by online
+  look ups or a spell checker.  A combination of the two could be
+  powerful as it would give a potential indicator of false positives
+  from either.  Using a spell checker requires a way to configure the
+  language for the individual entries.
 
-When checking for conformity it has a simple rule based system.  It
-validates according to the specification of {\bibtex}, further more it
-allows for de facto standards, and ignores tags starting with $OPT$,
-and it ignores $doi$, $issn$ and for books it ignores $isbn$.
-Configurable via JSON, to be configurable via {\bibtex} files.
+\item Spelling errors in names can only be handled by databases of
+  names, as a spell checker will give too many false positives.
 
-Two-phase parsing most sensible since detecting consistency makes more
-sense once all conference names are de-abbreviated.
+\item Initials can be detected by finding cases with a single letter,
+  perhaps followed by a punctuation. The handling will in part be by
+  databases with names in combination of online look ups.
+
+\item Online look ups, will be impossible to detect for certain as the
+  intended search will be unknown.  The detection of the other issues
+  can give an indicator of a bad look up.  To prevent further bad look
+  ups, for instance when used as a supportive tool for the other
+  issues, the most trusted online database available should be used
+  whenever possible.  A system doing look ups in multiple databases
+  will give further indications of potential issues.
+
+\item Name changes of forums will require a database of known changes
+  and a way of specifying the changes.  When a forum name has changed
+  it will be a good idea to introduce a de-facto standard to highlight
+  this, for instance a tag named $OLDforum$.
+
+\item Conformity to de-facto standards and the {\bibtex} specification
+  requires a set of rules specifying: the required and optional tags,
+  the mutually exclusive tags, and the inclusive tags in {\bibtex}.
+  \remark{Not good, neither exclusive or inclusive tags is defined}
+
+\item Journal abbreviations should be handled by refactoring journal
+  names into strings using a database to de-abbreviate or abbreviate.
+  Furthermore detecting unknown abbreviations will be useful.
+
+\item To handle {\bibtex} strings that end up as part of the text, the
+  text should be compared with the strings in the \file{bib}.
+
+\item Inconsistent tag usage should be handled by mapping entries from
+  the same forums and comparing the tags in use for missing and
+  additional tags.  Comparing forum entries over time will increase
+  the usefulness but adds the need to handle changes in the tags used
+  over time.
+
+\item Inconsistent entry keys should be handled by having a naming
+  scheme based on the data in the entries, with a way to disambiguate
+  if two different entries would get the same name.
+\end{itemize}
+
+Configuration should be done via de-facto standards, preferably
+corresponding to the {\bibtex} format.
+
+For forums adding a tag with the name $OLDforum$ and the old forum
+name - or even better the string for the old forum would make sense.
+Only referring to the previous name, in the rare case that multiple
+name changes should be present then the latest previous case in the
+document should be adequate. :/ not sure I agree completely here
+
+A way to specify the deviations from the defaults should be done
+through defining a de-facto standard tag containing the accepted
+deviations.  Such a standard could be $OPTanalyze$.  In the value the
+desired deviations would then be specified:
+
+\begin{itemize}
+\item $@OK$, to mark an entry as correct.
+\item $@LANG=XX$ to specify the desired spell check language,
+  replacing $XX$ with the language code desired.
+\item $@SPELLINGOK$ to mark the spelling as correct.
+\item $@NAMESOK$ to mark that the names are correct.
+\item $@CONFORMITYOK$ to mark conformity as correct.
+\item $@STRINGSOK$ to mark that the texts does not contain strings.
+\item $@CONSISTENCYOK$ to mark the consistency as correct.
+\end{itemize}
+
+These tags can be combined using spaces as the separation character.
+An example of an entry can be seen in \figref
+
+\begin{figure}
+  \centering
+\begin{verbatim}
+@{
+  OLDforum = {},
+  OPTanalyze = {@LANG=DA @NAMESOK @STRINGSOK}
+}
+\end{verbatim}
+  \caption{An example using the de-facto standards for configuration}
+  \label{fig:analyzing_added_de_facto_standards}
+\end{figure}
+
+\remark{Still need to specify consistency changes and if a tag is the desired
+consistency.}
+
+The use of de-facto standards should be specifiable through a
+{\bibtex} like format.  A suggested way would be using entries
+identical with {\bibtex} with the desired rules specified as the value
+of the tags.  The idea is illustrated in
+\figref{fig:correctness_checker_bibtex}.  The reason this does not use
+the $OPTanalyze$
+
+Entry key format should be specified using ....
 
 
-When searching for issues in {\bibtex} it is desired to get an final
-output that says all go.
+\section{{\orangutan}}
+
+\subsection{Introduction}
+
+An attempt at implementing is {\orangutan}.
+
+
+\subsection{Why {\orangutan} came to be}
+
+\remark{Olivier: A bit uncertain if this makes sense, but somehow it feels nice
+  if the structure from Chapter 2 can be followed and to have a short
+  sum up of why we're here. What say you?}
+
+The advent of {\bibtex} has been a game changer for bibliographic
+references, which makes the issues in {\bibtex} undesirable.  There
+are a lot of tools that provide partial solutions, so having an
+augmenting tool would be an improvement.  The tool will be most
+effective if it address first the correctness and lexical concerns
+then the consistency concerns.  The attempt at making this tool has
+been named \newdef{\orangutan}.
+
+
+\subsection{What is {\orangutan}}
+
+In the same spirit as {\bibtex}, {\orangutan} is designed to be a
+simple software tool for improving bibliographic references.
+{\orangutan} analyze and give suggestions for improvements to a
+\file{bib}.
+
+
+\subsection{How {\orangutan} is used in principle}
+
+When analyzing {\bibtex} files using a two step solution is used
+taking care of the correctness and lexical concerns first, then the
+consistency concerns.  The two steps is used to ensure the best
+possible conditions for handling consistency concerns.  The analyzing
+tool then outputs the suggestions it has for improving the \file{bib}.
+
+The tool use options, set by introducing a new de-facto standard.  The
+options are for specifying if the language for the spell check and
+that the entry is already considered to be correct.  To make the
+options intuitive for the {\bibtex} user the options are designed to
+match the {\bibtex} format.
+
+
+\subsection{How {\orangutan} is used in practice}
+
+The configuration format make use of that entry tags starting with
+$OPT$ is a de-facto standard, for commenting a tag out.  This way of
+configuring is chosen to prevent future clashes with standards.  A
+simple way of specifying options is provided that feels natural for a
+{\bibtex} user.  All the options are specified as an entry tag with
+the name $OPTorangutan$.
+
+In the current version there are three analyzing modules in use: a
+spell checker, a correctness checker and an abbreviation checker.
+
+The spell checker runs a spell check in the background using aspell.
+Currently the spell checker is limited to only titles.  When spell
+checking it use a configuration to specify the language, \eg,
+$OPTorangutan = {@lang=DA}$.  Just as any other spell checker it marks
+words that are misspelled and give a list of suggestions.
+
+The correctness checker currently verifies the conformity with the
+{\bibtex} specification and known de-facto standards.  Currently the
+format for specifying entries is JSON, a {\bibtex} based format is
+desired.  The format is relatively simple as seen in
+\figref{fig:correctness_checker_json}.  The desired format for user
+configuration is based on {\bibtex} such as can be seen in
+\figref{fig:correctness_checker_bibtex}
+
+\begin{figure}
+  \centering
+\begin{minted}{json}
+{
+  "book": {
+    "author": {
+      "required": true,
+      "excludes": "editor"
+    },
+    "editor": {
+      "required": true,
+      "excludes": "author"
+    },
+[...]
+\end{minted}
+  \caption{A snippet of the JSON for configuring the correctness checker}
+  \label{fig:correctness_checker_json}
+\end{figure}
+
+\begin{figure}
+  \centering
+\begin{verbatim}
+@book{
+  author = {@required @excludes=editor}
+  editor = {@required @excludes=author}
+[...]
+\end{verbatim}
+  \caption{A snippet of the desired {\bibtex} based configuration for the correctness checker}
+  \label{fig:correctness_checker_bibtex}
+\end{figure}
+
+The abbreviation checker runs through journal names using a known list
+of abbreviations.  The current version just suggest the full name
+whenever an abbreviation is detected, these suggestions could be
+heavily improved by suggesting strings.  The checking can be improved
+by using know abbreviation standards or trying to detect abbreviations
+that are unknown.
+
 
 % Is there already fitting string for an journal name?
 % Suggest strings for journal names, matching easier
 
 \section{Summary and conclusions}
+
+To summarize:
+
+Having a tool that can analyze {\bibtex} files for issues is really
+useful.  However, just like the look up services can lure a user into
+a false sense of security, so can \orangutan.  An analyzing tool will
+not be a guarantee that there are no issues left.

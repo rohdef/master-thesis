@@ -18,6 +18,7 @@
 \usepackage{listings}
 \usepackage[backend=biber]{biblatex}
 
+\usepackage{minted}
 \usepackage{float}
 \floatstyle{boxed}
 \restylefloat{figure}
@@ -27,9 +28,9 @@
 \hypersetup{
     pdfborder = {0 0 0}
 }
-%\newcommand{\remark}[1]{{ \bf [ \footnotesize #1 ]}}
-\newcommand{\remark}[1]{}
-\newcommand{\Orangutan}{Orangutan}
+\newcommand{\remark}[1]{{ \bf [ \footnotesize #1 ]}}
+%\newcommand{\remark}[1]{}
+\newcommand{\orangutan}{Orangutan}
 \newcommand{\bibtex}{Bib{\TeX}}
 \newcommand{\chapref}[1]{(Section~\ref{#1})}
 \newcommand{\rfquote}[2]{
@@ -104,14 +105,16 @@
 \label{ch:related}
 \input{related.tex}
 
-%\chapter{Analyzing {\bibtex} files}
-%\label{ch:analyzing}
-%\input{analyzing.tex}
+\chapter{Analyzing {\bibtex} files}
+\label{ch:analyzing}
+\input{analyzing.tex}
 
-%\chapter{Organizing {\bibtex} files}
+\chapter{Organizing {\bibtex} files}
+\label{ch:organizing}
+\input{organizing.tex}
 
-%\chapter{Conclusion and perspectives}
-%\label{ch:conclusion}
+\chapter{Conclusion and perspectives}
+\label{ch:conclusion}
 
 \printbibliography{}
 \end{document}

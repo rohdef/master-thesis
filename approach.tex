@@ -11,18 +11,15 @@ issues \chapref{sec:intro_what_to_do}
 lot of peoples lives, however not without any issues.  The challenges
 range widely and trying to group similar looking issues we have:
 
-\remark{We may want the same order as in the list of issues, probably
-  reformulate this}
-
+The misspellings in general, misspellings in names, initials in author
+names, use of abbreviations for journal names, and {\bibtex} strings
+that end up being text will be considered as lexical concerns.
 Conforming to the specification and de-facto standards is considered
-as a correctness concern.  The use of abbreviations for journal names,
-initials in author names, misspellings in general, misspellings in
-names and {\bibtex} strings that end up being text will be considered
-as lexical concerns.  All of these issues will be considered combined
-as \newdef{correctness and lexical concerns}.
+as a correctness concern.  All of these issues will be considered
+combined as \newdef{correctness and lexical concerns}.
 
-Inconsistent use of tags, inconsistent entry keys, forum names that
-change and duplicate entries will be considered as \newdef{consistency
+Duplicate entries, forum names that change, inconsistent use of tags
+and inconsistent entry keys will be considered as \newdef{consistency
   concerns}.
 
 The Utopian goal is to provide a structural solution for all these
@@ -290,9 +287,6 @@ names.  Since a lot of users already have databases in use, support
 for one specifying a naming scheme would be appropriate.
 
 
-%\subsection{Summary  and conclusions}
-%To summarize:
-
 \section{Summary and conclusions}
 
 The issues in {\bibtex} files have been grouped in correctness and
@@ -342,6 +336,10 @@ correctness and lexical concerns.
 \item Inconsistent entry keys should be handled by a rule for the
   desired format for entry key names.
 \end{itemize}
+
+Handling the {\bibtex} issues will be done by augmenting {\bibtex}
+with a multiple phase tool.  The tool will address the correctness and
+lexical concerns first, then the consistency concerns.
 
 
 %\begin{figure}
