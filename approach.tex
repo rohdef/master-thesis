@@ -1,15 +1,17 @@
 \section{Introduction}
+
 The goal of this chapter is to organize the issues people have with
-{\bibtex}.  Answering what the issues in {\bibtex} are
+{\bibtex}: answering what the issues in {\bibtex} are
 \chapref{sec:intro_what_issues} and how to approach the {\bibtex}
 issues \chapref{sec:intro_what_to_do}
+
 
 \section{What are the issues in {\bibtex}}
 \label{sec:intro_what_issues}
 
-{\bibtex} has changed the landscape for scientific writing and eased a
-lot of people's lives, however not without any issues.  The challenges
-range widely and trying to group similar looking issues we have:
+{\bibtex} has changed the landscape for scientific writing.  However,
+not without any issues.  The challenges range widely and trying to
+group similar looking issues we have:
 
 The misspellings in general, misspellings in names, initials in author
 names, use of abbreviations for journal names, and {\bibtex} strings
@@ -23,19 +25,19 @@ and inconsistent entry keys will be considered as \newdef{consistency
   concerns}.
 
 The Utopian goal is to provide a structural solution for all these
-issues so that if any further issues exist they would be purely
+issues so that if any further issues exist, they would be purely
 conjunctural.
 
 
 \section{What can be done about the {\bibtex} issues}
 \label{sec:intro_what_to_do}
 
-As previously stated, the structural approach to the issues is desired.
-This choice basically means ensuring that the tools handle the
-issues, preferably to the level where all issues are solved.  As
-touched upon shortly when inspecting the problems, it is not likely
-that all issues can be solved perfectly.  For a structural solution
-there are two approaches:
+As previously stated, the structural approach to the issues is
+desired.  This choice means to ensure that there are tools that are
+able to handle the issues - preferably to the level where all issues
+are solved.  As touched upon shortly when inspecting the problems, it
+is not likely that all issues can be solved perfectly.  For a
+structural solution, there are two approaches:
 
 
 \subsection{Updating or replacing {\bibtex}}
@@ -49,11 +51,11 @@ abbreviations and controlling all data.  The updated version of
 or fail building the \file{bbl} with appropriate error messages for
 issues that the user needs to take care of.
 
-This approach would be probably be perceived as invasive as it would
-cause existing {\bibtex} files not to work and it would impose the
-tool on the users with requirements they may not desire.  The
-perception would of course depend on perspective because the user who
-wants structure and control might find it good that it is enforced.
+This approach would probably be perceived as invasive since it would
+cause existing {\bibtex} files not to work, and it would impose
+requirements one may not desire.  The perception would of course
+depend on perspective because the user who wants structure and control
+might find it good that it is enforced.
 
 As will be inspected in Chapter~\ref{ch:related} there are actually a
 few attempts at both changing and replacing {\bibtex}.
@@ -61,12 +63,16 @@ few attempts at both changing and replacing {\bibtex}.
 
 \subsection{Augmenting {\bibtex}}
 
-Instead of changing or replacing {\bibtex} an augmenting tool is
-another option.  Such a tool can be used together on {\bibtex} file
-to provide or suggest improvements, instead of changing specifications.
-An augmenting tool will be a supplement to current use of {\bibtex}
-and be optional, rather than imposed on the users.
+Instead of changing or replacing {\bibtex}, an augmenting tool is
+another option.  Such a tool, together with {\bibtex}, would provide
+or suggest improvements, instead of changing specifications.  An
+augmenting tool will be a supplement to current use of {\bibtex} and
+be optional, rather than imposed on the users.
 
+An augmenting tool also has the advantage of separating concerns.  The
+concern of {\bibtex} is to cite references and print a bibliography
+according to a bibliography style.  Where as the concern of an
+augmenting tool is to ensure that ones has a nice \file{bib}.
 
 \section{How do we approach the {\bibtex} issues}
 \subsection{Introduction}
@@ -83,24 +89,25 @@ consistency concerns reveals a dependency in the analysis.  Going
 through the consistency concerns observing their relation gives:
 
 \begin{itemize}
-\item For inconsistent use of tags, a way to determine if entries are
-  from the same forum is needed.  Such a way depends on consistent
-  naming of the forum and a way to detect name changes.
+\item For inconsistent use of entry tags, it is needed to have a way
+  to determine if entries are from the same forum.  Such a
+  way depends on consistent naming of the forum and a way to detect
+  name changes.
 
 \item For duplicate entries having unique identifiers such as arXiv
-  numbers, ISSN or DOI will make the detection trivial.  Otherwise the
-  detection has to be based on the similarity of the information.  At
-  best the information is identical, otherwise it has to be as similar
-  as possible to improve the detection.  Thus solving the lexical
-  concerns will be of use.
+  numbers, ISSN or DOI will make the detection trivial.  Otherwise,
+  the detection has to be based on the similarity of the information:
+  at best the information is identical, otherwise it has to be as
+  similar as possible to improve the detection.  Thus solving the
+  lexical concerns will be of use.
 
 \item Inconsistent naming of entry keys can be handled by a naming
   scheme.  Such a naming scheme is usually based on the information in
   the entries.  So having the relevant tags and correct content in
   them will provide a way to ensure consistent entry keys.
 
-\item For name changes of forums we need to be able to recognize the
-  names which is easier with correct and consistent names.
+\item For name changes of forums, we need to be able to recognize the
+  names, which is easier with correct and consistent names.
 \end{itemize}
 
 A common property about the consistency concerns is that they are
@@ -114,78 +121,80 @@ handling the consistency concerns.
 \label{sec:approach_duplicates}
 
 Duplicate entries are fairly straight forward if the tags and the
-contents are identical.  If the content and tags deviate a way to
+contents are identical.  If the content and tags deviate, a way to
 detect ``similarity'' will be needed.  The easiest definition of
 similarity is if the title and author is identical, however this
 definition might need to take things like revisions and year into
 account, as an author may decide to write a new version later or if
 one for some reason desires to refer to different revisions.  Further
-challenges may arise if there is lexical and correctness challenges as
-per Section~\ref{sec:approach_lexical_consistency} fixing these first
-is desired.
+challenges may arise if there are lexical and correctness issues.  As
+per Section~\ref{sec:approach_lexical_consistency}, one should fix
+these issues first.
 
 
 \subsection{\nameref{sec:problems_spelling}}
 
-To detect misspellings a spell checker can be used.  Alternatively
+To detect misspellings, a spell checker can be used.  Alternatively,
 checking the resources in online databases is an option.  If a spell
-checker is used one should be aware of false positives.  Domain
-specific terms might not be present in the dictionary and if the
-original source is misspelled, it would be a mistake to correct it
-(once published the name published is the correct name of the
-reference!).  Provided a solution for the issues in online look ups
+checker is used, one should be aware of false positives.
+Domain-specific terms might not be present in the dictionary and if
+the original source is misspelled, it would be a mistake to correct it
+(once published, the name published is the correct name of the
+reference!).  Provided a solution for the issues in online lookups,
 the correct spelling will be a matter of looking up, but references
-may not be in the databases, and as stated in
-Section~\ref{sec:approach_look_ups} there is no good way to ensure
-correct look ups.  So a spell checker seems like a good way to get an
-indication of possible errors, but one would still have to verify
-them.  As entries may be in different languages a way of specifying
-the language should be considered.
+may not be in the databases.  As stated in
+Section~\ref{sec:approach_look_ups}, there is no good way to ensure
+correct lookups.  Therefore a spell checker seems like a good way to
+get an indication of possible misspellings, but one would still have
+to verify them.  Since entries may be in different languages, a way of
+specifying the language should be considered.
 
 
 \subsection{\nameref{sec:problems_spelling_names}}
 \label{sec:approach_spelling_names}
 
-Spell checking names with a normal spell checker will cause errors.  A
-possible way to approach this would be to make online look ups in
-databases with scientific authors, such as DBLP and Google Scholar.
-This will still have the issue with name of authors who have not
-published anything scientific.  Extending this solution to contain
-more databases such as book authors will improve the solution, but
-will still be limited to known author names.
+Spell checking names with a normal spell checker is likely to cause
+false positives.  A possible way to approach these false positives
+would be to widen the online search to databases with scientific
+authors, such as DBLP and Google Scholar.  This widening, however,
+will not help for authors who are not in these other databases.
+Extending this solution to contain more databases such as book authors
+will improve the solution, but will still be limited to known author
+names.
 
 
 \subsection{\nameref{sec:problems_initials}}
 
 Finding the initials is a matter of being able to detect single
-letters with or without a period after it.  However if one for some
+letters with or without a period after it.  However, if one for some
 reason groups initials together, \eg, making George R. R. Martin into
-George RR Martin, then further detection will be needed.  Replacing
-the initials with full names is appropriate whenever possible, but
-since the full names may not be known some way of specifying that
-initials is the only thing available is needed.  The best approach
-will probably be the one described for spell checking names in
+George RR Martin, or J. K. Rowling into JK Rowling, or B. B. King into
+BB King, then further detection will be needed.  Replacing the
+initials with full names is appropriate whenever possible, but since
+the full names may not be known some way of specifying that initials
+is the only thing available is needed.  The best approach will
+probably be the one described for spell checking names in
 Section~\ref{sec:approach_spelling_names}.
 
 
 \subsection{\nameref{sec:problems_look_ups}}
 \label{sec:approach_look_ups}
 
-Online database look ups can be a very useful tool for handling the
+Online database lookups can be a very useful tool for handling the
 lexical and correctness concerns, but getting incorrect data can cause
-problems.  The best approach to ensure correct look ups is if it is
-possible to use services that are known to be correct.
+problems.  The best approach would be to ensure correct lookups, by
+using services that are known to be correct.
 
-A situation where relatively reliable look ups is possible, as in the
-``EPTCS'' look up seen in \figref{fig:eptcs_lookup}, can be used to
-improve the reliability of the results.  However there is still no
+A situation where relatively reliable lookups is possible, as in the
+``EPTCS'' lookup seen in \figref{fig:eptcs_lookup}, can be used to
+improve the reliability of the results.  However, there is still no
 certain way to know if the database of the service is correct, so it
 is still not certain.  Most likely the ID systems, such as arXiv
-numbers, DOI and ISSN, will also provide a relatively reliable look up
+numbers, DOI and ISSN, will also provide a relatively reliable lookup
 mechanism, but it is still not guaranteed.
 
-Another way to approach the bad look ups could be by doing the same
-look up in multiple databases and then have some kind of voting system
+Another way to approach the bad lookups could be by doing the same
+lookup in multiple databases and then have some kind of voting system
 that decides on which entry to trust.  This would however require
 knowledge information sources each online service use, because their
 source of information may be the same and then the same error could
@@ -198,13 +207,13 @@ the result.  Doing the vote system would be overkill in most
 situations, and the user still has to validate the result, since the
 voting system will not provide a certain correct result.  Having the
 user validate the result will make issues partly conjunctural, if one
-just accept any result from the look up.
+just accept any result from the lookup.
 
 
 \subsection{\nameref{sec:problems_name_changes}}
 
 Handling name changes of forums is supportive to ensuring consistency.
-Since name changes cannot be derived automatically one approach would
+Since name changes cannot be derived automatically, one approach would
 be a database of known name changes, which has the disadvantage that
 it needs to be maintained.  Adding a configuration to specify name
 changes may also be appropriate.
@@ -219,13 +228,13 @@ specification is a simple task, as the specification is just a set of
 rules.  A set of de-facto standards, likewise, is also a simple set of
 rules.
 
-De-facto standards however provide challenges, as they are the
+De-facto standards however, provide challenges, as they are the
 standards currently in use.  This means that they both depend on who
 the user is and the standards are subject to change.
 
 A tool handling conformity to the specification and de-facto standards
 should thus be configurable to account for changes in de-facto
-standards.  For practicality the de-facto standards that are not
+standards.  For practicality, the de-facto standards that are not
 likely to change (such as ISSN and DOI) could be accounted for with a
 default setting.
 
@@ -247,7 +256,7 @@ their choice.
 
 \subsection{\nameref{sec:problems_strings_as_text}}
 
-A {\bibtex} string can end up being part of a text by mistake.  In the
+A {\bibtex} string can end up being part of a text by mistake: in the
 example used in Section~\ref{sec:problems_strings_as_text} where the
 month ended up as a text rather than a string a simple check is
 possible, because for a month we know what to expect.  Whenever
@@ -261,19 +270,19 @@ it has to be the user's choice.
 \subsection{\nameref{sec:problems_inconsistent_tags}}
 
 Detecting inconsistent use of tags requires a way of detecting when
-entries are from the same forum.  When such a way is provided it is
-possible to check if the set of fields are the same.  Having some kind
+entries are from the same forum.  When such a way is provided, it is
+possible to check if the set of tags are the same.  Having some kind
 of statistics on the usage may further improve the feedback, since it
-will be possible to suggest the shortest path to consistency: if it is
-by adding, or removing tags.
+will be possible to suggest the shortest path to consistency, whether
+by adding or by removing tags.
 
 Since a lot of the forums are continuous, such as a conference being
 held each year, the detail level of the information may change over
-time.  Also in some cases a single item can have additional
+time.  Also, in some cases, a single item can have additional
 information that is not general to the forum or for some reason not
-have information according to the general standard.  Optimally there
+have information according to the general standard.  Optimally, there
 should be a way to account for these cases, either by the user
-enforcing conformity or having options for when a deviation occurs.
+enforcing conformity or having options for when a desired deviation.
 
 
 \subsection{\nameref{sec:problems_inconsistent_keys}}
@@ -302,7 +311,7 @@ correctness and lexical concerns.
   of ``similarity'' will be needed.
 
 \item Spelling errors in general can be solved by a spell checker and
-  the usage of online look ups.  For a spell checker one must be aware
+  the usage of online lookups.  For a spell checker one must be aware
   of false positives and language.
 
 \item Spelling errors in names will challenge normal spell checkers.
@@ -312,10 +321,10 @@ correctness and lexical concerns.
 \item Initials hiding people's names can be handled by online
   resources, just as misspellings in names.
 
-\item To get online look ups that contain the correct data is
+\item To get online lookups that contain the correct data is
   impossible, the results can be improved by selecting the most
-  appropriate database for the look up and by introducing detection of
-  erroneous look ups.
+  appropriate database for the lookup and by introducing detection of
+  erroneous lookups.
 
 \item Name change of a forum can be handled by a database and by a way
   to specify name changes.

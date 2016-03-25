@@ -9,74 +9,93 @@ The goal of this chapter is to show how {\bibtex} files are analyzed.
 \section{What should be done about {\bibtex}}
 \subsection{In principle}
 
-To analyze {\bibtex} one would need to parse a \file{bib} into a
-suitable representation.  This representation would need to sufficient
-for parsing the {\bibtex} entries and strings at a minimum.  If one
-intent to pretty print the result after resolving all issues, the
-parsing also needs the preambles and preferably the comments.
-
-The easiest approach is to take care of the lexical and correctness
-concerns first then the consistency concerns.  By taking care of the
-lexical and correctness concerns first the optimal conditions for
-taking care of the consistency concerns is made.  After all the
-concerns has been addressed a pretty printing utility will make sense
-to ensure a clear and consistent structure inside one's \file{bib}.
-
 Due to the practical issues in changing/replacing {\bibtex} and to
-ensure separation of concerns such a tool should be an augmenting
-tool.
+ensure separation of concerns an analyzing tool should be an
+augmenting tool.
 
+To analyze {\bibtex} one would need to parse a \file{bib} into a
+suitable representation.  This representation would need to parse
+{\bibtex} entries and strings at a minimum.  If one intents to pretty
+print the result after resolving all issues, the parsing also needs
+the preambles.  Comments are technically optional, but should be kept
+too.
+
+The easiest approach is a two step parse: first taking care of the
+lexical and correctness concerns, then the consistency concerns.  By
+taking care of the lexical and correctness concerns first the optimal
+conditions for taking care of the consistency concerns is made.  After
+all the concerns has been addressed a pretty printing utility will a
+nice final touch, ensuring a consistent structure inside ones
+\file{bib} and having the same indentations and formatting for text.
+
+The term database i here use for both local and online databases,
+since it does not matter if one use a local copy, if it is up to date.
+
+\subsubsection{First step: Lexical and correctness}
 \begin{itemize}
-\item Duplicate entries should be detected with certainty when
-  possible, using unique identifiers whenever possible otherwise
-  identical entries defined by: entry tags and content in the tags
-  being the same.  Whenever the entries are not identical a
-  specification of similarity should be used having the title and
-  authors as primary indicators of similarity.
-
 \item Spelling errors in general, should be handled either by online
-  look ups or a spell checker.  A combination of the two could be
+  lookups or a spell checker.  A combination of the two could be
   powerful as it would give a potential indicator of false positives
   from either.  Using a spell checker requires a way to configure the
   language for the individual entries.
 
-\item Spelling errors in names can only be handled by databases of
-  names, as a spell checker will give too many false positives.
+\item Spelling errors in names should be handled by databases with
+  names.
 
 \item Initials can be detected by finding cases with a single letter,
   perhaps followed by a punctuation. The handling will in part be by
-  databases with names in combination of online look ups.
+  databases with names.
 
-\item Online look ups, will be impossible to detect for certain as the
+\item Online lookups, will be impossible to detect for certain as the
   intended search will be unknown.  The detection of the other issues
-  can give an indicator of a bad look up.  To prevent further bad look
-  ups, for instance when used as a supportive tool for the other
-  issues, the most trusted online database available should be used
-  whenever possible.  A system doing look ups in multiple databases
-  will give further indications of potential issues.
-
-\item Name changes of forums will require a database of known changes
-  and a way of specifying the changes.  When a forum name has changed
-  it will be a good idea to introduce a de-facto standard to highlight
-  this, for instance a tag named $OLDforum$.
+  can give an indicator of a bad lookup.  Online lookups, however, is
+  a very likely way to handle the databases needed for this tool.  The
+  most trusted online database available should be used whenever
+  possible.  A system doing lookups in multiple databases will give
+  further indications of potential issues.  The user should always
+  confirm that results from an online lookup is the desired result,
+  due to the risk of false positives.
 
 \item Conformity to de-facto standards and the {\bibtex} specification
   requires a set of rules specifying: the required and optional tags,
-  the mutually exclusive tags, and the inclusive tags in {\bibtex}.
-  \remark{Not good, neither exclusive or inclusive tags is defined}
+  the exclusive tags, and the inclusive tags in {\bibtex}.
+
+\item Validating the values, whenever possible, would be a further
+  improvement.  This should be done on values where clear rules for
+  correct input can be specified, such as ISSN, year and month.  For
+  values that can further be verified using a database, such
+  validation is recommended.
 
 \item Journal abbreviations should be handled by refactoring journal
-  names into strings using a database to de-abbreviate or abbreviate.
-  Furthermore detecting unknown abbreviations will be useful.
+  names into strings.  It should use a database to de-abbreviate or
+  abbreviate.  Furthermore detecting unknown abbreviations will be
+  useful.
 
 \item To handle {\bibtex} strings that end up as part of the text, the
   text should be compared with the strings in the \file{bib}.
+\end{itemize}
+
+
+\subsubsection{Second step: Consistency}
+\begin{itemize}
+\item Duplicate entries should be detected.  When possible, using
+  unique identifiers.  Otherwise, by detecting identical entries
+  defined by: the entry tags and content in the tags being the same.
+  When the entries are not identical a specification of similarity
+  should be used, having the title and authors as primary indicators,
+  to suggest potential duplicates.  The tool should suggest merging
+  when duplicates are found.
+
+\item To detect name changes of forums, it is required to have: a
+  database of known changes, and a way of specifying the changes.
+  When a forum name has changed it should suggest usage of a de-facto
+  standard to highlight this.
 
 \item Inconsistent tag usage should be handled by mapping entries from
   the same forums and comparing the tags in use for missing and
   additional tags.  Comparing forum entries over time will increase
-  the usefulness but adds the need to handle changes in the tags used
-  over time.
+  the usefulness, but adds the need to handle changes in the tags in
+  use over time.
 
 \item Inconsistent entry keys should be handled by having a naming
   scheme based on the data in the entries, with a way to disambiguate
@@ -84,12 +103,29 @@ tool.
 \end{itemize}
 
 
-\subsection{In practice}
-\remark{Olivier: I'm not sure if it's a good idea to specify the
-  format fully, just feels the most complete thing to do.}
+\subsubsection{Configuration}
 
-Configuration should be done via de-facto standards, preferably
-corresponding to the {\bibtex} format. \remark{Describe the format}
+Both of the steps above require ways to configure the behavior.
+
+Configuration should be done via de-facto standards inside the
+\file{bib}, whenever possible.  The preference to using the {\bibtex}
+format allows people to use what they are familiar with.  Using a
+format that are readily supported in programming frameworks, like JSON
+or XML might be considered easy by the computer scientist, especially
+if it is one used to working with those formats.  However, people
+outside computer science, such as a physicist or the helpful chemist
+from earlier, will likely not be familiar with such formats, nor
+should they.  A user of {\bibtex} should at best only be concerned
+with {\bibtex}, when working with {\bibtex}.
+
+For some of the configurations they will be unreasonable to have
+inside the \file{bib} itself.  These configurations is better put into
+separate files.  However, the specification of should still be
+designed to match {\bibtex} as closely as possible, \ie, still using
+entries, tags and values to configure.
+
+
+\subsection{In practice}
 
 For forums adding a tag with the name $OLDforum$ and the old forum
 name - or even better the string for the old forum would make sense.
@@ -262,6 +298,6 @@ that are unknown.
 To summarize:
 
 Having a tool that can analyze {\bibtex} files for issues is really
-useful.  However, just like the look up services can lure a user into
+useful.  However, just like the lookup services can lure a user into
 a false sense of security, so can \orangutan.  An analyzing tool will
 not be a guarantee that there are no issues left.

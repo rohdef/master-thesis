@@ -12,11 +12,11 @@ used in practice \chapref{sec:how_bibtex_is_used_today}.
 The advent of {\TeX} has been a game changer for scientific writing,
 witness the number of articles written in {\TeX} (or derivatives such
 as {\LaTeX}).  For instance, on arXiv.org, nearly all articles are
-formatted with \LaTeX.  Apart from being grateful to Donald Knuth for
-providing such a robust system for scientific articles, writers can
-also be thankful that {\TeX} has given the basis for Oren Patashnik
-and Leslie Lamport to create {\bibtex} for managing scientific
-bibliographies.
+formatted with \LaTeX.  Apart from being grateful to Donald Knuth (the
+creator of \TeX) for providing such a robust system for scientific
+articles, writers can also be thankful that {\TeX} has given the basis
+for Oren Patashnik and Leslie Lamport to create {\bibtex} for managing
+scientific bibliographies.
 
 Before the wake of {\bibtex}, bibliographic references were managed
 entirely by hand and required a lot of labor.  For instance, nearly
@@ -45,10 +45,10 @@ file will be referred to as \newdef{the {\bibtex} file} or
 \newdef{\file{bib}}
 
 Depending on the forum, there are differences in: how references
-should be cited, be written, and the order in which they should be listed.
-Each publisher has a mandatory setup.  The specific set of rules a
-publisher has is referred to as a \newdef{bibliography style} or
-\newdef{citing style}.
+should be cited, how they should be written, and the order in which
+the references should be listed.  Each publisher has a mandatory
+setup.  The specific set of rules a publisher has is referred to as a
+\newdef{bibliography style} or \newdef{citing style}.
 
 When processing a document, {\bibtex} cites according to the selected
 bibliography style, ensures the formatting and the order in the
@@ -99,7 +99,7 @@ information from the {\LaTeX}-compiler.  Then run the $bibtex$ command
 which uses the \file{aux} to find the entries in use and to give them
 labels according to the reference style.  The output from {\bibtex} is
 a \file{bbl} with the formatted references, which is then used in
-subsequent runs by {\LaTeX}, so the document will have labels at the
+subsequent runs of {\LaTeX}, so the document will have labels at the
 appropriate places and a bibliography in accordance with the labels.
 
 
@@ -119,7 +119,7 @@ specification of tags relevant to the given medium where some of them
 are mandatory. For instance for an $@ARTICLE$ the tags $author$,
 $title$, $year$ and $journal$ are mandatory and supplementary
 information such as the $pages$ for the article and $volume$ of the
-journal can be added.  For ease of use {\bibtex} provides predefined
+journal can be added.  For ease of use, {\bibtex} provides predefined
 strings for the months: $jan$, $feb$, $mar$ and so on.
 
 Tags and entries are case insensitive. The literal content
@@ -171,7 +171,7 @@ When citing inside a {\LaTeX} file, the desired entry key from the
 {\bibtex} is used inside the ${\backslash}cite$, for example if one
 has a reference named $some\_article$ then the reference is used by
 writing: ${\backslash}cite\{some\_article\}$.  To link the document
-and the bibliography together the command ${\backslash}bibliography$
+and the bibliography together, the command ${\backslash}bibliography$
 is used together with a parameter: the name the {\bibtex} file, for
 example: ${\backslash}bibliography\{mybib\}$.
 
@@ -188,9 +188,9 @@ example: ${\backslash}bibliography\{mybib\}$.
 \section{How {\bibtex} is used in practice}
 \label{sec:how_bibtex_is_used_today}
 
-To this day, {\bibtex} is routinely used by researchers, witness that
+To this day, {\bibtex} is routinely used by researchers.  Observe that
 almost all online resources for finding references provide {\bibtex}
-output.  Many online databases are widely used to look up entries,
+entries.  Many online databases are widely used to lookup entries,
 which has also given rise to a variety of ways to identify articles,
 such as: arXiv numbers, DOI and ISSN.
 
@@ -202,9 +202,10 @@ file as a way to keep track of what they read.
 
 That {\bibtex} ignores unknown tags is used for de-facto standards, to
 add additional information and to comment out tags by prefixing them
-with $OPT$.  It is so widely used that it is common to see article
-search engines have tags that are not specified by {\bibtex} and there
-are libraries that provide citing styles that make use of these tags.
+with $OPT$.  De-facto standards are so widely in use that they are
+commonly used in the results from search engines for bibliographic
+references and there are citing styles that make use of the de-facto
+standards.
 
 
 \section{Summary and conclusions}
