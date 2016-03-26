@@ -14,11 +14,12 @@ not without any issues.  The challenges range widely and trying to
 group similar looking issues we have:
 
 The misspellings in general, misspellings in names, initials in author
-names, use of abbreviations for journal names, and {\bibtex} strings
-that end up being text will be considered as lexical concerns.
-Conforming to the specification and de-facto standards is considered
-as a correctness concern.  All of these issues will be considered
-combined as \newdef{correctness and lexical concerns}.
+names, erroneous online lookups, use of abbreviations for journal
+names, and {\bibtex} strings that end up being text will be considered
+as lexical concerns.  Conforming to the specification and de-facto
+standards is considered as a correctness concern.  All of these issues
+will be considered combined as \newdef{correctness and lexical
+  concerns}.
 
 Duplicate entries, forum names that change, inconsistent use of tags
 and inconsistent entry keys will be considered as \newdef{consistency
@@ -73,6 +74,9 @@ An augmenting tool also has the advantage of separating concerns.  The
 concern of {\bibtex} is to cite references and print a bibliography
 according to a bibliography style.  Where as the concern of an
 augmenting tool is to ensure that ones has a nice \file{bib}.
+
+Getting people to use such a solution ironically cause a new issue, to
+which there is no structural solution.
 
 \section{How do we approach the {\bibtex} issues}
 \subsection{Introduction}
@@ -225,8 +229,8 @@ As stated in Section~\ref{sec:problems_de_facto} it is desired to be
 able to validate if the file conforms to the specification and the
 desired de-facto standards.  Validating conformity to the
 specification is a simple task, as the specification is just a set of
-rules.  A set of de-facto standards, likewise, is also a simple set of
-rules.
+rules (Section~\ref{sec:about_micro_use}).  A set of de-facto
+standards, likewise, is also a simple set of rules.
 
 De-facto standards however, provide challenges, as they are the
 standards currently in use.  This means that they both depend on who
@@ -279,10 +283,10 @@ by adding or by removing tags.
 Since a lot of the forums are continuous, such as a conference being
 held each year, the detail level of the information may change over
 time.  Also, in some cases, a single item can have additional
-information that is not general to the forum or for some reason not
+information that is not general to the forum, or for some reason not
 have information according to the general standard.  Optimally, there
 should be a way to account for these cases, either by the user
-enforcing conformity or having options for when a desired deviation.
+enforcing conformity, or having options for when a desired deviation.
 
 
 \subsection{\nameref{sec:problems_inconsistent_keys}}
@@ -291,7 +295,7 @@ Provided that the lexical and correctness concerns have been solved,
 handling inconsistent entry keys require very little effort.  Having a
 rule for how the key names should be formatted is all that is needed.
 Like in Section~\ref{sec:approach_duplicates} there is the issue of
-similar, but different, entries.  Similar entries could result in the
+similar, but different entries.  Similar entries could result in the
 same entry key, so there is the need for a way to disambiguate the key
 names.  Since a lot of users already have databases in use, support
 for one specifying a naming scheme would be appropriate.
@@ -307,15 +311,15 @@ correctness and lexical concerns.
 
 \begin{itemize}
 \item Duplicate entries can be found if there is a unique identifier
-  or identical entries.  To detect deviating duplicates a definition
+  or identical entries.  To detect deviating duplicates, a definition
   of ``similarity'' will be needed.
 
 \item Spelling errors in general can be solved by a spell checker and
-  the usage of online lookups.  For a spell checker one must be aware
+  the usage of online lookups.  For a spell checker, one must be aware
   of false positives and language.
 
 \item Spelling errors in names will challenge normal spell checkers.
-  Using online databases of authors will enable some checking but the
+  Using online databases of authors will enable some checking, but the
   solution will be limited to known author names.
 
 \item Initials hiding people's names can be handled by online

@@ -1,5 +1,5 @@
-\rfquote{Testing shows the presence, not the absence of bugs}{Edsger
-  W. Dijkstra}
+\rfquote{Testing shows the presence,\newline
+  not the absence of bugs.}{Edsger W. Dijkstra}
 
 
 \section{Introduction}
@@ -23,53 +23,52 @@ too.
 The easiest approach is a two step parse: first taking care of the
 lexical and correctness concerns, then the consistency concerns.  By
 taking care of the lexical and correctness concerns first the optimal
-conditions for taking care of the consistency concerns is made.  After
-all the concerns has been addressed a pretty printing utility will a
-nice final touch, ensuring a consistent structure inside ones
-\file{bib} and having the same indentations and formatting for text.
+conditions for taking care of the consistency concerns is made.
 
 The term database i here use for both local and online databases,
 since it does not matter if one use a local copy, if it is up to date.
 
 \subsubsection{First step: Lexical and correctness}
 \begin{itemize}
-\item Spelling errors in general, should be handled either by online
+\item Spelling errors in general, should be detected either by online
   lookups or a spell checker.  A combination of the two could be
-  powerful as it would give a potential indicator of false positives
-  from either.  Using a spell checker requires a way to configure the
-  language for the individual entries.
+  powerful, since it gives a potential indicator of false positives.
+  Using a spell checker requires a way to configure the language for
+  the individual entries.
 
-\item Spelling errors in names should be handled by databases with
-  names.
+\item Spelling errors in names should use databases with
+  names for detection.
 
 \item Initials can be detected by finding cases with a single letter,
-  perhaps followed by a punctuation. The handling will in part be by
-  databases with names.
+  perhaps followed by a punctuation.  For suggestions databases with
+  names will be useful.  Handling multiple letters combined can be
+  done by looking for relatively few (probably up to 3) letters that
+  are all capitalized.
 
-\item Online lookups, will be impossible to detect for certain as the
-  intended search will be unknown.  The detection of the other issues
-  can give an indicator of a bad lookup.  Online lookups, however, is
-  a very likely way to handle the databases needed for this tool.  The
-  most trusted online database available should be used whenever
-  possible.  A system doing lookups in multiple databases will give
-  further indications of potential issues.  The user should always
-  confirm that results from an online lookup is the desired result,
-  due to the risk of false positives.
+\item Online lookups, will be impossible to detect for certain,
+  because the intended search will be unknown.  The detection of the
+  other issues can give an indicator of a bad lookup.  Since online
+  lookups is a likely way to handle the databases needed for this
+  tool, the quality of a lookup is a concern.  The most trusted online
+  database available should be used whenever possible.  A system doing
+  lookups in multiple databases will give further indications of
+  potential issues.  The results should always be confirmed by the
+  user, to prevent erroneous data.
 
 \item Conformity to de-facto standards and the {\bibtex} specification
-  requires a set of rules specifying: the required and optional tags,
-  the exclusive tags, and the inclusive tags in {\bibtex}.
+  requires a set of rules specifying: required tags, optional tags,
+  exclusive tags, and inclusive tags.
 
-\item Validating the values, whenever possible, would be a further
-  improvement.  This should be done on values where clear rules for
-  correct input can be specified, such as ISSN, year and month.  For
-  values that can further be verified using a database, such
-  validation is recommended.
+\item Detecting invalid values should be done where there are clear
+  rules for a correct value can be specified: such as ISSN, year, and
+  month.  Furthermore, values that can be verified using a database
+  should also be verified.
 
-\item Journal abbreviations should be handled by refactoring journal
-  names into strings.  It should use a database to de-abbreviate or
-  abbreviate.  Furthermore detecting unknown abbreviations will be
-  useful.
+\item To detect journal names, in abbreviated form, or in full form,
+  is done using a database of know journal names and their
+  abbreviations.  It should use a database to de-abbreviate or
+  abbreviate.  Furthermore this can be refined by detecting unknown
+  abbreviations.
 
 \item To handle {\bibtex} strings that end up as part of the text, the
   text should be compared with the strings in the \file{bib}.
@@ -78,18 +77,13 @@ since it does not matter if one use a local copy, if it is up to date.
 
 \subsubsection{Second step: Consistency}
 \begin{itemize}
-\item Duplicate entries should be detected.  When possible, using
-  unique identifiers.  Otherwise, by detecting identical entries
-  defined by: the entry tags and content in the tags being the same.
-  When the entries are not identical a specification of similarity
-  should be used, having the title and authors as primary indicators,
-  to suggest potential duplicates.  The tool should suggest merging
-  when duplicates are found.
+\item To detect duplicate entries, using unique identifiers is the
+  best way, then based on identical entries.  Otherwise potential
+  duplicates is detected by a specification of similarity: having the
+  title and authors as primary indicators.
 
-\item To detect name changes of forums, it is required to have: a
-  database of known changes, and a way of specifying the changes.
-  When a forum name has changed it should suggest usage of a de-facto
-  standard to highlight this.
+\item To detect name changes of forums, a database of known changes is
+  used, in conjunction with a way of specifying the changes.
 
 \item Inconsistent tag usage should be handled by mapping entries from
   the same forums and comparing the tags in use for missing and
@@ -105,83 +99,354 @@ since it does not matter if one use a local copy, if it is up to date.
 
 \subsubsection{Configuration}
 
-Both of the steps above require ways to configure the behavior.
+Both of the steps above require ways to configure the behavior.  The
+use of configurations should be as close to {\bibtex} as possible.
+
+The preference to using the {\bibtex} format allows people to use what
+they are familiar with.  Using a format that are readily supported in
+programming frameworks, like JSON or XML might be considered easy by
+the computer scientist, especially if it is one used to working with
+those formats.  However, people outside computer science, such as a
+physicist or the helpful chemist from earlier, will likely not be
+familiar with such formats, nor should they.  A user of {\bibtex}
+should at best only be concerned with {\bibtex}, when working with
+{\bibtex}.
+
+To use something in anger is an idiom for if something has been tested
+in practice.  The idea of coding in anger has been expressed by Philip
+Wadler~\cite{wadler1997_functional}.  For the {\bibtex} user, coding
+in anger, could be the situation where the deadline is getting closer
+and one just need things to work, at best ten minutes ago.  When faced
+with the frustrations like that one tend not to care about beautiful
+and elegant solutions, but rather wanting something that works with a
+minimum of effort.  To accommodate the user writing {\bibtex} in
+anger, is another reason to keep the specification as close to
+{\bibtex} as possible, since it will minimize the effort.
 
 Configuration should be done via de-facto standards inside the
-\file{bib}, whenever possible.  The preference to using the {\bibtex}
-format allows people to use what they are familiar with.  Using a
-format that are readily supported in programming frameworks, like JSON
-or XML might be considered easy by the computer scientist, especially
-if it is one used to working with those formats.  However, people
-outside computer science, such as a physicist or the helpful chemist
-from earlier, will likely not be familiar with such formats, nor
-should they.  A user of {\bibtex} should at best only be concerned
-with {\bibtex}, when working with {\bibtex}.
-
-For some of the configurations they will be unreasonable to have
-inside the \file{bib} itself.  These configurations is better put into
-separate files.  However, the specification of should still be
-designed to match {\bibtex} as closely as possible, \ie, still using
-entries, tags and values to configure.
+\file{bib}, whenever possible.  For some configurations, de-facto
+standards inside the \file{bib} is unreasonable.  These configurations
+is better put into separate files.  However, the specification of
+should still be designed to match {\bibtex} as closely as possible,
+\ie, still using entries, tags and values to configure.
 
 
 \subsection{In practice}
 
-For forums adding a tag with the name $OLDforum$ and the old forum
-name - or even better the string for the old forum would make sense.
-Only referring to the previous name, in the rare case that multiple
-name changes should be present then the latest previous case in the
-document should be adequate. \remark{:/ not sure I agree completely
-  here}
+\subsubsection{De-facto configurations}
 
-A way to specify the deviations from the defaults should be done
-through defining a de-facto standard tag containing the accepted
-deviations.  Such a standard could be $OPTanalyze$.  In the value the
-desired deviations would then be specified:
+To account for the specifications about introducing two de-facto
+standards will be appropriate: \texttt{OLDforum} to mark a previous
+name of a forum, and \texttt{OPTanalyze} to configure tell the tool
+about entry specific details.
+
+The division into two de-facto standards is twofold: for
+\texttt{OLDforum} the additional standard will allow bibliography
+styles to make use of the additional information (one could easily
+imaging a bibliographic style write ``\texttt{NISSC \textit{formerly
+    known as} NCSC}''), and for \texttt{OPTanalyze} the content is
+considered unlikely to be relevant to print in a bibliography.
+Furthermore, the settings for \texttt{OPTanalyze} is kept in one tag
+to prevent a multitude of new tags.
+
+\remark{Yikes, any way to make the following clearer?!?!?}
+
+For the \texttt{OLDforum} tag the value should be the string containing the
+old name for the forum.  In some cases a forum can have changed its
+name multiple times.  When multiple name changes has happened, and
+referring to an old forum name, referring the most recent name
+actively used in the \file{bib} is desired.  The design of the tag is
+intended for disambiguation within a given file, not all files in
+general.  If the tag is used for a bibliography style having a
+multitude of names as the value will likely be confusing.  However,
+only using names from the \file{bib} will cause the need for
+re-detecting name changes, if an entry with a forum name between the
+two entries are introduced.  Alternatively the format could be a list
+of names (comma separated, since {\bibtex} use a comma as a separator),
+this list would allow detailed backtracking.  A design with detailed
+backtracking
+
+Defining entry level deviations is done using \texttt{OPTanalyze},
+using spaces to separate multiple settings.  The values for desired
+deviations is as follows:
 
 \begin{itemize}
-\item $@OK$, to mark an entry as correct.
-\item $@LANG=XX$ to specify the desired spell check language,
-  replacing $XX$ with the language code desired.
-\item $@SPELLINGOK$ to mark the spelling as correct.
-\item $@NAMESOK$ to mark that the names are correct.
-\item $@CONFORMITYOK$ to mark conformity as correct.
-\item $@STRINGSOK$ to mark that the texts does not contain strings.
-\item $@CONSISTENCYOK$ to mark the consistency as correct.
+\item \texttt{@DUPLICATEOK=X} to specify that an entry marked as a
+  potential duplicate if deliberate, replacing \texttt{X} with the
+  entry key of the potential duplicate.
+\item \texttt{@LANG=XX} to specify the desired spell check language,
+  replacing \texttt{XX} with the language code desired.
+\item \texttt{@SPELLINGOK} to mark the spelling as correct.
+\item \texttt{@NAMESOK} to mark that the names are correct.
+\item \texttt{@INITIALSOK} to mark that the initials are correct.
+\item \texttt{@NOLOOKUP} to mark that no look up should be done for
+  the content of this entry.
+\item \texttt{@CONFORMITYOK} to mark conformity to the specification
+  and de-facto standards as correct.
+\item \texttt{@ABBREVIATIONOK} to mark an abbreviated form as correct.
+\item \texttt{@STRINGSOK} to mark that the texts has been checked for
+  strings and that is is correct.
+\item \texttt{@TAGSOK=forum} to mark that the usage of tags is correct and
+  defines the standard for tag use for the entries from the \emph{same
+  occurrence} of the forum.
+\item \texttt{@TAGSOK=future} to mark that the usage of tags is
+  correct and defines the standard for tag use for the entries from
+  the \emph{same and future occurrences} of the forum.
+\item \texttt{@TAGSOK=single} to mark that the usage of tags is
+  correct for this single entry, not affecting other entries from the
+  forum.
+\item \texttt{@ENTRYKEYOK} to mark the entry key as correct.
+\item \texttt{@LEXICALLYOK} to ignore all lexical checks for the
+  entry, should be used with care.
+\item \texttt{@CONSISTENCYOK} to ignore all consistency checks for the
+  entry, should be used with care.
+\item \texttt{@OK}, to mark an entry as fully correct, same as
+  \texttt{@CONFORMITYOK @LEXICALLYOK @CONSISTENCYOK}, should be used
+  with care.
 \end{itemize}
 
-These tags can be combined using spaces as the separation character.
-An example of an entry can be seen in
+The settings: \texttt{@ABBREVIATIONOK}, \texttt{@LEXICALLYOK},
+\texttt{@CONSISTENCYOK}, and \texttt{@OK} may be a bit debatable on
+necessity, however, their presence do ensure that the configuration is
+complete and consistent.
+
+For the conformity and de-facto check, it would be and option to have
+settings for explicitly specifying the deviations in the use of tags.
+However, explicitly allowing and denying tags will in most cases be
+redundant, since once the deviation has been accepted it is accepted.
+
+A similar set of tags could also be defined for the consistency check.
+For the consistency check, it can be argued that an entry not
+conforming to the standards of a forum may be updated to do so.  For
+instance, if the forum standard have an ISSN on all entries and some
+of the entries do not have an ISSN at the time.  Those entries might
+get an ISSN later, which we want add, and in that case the
+\texttt{@CONSISTENCYOK} become redundant, knowing this by explicitly stating
+that the missing ISSN is the reason.  Another approach to
+configurations becoming redundant would be to expand the tool to
+detect configurations that serve no purpose.  This approach is
+considered more appropriate, because it ensures more simplicity for
+the user.
+
+Another potential option would be to have a configuration for trusted
+lookup services.  For example is one knows that an entry is correct in
+a certain database then specifying that this database is to be
+trusted.  This configuration might lead to a false sense of security,
+since there is no way to guarantee that the data will not, some day,
+be corrupted in the database of the lookup service.
+
+An example of the configurations can be seen in
 \figref{fig:analyzing_added_de_facto_standards}
 
+\remark{Fill in the example}
 \begin{figure}
   \centering
 \begin{verbatim}
 @{
-  OLDforum = {},
-  OPTanalyze = {@LANG=DA @NAMESOK @STRINGSOK}
+  OLDforum = "",
+  OPTanalyze = "@LANG=DA @NAMESOK @STRINGSOK"
 }
 \end{verbatim}
   \caption{An example using the de-facto standards for configuration}
   \label{fig:analyzing_added_de_facto_standards}
 \end{figure}
 
-\remark{Still need to specify consistency changes and if a tag is the desired
-consistency.}
+To make the configurations even more intuitive for a {\bibtex} user,
+an option is to add {\bibtex} strings with the relevant options in the
+top of one's \file{bib}.  Then when configuring one can just use the
+{\bibtex} strings and concatenate the relevant configurations.
 
-The use of de-facto standards should be specifiable through a
-{\bibtex} like format.  A suggested way would be using entries
-identical with {\bibtex} with the desired rules specified as the value
-of the tags.  The idea is illustrated in
-\figref{fig:correctness_checker_bibtex}.  The reason for not using the
-$OPTanalyze$ is that future bibliographic styles may want to make use
-of the knowledge of a previous name of a forum.  One could easily
-imaging a bibliographic style write \texttt{National Information
-  Systems Security Conference \textit{formerly known as} National
-  Computer Security Conference}.
 
-Entry key format should be specified using ?. \remark{Probably some
-  kind of general config}.
+\subsubsection{Other configurations}
+
+Some of the configurations desired is not specific to an entry, but
+rather the entire \file{bib}.  These configurations need to be
+specified outside the specific entries.  Two options is: to put such
+options inside one's \file{bib}, or put them in separate files.
+Adding them to one's \file{bib} will introduce additional mess in the
+file, and also the configurations may not correspond to proper
+{\bibtex} formatting.  Having the configurations in separate files,
+provides separation of concerns.  Furthermore, if the configuration is
+in separate files they can easily be shared, such as a research
+department having a standard, or a publisher who want authors to
+follow their setup.
+
+The format for such configurations should follow the format for a
+{\bibtex} file.  Thus to the extend possible, it should consist of
+entries with tags and values for configuration.  For other settings
+defining {\bibtex} strings will be the favored choice.
+
+For changes in names of forums a database of such changes is needed.
+Currently no such database exist (to the authors knowledge), so the
+user will need a way to specify his own.  Even if such a database did
+exist, for the same reasons as lookups, the database might not be
+complete.  A name change can be specified by having two entries for
+the desired forum, adding the \texttt{OLDforum} tag to the entry
+marking the name change.
+
+\begin{figure}
+  \centering
+\begin{verbatim}
+@PROCEEDINGS{forum_ncsc,
+  title = "National Computer Security Conference"
+}
+
+@PROCEEDINGS{forum_nissc,
+  title = "National Information Systems Security Conference",
+  OLDforum = "ncsc_forum"
+}
+\end{verbatim}
+  \caption{Configuring a name change of a forum}
+  \label{fig:analyzing_configuration_name_change}
+\end{figure}
+
+The initial draft of the configuration is illustrated in
+\figref{fig:analyzing_configuration_name_change}.  However, this
+configuration ignores that the names in the actual \file{bib} may be
+in their abbreviated form.  This way of configuring will work for most
+journals, but proceedings is often, if not always, named according to
+how many times a conference has been hold.  Thus in the example above
+an entry would be named something like \texttt{Proceedings of the 20th
+  national information systems security conference}.  Extracting the
+names to strings is a part of solving the abbreviation of forum names.
+Referencing the same strings instead will enable a parser to detect
+the presence of the same string.  Thus if the \file{bib} looks like
+\figref{fig:analyzing_configuration_name_change_bib_file_strings} then
+the corresponding configuration will look like \figref{fig:analyzing_configuration_name_change_config_file_strings}.
+
+\begin{figure}
+  \centering
+\begin{small}
+\begin{verbatim}
+% Re-usable strings
+@STRING{PROCintro = "Proceedings of the"}
+@STRING{nissc = "National Information Systems Security Conference"}
+
+% Conferences
+@STRING{nissc20 = PROCintro # "20th" # nissc}
+
+% Proceedings
+@INPROCEEDINGS{porras1997emerald,
+  title = "EMERALD: Event monitoring enabling response to anomalous live disturbances",
+  author = "Porras, Phillip A and Neumann, Peter G",
+  booktitle = nissc20
+}
+\end{verbatim}
+\end{small}
+  \caption{\file{bib} using strings for conference names}
+  \label{fig:analyzing_configuration_name_change_bib_file_strings}
+\end{figure}
+
+\begin{figure}
+  \centering
+\begin{verbatim}
+@PROCEEDINGS{forum_nissc,
+  title = nissc,
+  OLDforum = "forum_ncsc"
+}
+\end{verbatim}
+  \caption{\file{bib} using strings for conference names}
+  \label{fig:analyzing_configuration_name_change_config_file_strings}
+\end{figure}
+
+The configuration of name changes should be using the most general
+entry type available, such as \texttt{@ARTICLE}, \texttt{@PROCEEDINGS}
+and \texttt{@BOOK}.  Either using rules in the name change checker to
+correctly map the values from the general entry types to the specific
+types, such as mapping \texttt{@PROCEEDINGS} to
+\texttt{@INPROCEEDINGS} and detecting that the title tag in
+\texttt{@PROCEEDINGS} correspond to booktitle in
+\texttt{@INPROCEEDINGS}.
+
+\remark{Oh my - that exploded rather quickly}
+
+When specifying the de-facto standards, {\bibtex} entries should be
+used.  When specifying a standard only deviations should be specified.
+The configurations available are:
+
+\begin{itemize}
+\item \texttt{@required} for a tag we require to be present.
+\item \texttt{@optional} for optional tags.
+\item \texttt{@deny} for tags that are in the default configuration,
+  that we want to reject
+\item \texttt{@exludes=tag} for a tag that excludes the use of another
+  tag, replacing \texttt{tag} with the name of another tag.  For
+  example, if one allows both \texttt{ISSN} and \texttt{DOI} as tags,
+  but want to ensure that only one of the tags is present, one would
+  have the following: \texttt{ISSN = "@required @exludes=DOI"} and
+  \texttt{DOI = "@required @excludes=ISSN"}.
+\item \texttt{@includes=tag} for a tags where one of them is required
+  and the other optional.  Usage is similar to \texttt{@excludes=tag}.
+\end{itemize}
+
+An example of a configuration of standards can be seen in
+\figref{fig:analyzing_standards_config}.  This example sets article
+entries to: reject \texttt{address} tags, that either \texttt{DOI} or
+\texttt{ISSN} is present (but not both) and adds \texttt{url} as an
+optional tag.  For books entries the example sets: that ISBN10 and/or
+ISBN13 must be present.
+
+\begin{figure}
+  \centering
+\begin{verbatim}
+@article{standards_article,
+  address = "@deny",
+  DOI = "@required @excludes=ISSN",
+  ISSN = "@required @excludes=DOI",
+  url = "@optional"
+}
+
+@book{standards_book,
+  ISBN10 = "@required @inclusive=ISBN13",
+  ISBN13 = "@required @inclusive=ISBN10"
+}
+\end{verbatim}
+  \caption{A snippet of the desired {\bibtex} based configuration for the correctness checker}
+  \label{fig:analyzing_standards_config}
+\end{figure}
+
+Abbreviations of journal names can be configured by, introducing two
+new tags: \texttt{abbreviated} and \texttt{fullname}, specifying the
+abbreviated journal name and full journal name respectively.
+
+\remark{Bah, proceedings are not as easy ><}
+
+Inconsistent tags
+
+For the specification of entry keys using a {\bibtex} string with the
+predefined name \texttt{ENTRY\_KEY}.  Inside the string some way of
+specifying the desired template for entry keys is needed.  Using a
+template scheme, such as \texttt{\{tag\}} to match tags, is probably
+the best solution.  This template system contradicts the desire to
+keep the format close to {\bibtex}, but no better way has been found.
+A template could look like: \texttt{\{author\}\{year\}\{title\}}.
+
+However, this template is insufficient when considering how people
+actually name their entries.  A lot of people use similar schemes, but
+using the first author's last name, and a significant word from the
+title.  Specifying these more detailed schemes will move the template
+format further away from {\bibtex}, and unfortunately no better
+approach has been for this either. \remark{some formatting needed here}
+
+Fortunately, {\bibtex} strings comes to the rescue - at least
+partially.  Having strings for the most common matches will ensure
+that most users will never need see, nor even know about, the
+underlying pattern matching system.  This will allow the user to use
+concatenations to build the desired pattern.
+
+\remark{Still need a good design for these strings}
+
+\begin{figure}
+  \centering
+\begin{verbatim}
+@STRING{ENTRY_KEY = author # year # "_" # title}
+\end{verbatim}
+  \caption{An example of a entry key pattern}
+  \label{fig:analyzing_entry_key_pattern}
+\end{figure}
+
+\remark{Still need to specify consistency changes and if a tag is the
+  desired consistency.}
 
 
 \section{{\orangutan}}

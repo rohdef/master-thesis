@@ -125,11 +125,11 @@ citing a name might get the name wrong and write ``Rene Rødhof
 Hansen'' instead of ``René Rydhof Hansen''.  In this misspelling the
 spell checker will be of no help.  The spell checker used in this
 document suggests changing ``René'' to ``Rene'', which would introduce
-a mistake.  Using a spell checker on names will be the cause of more
-mistakes than corrections, and would thus cause a structural issue.
-Providing a structural solution to misspelled names would require
-either a spell checker that works for names or some database
-containing valid names.
+a mistake.  Using a spell checker on names is likely to be the cause
+of more misspellings than corrections, and would thus cause a
+structural issue.  Providing a structural solution to misspelled names
+would require either a spell checker that works for names or some
+database containing valid names.
 
 
 \section{Initials}
@@ -459,13 +459,16 @@ abbreviations (such as the Bib{\LaTeX} and biber do).
 \section{{\bibtex} strings ending up as text}
 \label{sec:problems_strings_as_text}
 
-When working with bibliographic references, {\bibtex} strings can
-accidentally end up being textual content.  For instance if one, as
-the PhD student earlier, exports from a program that does not make use
-of the strings.  In the output from the aforementioned student seen in
-\figref{fig:mendeley_output} the month is actually a text and not a
-string as one would expect.  The use of text over strings prevents
-re-use of fragments and localization.
+When working with bibliographic references, {\bibtex} strings
+($@STRING$) can accidentally end up being inside textual content.  For
+instance if one, as the PhD student earlier, exports from a program
+that does not make use of the strings.  In the output from the
+aforementioned student seen in \figref{fig:mendeley_output} the month
+is actually a text and not a string as one would expect.  The use of
+text over strings prevents re-use of fragments and localization.
+Another similar issue is, when the text, or part of the text, should
+have been moved to a string, because an appropriate string has been
+introduced.
 
 When the usage as text over strings comes from a tool, such as in the
 example above, the issue is of a structural nature.  When one types it
@@ -704,8 +707,12 @@ desired.  The problems covered are:
   switch between for formats.
 
 \item {\bibtex} strings that end up as part of the text, can result in
-  wrong data.  A structural solution will be able to detect and make
-  text into strings when a string is desired.
+  wrong data.  Also text that is contained in a string and should have
+  been referenced to the string, rather than written as raw text, can
+  cause errors if the content is updated.  A structural solution will
+  be able to detect and make text into strings when a string is
+  desired.  Furthermore, a structural solution will be able to detect
+  when some of the textual content is stored in a string.
 
 \item Inconsistent tag usage in similar entries causes messy
   bibliographies. A structural solution will detect these
