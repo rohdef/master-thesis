@@ -62,7 +62,7 @@ entirely conjunctural, because one is either not using or misusing the
 structural solution.
 
 
-\section{Duplicate entries}
+\section{Duplicate content}
 \label{sec:problems_duplicates}
 
 When a group of authors is writing on the same document, work is often
@@ -88,6 +88,15 @@ entry, then giving the new entry an entry key, with intent to adjust
 the contents.  This issue will also result in a duplicate entry, but
 unlike the situation above, the duplicate should not be merged but
 contain different content.
+
+Yet another, but similar issue, comes from duplicated values.  For
+instance, when one cites multiple references from inside a conference
+proceedings, multiple $@INPROCEEDINGS$ entries can contain the same
+value for $booktitle$, and probably other meta-information as well.
+Furthermore, if one cites multiple publications from the same forum,
+then the name of the forum, such as the journal name for articles, can
+be repeated.  In general, any textual content can potentially be
+repeated.
 
 Having a tool that just merges duplicate entries may provide a
 structural solution to the first case but will create a structural

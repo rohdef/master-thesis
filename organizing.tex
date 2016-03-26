@@ -1,6 +1,6 @@
 \section{Introduction}
 
-\section{Contents}
+\section{Organizing in general}
 
 After all the concerns has been addressed a pretty printing utility
 will a nice final touch, ensuring a consistent structure inside ones
@@ -20,4 +20,58 @@ will a nice final touch, ensuring a consistent structure inside ones
   usage of a de-facto standard to highlight this.
 \end{itemize}
 
+\subsubsection{Configuration}
+
+If relevant, refer to analyzing configuration and say the same
+argument goes for organizing.
+
+
+Having found the issues that are possible, a way to react to them is
+needed.  Correcting is either done by changing the entries to a state,
+where the analysis cannot find any more issues, or by using the
+configurations to tell the analysis that the issues are false
+positives.
+
+There are two basic ways of reacting to the issues, one
+automatically correcting them and the other is to present the issues
+and have one decide what to do.  As pointed out in the problem
+descriptions, it is hard, if not impossible, to automatically correct,
+since it can lead to incorrect changes and thus introduce a new
+structural issue.  Thus the organizing is done by presenting the
+issues, letting the user decide on the action to take.
+
+When presenting the user with the issues there are again two
+approaches: letting one do a range of choices to handle the issues
+finally outputting a corrected \file{bib}, or giving a list of issues
+and suggestions for corrections.  The last one requires the user to
+manually edit his \file{bib}, and if the issues are listed with line
+numbers, they should be listed backwards, so the lines will be correct
+throughout the correction.
+
+
+\section{\orangutan}
+
+\subsection{What}
+ and give suggestions for improvements to a
+
+\subsection{How in principle}
+
+The analyzing tool then outputs the suggestions it has for improving
+the \file{bib}.
+
+\subsection{How in practice}
+
+Just as any other spell checker it marks words that are misspelled and
+give a list of suggestions.
+
+suggesting strings
+
+The current version just suggest the full name whenever an
+abbreviation is detected,
+
 \section{Summary and conclusion}
+
+To summarize:
+
+An analyzing tool will not be a guarantee that there are no issues
+left.

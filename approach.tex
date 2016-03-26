@@ -21,7 +21,7 @@ standards is considered as a correctness concern.  All of these issues
 will be considered combined as \newdef{correctness and lexical
   concerns}.
 
-Duplicate entries, forum names that change, inconsistent use of tags
+Duplicated values, forum names that change, inconsistent use of tags
 and inconsistent entry keys will be considered as \newdef{consistency
   concerns}.
 
@@ -103,7 +103,12 @@ through the consistency concerns observing their relation gives:
   the detection has to be based on the similarity of the information:
   at best the information is identical, otherwise it has to be as
   similar as possible to improve the detection.  Thus solving the
-  lexical concerns will be of use.
+  lexical concerns will be of use.  For repeated content detecting
+  when there are multiple instances of $@INBOOK$, $INCOLLECTION$ and
+  $INPROCEEDINGS$ that reference the same source is needed.  For
+  textual content reused content, such as a journal name, should be
+  detected.  For textual values it should compare the values that are
+  likely to be repetitive.
 
 \item Inconsistent naming of entry keys can be handled by a naming
   scheme.  Such a naming scheme is usually based on the information in
@@ -134,6 +139,13 @@ one for some reason desires to refer to different revisions.  Further
 challenges may arise if there are lexical and correctness issues.  As
 per Section~\ref{sec:approach_lexical_consistency}, one should fix
 these issues first.
+
+For duplicate values two ways of detecting are needed.  Provided the
+correctness of the values, detecting duplicated meta-data is done by
+corresponding the $author$/$editor$ and $title$ for $@BOOK$, $@INBOOK$
+and $@INCOLLECTION$, for conference proceedings comparing the $title$
+of $@PROCEEDINGS$ and the $booktitle$ of $@INPROCEEDINGS$ will
+determine if the conference is the same,
 
 
 \subsection{\nameref{sec:problems_spelling}}
