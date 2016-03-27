@@ -2,16 +2,17 @@
 
 The goal of this chapter is to organize the issues people have with
 {\bibtex}: answering what the issues in {\bibtex} are
-\chapref{sec:intro_what_issues} and how to approach the {\bibtex}
-issues \chapref{sec:intro_what_to_do}
+\chapref{sec:intro_what_issues}, and how to approach the {\bibtex}
+issues \chapref{sec:intro_what_to_do}.
 
 
 \section{What are the issues in {\bibtex}}
 \label{sec:intro_what_issues}
 
 {\bibtex} has changed the landscape for scientific writing.  However,
-not without any issues.  The challenges range widely and trying to
-group similar looking issues we have:
+not without any issues.  As seen in
+Chapter~\ref{ch:problem-description}, the challenges range widely and
+trying to group similar looking issues we have:
 
 The misspellings in general, misspellings in names, initials in author
 names, erroneous online lookups, use of abbreviations for journal
@@ -176,7 +177,11 @@ authors, such as DBLP and Google Scholar.  This widening, however,
 will not help for authors who are not in these other databases.
 Extending this solution to contain more databases such as book authors
 will improve the solution, but will still be limited to known author
-names.
+names.  Another issue is that some authors use different versions of
+their name depending on the context.  For example, Iain Menzies Banks
+wrote both mainstream fiction and science fiction, writing under the
+name Iain Banks for mainstream fiction and using Iain M. Banks for
+science fiction~\cite{community2016_banks}.
 
 
 \subsection{\nameref{sec:problems_initials}}
@@ -220,10 +225,10 @@ trust in databases that are likely to be correct.
 The most appropriate strategy is probably selecting the database most
 likely to be correct and then have the user select if one agrees with
 the result.  Doing the vote system would be overkill in most
-situations, and the user still has to validate the result, since the
-voting system will not provide a certain correct result.  Having the
-user validate the result will make issues partly conjunctural, if one
-just accept any result from the lookup.
+situations, and the user would still has to validate the result, since
+the voting system will not provide a certain correct result.  Having
+the user validate the result will make issues partly conjunctural, if
+one just accept any result from the lookup.
 
 
 \subsection{\nameref{sec:problems_name_changes}}
@@ -253,6 +258,16 @@ should thus be configurable to account for changes in de-facto
 standards.  For practicality, the de-facto standards that are not
 likely to change (such as ISSN and DOI) could be accounted for with a
 default setting.
+
+Validating the values will improve this solution further.  Having
+rules for valid values whenever possible.  Some rules will be very
+easy to set up, \eg, ISBN consists only of numbers and dashes.  Other
+rules such as not allowing numbers inside a name might be able to
+become an issue, \eg., if the queen of Denmark were to write something
+that is later cited a correct name for the author is ``Dronning
+Magrethe 2.''.  A structural solution will validate as much as
+possible, but too rigid validation has the potential of causing new
+structural issues.
 
 
 \subsection{\nameref{sec:problems_abbreviations}}

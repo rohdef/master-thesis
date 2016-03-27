@@ -48,30 +48,70 @@ manually edit his \file{bib}, and if the issues are listed with line
 numbers, they should be listed backwards, so the lines will be correct
 throughout the correction.
 
+A nice final touch would be to pretty print the \file{bib}, ensuring
+consistent formatting.
+
 
 \section{\orangutan}
 
 \subsection{What}
- and give suggestions for improvements to a
+
+{\orangutan} is designed as a framework rather as an end user
+application.  The output it gives is the suggestions coming from the
+analysis.  For instance, a tool listing the suggestions in a backward
+order, for manual editing.
+
 
 \subsection{How in principle}
 
-The analyzing tool then outputs the suggestions it has for improving
-the \file{bib}.
+The output given in JSON, which most programming frameworks support.
+The output can be in a trimmed version showing only the detected
+issues or in a full version containing all the entries.  Thus the
+output be used for listing only the issues, or for printing an entire
+corrected {\bibtex} file after choosing the desired solutions.
+
 
 \subsection{How in practice}
 
-Just as any other spell checker it marks words that are misspelled and
-give a list of suggestions.
+{\orangutan} gives back a JSON string containing at least the entries
+with detected issues.  If configured to do so, it keeps the entries
+without issues.  For the entries in the output that has issues an
+object is attached with the name \texttt{orangutan} detailing the
+specific issues and suggestions.
 
-suggesting strings
+The spell checker will add an object named $spelling$ to the
+$orangutan$ object.  It contains the details from the spell check: how
+many words it checked $wordCount$, how many misspellings it found
+$misspellingCount$ and most importantly a list named $misspellings$
+for the details from the spell checker.  Each item in $misspellings$
+is an object consisting of: the misspelled word in $word$, the
+position of the misspelled word in $position$ and a list of
+suggestions inside $alternatives$.  An example of a spelling error can
+be seen in \figref{fig:orgazing_misspelling_output}.
+
+\begin{figure}
+  \centering
+\begin{minted}{json}
+\end{minted}
+\caption{An example of Orangutan output on a spelling error}
+\label{fig:orgazing_misspelling_output}
+\end{figure}
+
+\remark{Now does it actually check for unknown entry types???}
+
+When checking for correctness it marks entries according to the
+{\bibtex} specification and de-facto standards.  This check is named
+conformance check.  The output specifies when an entry type or a tag
+is in violation with the rules specified.  The conformance checker
+adds an object for the tags with conformance errors to the $orangutan$
+object.  The object for the tag will then have an object named
+$specificationConformance$ containing a description of the issue and a
+code corresponding.
 
 The current version just suggest the full name whenever an
-abbreviation is detected,
+abbreviation is detected.  Builds a structure with suggestions for
+full names when an abbreviations is detected.
 
 \section{Summary and conclusion}
 
 To summarize:
-
-An analyzing tool will not be a guarantee that there are no issues
-left.

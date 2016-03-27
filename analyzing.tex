@@ -62,7 +62,8 @@ since it does not matter if one use a local copy, if it is up to date.
 
 \item Conformity to de-facto standards and the {\bibtex} specification
   requires a set of rules specifying: required tags, optional tags,
-  exclusive tags, and inclusive tags.
+  exclusive tags, and inclusive tags.  The values should be validated
+  to the extend possible.
 
 \item Detecting invalid values should be done where there are clear
   rules for a correct value can be specified: such as ISSN, year, and
@@ -319,6 +320,20 @@ Such configuration files should still, if possible, follow the
 configuration and for configurations where entries and tags do not
 make sense, defining {\bibtex} strings will be the favored choice.
 
+Because the format described can be put into one file, rather than
+many, there are a few issues with disambiguation.  For instance, there
+can be multiple configurations for the title of a
+\texttt{@PROCEEDINGS}.  To solve this then the first word in the entry
+keys identify the type of configuration, followed by an underscore and
+a descriptive name of the user's choice.  For example the key
+\texttt{forum\_ncsc}, seen in
+\figref{fig:analyzing_configuration_name_change}, indicates that the
+configuration is regarding the forum (more specifically a name
+change).  The key prefixes are: for forum configurations
+\texttt{forum}, for de-facto standards \texttt{standards} and for
+validation of values \texttt{validation}.  Using this scheme allows a
+normal {\bibtex} parser to read the files.
+
 For changes in names of forums a database of such changes is needed.
 Currently no such database exist (to the authors knowledge), so the
 user will need a way to specify his own.  Even if such a database did
@@ -461,6 +476,43 @@ The configuration of standards also allows usage of a \texttt{*} as a
 \texttt{@INPROCEEDINGS} and any entry type that one introduces that has
 a name ending in proceedings.  These wildcards can be used for both
 tag names and entry types.
+
+For validation of values, some kind of valid patters is required.  A
+simple way, seen from the programmatic point of view, is to use
+regular expressions.  Using those one could introduce a set of entries
+for validation rules, just as done for the de-facto standards, having
+the patterns as the values.  However, using regular expressions
+contradicts the desire to keep the configuration close to the
+{\bibtex} specification.
+
+To remedy this, using strings with common patterns can be used.  For
+instance having a strings named \texttt{LETTERS\_ONLY},
+\texttt{NUMBER}, \texttt{ISSN} and so on.  This use of strings will
+keep it close to the {\bibtex} specification, allowing the flexibility
+of regular expressions.  Creating it as strings with regular
+expressions is done to allow adding more complicated rules than just
+the predefined strings, and one can imagine sharing of useful
+collections of validation strings.  An example of such a configuration
+can be seen in \figref{fig:analyzing_validation_config}.
+
+\begin{figure}
+  \centering
+\begin{verbatim}
+@*{validation_all,
+  author = LETTERS_ONLY,
+  year = NUMBER
+}
+
+@ARTICLE{validation_article,
+  DOI = DOI,
+  ISSN = ISSN,
+  url = URL
+}
+\end{verbatim}
+  \caption{A snippet of the desired {\bibtex} based configuration for
+    the correctness checker}
+  \label{fig:analyzing_validation_config}
+\end{figure}
 
 Abbreviations of journal names can be configured by, adding
 \texttt{@ARTICLE} entries, using the two tags: \texttt{abbreviated}
@@ -648,6 +700,8 @@ one specified earlier, a snippet of the configuration can be seen in
 \caption{A snippet of the JSON for configuring the correctness checker}
 \label{fig:correctness_checker_json}
 \end{figure}
+
+\remark{add default de-facto standards}
 
 The abbreviation checker runs through journal names using a known list
 of abbreviations.  The detection can be improved by detecting
