@@ -1,7 +1,3 @@
-\rfquote{Testing shows the presence, not the absence of bugs.}{Edsger
-  W. Dijkstra}
-
-
 \section{Introduction}
 
 The goal of this chapter is to show how {\bibtex} files are analyzed.
@@ -14,65 +10,68 @@ named {\orangutan} \chapref{sec:analyzing_orangutan}.
 \label{sec:analyzing_what_to_do}
 \subsection{In principle}
 
-Due to the practical issues in changing/replacing {\bibtex} and to
+Due to the practical issues in changing or replacing {\bibtex} and to
 ensure separation of concerns an analyzing tool should be an
 augmenting tool.
 
 To analyze {\bibtex} one would need to parse a {\bibtex} file into a
 suitable representation.  This representation would need to parse
-{\bibtex} entries and strings at a minimum.  If one intents to pretty
-print the result after resolving all issues, the parsing also needs
-the preambles.  Comments are technically optional, but should be kept
-too.
+{\bibtex} entries and strings at a minimum.  If one intents to
+\newdef{pretty print}, \ie, writing a {\bibtex} file formatted
+consistently in human readable way, the result after resolving all
+issues, the parsing also needs the preambles.  Comments are
+technically optional, but should be kept too.
 
 The easiest approach is a two step parse: first taking care of the
 lexical and correctness concerns, then the consistency concerns.  By
 taking care of the lexical and correctness concerns first the optimal
 conditions for taking care of the consistency concerns is made.
 
-The term database i here use for both local and online databases,
-since it does not matter if one use a local copy, if it is up to date.
+The term database is used for both local and online databases, since
+it does not matter if one use a local copy, if it is kept consistent
+with the online database.
 
 \subsubsection{First step: Lexical and correctness}
 \begin{itemize}
-\item Spelling errors in general, should be detected either by online
-  lookups or a spell checker.  A combination of the two could be
-  powerful, since it gives a potential indicator of false positives.
-  Using a spell checker requires a way to configure the language for
-  the individual entries.
+\item Spelling errors in general, can be detected either by online
+  lookups or a spell checker.  A combination of the two might be an
+  improvement, since it gives a potential indicator of false
+  positives.  Using a spell checker requires a way to configure the
+  language for the individual entries.
 
-\item Spelling errors in names should use databases with names for
-  detection.
+\item Spelling errors in names should use a database of names for
+  detection of misspellings.
 
 \item Initials can be detected by finding cases with a single letter,
   perhaps followed by a punctuation.  For suggestions databases with
   names will be useful.  Handling multiple letters combined can be
   done by looking for relatively few (probably up to 3) letters that
-  are all capitalized.
+  are all capitalized.  Another approach is to use a database to
+  detect initials and their corresponding full names.
 
-\item Online lookups, will be impossible to detect for certain,
-  because the intended search will be unknown.  The detection of the
-  other issues can give an indicator of a bad lookup.  Since online
-  lookups is a likely way to handle the databases needed for this
-  tool, the quality of a lookup is a concern.  The most trusted online
-  database available should be used whenever possible.  A system doing
-  lookups in multiple databases will give further indications of
-  potential issues.  The results should always be confirmed by the
-  user, to prevent erroneous data.
+\item Erroneous online lookups, will be impossible to detect with
+  certainty, because one's intended search result cannot be known by
+  software.  The detection of the other issues can give an indicator
+  of a bad lookup.  Since online lookups is a likely way to handle the
+  databases needed for this tool, the quality of a lookup is a
+  concern.  The most trusted online database available should be used
+  whenever possible.  A system doing lookups in multiple databases
+  will give further indications of potential issues.  The results
+  should always be confirmed by the user, to prevent erroneous data.
 
 \item Conformity to de-facto standards and the {\bibtex} specification
   requires a set of rules specifying: required tags, optional tags,
   exclusive tags, and inclusive tags.  The values should be validated
   to the extend possible.
 
-\item Detecting invalid values should be done where there are clear
-  rules for a correct value can be specified: such as ISSN, year, and
-  month.  Furthermore, values that can be verified using a database
-  should also be verified.
+\item Detecting invalid values should be done when there are clear
+  rules for how a correct value can be specified: such as ISSN, year,
+  and month.  Furthermore, values that can be verified using a
+  database should also be verified.
 
 \item To detect journal names, in abbreviated form, or in full form,
-  is done using a database of know journal names and their
-  abbreviations.  It should use a database to de-abbreviate or
+  can be done using a database of known journal names and their
+  abbreviations.  It can use a database to de-abbreviate or
   abbreviate.  Furthermore this can be refined by detecting unknown
   abbreviations.
 
@@ -83,23 +82,24 @@ since it does not matter if one use a local copy, if it is up to date.
 
 \subsubsection{Second step: Consistency}
 \begin{itemize}
-\item To detect duplicate entries, using unique identifiers is the
-  best way, then based on identical entries.  Otherwise potential
-  duplicates is detected by a specification of similarity: having the
-  title and authors as primary indicators.  For duplicated values it
-  should use the strings if possible to determine when the same source
-  is referenced.  For the duplicated values is should build a list of
-  values that are likely to be repeated (such as journal names) and
-  use that to detect when textual content are duplicated.
+\item To detect duplicate entries, the best way is to: first compare
+  unique identifiers, if the identifiers is missing, then identical
+  entries.  Otherwise potential duplicates is detected by a
+  specification of similarity: having the title and authors as primary
+  indicators.  For duplicated values it should use the strings if
+  possible, to determine when the same source is referenced.  For the
+  duplicated values it should maintain a list of values that are
+  likely to be repeated (such as journal names) and use that to detect
+  duplicates in textual content.
 
 \item To detect name changes of forums, a database of known changes is
   used, in conjunction with a way of specifying the changes.
 
-\item Inconsistent tag usage should be handled by mapping entries from
-  the same forums and comparing the tags in use for missing and
-  additional tags.  Comparing forum entries over time will increase
-  the usefulness, but adds the need to handle changes in the tags in
-  use over time.
+\item Inconsistent tag usage should be handled by comparing entries
+  from the same forums.  The comparison should show missing and
+  additional tags.  Relating forum entries from different points in
+  time might increase the usefulness, but adds the need to handle
+  changes over time.
 
 \item Inconsistent entry keys should be handled by having a naming
   scheme based on the data in the entries, with a way to disambiguate
@@ -116,31 +116,31 @@ to {\bibtex} as possible.
 
 The preference to using the {\bibtex} format allows people to use what
 they are familiar with.  Using a format that are readily supported in
-programming frameworks, like JSON or XML might be considered easy by
-the computer scientist, especially if it is one used to working with
-those formats.  However, people outside computer science, such as a
+programming frameworks, \eg, JSON or XML, might be easier by the
+implementer.  However, people outside computer science, such as a
 physicist or the helpful chemist from earlier, will likely not be
-familiar with such formats, nor should they.  A user of {\bibtex}
-should at best only be concerned with {\bibtex}, when working with
-{\bibtex}.
+familiar with such formats, nor should they required to.  A user of
+{\bibtex} should at best only be concerned with the {\bibtex} format,
+when working with {\bibtex}.
 
-To use something in anger is an idiom for if something has been tested
-in practice.  The idea of coding in anger has been expressed by Philip
-Wadler~\cite{wadler1997_functional}.  For the {\bibtex} user, coding
-in anger, could be the situation where the deadline is getting closer
-and one just need things to work, at best ten minutes ago.  When faced
-with the frustrations like that one tend not to care about beautiful
-and elegant solutions, but rather wanting something that works with a
-minimum of effort.  To accommodate the user writing {\bibtex} in
-anger, is another reason to keep the specification as close to
-{\bibtex} as possible, since it will minimize the effort.
+To use something in anger, is an idiom for: when something has been
+tested in practice.  The idea of coding in anger has been expressed by
+Philip Wadler~\cite{wadler1997_functional}.  For the {\bibtex} user,
+coding in anger, could be the situation where the deadline is getting
+closer and one just need things to work, at best ten minutes ago.
+When faced with the frustrations like that one tend not to care about
+beautiful and elegant solutions, but rather wanting something that
+works with a minimum of personal effort.  To accommodate the user
+writing {\bibtex} in anger, is another reason to keep the
+specification as close to {\bibtex} as possible, since it will
+minimize the effort.
 
 Configuration should be done via de-facto standards inside the
 \file{bib}, whenever possible.  For some configurations, de-facto
-standards inside the \file{bib} is unreasonable.  These configurations
-is better put into separate files.  However, the specification of
-should still be designed to match {\bibtex} as closely as possible,
-\ie, still using entries, tags and values to configure.
+standards inside the \file{bib} are unreasonable.  These
+configurations is better put into separate files.  However, the
+specification should still be designed to match {\bibtex} as closely
+as possible, \ie, still using entries, tags and values to configure.
 
 
 \subsection{In practice}
@@ -148,10 +148,9 @@ should still be designed to match {\bibtex} as closely as possible,
 
 \subsubsection{Entry level configurations}
 
-To account configure the analysis, introducing two de-facto
-standards will be appropriate: \texttt{OLDforum} to mark a previous
-name of a forum, and \texttt{OPTanalyze} to configure tell the tool
-about entry specific details.
+For entry level configuration, it is appropriate to introduce two
+de-facto standards: \texttt{OLDforum} to mark a previous name of a
+forum, and \texttt{OPTanalyze} to configure the analysis.
 
 The division into two de-facto standards are done for two reasons: for
 \texttt{OLDforum} the additional standard will allow bibliography
@@ -168,7 +167,7 @@ to prevent a multitude of new tags.
 For the \texttt{OLDforum} tag, the value should be the string
 containing the old name for the forum.  In some cases a forum can have
 multiple name changes.  When multiple name changes occurs, referring
-the most recent name in the \file{bib} is desired.  The tag is
+to the most recent name in the \file{bib} is desired.  The tag is
 intended for disambiguation within a given file, not all files in
 general.  If the tag is used for a bibliography style having a
 multitude of names as the value will likely be confusing.
@@ -181,23 +180,24 @@ previous name, when it is used in the references, however, since the
 tag is presently not in use in any bibliography style, these issues
 are not considered further.  Alternatively the format could be a list
 of names (comma separated, since {\bibtex} use a comma as a
-separator), this list would allow detailed backtracking.  A design
-with detailed backtracking
+separator), this list would allow detailed backtracking.
 
 Defining entry level deviations is done using \texttt{OPTanalyze},
-using spaces to separate multiple settings.  The values for desired
-deviations is as follows:
+using spaces to separate multiple settings.  The configurations is
+written, so each option can be read stand alone.  The values for
+desired deviations is as follows:
 
 \begin{itemize}
-\item \texttt{@DUPLICATEOK=X} to specify that an entry marked as a
-  potential duplicate if deliberate, replacing \texttt{X} with the
+\item \texttt{@DUPLICATEOK=tag} to specify that an entry marked as a
+  potential duplicate if deliberate, replacing \texttt{tag} with the
   entry key of the potential duplicate.
 \item \texttt{@LANG=XX} to specify the desired spell check language,
-  replacing \texttt{XX} with the language code desired.
+  replacing \texttt{XX} with the language code desired, \eg.,
+  \texttt{@LANG=FR}.
 \item \texttt{@SPELLINGOK} to mark the spelling as correct.
-\item \texttt{@NAMESOK} to mark that the names are correct.
-\item \texttt{@INITIALSOK} to mark that the initials are correct.
-\item \texttt{@NOLOOKUP} to mark that no look up should be done for
+\item \texttt{@AUTHORSPELLINGOK} to mark that the names are correct.
+\item \texttt{@AUTHORINITIALSOK} to mark that the initials are correct.
+\item \texttt{@NOLOOKUP} to mark that no lookup should be done for
   the content of this entry.
 \item \texttt{@CONFORMITYOK} to mark conformity to the specification
   and de-facto standards as correct.
@@ -224,41 +224,10 @@ deviations is as follows:
 \end{itemize}
 
 The settings: \texttt{@ABBREVIATIONOK}, \texttt{@LEXICALLYOK},
-\texttt{@CONSISTENCYOK}, and \texttt{@OK} may be a bit debatable on
-necessity, however, their presence do ensure that the configuration is
-complete and consistent.
-
-For the conformity and de-facto analysis, a consideration would be to
-have configurations, for explicitly specifying explicitly specifying
-that which deviations that are being accepted.  For instance,
-specifying that we accept a missing title on one of the articles.
-However, explicitly allowing and denying tags will likely be
-redundant, since once the deviation has been accepted one will not be
-likely to change that.
-
-A similar set of tags could also be defined for the consistency check.
-For the consistency check, it can be argued that an entry not
-conforming to the standards of a forum may be updated to do so.  For
-instance, if the norm for a forum is to have an ISSN on all entries,
-and some of the entries do not have an ISSN.  Those entries might get
-an ISSN assigned later, which we at the time add to the entry.  In the
-case of adding the missing information, the \texttt{@CONSISTENCYOK}
-configuration will become redundant.  By knowing which tags caused the
-addition of \texttt{@CONSISTENCYOK}, one can remove the redundant
-configuration.  Another approach to configurations becoming redundant
-is to analyze whether the configurations have any effect on the
-analysis.  This approach is considered more appropriate, because of
-the simplicity for the user.
-
-Another potential change is: to have a configuration for trusted
-lookup services.  For example, if one knows that an entry is correct
-in a certain database, then specifying that this database is trusted
-for that entry.  This configuration might lead to a false sense of
-security, since there is no way to guarantee that the data will never
-be corrupted in that database.
-
-An example of the configurations can be seen in
-\figref{fig:analyzing_added_de_facto_standards}
+\texttt{@CONSISTENCYOK}, and \texttt{@OK} are mainly present for
+convenience, and to ensure that the configuration is consistent.  An
+example of the configurations can be seen in
+\figref{fig:analyzing_added_de_facto_standards}.
 
 \begin{figure}
   \centering
@@ -267,7 +236,7 @@ An example of the configurations can be seen in
   author = "Jens Blendstrup",
   title = "Mennesker i En Mistb{\ae}nk",
   year = 1994,
-  OPTanalyze = "@LANG=DA @NAMESOK @CONFORMITYOK"
+  OPTanalyze = "@LANG=DA @AUTHORSPELLINGOK @CONFORMITYOK"
 }
 \end{verbatim}
   \caption{An example using the de-facto standards for configuration,
@@ -276,11 +245,44 @@ An example of the configurations can be seen in
   \label{fig:analyzing_added_de_facto_standards}
 \end{figure}
 
+\remark{Consider reformulating}
+
+For the conformity and de-facto analysis, a consideration would be to
+have configurations, for explicitly specifying which deviations that
+are accepted.  For instance, specifying that a missing title is
+accepted in an entry.  However, explicitly allowing and denying tags,
+will likely be redundant, since once a deviation has been accepted, it
+will not be likely to change.
+
+A similar set of tags could also be defined for the consistency check.
+For the consistency check, it can be argued that an entry that is not
+conforming to the standards of a forum, may be updated to do so.  For
+instance, if the norm for a forum is to have an ISSN on all entries,
+and some of the entries do not have an ISSN.  Those entries might get
+an ISSN assigned later, which is now possible to add to the entry.
+After adding the missing information, the \texttt{@CONSISTENCYOK}
+configuration is redundant.  When adding a tag, if is is the reason
+for the configuration \texttt{@CONSISTENCYOK}, then one can remove
+\texttt{@CONSISTENCYOK}.  Another approach to maintaining the minimal
+set of configurations is to analyze whether each configurations is
+necessary.  This approach is considered more appropriate, because of
+the simplicity for the user.
+
+Another potential change is: to have a configuration for trusted
+lookup services.  For example, if one knows that an entry is correct
+in a certain database, then specifying that this database is trusted
+for that entry.  This configuration might lead to a false sense of
+security, since there is no way to guarantee that the data will never
+be corrupted in that database.  In some cases the database will be the
+definition for the correct value, \eg, for a DOI number the number
+from International DOI Foundation, is by definition the correct
+number.
+
 To make the configurations even more intuitive for a {\bibtex} user,
 an option is to add {\bibtex} strings with the relevant options in the
 top of one's \file{bib}.  Then when configuring one can just use the
 {\bibtex} strings and concatenate the relevant configurations.  An
-example of configuration with strings can be seen in
+example configuration using strings is displayed
 \figref{fig:analyzing_added_de_facto_standards_strings}.  These
 strings would then have to be added in the top of the \file{bib}, so
 {\bibtex} will not complain.
@@ -288,12 +290,16 @@ strings would then have to be added in the top of the \file{bib}, so
 \begin{figure}
   \centering
 \begin{verbatim}
+@STRING{analyze_lang_danish = "@LANG=DA "}
+@STRING{analyze_author_spelling_ok = "@AUTHORSPELLINGOK "}
+@STRING{analyze_conformity_ok = "@CONFORMITYOK "}
+
 @BOOK{blendstrup1994Mistbaenk,
   author = "Jens Blendstrup",
   title = "Mennesker i En Mistb{\ae}nk",
   year = 1994,
   OPTanalyze = analyze_lang_danish
-             # analyze_names_ok
+             # analyze_author_spelling_ok
              # analyze_conformity_ok
 }
 \end{verbatim}
@@ -305,18 +311,17 @@ strings would then have to be added in the top of the \file{bib}, so
 
 \subsubsection{Bibliography level configurations}
 
-For the configurations desired, some are not specific to an entry, but
-rather the entire bibliography.  Two options for these configurations
-are: to put such options inside one's \file{bib}, or put them in
-separate files.  Adding them to one's \file{bib} will introduce an
-additional mess in the file, which is counterproductive since the goal
-is to clean up the mess.  Furthermore, the configurations may not
-correspond to proper {\bibtex} formatting.  Having the configurations
-in separate files, provides: separation of concerns, a clean
-\file{bib} and allows deviations from {\bibtex} if needed.
-Furthermore, having configurations in separate files allows sharing of
-the files, for instance, if a publisher want their authors to follow a
-certain setup.
+Some configurations are not specific to an entry, but the entire
+bibliography.  Two options for these configurations are: to put such
+options inside one's \file{bib}, or put them in separate files.
+Adding them to one's \file{bib} will introduce an additional mess in
+the file, which is counterproductive since the goal is to clean up the
+mess.  Furthermore, the configurations may not correspond to proper
+{\bibtex} formatting.  Having the configurations in separate files,
+provides: separation of concerns, a clean \file{bib} and allows
+deviations from {\bibtex} if needed.  Furthermore, having
+configurations in separate files allows sharing of the files, for
+instance, if a publisher want their authors to follow a certain setup.
 
 Such configuration files should still, if possible, follow the
 {\bibtex} format.  Thus using entries with tags and values for
@@ -369,9 +374,9 @@ as part of the name, text identifying which instance of the forum it
 is.  For example, in the example above an entry would be named
 something like \texttt{Proceedings of the 20th National Information
   Systems Security Conference} and not just \texttt{National
-  Information Systems Security Conference} as in the example.  In
-stead of writing the name as a text a better way might be to use
-strings.  If the \file{bib} construct forum names using strings, as in
+  Information Systems Security Conference} as in the example.  Instead
+of writing the name as a text a better way might be to use strings.
+If the \file{bib} construct forum names using strings, as in
 \figref{fig:analyzing_configuration_name_change_bib_file_strings}.
 The configuration can reuse the string for identifying the forum
 (\texttt{nissc} in the example), this configuration will allow the
@@ -556,7 +561,7 @@ that most users will never need to see, nor even know about, the
 underlying pattern matching system.  Using strings will allow the user
 to use concatenations to build the desired pattern.  And introducing
 an empty string named \texttt{OF} and one named \texttt{THEN} to
-support a more natural language.  And example can be seen in
+support a more natural language.  An example can be seen in
 \figref{fig:analyzing_entry_key_pattern}.
 
 \begin{figure}
@@ -566,7 +571,7 @@ support a more natural language.  And example can be seen in
 @STRING{ENTRY_KEY = LASTNAME # OF # FIRST # AUTHOR # THEN # YEAR}
 \end{verbatim}
 \end{small}
-  \caption{An example of a entry key pattern using the first name of
+\caption{An example of a entry key pattern using the first name of
     the first year, followed by the year.}
 \label{fig:analyzing_entry_key_pattern}
 \end{figure}
@@ -656,19 +661,19 @@ Section~\ref{sec:analyzing_what_to_do}.
 
 \subsection{How {\orangutan} is used in principle}
 
-When analyzing {\bibtex} files {\orangutan} operates on the first step
-of the analysis: correctness and lexical concerns.  The tool use
+When analyzing {\bibtex} files, {\orangutan} operates on the first
+step of the analysis: correctness and lexical concerns.  The tool use
 options, set by introducing a de-facto standard and JSON files.  The
-options are for specifying if the language for the spell check,
-entries that are considered to be correct and the standards used.
+options are for specifying the language for the spell check, entries
+that are considered to be correct, and the standards used.
 
 
 \subsection{How {\orangutan} is used in practice}
 
-In the current version there are three analyzing modules in use: a
-spell checker, a correctness checker and an abbreviation checker.
+In the current version three analyzing modules are in use: a spell
+checker, a correctness checker, and an abbreviation checker.
 
-The configuration format for entry level configuration use a small
+The configuration format for entry level configuration uses a small
 subset of the configuration specified.  It adds the
 \texttt{OPTanalyze} tag and the configuration \texttt{@OK} and
 \texttt{@LANG}.
@@ -680,11 +685,11 @@ determine the language, \eg, \texttt{OPTanalyze = "@LANG=DA"}.
 
 The correctness checker verifies the conformity with the {\bibtex}
 specification and a few known de-facto standards.  Currently the
-format for specifying entry rules is JSON, the {\bibtex} based format
-described in Section~\ref{sec:analyzing_in_practice} would have been
-better.  The format in use is essentially the JSON equivalent of the
-one specified earlier, a snippet of the configuration can be seen in
-\figref{fig:correctness_checker_json}.
+format for specifying entry rules is JSON, but the {\bibtex} based
+format described in Section~\ref{sec:analyzing_in_practice} would have
+been better.  The format in use is essentially the JSON equivalent of
+the one specified earlier.  \figref{fig:correctness_checker_json}
+displays a snippet of the configuration.
 
 \begin{figure}
   \centering
@@ -707,11 +712,11 @@ one specified earlier, a snippet of the configuration can be seen in
 \label{fig:correctness_checker_json}
 \end{figure}
 
-In {\orangutan} the de-facto standards added are \texttt{crossref},
-\texttt{issn}, \texttt{doi}, \texttt{oldforum} and \texttt{opt*}, last
-one using the wildcard to match all tags that has been commented out.
-All the de-facto standards are accepted on \texttt{*} entries, again
-using the wildcard to match all entry types.
+In {\orangutan}, the de-facto standards added are \texttt{crossref},
+\texttt{issn}, \texttt{doi}, \texttt{oldforum} and \texttt{opt*}, the
+last one using the wildcard to match all tags that have been commented
+out.  All the de-facto standards are accepted on \texttt{*} entries,
+again using the wildcard to match all entry types.
 
 The abbreviation checker runs through journal names using a known list
 of abbreviations.  The detection can be improved by detecting
@@ -723,25 +728,24 @@ written with text rather than using a {\bibtex} string.
 
 \section{Summary and conclusions}
 
-Analyzing {\bibtex} can be done using the two phases suggested,
+Analyzing {\bibtex} files can be done using the two phases suggested,
 starting with the lexical and correctness concerns, followed by the
 consistency concerns.
 
-To find the lexical and correctness issues the following can be done:
+To find the lexical and correctness issues, the following can be done:
 running a spell check on entries, checking author names in databases,
 detecting initials using single letters optionally followed by a
 punctuation, prioritizing trusted sources for online lookups, using
 rules to check conformity with the standards, using patterns to verify
-values, using databases of know abbreviations to detect abbreviations,
-and detecting when names of strings appear inside text.
+values, using databases of known abbreviations to detect
+abbreviations, and detecting when names of strings appear inside text.
 
 To find the consistency issues: entries should be compared to find
-duplicate content, using databases to find changes in forum names,
-entries from the same forum should be compared to detect inconsistent
-tag usage and a pattern should be used to detect inconsistent entry
-keys.
+duplicate content, to find changes in forum names, entries from the
+same forum should be compared to detect inconsistent tag usage and a
+pattern should be used to detect inconsistent entry keys.
 
-For the analysis a configuration is provided to prevent false
+For the analysis, a configuration is provided to prevent false
 positives.  A format for configuring has been introduced keeping as
 close to the {\bibtex} format as possible.  For entry level
 configuration by introducing two de-facto standards, and for general
@@ -753,12 +757,12 @@ A prototype, {\orangutan}, has been introduced, showing as a proof of
 concept that the analysis can be done and that de-facto standards can
 be used for configuration.
 
-Having a tool that can analyze {\bibtex} files, and find the issues in
-the \file{bib} is the first step in handling the issues.  However,
+Having a tool that can analyze {\bibtex} files, and finding the issues
+in the \file{bib} is the first step in handling the issues.  However,
 just like the lookup services can lure a user into a false sense of
-security, so can the result of an analysis.  The famous quote:
-``testing only shows the presence of bugs, not their absence'', also
-holds for this analysis tool, it can only reveal the issues that are
-tested for, it if does not find anything, it does not mean that there
-is no issues.  A final question remain though: what should we do with
-the issues that the analysis tool detects?
+security, so can the result of an analysis.  Dijkstra's famous quip:
+``testing only shows the presence of bugs, not their absence'' also
+applies to this analysis tool: it can only reveal the issues that are
+tested for.  If it does not find anything, it does not mean that there
+are no issues.  A final question remains though: what should we do
+with the issues that the analysis tool detects?

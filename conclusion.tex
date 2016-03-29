@@ -1,29 +1,47 @@
-\rfquote{All that matters on the chessboard is good moves.}{Robert
-James Fischer (Bobby Fischer)}
+\rfquote{All that matters on the chessboard is good moves.}{Bobby
+Fischer}
 
-In this dissertation the following has been covered: {\bibtex} have
-been described specifying how to use it and how it is used
-(Chapter~\ref{ch:about}), a range of challenges when working with
-{\bibtex} (Chapter~\ref{ch:problem-description}), approaches to the
-covered issues in {\bibtex} (Chapter~\ref{ch:approach}), how related
-work handles these issues (Chapter~\ref{ch:related}), a way to analyze
-{\bibtex} files to detect the issues (Chapter~\ref{ch:analyzing}), and
-how organize {\bibtex} files using the results from the analysis.
-(Chapter~\ref{ch:organizing}).
+{\noindent}
+Let us recapitulate: we have first described {\bibtex} -- both how to
+use it in principle and how it is used in practice
+(Chapter~\ref{ch:about}); we have then reviewed a range of practical
+issues (Chapter~\ref{ch:problem-description}), approaches to tackling
+them (Chapter~\ref{ch:approach}), and how they are tackled in related
+work (Chapter~\ref{ch:related}); we have then proposed a way to
+analyze {\bibtex} files to detect these issues
+(Chapter~\ref{ch:analyzing}), and how to organize {\bibtex} files
+using the results from this analysis (Chapter~\ref{ch:organizing}).
+We have implemented a part of this analysis in a prototype,
+{\orangutan}.
 
-{\bibtex}, despite its wide use, is far from a perfect tool, and the
-challenges faced range far and wide.  There are a lot of tools working
-on {\bibtex} and a lot of alternatives, some of these do provide
-partial solutions to some of the issues faced, but is far from
-sufficient.  For most of these issues it is possible to provide
-analysis tools that detect potential issues.  Such an analysis cannot
-be perfect though, since any set of rules will provide false positives
-or relies on assumptions that are not correct.  Because of the false
-positives the analysis need to have configurations, through de-facto
-standards, to tell it to ignore false positives.  The analysis can in
-most cases also provide suggestions for improvements, such as the
-suggestions from a spell checker.  These suggestions can be used to
-organize the \file{bib} either correcting the issues or to add
-de-facto tags to tell the analysis when it has a false positive.
+{\bibtex}, despite its wide use, is far from a perfect tool, and
+{\bibtex} user's face challenges that range far and wide.  Many tools
+surround {\bibtex} and so do a lot of alternatives, some of which do
+provide partial solutions to some of the issues faced.  However, as
+analyzed in Chapter~\ref{ch:related}, these tools are far from
+sufficient.  For most of these challenges a {\bibtex} user faces, it
+is possible to provide analysis tools that detect potential issues.
 
-Perspectives:
+Such analyses cannot be perfect though, since any set of rules yields
+false positives or relies on assumptions that are ill-founded since
+{\bibtex} is not formally specified: while the soundness of the
+specification of {\bibtex} is not questioned, its completeness is
+unknown.  Analyses of {\bibtex} files therefore need to have
+configurations, through de-facto standards, to detect and ignore false
+positives.  In most cases, these analyses can also provide suggestions
+for improvements, such as the suggestions from a spell checker.  These
+suggestions can then be used to organize one's \file{bib}, either by
+correcting the issues that have been detected or by adding de-facto
+tags to prevent false positives.
+%%%% Rewrite from here
+% [and here report the status of orangutan at this time of writing,
+% and its future as you see it today]
+
+Just like chess players who strive to always improve the quality of
+their moves, one can wish to improve the quality of one's {\bibtex}
+files.  We have designed {\orangutan} as a proof of concept for
+suggesting improvements.  It is our hope that this proof of concept
+can contribute to improving the general quality of {\bibtex} files
+and, consequently, can improve the precision of bibliographic
+references in documents as well as save time for their authors and
+their readers.

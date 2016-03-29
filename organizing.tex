@@ -1,6 +1,5 @@
-\rfquote{It occurred to me that at one point it was like I had two
-  diseases -- \\one was Alzheimer’s, and the other was knowing I had
-  Alzheimer’s.}{Terry Pratchett}
+\rfquote{Now that we have found love\\what are we gonna do\\with
+  it?}{Stevie Wonder}
 
 \section{Introduction}
 
@@ -41,21 +40,22 @@ manually edit his \file{bib}, and if the issues are listed with line
 numbers, they should be listed backwards, so the lines will be correct
 throughout the correction.
 
-After all the concerns has been addressed a pretty printing utility
-will be a nice final touch, ensuring a consistent structure inside ones
+After all the concerns have been addressed a pretty printing utility
+will be a nice final touch, ensuring a consistent structure inside one's
 \file{bib} and having the same indentations and formatting.
 
 \subsection{In practice}
 \label{sec:organizing_practice}
 
-When multiple suggestions are available all the alternatives should be
-given to the user.  All suggestions should include a way to find the
-violating entry, \ie, either the entry key or a location in the file.
-For all the detected issues it should suggest using the relevant
-configurations from Section~\ref{sec:analyzing_configuration}, with
-exception of the ones to disable entire checks, \ie,
-\texttt{@LEXICALLYOK}, \texttt{@CONSISTENCYOK} and \texttt{@OK}.  The
-suggestions that the tool gives should be as follows:
+When multiple suggestions are available, all the alternatives should
+be given to the user.  All suggestions should include a way to find
+the violating entry, \ie, either the entry key or a location in the
+file.  For all the detected issues it should suggest using the
+relevant configurations from
+Section~\ref{sec:analyzing_configuration}, with exception of the ones
+to disable entire checks, \ie, \texttt{@LEXICALLYOK},
+\texttt{@CONSISTENCYOK} and \texttt{@OK}.  The suggestions that the
+tool gives should be as follows:
 
 \begin{itemize}
 \item For duplicate entries, it should suggest: merging the entries,
@@ -63,16 +63,16 @@ suggestions that the tool gives should be as follows:
   configuration to mark the duplication as deliberate.  In the case
   where a merge is not possible or if the online lookup contains
   additional information, it should also suggest the result from an
-  online lookup.  For duplicated content it should suggest using
+  online lookup.  For duplicated content, it should suggest using
   \texttt{crossref} when relevant and otherwise changing the content
   to make use of strings.
 
-\item For general spelling errors it should inform about the
+\item For general spelling errors, it should inform about the
   misspelled word and show the suggestions from the spell checker.
   Furthermore, if online lookups are used to prevent false positives,
   the result from those should also be presented.
 
-\item For spelling errors in names it should only show the names that
+\item For spelling errors in names, it should only show the names that
   cannot be verified using databases.  Then it should show the name or
   names that gives challenges, and if possible suggestions from the
   name databases.
@@ -86,17 +86,18 @@ suggestions that the tool gives should be as follows:
   the lookup is a part of another tool.
 
 \item For name changes, it should suggest usage of a de-facto standard
-  to highlight this, following the rule of suggesting only names
-  actively used in the document, and suggesting the latest name, prior
-  to the current entry.  If the entry is from the earliest instance of
-  the forum in the file, no suggestions should be made.
+  to highlight a previous name of the forum, following the rule of
+  suggesting only names actively used in the document, and suggesting
+  the latest name, prior to the current entry.  If the entry is from
+  the earliest instance of the forum in the file, no suggestions
+  should be made.
 
 \item De-facto standards and specification conformance should result
   in information about the deviations from standards, \ie, if a field
   is missing this should be marked with the suggestion of adding it,
-  if a field is not specified or has been marked with deny it should
+  if a field is not specified or has been marked with deny, it should
   suggest removal.  In the case of exclusive and inclusive fields
-  where both are missing it should suggest an alternative action.  For
+  where both are missing, it should suggest an alternative action.  For
   the case of exclusive fields where both are present, it should
   suggest removing one of the violating fields.  Furthermore, it
   should show if the validation of the values fail, and if possible
@@ -112,11 +113,11 @@ suggestions that the tool gives should be as follows:
   suggest either changing the entire text to a string, if it is the
   entire text that matches the name of the string and otherwise
   splitting the text, concatenating the matched string with the rest
-  of the text.  If a text has a string representation it should
+  of the text.  If a text has a string representation, it should
   suggest removing the text and replacing it with the string,
   concatenating it with the rest of the text, if relevant.
 
-\item For inconsistent tags it should suggest the shortest path to
+\item For inconsistent tags, it should suggest the shortest path to
   consistency, whether it is by removing tags or adding tags to the
   entries.
 
@@ -126,7 +127,8 @@ suggestions that the tool gives should be as follows:
 \end{itemize}
 
 By following these instructions, it should at all times be possible to
-reach a point where the analysis does not show any more issues.
+reach a point where the analysis does not show any more issues: a
+fixed point.
 
 
 \section{\orangutan}
@@ -134,20 +136,21 @@ reach a point where the analysis does not show any more issues.
 \subsection{What}
 \label{sec:organizing_orangutan_what}
 
-{\orangutan} is designed as a framework rather as an end user
+{\orangutan} is designed as a framework rather as an end-user
 application.  The output it gives is the suggestions coming from the
-analysis.  For instance, a tool listing the suggestions in a backward
-order, for manual editing.
+analysis.  For instance, a tool can list the suggestions from
+{\orangutan} in a backward order, for manual editing.
 
 
 \subsection{How in principle}
 \label{sec:organizing_orangutan_how_principle}
 
-The output given in JSON, which most programming frameworks support.
-The output can be in a trimmed version showing only the detected
-issues or in a full version containing all the entries.  Thus the
-output be used for listing only the issues, or for printing an entire
-corrected {\bibtex} file after choosing the desired solutions.
+The output is given in JSON, which most programming frameworks
+support.  The output can be in a trimmed version showing only the
+detected issues or in a full version containing all the entries.  Thus
+the output could be used for listing only the issues, or for printing
+an entire corrected {\bibtex} file after choosing the desired
+solutions.
 
 
 \subsection{How in practice}
@@ -155,7 +158,7 @@ corrected {\bibtex} file after choosing the desired solutions.
 
 {\orangutan} gives back a JSON string containing at least the entries
 with detected issues.  If configured to do so, it keeps the entries
-without issues.  For the entries in the output that has issues an
+without issues.  For the entries in the output that have issues, an
 object is attached with the name \texttt{orangutan} detailing the
 specific issues and suggestions.
 
@@ -206,15 +209,16 @@ be seen in \figref{fig:orgazing_misspelling_output}.
 
 \remark{Now does it actually check for unknown entry types???}
 
-When checking for correctness it marks entries according to the
-{\bibtex} specification and de-facto standards.  This check is named
-conformance check.  The output specifies when an entry type or a tag
-is in violation with the rules specified.  The conformance checker
-adds an object for the tags with conformance errors to the $orangutan$
-object.  The object for the tag will then have an object named
-$specificationConformance$ containing a description of the issue and a
-code corresponding.  In \figref{fig:orgazing_nonconformity} an example
-of a violation of an exclusive rule can be seen.
+When checking for correctness, it performs a conformance check that
+marks entries according to the {\bibtex} specification and de-facto
+standards.  This check is named conformance check.  The output
+specifies when an entry type or a tag is in violation with the rules
+specified.  The conformance checker adds an object for the tags with
+conformance errors to the $orangutan$ object.  The object for the tag
+will then have an object named $specificationConformance$ containing a
+description of the issue and a code corresponding.
+\figref{fig:orgazing_nonconformity} displays an example of a violation
+of an exclusive rule.
 
 \begin{figure}
   \centering
@@ -239,13 +243,15 @@ of a violation of an exclusive rule can be seen.
 }
 \end{minted}
 \caption{An example of Orangutan output on a conformity error where
-  the exclusive use have been violated}
+  the exclusive use has been violated}
 \label{fig:orgazing_nonconformity}
 \end{figure}
 
-The current version just suggest the full name whenever an
-abbreviation is detected.  Builds a structure with suggestions for
-full names when an abbreviations is detected.
+The current version just suggests the full name whenever an
+abbreviation is detected.  It builds a structure with suggestions for
+full names when an abbreviation is
+detected. \figref{fig:orgazing_abbreviation} displays an {\orangutan}
+output for an abbreviation.
 
 \begin{figure}
   \centering
@@ -264,19 +270,19 @@ full names when an abbreviations is detected.
   }
 }
 \end{minted}
-\caption{An example of Orangutan output on a conformity error where
-  the exclusive ruse have been violated}
+\caption{An example of Orangutan output on an abbreviation.}
 \label{fig:orgazing_abbreviation}
 \end{figure}
 
-A complete output can be seen in could look like in
+A trimmed version of the output for an entry is displayed in
 \figref{fig:orgazing_complete}, which contains enough information to
 re-print the entry.  A tool using {\orangutan} can thus take this
 output, update the representation of the entry according to one's
 choices, and output a complete suggestion for a corrected entry.  It
 should be noted that the tool does not suggest the configurations for
-analysis, the suggestion of configurations can arguably both be the
-responsibility for a framework, such as {\orangutan}, or the frontend.
+analysis, the suggestion of configurations can arguably be the
+responsibility of a framework, such as {\orangutan}, and of the
+frontend.
 
 \begin{figure}
   \centering
@@ -322,17 +328,58 @@ responsibility for a framework, such as {\orangutan}, or the frontend.
   }
 }
 \end{minted}
-\caption{An example of Orangutan output on a conformity error where
-  the exclusive ruse have been violated}
+\caption{A trimmed example of an entry from {\orangutan} }
 \label{fig:orgazing_complete}
 \end{figure}
+
+\section{Current status of the prototype}
+
+At the time of writing, the prototype can do a spell check, detect
+abbreviations and check the conformity to a given specification.
+
+The language for the spell checker can be set using the de-facto
+\texttt{OPTanalyze}.  Spell checking is only done for title tags.  The
+spell checker used is $aspell$, which mush be in the path.  There is
+no option to add new words to the spell checker via {\orangutan}
+itself.  However, the spell checker is configured to use the folder
+$aspell/$ for local word lists, which has to be relative to the
+directory, from which the implementing tool is run.  The format for
+the word lists is specified in the Aspell manual under \emph{Format of
+  the Personal and Replacement Dictionaries}~\cite{format2016_aspell}.
+
+For checking the specification and conformity a simple set of rules
+are defined.  The default rules are the {\bibtex} specification
+according to \emph{{\bibtex} Entry and Field
+  Types}~\cite{bibtex_roberts}, and de-facto standards for
+\texttt{crossref}, \texttt{OPT*}, \texttt{OLDforum}, \texttt{DOI}, and
+\texttt{ISSN}.  Thus is allows tags commented out by prefixing the tag
+name with \texttt{OPT}.  The specifications are currently set in the
+directory of {\orangutan}.
+
+Abbreviations are detected using a list of know abbreviations, taken
+from JabRef.  It can only detect abbreviated forms and suggest full
+form, not vice versa.  The abbreviations are stored in a JSON file,
+mapping from the abbreviated form to the full form. The abbreviation
+configuration is currently located in the directory of {\orangutan}.
+
+Inside the {\orangutan} source, the work for consistency checks has
+been started, but is far from a working state.  There is no analysis
+for any of the other issues.
+
+The {\orangutan} framework is located at
+\url{https://github.com/rohdef/orangutan}, and a simple command line
+implementation is located at
+\url{https://github.com/rohdef/orangutan-demo}.  Note that nodejs and
+npm is required to run the tools, and that running \texttt{npm
+  install} is a prerequisite to running the demo or using the
+framework.
 
 
 \section{Summary and conclusion}
 
 Using the results from the analysis of a \file{bib}, sensible
 suggestions for a course of action can be provided.  For most results
-a straight forward solution can be provided, such as the correct
-spelling of a word.  The output from the prototype {\orangutan} have a
-proof of concept for this, providing out that can be used to take a
-course of action.
+a straightforward solution can be provided, such as the correct
+spelling of a word.  The output from the prototype {\orangutan} shows
+a proof of concept for providing output that one can use to resolve
+the issues from the analysis.

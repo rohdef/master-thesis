@@ -26,14 +26,14 @@ Before the wake of {\bibtex}, bibliographic references were managed
 entirely by hand and required a lot of labor.  For instance, nearly
 half of Mary-Claire van Leunen's book, \textit{A Handbook for
   Scholars}~\cite{leunen1992_handbook}, is dedicated to citing,
-managing, and writing references, \ie, 150 pages out of 335 pages
-(excluding the index).  Likewise, a significant fraction of Umberto
-Eco's book, \textit{How to Write a Thesis}~\cite{eco1985_thesis}, is
-also dedicated to managing and citing references and to ensuring a
-proper bibliography.  All this manual labor has almost been made
-obsolete by {\bibtex}.
+managing, and writing references, \ie, 150 out of 335 pages (excluding
+the index).  Likewise, a significant fraction of Umberto Eco's book,
+\textit{How to Write a Thesis}~\cite{eco1985_thesis}, is also
+dedicated to managing and citing references and to ensuring a proper
+bibliography.  All this manual labor has almost been made obsolete by
+{\bibtex}.
 
-Even more, {\bibtex} entries are now readily available online, and so
+Furthermore, {\bibtex} entries are now readily available online, and so
 the practical problem of bibliographic references is now solved, in
 principle.
 
@@ -42,7 +42,7 @@ principle.
 
 In the same spirit as {\LaTeX}, {\bibtex} is a simple software tool
 for managing bibliographic references in scientific writing, using an
-ASCII file to specify theses references.  Inside this ASCII file, the
+ASCII file to specify these references.  Inside this ASCII file, the
 components of each reference are specified, such as the author, title,
 year and what kind of medium (\eg, a book or article) was used.  This
 file will be referred to as \newdef{the {\bibtex} file} or
@@ -60,7 +60,7 @@ reference list, and ensures that only relevant entries are included.
 The references are labeled consistently in the document according to
 the citing style, the labels are used when a reference is cited and
 these labels allow the reader to quickly find the reference in the
-bibliography, as illustrated in \figref{fig:bibtex_example_alpha}.
+bibliography, as illustrated in \figref{fig:bibtex_example_acm}.
 
 Today, {\bibtex} has also enabled huge online resources with
 references, automated extraction tools, sharing of references and easy
@@ -91,20 +91,21 @@ text fragments that are reused.
 To select the desired style the command
 ${\backslash}bibliographystyle$ is used, for example
 ${\backslash}bibliographystyle\{alpha\}$.  The style in turn controls
-the formatting and how the references are labeled, as can be seen on
+the formatting and how the references are labeled, as can be seen in
 \figref{fig:bibtex_example_acm} and \figref{fig:bibtex_example_alpha}.
-On the Figures the labels are different, along with the abbreviation
+On these Figures the labels are different, along with the abbreviation
 of author names and some of the visual formatting.
 
 To build a {\LaTeX}-document with {\bibtex} references in it, one
 first runs the $latex$ command (or one of the derivatives) to produce
 (among other things) an \file{aux}.  The \file{aux} contains auxiliary
-information from the {\LaTeX}-compiler.  Then run the $bibtex$ command
-which uses the \file{aux} to find the entries in use and to give them
-labels according to the reference style.  The output from {\bibtex} is
-a \file{bbl} with the formatted references, which is then used in
-subsequent runs of {\LaTeX}, so the document will have labels at the
-appropriate places and a bibliography in accordance with the labels.
+information from the {\LaTeX}-compiler.  Then the $bibtex$ command is
+run, which uses the \file{aux} to find the entries in use and to give
+them labels according to the reference style.  The output from
+{\bibtex} is a \file{bbl} with the formatted references, which is then
+used in subsequent runs of {\LaTeX}, so the document will have labels
+at the appropriate places and a bibliography in accordance with these
+labels.
 
 
 \subsection{Micro-use}
@@ -121,15 +122,15 @@ entry.  Each entry consists of an identifying key and a set of tags.
 The identifying key will be called \newdef{entry key} to avoid
 ambiguity with the tag $key$.
 
-For each entry type, there are a specification of tags relevant to the
-given medium where some of them are mandatory. For instance for an
+For each entry type, there is a specification of tags relevant to the
+given medium with some of these being mandatory. For instance for an
 $@ARTICLE$ the tags $author$, $title$, $year$ and $journal$ are
-mandatory and supplementary information such as the $pages$ for the
+mandatory, and supplementary information such as the $pages$ for the
 article and $volume$ of the journal can be added.  For ease of use,
 {\bibtex} provides predefined strings for the months: $jan$, $feb$,
 $mar$ and so on.  The rules for the tags are quite simple, a tag can
-either be \newdef{required} or \newdef{optional}.  Furthermore there
-are cases where two tags are required, but which an ``or'' between
+either be \newdef{required} or \newdef{optional}.  Furthermore, there
+are cases where two tags are required, but with an ``or'' between
 them, \eg, in the specification of required fields for $@BOOK$ it says
 ``author or editor''~\cite{bibtex_roberts}, meaning either author or
 editor, but not both.  These ``or'' rules will be called

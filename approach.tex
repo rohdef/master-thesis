@@ -6,15 +6,15 @@
 
 The goal of this chapter is to organize the issues people have with
 {\bibtex}: answering what the issues in {\bibtex} are
-\chapref{sec:intro_what_issues}, and how to approach the {\bibtex}
-issues \chapref{sec:intro_what_to_do}.
+\chapref{sec:intro_what_issues}, and how to approach them
+\chapref{sec:intro_what_to_do}.
 
 
 \section{What are the issues in {\bibtex}}
 \label{sec:intro_what_issues}
 
 {\bibtex} has changed the landscape for scientific writing.  However,
-not without any issues.  As seen in
+it is not without any issues.  As seen in
 Chapter~\ref{ch:problem-description}, the challenges range widely and
 trying to group similar looking issues we have:
 
@@ -39,16 +39,21 @@ conjunctural.
 \label{sec:intro_what_to_do}
 
 As previously stated
-(Section~\ref{sec:problems_structural_conjunctural}), the structural
-approach to the issues is desired.  This choice means to ensure that
+(Section~\ref{sec:problems_structural_conjunctural}), we wish for a
+structural approach to the {\bibtex} issues reviewed in
+Section~\ref{sec:intro_what_issues}.  This choice means to ensure that
 there are tools that are able to handle the issues - preferably to the
 level where all issues are solved.  As touched upon shortly when
 inspecting the problems, it is not likely that all issues can be
 solved perfectly.  For a structural solution, there are two
-approaches:
+approaches: \nameref{sec:approach_replacing_bibtex}
+\chapref{sec:approach_replacing_bibtex} and
+\nameref{sec:approach_augmenting_bibtex}
+\chapref{sec:approach_augmenting_bibtex}
 
 
 \subsection{Updating or replacing {\bibtex}}
+\label{sec:approach_replacing_bibtex}
 
 One way of handling the issues structurally would be to change or
 replace {\bibtex}, so it handles all lexical and consistency concerns.
@@ -63,14 +68,17 @@ This approach would probably be perceived as invasive since it would
 cause existing {\bibtex} files not to work, and it would impose
 requirements one may not desire.  The perception would of course
 depend on perspective because the user who wants structure and control
-might find it good that it is enforced.  Updating or replacing
-{\bibtex} to handle the issues does not ensure separation of concerns.
+might find it good that it is enforced.\footnote{A similar debate
+  exists for statically vs. dynamically typed programming languages.}
+Updating or replacing {\bibtex} to handle the issues does not ensure
+separation of concerns.
 
-As will be inspected in Chapter~\ref{ch:related} there are actually a
-few attempts at both changing and replacing {\bibtex}.
+As described in Chapter~\ref{ch:related} there are a few attempts at
+both changing and replacing {\bibtex}.
 
 
 \subsection{Augmenting {\bibtex}}
+\label{sec:approach_augmenting_bibtex}
 
 Instead of changing or replacing {\bibtex}, an augmenting tool is
 another option.  Such a tool, together with {\bibtex}, would provide
@@ -83,14 +91,14 @@ concern of {\bibtex} is to cite references and print a bibliography
 according to a bibliography style.  Where as the concern of an
 augmenting tool is to ensure that ones has a nice \file{bib}.
 
-Getting people to use such a solution ironically cause a new issue, to
-which there is no structural solution.
+Ironically, getting people to use such a solution causes a new
+conjunctural issue, to which there is no structural solution.
 
 \section{How do we approach the {\bibtex} issues}
 \subsection{Introduction}
 
 The goal of this section is to introduce our choice of solutions for
-the issues.
+the issues reviewed in Section~\ref{sec:intro_what_issues}.
 
 
 \subsection{Lexical and correctness concerns vs. consistency concerns}
@@ -110,13 +118,13 @@ through the consistency concerns observing their relation gives:
   numbers, ISSN or DOI will make the detection trivial.  Otherwise,
   the detection has to be based on the similarity of the information:
   at best the information is identical, otherwise it has to be as
-  similar as possible to improve the detection.  For repeated content
+  similar as possible to improve the detection.  For repeated content,
   detecting when there are multiple instances of $@INBOOK$,
   $INCOLLECTION$ and $INPROCEEDINGS$ that reference the same source is
   needed.  For textual content reused content, such as a journal name,
-  should be detected.  For textual values it should compare the values
-  that are likely to be repetitive.  Thus solving the lexical concerns
-  will be of use.
+  should be detected.  For textual values it, should compare the
+  values that are likely to be repetitive.  Thus solving the lexical
+  concerns will be of use.
 
 \item Inconsistent naming of entry keys can be handled by a naming
   scheme.  Such a naming scheme is usually based on the information in
@@ -129,7 +137,7 @@ through the consistency concerns observing their relation gives:
 
 A common property about the consistency concerns is that they are
 easier to handle, once the lexical and correctness concerns have been
-handled.  This property indicates that a two phase solution may be
+handled.  This property indicates that a twophase solution may be
 desired: first handling the lexical and correctness concerns, then
 handling the consistency concerns.
 
@@ -137,10 +145,10 @@ handling the consistency concerns.
 \subsection{\nameref{sec:problems_duplicates}}
 \label{sec:approach_duplicates}
 
-Duplicate entries are fairly straight forward if the tags and the
+Duplicate entries are fairly straightforward if the tags and the
 contents are identical.  If the content and tags deviate, a way to
 detect ``similarity'' will be needed.  The easiest definition of
-similarity is if the title and author is identical, however this
+similarity is if the title and author is identical.  However, this
 definition might need to take things like revisions and year into
 account, as an author may decide to write a new version later or if
 one for some reason desires to refer to different revisions.  Further
@@ -148,7 +156,7 @@ challenges may arise if there are lexical and correctness issues.  As
 per Section~\ref{sec:approach_lexical_consistency}, one should fix
 these issues first.
 
-For duplicate values two ways of detecting are needed.  Provided the
+For duplicate values, two ways of detecting are needed.  Provided the
 correctness of the values, detecting duplicated meta-data is done by
 corresponding the $author$/$editor$ and $title$ for $@INCOLLECTION$,
 $@INBOOK$ and $@BOOK$, for conference proceedings comparing the
@@ -171,8 +179,8 @@ the proceedings caused an article to be printed with the title:
 ``Types, potency, and impotency: why[...]'', where the intended
 content naturally was ``Types, potency, and idempotency: why[...]''.
 The misprinted version of ``idempotency'' has been corrected in online
-resources, such as DBLP~\cite{bibtex2006_dblp}, where both versions of
-the title is arguably correct.
+resources, such as DBLP~\cite{bibtex2006_dblp}. Both versions of the
+title are arguably correct.
 
 Provided a solution for the issues in online lookups, the correct
 spelling will be a matter of looking up, but references may not be in
@@ -209,8 +217,8 @@ reason groups initials together, \eg, making George R. R. Martin into
 George RR Martin, or J. K. Rowling into JK Rowling, or B. B. King into
 BB King, then further detection will be needed.  Replacing the
 initials with full names is appropriate whenever possible, but since
-the full names may not be known some way of specifying that initials
-is the only thing available is needed.  The best approach will
+the full names may not be known, some way of specifying that initials
+are the only thing available is needed.  The best approach will
 probably be the one described for spell checking names in
 Section~\ref{sec:approach_spelling_names}.
 
@@ -229,15 +237,15 @@ improve the reliability of the results.  However, there is still no
 certain way to know if the database of the service is correct, so it
 is still not certain.  Most likely the ID systems, such as arXiv
 numbers, DOI and ISSN, will also provide a relatively reliable lookup
-mechanism, but it is still not guaranteed.
+mechanism, but that is still not guaranteed.
 
 Another way to approach the bad lookups could be by doing the same
 lookup in multiple databases and then have some kind of voting system
 that decides on which entry to trust.  This would however require
-knowledge information sources each online service use, because their
-source of information may be the same and then the same error could
-get multiple votes.  The approach can be refined by having increased
-trust in databases that are likely to be correct.
+knowledge of which information sources each online service use,
+because their source of information may be the same and then the same
+error could get multiple votes.  The approach can be refined by having
+increased trust in databases that are likely to be correct.
 
 The most appropriate strategy is probably selecting the database most
 likely to be correct and then have the user select if one agrees with
@@ -281,7 +289,7 @@ rules for valid values whenever possible.  Some rules will be very
 easy to set up, \eg, ISBN consists only of numbers and dashes.  Other
 rules such as not allowing numbers inside a name might be able to
 become an issue, \eg., if the queen of Denmark were to write something
-that is later cited a correct name for the author is ``Dronning
+that is later cited, a correct name for the author would be ``Dronning
 Magrethe 2.''.  A structural solution will validate as much as
 possible, but too rigid validation has the potential of causing new
 structural issues.
