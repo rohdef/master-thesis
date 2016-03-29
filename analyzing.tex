@@ -215,12 +215,12 @@ deviations is as follows:
   forum.
 \item \texttt{@ENTRYKEYOK} to mark the entry key as correct.
 \item \texttt{@LEXICALLYOK} to ignore all lexical checks for the
-  entry, should be used with care.
+  entry.  Should be used with care.
 \item \texttt{@CONSISTENCYOK} to ignore all consistency checks for the
-  entry, should be used with care.
-\item \texttt{@OK}, to mark an entry as fully correct, same as
-  \texttt{@CONFORMITYOK @LEXICALLYOK @CONSISTENCYOK}, should be used
-  with care.
+  entry.  Should be used with care.
+\item \texttt{@OK}, to mark an entry as fully correct, essentially the
+  same as marking the entry with: ``\texttt{@CONFORMITYOK @LEXICALLYOK
+    @CONSISTENCYOK}''.  Should be used with care.
 \end{itemize}
 
 The settings: \texttt{@ABBREVIATIONOK}, \texttt{@LEXICALLYOK},
@@ -292,7 +292,9 @@ strings would then have to be added in the top of the \file{bib}, so
   author = "Jens Blendstrup",
   title = "Mennesker i En Mistb{\ae}nk",
   year = 1994,
-  OPTanalyze = analyze_lang_danish # analyze_names_ok # analyze_conformity_ok
+  OPTanalyze = analyze_lang_danish
+             # analyze_names_ok
+             # analyze_conformity_ok
 }
 \end{verbatim}
   \caption{\figref{fig:analyzing_added_de_facto_standards_strings}
@@ -391,7 +393,8 @@ will look like
 
 % Proceedings
 @INPROCEEDINGS{porras1997emerald,
-  title = "EMERALD: Event monitoring enabling response to anomalous live disturbances",
+  title = "EMERALD: Event monitoring enabling response " #
+          "to anomalous live disturbances",
   author = "Porras, Phillip A and Neumann, Peter G",
   booktitle = nissc20
 }
@@ -542,9 +545,10 @@ first part of an entry, last name, first name, and significant word,
 will improve the usability.  For example,
 \texttt{[lastname]\{author\}} would select the last name of the
 authors.  Using these selectors in conjunction to refine the result,
-for instance, \texttt{[lastname][first]\{author\}}.  Again this moves
-the format away from how {\bibtex} is defined and no better solution
-has been found.
+for instance, to get the last name of the first author:
+\texttt{[lastname][first]\{author\}}.  Again this moves the format
+away from how {\bibtex} is defined and no better solution has been
+found.
 
 Fortunately, {\bibtex} strings comes to the rescue - at least
 partially.  Having strings for the most common matches will ensure
@@ -557,9 +561,11 @@ support a more natural language.  And example can be seen in
 
 \begin{figure}
   \centering
+\begin{small}
 \begin{verbatim}
 @STRING{ENTRY_KEY = LASTNAME # OF # FIRST # AUTHOR # THEN # YEAR}
 \end{verbatim}
+\end{small}
   \caption{An example of a entry key pattern using the first name of
     the first year, followed by the year.}
 \label{fig:analyzing_entry_key_pattern}

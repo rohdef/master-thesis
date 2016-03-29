@@ -222,14 +222,16 @@ of a violation of an exclusive rule can be seen.
 {
   "author": {
     "specificationConformance": {
-      "description": "[author] and [editor] cannot be in the same entry",
+      "description": "[author] and [editor] " +
+                     "cannot be in the same entry",
       "code": 3,
       "field": "editor"
     }
   },
   "editor": {
     "specificationConformance": {
-      "description": "[editor] and [author] cannot be in the same entry",
+      "description": "[editor] and [author] " +
+                     "cannot be in the same entry",
       "code": 3,
       "field": "author"
     }
@@ -237,7 +239,7 @@ of a violation of an exclusive rule can be seen.
 }
 \end{minted}
 \caption{An example of Orangutan output on a conformity error where
-  the exclusive ruse have been violated}
+  the exclusive use have been violated}
 \label{fig:orgazing_nonconformity}
 \end{figure}
 
@@ -255,9 +257,8 @@ full names when an abbreviations is detected.
         "am. j. potato res."
       ],
       "suggestions": {
-        "am. j. potato res.": [
-          "American Journal of Potato Research"
-        ]
+        "am. j. potato res.":
+            [ "American Journal of Potato Research" ]
       }
     }
   }
@@ -268,7 +269,14 @@ full names when an abbreviations is detected.
 \label{fig:orgazing_abbreviation}
 \end{figure}
 
-A complete output can be seen in could look like this
+A complete output can be seen in could look like in
+\figref{fig:orgazing_complete}, which contains enough information to
+re-print the entry.  A tool using {\orangutan} can thus take this
+output, update the representation of the entry according to one's
+choices, and output a complete suggestion for a corrected entry.  It
+should be noted that the tool does not suggest the configurations for
+analysis, the suggestion of configurations can arguably both be the
+responsibility for a framework, such as {\orangutan}, or the frontend.
 
 \begin{figure}
   \centering
@@ -279,59 +287,35 @@ A complete output can be seen in could look like this
   "citationKey": "jelly_baby",
   "entryType": "article",
   "entryTags": {
-    "author": [
-      {
-        "type": "text",
-        "delimiter": "{",
-        "part": "Rincewind the Wizzard"
-      }
-    ],
-    "title": [
-      {
-        "type": "text",
-        "delimiter": "{",
-        "part": "Interesting Times with Potatoes and Jelly Beans"
-      }
-    ],
-    "journal": [
-      {
-        "type": "text",
-        "delimiter": "{",
-        "part": "Am. J. Potato Res."
-      }
-    ],
-    "volume": [
-      {
-        "type": "text",
-        "delimiter": "{",
-        "part": "17"
-      }
-    ],
-    "number": [
-      {
-        "type": "text",
-        "delimiter": "{",
-        "part": "5"
-      }
-    ],
-    "year": [
-      {
-        "type": "text",
-        "delimiter": "{",
-        "part": "1994"
-      }
-    ]
+    "author": [{
+      "type": "text",
+      "delimiter": "{",
+      "part": "Rincewind the Wizzard"
+    }],
+    "title": [{
+      "type": "text",
+      "delimiter": "{",
+      "part": "Interesting Times with Potatoes and Jelly Beans"
+    }],
+    "journal": [{
+      "type": "text",
+      "delimiter": "{",
+      "part": "Am. J. Potato Res."
+    }],
+    [...]
+    "year": [{
+      "type": "text",
+      "delimiter": "{",
+      "part": "1994"
+    }]
   },
   "orangutan": {
     "journal": {
       "abbreviations": {
-        "abbreviation": [
-          "am. j. potato res."
-        ],
+        "abbreviation": ["am. j. potato res."],
         "suggestions": {
-          "am. j. potato res.": [
-            "American Journal of Potato Research"
-          ]
+          "am. j. potato res.":
+              ["American Journal of Potato Research"]
         }
       }
     }
