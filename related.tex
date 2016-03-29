@@ -5,12 +5,11 @@ if they do so.
 
 In this chapter, some of the bibliography tools will be surveyed, with
 a focus on how they tackle the issues covered.  The chapter is
-organized as follows: \chapref{sec:bibtex_tools} contains an overview
-of the pure tools for {\bibtex}, \chapref{sec:bibtex_alternatives}
-contains some of the attempts to replace {\bibtex} with similar
-formats, and \chapref{sec:bibliography_managers} strives to completely
-redesign how to manage bibliographies and instead exporting the
-bibliographies to a desired format, such as {\bibtex}
+organized as follows: an overview of the pure tools for {\bibtex}
+\chapref{sec:bibtex_tools}, some of the attempts to replace {\bibtex}
+\chapref{sec:bibtex_alternatives} and bibliography mangers that strive
+to redesign how to manage bibliographies
+\chapref{sec:bibliography_managers}.
 
 
 \section{{\bibtex} tools}
@@ -277,53 +276,11 @@ It does not highlight any features of relevance~\cite{papers_features}
 and as it is developed for Mac OS, it has not been possible to test if
 there is relevant features apart from what they mention on their page.
 
-
-%\section{Research \remark{better headline name would be ideal}}
-%It has not been possible to find research covering the issues of
-%interest, such as inconsistencies and spelling errors, in {\bibtex}
-%documents.  The issues has been partially handled on the practical
-%level, which can be seen in sections \ref{sec:bibtex_tools} and
-%\ref{sec:bib_managers}.  However issues such how to disambiguate
-%abbreviations has been a concern in others contexts.
-
-
-%\subsection{Abbreviation disambiguation using Machine Learning}
-%In~\cite{okazaki2010_building} machine learning is used to classify
-%abbreviations to allow disambiguation.  The method they used has the
-%expanded forms and the abbreviations, since there may be multiple
-%expanded forms concerning the same abbreviation (\eg, ``polymerase
-%chain reaction `` and ``polymerization chain reaction``), they
-%introduce a sense inventory which is a cluster for things having the
-%same meaning.
-
-%The technique is quite powerful and has
-
 %\subsection{ALICE}
 %ALICE is an abbreviation detection system for bio articles. It uses a
 %lot of rules to detect abbreviation styles.
 
 %Perhaps some of those rules can be reused in my project?
-
-
-%\subsection{Overview}
-%\remark{I know, needs work}
-
-%Abbreviation detection in {\bibtex} will usually only have one
-%expanded form for each use of an abbreviation.  There may be a journal
-%named FooBar and one named FooBaz, both using the abbreviation FB,
-%however if FB is expanded to FooBar it will not occur that it is in
-%the sense of FooBar's or other variations, since the journal name is
-%just the name and not in a textual context where variations will
-%occur.  Thus a clustering based system like in~\cite{okazaki2010_building} will be overkill.  It is possible that a
-%machine learning approach will acchieve more accuracy, but the
-%approach has been put aside in this dissertation for simplicity.
-
-%The work in~\cite{?} has a more practical approach as it uses simple
-%rules for when something can be considered an abbreviation.  However
-%they make the assumption that the expansion of an abbreviation will be
-%located close to it at one of its uses.  However in {\bibtex} it is
-%likely that it is either located elsewhere in the file or not in the
-%file at all.
 
 
 \section{Summary and conclusions}

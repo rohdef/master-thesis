@@ -18,7 +18,7 @@ Due to the practical issues in changing/replacing {\bibtex} and to
 ensure separation of concerns an analyzing tool should be an
 augmenting tool.
 
-To analyze {\bibtex} one would need to parse a \file{bib} into a
+To analyze {\bibtex} one would need to parse a {\bibtex} file into a
 suitable representation.  This representation would need to parse
 {\bibtex} entries and strings at a minimum.  If one intents to pretty
 print the result after resolving all issues, the parsing also needs
@@ -41,8 +41,8 @@ since it does not matter if one use a local copy, if it is up to date.
   Using a spell checker requires a way to configure the language for
   the individual entries.
 
-\item Spelling errors in names should use databases with
-  names for detection.
+\item Spelling errors in names should use databases with names for
+  detection.
 
 \item Initials can be detected by finding cases with a single letter,
   perhaps followed by a punctuation.  For suggestions databases with
@@ -110,8 +110,9 @@ since it does not matter if one use a local copy, if it is up to date.
 \subsubsection{Configuration}
 \label{sec:analyzing_configuration}
 
-Both of the steps above require ways to configure the behavior.  The
-use of configurations should be as close to {\bibtex} as possible.
+Both of the steps above require ways to configure the behavior, to
+prevent false positives.  The use of configurations should be as close
+to {\bibtex} as possible.
 
 The preference to using the {\bibtex} format allows people to use what
 they are familiar with.  Using a format that are readily supported in
@@ -622,20 +623,21 @@ further.
 \subsection{Introduction}
 
 A prototype for some of the analysis, has been made under the name
-{\orangutan}.
-
-\remark{Olivier: would it be appropriate to mention that the name
-  {\orangutan} is a reference to The Librarian (he is never mentioned
-  by name) from Discworld, who happens to be an Orangutan}
+\newdef{\orangutan}.  The name {\orangutan} is inspired from Terry
+Pratchett's Discworld books, where the librarian at the Unseen
+University is an orangutan.
 
 
 \subsection{Why {\orangutan} came to be}
 
-There are a lot of tools that provide partial solutions, so having an
-augmenting tool would be an improvement.  The tool will be most
-effective if it address first the correctness and lexical concerns
-then the consistency concerns.  The attempt at making this tool has
-been named \newdef{\orangutan}.
+There are a lot of tools that provide partial solutions, such as using
+online lookups to compare entries and to detect duplicate entries.
+None of these use the idea of providing a general framework for reuse,
+or de-facto configuration inside a {\bibtex} file.  {\orangutan} is a
+proof of concept that analysis can be done using the de-facto
+configurations.
+
+\remark{Olivier: Feels a bit like over-selling it here}
 
 
 \subsection{What is {\orangutan}}
@@ -650,11 +652,9 @@ Section~\ref{sec:analyzing_what_to_do}.
 
 When analyzing {\bibtex} files {\orangutan} operates on the first step
 of the analysis: correctness and lexical concerns.  The tool use
-options, set by introducing a de-facto standard.  The options are for
-specifying if the language for the spell check and that the entry is
-already considered to be correct.  To make the options intuitive for
-the {\bibtex} user the options are designed to match the {\bibtex}
-format.
+options, set by introducing a de-facto standard and JSON files.  The
+options are for specifying if the language for the spell check,
+entries that are considered to be correct and the standards used.
 
 
 \subsection{How {\orangutan} is used in practice}
@@ -667,10 +667,10 @@ subset of the configuration specified.  It adds the
 \texttt{OPTanalyze} tag and the configuration \texttt{@OK} and
 \texttt{@LANG}.
 
-The spell checker runs a spell check in the background using aspell.
-Currently the spell checker is limited to only titles.  When spell
-checking it use the configuration to specify the language, \eg,
-\texttt{OPTanalyze = "@LANG=DA"}.
+The spell checker module runs \newdef{aspell} in the background to do
+the spell check.  Currently the spell checker module is limited to
+titles only.  When spell checking, it uses the configuration to
+determine the language, \eg, \texttt{OPTanalyze = "@LANG=DA"}.
 
 The correctness checker verifies the conformity with the {\bibtex}
 specification and a few known de-facto standards.  Currently the
@@ -701,7 +701,11 @@ one specified earlier, a snippet of the configuration can be seen in
 \label{fig:correctness_checker_json}
 \end{figure}
 
-\remark{add default de-facto standards}
+In {\orangutan} the de-facto standards added are \texttt{crossref},
+\texttt{issn}, \texttt{doi}, \texttt{oldforum} and \texttt{opt*}, last
+one using the wildcard to match all tags that has been commented out.
+All the de-facto standards are accepted on \texttt{*} entries, again
+using the wildcard to match all entry types.
 
 The abbreviation checker runs through journal names using a known list
 of abbreviations.  The detection can be improved by detecting
@@ -713,7 +717,35 @@ written with text rather than using a {\bibtex} string.
 
 \section{Summary and conclusions}
 
-To summarize:
+Analyzing {\bibtex} can be done using the two phases suggested,
+starting with the lexical and correctness concerns, followed by the
+consistency concerns.
+
+To find the lexical and correctness issues the following can be done:
+running a spell check on entries, checking author names in databases,
+detecting initials using single letters optionally followed by a
+punctuation, prioritizing trusted sources for online lookups, using
+rules to check conformity with the standards, using patterns to verify
+values, using databases of know abbreviations to detect abbreviations,
+and detecting when names of strings appear inside text.
+
+To find the consistency issues: entries should be compared to find
+duplicate content, using databases to find changes in forum names,
+entries from the same forum should be compared to detect inconsistent
+tag usage and a pattern should be used to detect inconsistent entry
+keys.
+
+For the analysis a configuration is provided to prevent false
+positives.  A format for configuring has been introduced keeping as
+close to the {\bibtex} format as possible.  For entry level
+configuration by introducing two de-facto standards, and for general
+configuration by introducing an approximation to a {\bibtex} file,
+using additional wildcard notations, strings with special meanings and
+entry key naming to disambiguate the purpose of the configuration.
+
+A prototype, {\orangutan}, has been introduced, showing as a proof of
+concept that the analysis can be done and that de-facto standards can
+be used for configuration.
 
 Having a tool that can analyze {\bibtex} files, and find the issues in
 the \file{bib} is the first step in handling the issues.  However,

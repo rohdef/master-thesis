@@ -1,3 +1,7 @@
+\rfquote{We are all slaves to our histories.\\If there is to be
+  a…bright future,\\we must learn to break those chains.}{Delenn,
+  Babylon 5}
+
 \section{Introduction}
 
 The goal of this chapter is to organize the issues people have with
@@ -34,12 +38,14 @@ conjunctural.
 \section{What can be done about the {\bibtex} issues}
 \label{sec:intro_what_to_do}
 
-As previously stated, the structural approach to the issues is
-desired.  This choice means to ensure that there are tools that are
-able to handle the issues - preferably to the level where all issues
-are solved.  As touched upon shortly when inspecting the problems, it
-is not likely that all issues can be solved perfectly.  For a
-structural solution, there are two approaches:
+As previously stated
+(Section~\ref{sec:problems_structural_conjunctural}), the structural
+approach to the issues is desired.  This choice means to ensure that
+there are tools that are able to handle the issues - preferably to the
+level where all issues are solved.  As touched upon shortly when
+inspecting the problems, it is not likely that all issues can be
+solved perfectly.  For a structural solution, there are two
+approaches:
 
 
 \subsection{Updating or replacing {\bibtex}}
@@ -57,7 +63,8 @@ This approach would probably be perceived as invasive since it would
 cause existing {\bibtex} files not to work, and it would impose
 requirements one may not desire.  The perception would of course
 depend on perspective because the user who wants structure and control
-might find it good that it is enforced.
+might find it good that it is enforced.  Updating or replacing
+{\bibtex} to handle the issues does not ensure separation of concerns.
 
 As will be inspected in Chapter~\ref{ch:related} there are actually a
 few attempts at both changing and replacing {\bibtex}.
@@ -103,13 +110,13 @@ through the consistency concerns observing their relation gives:
   numbers, ISSN or DOI will make the detection trivial.  Otherwise,
   the detection has to be based on the similarity of the information:
   at best the information is identical, otherwise it has to be as
-  similar as possible to improve the detection.  Thus solving the
-  lexical concerns will be of use.  For repeated content detecting
-  when there are multiple instances of $@INBOOK$, $INCOLLECTION$ and
-  $INPROCEEDINGS$ that reference the same source is needed.  For
-  textual content reused content, such as a journal name, should be
-  detected.  For textual values it should compare the values that are
-  likely to be repetitive.
+  similar as possible to improve the detection.  For repeated content
+  detecting when there are multiple instances of $@INBOOK$,
+  $INCOLLECTION$ and $INPROCEEDINGS$ that reference the same source is
+  needed.  For textual content reused content, such as a journal name,
+  should be detected.  For textual values it should compare the values
+  that are likely to be repetitive.  Thus solving the lexical concerns
+  will be of use.
 
 \item Inconsistent naming of entry keys can be handled by a naming
   scheme.  Such a naming scheme is usually based on the information in
@@ -143,10 +150,10 @@ these issues first.
 
 For duplicate values two ways of detecting are needed.  Provided the
 correctness of the values, detecting duplicated meta-data is done by
-corresponding the $author$/$editor$ and $title$ for $@BOOK$, $@INBOOK$
-and $@INCOLLECTION$, for conference proceedings comparing the $title$
-of $@PROCEEDINGS$ and the $booktitle$ of $@INPROCEEDINGS$ will
-determine if the conference is the same,
+corresponding the $author$/$editor$ and $title$ for $@INCOLLECTION$,
+$@INBOOK$ and $@BOOK$, for conference proceedings comparing the
+$title$ and $booktitle$ of $@PROCEEDINGS$ and $@INPROCEEDINGS$
+respectively will determine if the conference is the same,
 
 
 \subsection{\nameref{sec:problems_spelling}}
@@ -157,14 +164,24 @@ checker is used, one should be aware of false positives.
 Domain-specific terms might not be present in the dictionary and if
 the original source is misspelled, it would be a mistake to correct it
 (once published, the name published is the correct name of the
-reference!).  Provided a solution for the issues in online lookups,
-the correct spelling will be a matter of looking up, but references
-may not be in the databases.  As stated in
-Section~\ref{sec:approach_look_ups}, there is no good way to ensure
-correct lookups.  Therefore a spell checker seems like a good way to
-get an indication of possible misspellings, but one would still have
-to verify them.  Since entries may be in different languages, a way of
-specifying the language should be considered.
+reference!).  An issue with the published version is that the title
+can be updated.  An example of an updated name is from the
+International Conference on Functional Programming, where an error in
+the proceedings caused an article to be printed with the title:
+``Types, potency, and impotency: why[...]'', where the intended
+content naturally was ``Types, potency, and idempotency: why[...]''.
+The misprinted version of ``idempotency'' has been corrected in online
+resources, such as DBLP~\cite{bibtex2006_dblp}, where both versions of
+the title is arguably correct.
+
+Provided a solution for the issues in online lookups, the correct
+spelling will be a matter of looking up, but references may not be in
+the databases.  As stated in Section~\ref{sec:approach_look_ups},
+there is no good way to ensure correct lookups.  Therefore a spell
+checker seems like a good way to get an indication of possible
+misspellings, but one would still have to verify them.  Since entries
+may be in different languages, a way of specifying the language should
+be considered.
 
 
 \subsection{\nameref{sec:problems_spelling_names}}
@@ -379,8 +396,8 @@ correctness and lexical concerns.
 \end{itemize}
 
 Handling the {\bibtex} issues will be done by augmenting {\bibtex}
-with a multiple phase tool.  The tool will address the correctness and
-lexical concerns first, then the consistency concerns.
+with a tool used in multiple phases.  The tool will address the
+correctness and lexical concerns first, then the consistency concerns.
 
 
 %\begin{figure}
@@ -400,8 +417,7 @@ lexical concerns first, then the consistency concerns.
 %\label{fig:bibtex_out}
 %\end{figure}
 
-
-%\remark{People who request similar
+%People who request similar
 %http://stackoverflow.com/questions/13630584/the-best-method-for-handling-bibtex-files
 %http://stackoverflow.com/questions/32838020/awk-how-to-clean-bibtex-files
 %http://www.latex-community.org/forum/viewtopic.php?f=50&t=12043
@@ -410,8 +426,6 @@ lexical concerns first, then the consistency concerns.
 %<http://tex.stackexchange.com/questions/128989/how-can-one-validate-a-bib-file
 %http://tex.stackexchange.com/questions/173621/how-to-validate-check-a-biblatex-bib-file
 %http://stackoverflow.com/questions/13630584/the-best-method-for-handling-bibtex-files
-%}
-
 
 %%% Local Variables:
 %%% mode: latex

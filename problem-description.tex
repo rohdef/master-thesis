@@ -3,7 +3,7 @@
 \section{Introduction}
 The goal of this chapter is to introduce the challenges of {\bibtex}
 through concrete examples.  The terms of discourse, structural and
-conjunctural, first defined
+conjunctural, are first defined
 \chapref{sec:problems_structural_conjunctural}.  The rest of the
 chapter is dedicated to problems with: duplicate entries
 \chapref{sec:problems_duplicates}, spelling errors
@@ -92,11 +92,11 @@ contain different content.
 Yet another, but similar issue, comes from duplicated values.  For
 instance, when one cites multiple references from inside a conference
 proceedings, multiple $@INPROCEEDINGS$ entries can contain the same
-value for $booktitle$, and probably other meta-information as well.
-Furthermore, if one cites multiple publications from the same forum,
-then the name of the forum, such as the journal name for articles, can
-be repeated.  In general, any textual content can potentially be
-repeated.
+value for $booktitle$, and probably other meta-information can occur
+as well.  Furthermore, if one cites multiple publications from the
+same forum, then the name of the forum, such as the journal name for
+articles, can be repeated.  In general, any textual content can
+potentially be repeated.
 
 Having a tool that just merges duplicate entries may provide a
 structural solution to the first case but will create a structural
@@ -108,13 +108,13 @@ Thus the solution should not merge automatically.
 \label{sec:problems_spelling}
 
 In almost, if not, all cases where people type text, spelling errors
-will arise, sooner or later, \file{bib}s are no exception.  Extracting
-meta-information automatically from documents may also run into a bad
-extraction leading to spelling errors.  Furthermore, a spelling error
-might not even be in the {\bibtex} document, as the misspelling can be
-from the source, for instance if a title of a document is misspelled,
-then the correct {\bibtex} will have to contain this error, as it is
-the title of the source.
+will arise, sooner or later, {\bibtex} files are no exception.
+Extracting meta-information automatically from documents may also run
+into a bad extraction leading to spelling errors.  Furthermore, a
+spelling error might not even be in the {\bibtex} document, as the
+misspelling can be from the source, for instance if a title of a
+document is misspelled, then the correct {\bibtex} will have to
+contain this error, as it is the title of the source.
 
 A user typing the entries manually is arguably the cause of spelling
 errors.  Thus it can be argued that the issue is conjunctural, since
@@ -151,7 +151,7 @@ from the used citation style or from a resource where they are already
 abbreviated.
 
 If the initials come from the citation style, the issue is of a
-structural nature.  However if it is copied from another source, or
+structural nature.  However, if it is copied from another source, or
 just written like that, it is conjunctural, as the user did not ensure
 full names.  A structural variant of the copying issue is if the
 reference is copied by a tool, then it can be argued that such a tool
@@ -242,7 +242,7 @@ verify the result.
 \label{sec:problems_name_changes}
 
 In \figref{fig:missing_org_scholar_lookup}, spotting the consistency
-issues were relatively simple.  When looking at
+issues is relatively simple.  When looking at
 \figref{fig:entry_journal_name_authors} it can be seen that the
 conference name is slightly different in one of the entries, but so
 close that they are probably the same conference.
@@ -367,7 +367,7 @@ the de-facto standards.
 Another point is that some values can be clearly correct or wrong.
 For instance, if one were to write ``spaghetti'' for the value of the
 year.  Having numbers in a name, or letters in an ISBN is other
-examples that are clearly wrong.
+examples that are likely to be wrong.
 
 
 %%
@@ -451,13 +451,14 @@ usage of crossref.  Another approach is the use of Bib{\LaTeX} and
 biber Section~\ref{sec:related_biblatex}, which provide the solution
 in the formatting options~\cite{koppensteiner2011abbreviate}, provided
 that the abbreviation handling of the style is correct.  This solution
-causes the formatting issue to become conjunctural.  Bibliography
-managers (see Section~\ref{sec:bibliography_managers}) tend to go with
-the strategy of storing the references using full names.  When one
-using a bibliography manager export to a {\bibtex} file (or another
-format), the desired abbreviation style is applied to the export.
-This strategy moves the issue towards being conjunctural, for the same
-reasons as the Bib{\LaTeX} and biber solution.
+causes the formatting issue to become conjunctural.
+
+Bibliography managers (see Section~\ref{sec:bibliography_managers})
+tend to go with the strategy of storing the references using full
+names.  When one using a bibliography manager export to a {\bibtex}
+file (or another format), the desired abbreviation style is applied to
+the export.  This strategy moves the issue towards being conjunctural,
+for the same reasons as the Bib{\LaTeX} and biber solution.
 
 As the purpose is to work on the {\bibtex} files, the formatting in
 the end is technically not the primary concern.  Optimally the concern
@@ -644,7 +645,7 @@ above.  The Danielsson has additional information with the content
 \section{Inconsistent entry keys}
 \label{sec:problems_inconsistent_keys}
 
-The naming scheme for entry keys may vary throughout a \file{bib}.
+The naming scheme for entry keys may vary throughout a {\bibtex} file.
 For example, one of the users collaborating earlier might use entries
 from various online databases getting keys corresponding to
 \figref{fig:missing_org_scholar_lookup}, \figref{fig:eptcs_lookup} and
