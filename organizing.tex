@@ -24,25 +24,25 @@ where the analysis cannot find any more issues, or by using the
 configurations to tell the analysis that the issues are false
 positives.
 
-There are two basic ways of reacting to the issues, one automatically
-correcting them and the other is to present the issues and have the
-user decide what to do.  As pointed out in the problem descriptions,
-it is hard, if not impossible, to automatically correct, since it can
-lead to incorrect changes and thus introduce a new structural issue.
-Thus, the organizing is done by presenting the issues, letting the user
-decide on the action to take.
+There are two basic ways of reacting to the issues, one is to
+automatically correct them and the other is to present the issues and
+have the user decide what to do.  As pointed out in the problem
+descriptions, it is hard, if not impossible, to automatically correct,
+since it can lead to incorrect changes and thus introduce a new
+structural issue.  Thus, the organizing is done by presenting the
+issues, letting the user decide on the action to take.
 
 When presenting the user with the issues, there are again two
 approaches: letting one do a range of choices to handle the issues,
-finally outputting a corrected \file{bib}, or giving a list of issues
+before outputting a corrected \file{bib}, or giving a list of issues
 and suggestions for corrections.  The last one requires the user to
 manually edit his \file{bib}, and if the issues are listed with line
 numbers, they should be listed backwards, so the lines will be correct
 throughout the correction.
 
 After all the concerns have been addressed, a pretty printing utility
-will be a nice final touch, ensuring a consistent structure inside one's
-\file{bib} and having the same indentations and formatting.
+will be a nice final touch, ensuring a consistent structure inside
+one's \file{bib} and ensuring consistent indentations and formatting.
 
 \subsection{In practice}
 \label{sec:organizing_practice}
@@ -74,8 +74,8 @@ tool gives should be as follows:
 
 \item For spelling errors in names, it should only show the names that
   cannot be verified using databases.  Then it should show the name or
-  names that gives challenges, and if possible, suggestions from the
-  name databases.
+  names that present challenges, and if possible, suggest other likely
+  names from the databases.
 
 \item Initials should be presented to the user, and if possible,
   suggestions from the name databases.
@@ -102,7 +102,7 @@ tool gives should be as follows:
   suggest removing one of the violating fields.  Furthermore, it
   should show if the validation of the values fail, and if possible,
   where in the check they fail.  It should also show the suggestions
-  from any online lookups to provide possible corrections.
+  from any online lookups in order to provide possible corrections.
 
 \item For abbreviations, it should suggest changing to usage of
   strings, if the values are written as text.  It should suggest
@@ -136,8 +136,8 @@ fixed point.
 \subsection{What}
 \label{sec:organizing_orangutan_what}
 
-{\orangutan} is designed as a framework rather than an end-user
-application.  The output it gives is the suggestions coming from the
+{\orangutan} is designed as a framework rather than as an end-user
+application.  The output it gives is the suggestions from the
 analysis.  For instance, a tool can list the suggestions from
 {\orangutan} in a backward order, for manual editing.
 
@@ -381,5 +381,5 @@ Using the results from the analysis of a \file{bib}, sensible
 suggestions for a course of action can be provided.  For most results,
 a straightforward solution can be provided, such as the correct
 spelling of a word.  The output from the prototype {\orangutan} shows
-a proof of concept for providing output that one can use to resolve
+a proof of concept for providing output that can be used to resolve
 the issues from the analysis.
