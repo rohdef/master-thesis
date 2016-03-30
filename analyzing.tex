@@ -34,9 +34,9 @@ with the online database.
 \subsubsection{First step: Lexical and correctness}
 \begin{itemize}
 \item Spelling errors in general can be detected either by online
-  lookups or a spell checker.  A combination of the two might be an
+  lookups or a spellchecker.  A combination of the two might be an
   improvement, since it gives a potential indicator of false
-  positives.  Using a spell checker requires a way to configure the
+  positives.  Using a spellchecker requires a way to configure the
   language for the individual entries.
 
 \item Spelling errors in names should use a database of names for
@@ -188,7 +188,7 @@ desired deviations are as follows:
 \item \texttt{@DUPLICATEOK=tag} to specify that a potential duplicate
   is deliberate, replacing \texttt{tag} with the entry key of the
   potential duplicate.
-\item \texttt{@LANG=XX} to specify the desired spell check language,
+\item \texttt{@LANG=XX} to specify the desired spellcheck language,
   replacing \texttt{XX} with the language code desired, \eg.,
   \texttt{@LANG=FR}.
 \item \texttt{@SPELLINGOK} to mark the spelling as correct.
@@ -237,8 +237,8 @@ example of the configurations can be seen in
 }
 \end{verbatim}
   \caption{An example using the de-facto standards for configuration,
-    setting the spell checking language to Danish, accepting the name
-    ``Jens Blendstrup'' and ignoring the missing publisher.}
+    setting the language for spell checking to Danish, accepting the
+    name ``Jens Blendstrup'' and ignoring the missing publisher.}
   \label{fig:analyzing_added_de_facto_standards}
 \end{figure}
 
@@ -669,8 +669,8 @@ that are considered to be correct, and the standards used.
 
 \subsection{How {\orangutan} is used in practice}
 
-In the current version, three analyzing modules are in use: a spell
-checker, a correctness checker, and an abbreviation checker.
+In the current version, three analyzing modules are in use: a
+spellchecker, a correctness checker, and an abbreviation checker.
 
 The configuration format for entry level configuration uses a small
 subset of the configuration specified.  It adds the
@@ -678,7 +678,7 @@ subset of the configuration specified.  It adds the
 \texttt{@LANG}.
 
 The spellchecker module runs \newdef{aspell} in the background to do
-the spell check.  Currently, the spell checker module is limited to
+the spell check.  Currently, the spellchecker module is limited to
 titles only.  When spell checking, it uses the configuration to
 determine the language, \eg, \texttt{OPTanalyze = "@LANG=DA"}.
 
@@ -732,7 +732,7 @@ starting with the lexical and correctness concerns, followed by the
 consistency concerns.
 
 To find the lexical and correctness issues, the following can be done:
-running a spell check on entries, checking author names in databases,
+running a spellcheck on entries, checking author names in databases,
 detecting initials using single letters optionally followed by a
 punctuation, prioritizing trusted sources for online lookups, using
 rules to check conformity with the standards, using patterns to verify
