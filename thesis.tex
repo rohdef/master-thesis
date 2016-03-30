@@ -28,8 +28,6 @@
 \hypersetup{
     pdfborder = {0 0 0}
 }
-\newcommand{\remark}[1]{{ \bf [ \footnotesize #1 ]}}
-%\newcommand{\remark}[1]{}
 \newcommand{\orangutan}{Orangutan}
 \newcommand{\bibtex}{Bib{\TeX}}
 \newcommand{\chapref}[1]{(Section~\ref{#1})}
@@ -81,6 +79,18 @@ and emits diagnostics and suggestions.
 
 \chapter*{Resumé}
 \addcontentsline{toc}{chapter}{Resumé}
+
+Vi beskriver successivt det bibliografiske software-værktøj {\bibtex}
+(både, hvordan det bruges i princippet og hvordan det bruges i
+praksis), lister en række praktiske problemer, som {\bibtex}-brugere
+møder, foreslår en fremgangsmåde til håndtering af problemerne og en
+gennemgang af, hvordan de takles i relateret arbejde.  Vi præsenterer
+en analyse af {\bibtex}-filer, der påviser problemerne og vi
+beskriver, hvordan disse kan løses ved at organisere
+{\bibtex}-filerne ved hjælp af resultaterne fra analysen.  Vi har
+implementeret et proof of concept, {\orangutan}, der analyserer
+eksisterende {\bibtex}-filer og udskriver diagnoser og forslag.
+
 
 %\chapter*{Acknowledgements}
 %\addcontentsline{toc}{chapter}{Acknowledgments}

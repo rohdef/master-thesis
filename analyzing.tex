@@ -242,8 +242,6 @@ example of the configurations can be seen in
   \label{fig:analyzing_added_de_facto_standards}
 \end{figure}
 
-\remark{Consider reformulating}
-
 For the conformity and de-facto analysis, a consideration would be to
 have configurations, for explicitly specifying which deviations are
 accepted.  For instance, specifying that a missing title is accepted
@@ -420,9 +418,6 @@ will look like
   \label{fig:analyzing_configuration_name_change_config_file_strings}
 \end{figure}
 
-\remark{Olivier: The following paragraph feels weak to me, do you have
-  a suggestion for how to explain this in a clearer way?}
-
 The configuration of name changes should be using the most general
 entry type available, such as \texttt{@ARTICLE}, \texttt{@PROCEEDINGS}
 and \texttt{@BOOK}.  The name change analysis recognizes and maps the
@@ -526,11 +521,6 @@ Abbreviations of journal names can be configured by adding
 and \texttt{fullname}, specifying the abbreviated journal name and
 full journal name respectively.
 
-% Bah, proceedings are not as easy ><
-\remark{Still need to specify something for consistency changes and if
-  a tag is the desired consistency... If the one in OPTanalyze doesn't
-  actually cover this sufficiently?}
-
 The specification of the format for entry keys is done by using a
 {\bibtex} string named \texttt{ENTRY\_KEY}.  Inside
 the string, some way of specifying the desired template for entry keys
@@ -601,8 +591,7 @@ The strings and selectors are:
   a more natural language.
 \item \texttt{SIGNIFICANT} selects the significant words of a
   sentence, by removing anything that is not nouns.  The
-  corresponding selector \texttt{[significant]}.  \remark{Olivier:
-    is there a better choice?}
+  corresponding selector \texttt{[significant]}.
 \item \texttt{OF} and \texttt{THEN} are empty placeholders, included
   to allow a more natural language.
 \end{itemize}
@@ -646,8 +635,6 @@ None of these use the idea of providing a general framework for reuse,
 or de-facto configuration inside a {\bibtex} file.  {\orangutan} is a
 proof of concept that analysis can be done using the de-facto
 configurations.
-
-\remark{Olivier: Feels a bit like over-selling it here}
 
 
 \subsection{What is {\orangutan}}
