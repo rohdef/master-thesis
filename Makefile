@@ -30,7 +30,7 @@ thesis:
 		pdflatex -shell-escape -interaction=batchmode --output-directory=${out} ${thesis_file} 1>/dev/null; \
 		echo -e "\n\e[35m* Running biber\e[0m"; \
 		cp ${refs_file} ${out}/; \
-		biber --output-directory=${out} ${thesis}; \
+		biber --output_directory=${out} ${thesis}; \
 		echo -e "\n\e[35m* Second pass\e[0m"; \
 		pdflatex -shell-escape -interaction=batchmode --output-directory=${out} ${thesis_file} 1>/dev/null; \
 		echo -e "\n\e[35m* Third pass\e[0m"; \
