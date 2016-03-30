@@ -3,13 +3,13 @@
 
 \section{Introduction}
 
-For organizing {\bibtex} files the following is covered: how to
+For organizing {\bibtex} files, the following is covered: how to
 organize in principle \chapref{sec:organizing_principle}, how to
 organize in practice \chapref{sec:organizing_practice}, what the
-choices for the prototype {\orangutan} is
+choices for the prototype {\orangutan} are
 \chapref{sec:organizing_orangutan_what}, how {\orangutan} handles it
 in principle \chapref{sec:organizing_orangutan_how_principle}, and how
-{\orangutan} handle it in practice
+{\orangutan} handles it in practice
 \chapref{sec:organizing_orangutan_how_practice}
 
 
@@ -24,23 +24,23 @@ where the analysis cannot find any more issues, or by using the
 configurations to tell the analysis that the issues are false
 positives.
 
-There are two basic ways of reacting to the issues, one
-automatically correcting them and the other is to present the issues
-and have one decide what to do.  As pointed out in the problem
-descriptions, it is hard, if not impossible, to automatically correct,
-since it can lead to incorrect changes and thus introduce a new
-structural issue.  Thus the organizing is done by presenting the
-issues, letting the user decide on the action to take.
+There are two basic ways of reacting to the issues, one automatically
+correcting them and the other is to present the issues and have the
+user decide what to do.  As pointed out in the problem descriptions,
+it is hard, if not impossible, to automatically correct, since it can
+lead to incorrect changes and thus introduce a new structural issue.
+Thus, the organizing is done by presenting the issues, letting the user
+decide on the action to take.
 
-When presenting the user with the issues there are again two
-approaches: letting one do a range of choices to handle the issues
+When presenting the user with the issues, there are again two
+approaches: letting one do a range of choices to handle the issues,
 finally outputting a corrected \file{bib}, or giving a list of issues
 and suggestions for corrections.  The last one requires the user to
 manually edit his \file{bib}, and if the issues are listed with line
 numbers, they should be listed backwards, so the lines will be correct
 throughout the correction.
 
-After all the concerns have been addressed a pretty printing utility
+After all the concerns have been addressed, a pretty printing utility
 will be a nice final touch, ensuring a consistent structure inside one's
 \file{bib} and having the same indentations and formatting.
 
@@ -50,7 +50,7 @@ will be a nice final touch, ensuring a consistent structure inside one's
 When multiple suggestions are available, all the alternatives should
 be given to the user.  All suggestions should include a way to find
 the violating entry, \ie, either the entry key or a location in the
-file.  For all the detected issues it should suggest using the
+file.  For all the detected issues, it should suggest using the
 relevant configurations from
 Section~\ref{sec:analyzing_configuration}, with exception of the ones
 to disable entire checks, \ie, \texttt{@LEXICALLYOK},
@@ -61,20 +61,20 @@ tool gives should be as follows:
 \item For duplicate entries, it should suggest: merging the entries,
   updating the content of one of the entries, and adding a de-facto
   configuration to mark the duplication as deliberate.  In the case
-  where a merge is not possible or if the online lookup contains
+  where a merge is not possible, or if the online lookup contains
   additional information, it should also suggest the result from an
   online lookup.  For duplicated content, it should suggest using
   \texttt{crossref} when relevant and otherwise changing the content
   to make use of strings.
 
 \item For general spelling errors, it should inform about the
-  misspelled word and show the suggestions from the spell checker.
+  misspelled word and show the suggestions from the spellchecker.
   Furthermore, if online lookups are used to prevent false positives,
   the result from those should also be presented.
 
 \item For spelling errors in names, it should only show the names that
   cannot be verified using databases.  Then it should show the name or
-  names that gives challenges, and if possible suggestions from the
+  names that gives challenges, and if possible, suggestions from the
   name databases.
 
 \item Initials should be presented to the user, and if possible,
@@ -94,17 +94,17 @@ tool gives should be as follows:
 
 \item De-facto standards and specification conformance should result
   in information about the deviations from standards, \ie, if a field
-  is missing this should be marked with the suggestion of adding it,
+  is missing, this should be marked with the suggestion of adding it,
   if a field is not specified or has been marked with deny, it should
   suggest removal.  In the case of exclusive and inclusive fields
-  where both are missing, it should suggest an alternative action.  For
-  the case of exclusive fields where both are present, it should
+  where both are missing, it should suggest an alternative action.
+  For the case of exclusive fields where both are present, it should
   suggest removing one of the violating fields.  Furthermore, it
-  should show if the validation of the values fail, and if possible
+  should show if the validation of the values fail, and if possible,
   where in the check they fail.  It should also show the suggestions
   from any online lookups to provide possible corrections.
 
-\item For abbreviations it should suggest changing to usage of
+\item For abbreviations, it should suggest changing to usage of
   strings, if the values are written as text.  It should suggest
   changing the content of the strings to either full names or
   abbreviated forms depending on the desired format for the user.
@@ -136,7 +136,7 @@ fixed point.
 \subsection{What}
 \label{sec:organizing_orangutan_what}
 
-{\orangutan} is designed as a framework rather as an end-user
+{\orangutan} is designed as a framework rather than an end-user
 application.  The output it gives is the suggestions coming from the
 analysis.  For instance, a tool can list the suggestions from
 {\orangutan} in a backward order, for manual editing.
@@ -147,9 +147,9 @@ analysis.  For instance, a tool can list the suggestions from
 
 The output is given in JSON, which most programming frameworks
 support.  The output can be in a trimmed version showing only the
-detected issues or in a full version containing all the entries.  Thus
-the output could be used for listing only the issues, or for printing
-an entire corrected {\bibtex} file after choosing the desired
+detected issues, or in a full version containing all the entries.
+Thus, the output could be used for listing only the issues, or for
+printing an entire corrected {\bibtex} file after choosing the desired
 solutions.
 
 
@@ -159,19 +159,19 @@ solutions.
 {\orangutan} gives back a JSON string containing at least the entries
 with detected issues.  If configured to do so, it keeps the entries
 without issues.  For the entries in the output that have issues, an
-object is attached with the name \texttt{orangutan} detailing the
+object is attached with the name \texttt{orangutan}, detailing the
 specific issues and suggestions.
 
 All detected issues will be put in an object named $orangutan$ on the
 internal object for the entry.  Having the corrections along the
-object, will allow printing the corrected entry, once an action has
-been decided on.  Effectively the $orangutan$ object functions as a
+object will allow printing the corrected entry, once an action has
+been decided on.  Effectively, the $orangutan$ object functions as a
 map or dictionary, having an item for each entry tag with detected
 issues, and an object containing the details of the issues.
 
 The spell checker will add an object named $spelling$ to the object
-with issues.  It contains the details from the spell check: how many
-words it checked $wordCount$, how many misspellings it found
+with the issues.  It contains the details from the spellcheck: how
+many words it checked $wordCount$, how many misspellings it found
 $misspellingCount$ and most importantly a list named $misspellings$
 for the details from the spell checker.  Each item in $misspellings$
 is an object consisting of: the misspelled word in $word$, the
@@ -216,7 +216,7 @@ specifies when an entry type or a tag is in violation with the rules
 specified.  The conformance checker adds an object for the tags with
 conformance errors to the $orangutan$ object.  The object for the tag
 will then have an object named $specificationConformance$ containing a
-description of the issue and a code corresponding.
+description of the issues and a corresponding code.
 \figref{fig:orgazing_nonconformity} displays an example of a violation
 of an exclusive rule.
 
@@ -280,7 +280,7 @@ re-print the entry.  A tool using {\orangutan} can thus take this
 output, update the representation of the entry according to one's
 choices, and output a complete suggestion for a corrected entry.  It
 should be noted that the tool does not suggest the configurations for
-analysis, the suggestion of configurations can arguably be the
+analysis.  The suggestion of configurations can arguably be the
 responsibility of a framework, such as {\orangutan}, and of the
 frontend.
 
@@ -378,7 +378,7 @@ framework.
 \section{Summary and conclusion}
 
 Using the results from the analysis of a \file{bib}, sensible
-suggestions for a course of action can be provided.  For most results
+suggestions for a course of action can be provided.  For most results,
 a straightforward solution can be provided, such as the correct
 spelling of a word.  The output from the prototype {\orangutan} shows
 a proof of concept for providing output that one can use to resolve
