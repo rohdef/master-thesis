@@ -49,7 +49,7 @@ full journal names.
 
 Addressing the human factor, \ie, a conjunctural solution, is one
 theoretically possible way for solving these issues.  One option would
-be to ``simply'' motivate people to do things right.  Alas people are
+be to ``simply'' motivate people to do things right.  Alas, people are
 not machines and thus this approach will be impossible in practice:
 for most people, the interest is not the tools they use, but what they
 use them for.  The interest in {\bibtex} is to ensure that their
@@ -107,7 +107,7 @@ Thus the solution should not merge automatically.
 \section{Spelling errors in general}
 \label{sec:problems_spelling}
 
-In almost, if not, all cases where people type text, spelling errors
+In almost, if not all, cases where people type text, spelling errors
 will arise, sooner or later, {\bibtex} files are no exception.
 Extracting meta-information automatically from documents may also run
 into a bad extraction leading to spelling errors.  Furthermore, a
@@ -319,7 +319,7 @@ An interesting point is that not all the structural issues are bad.
 There are practical ways to use the relaxed properties of {\bibtex}.
 For instance {\bibtex} ignores unknown tags by design which is useful
 in de-facto standards such as commenting entries out by prefixing with
-$OPT$ or adding information that are not a part of the {\bibtex}
+$OPT$ or adding information that is not a part of the {\bibtex}
 specification, such as ISSN and DOI.  The \texttt{crossref} tag is
 technically not specified in {\bibtex}, but is still part of the tool.
 In \figref{fig:mendeley_output}, an example is provided by a PhD
@@ -357,9 +357,9 @@ year = {2003}
 \end{figure}
 
 This design choice is an issue, if strict conformity to the
-specification is desired, as it is practical and widely in use, strict
-validation would be counterproductive.  Some formatting styles make
-use of unspecified tags, as can be seen in
+specification is desired, since de-facto standards are practical and
+widely used, strict validation would be counterproductive.  Some
+formatting styles make use of unspecified tags, as can be seen in
 \figref{fig:entry_with_issn}. It is interesting to find tags that are
 not desired, \ie, tags that do not conform to the specification and
 the de-facto standards.
@@ -486,10 +486,10 @@ have been moved to a string, because an appropriate string has been
 introduced.
 
 When the usage as text over strings comes from a tool, such as in the
-example above, the issue is of a structural nature.  When one types it
-by accident then again it can arguably be both structural and
-conjunctural.  Providing a structural solution to this would be by
-being able to detect this and correct it.
+example above, the issue is of a structural nature.  When one enters a
+string as text by accident, it is again arguable whether the issue is
+considered structural or conjunctural.  Providing a structural
+solution to this would be by being able to detect this and correct it.
 
 
 %%
@@ -651,7 +651,7 @@ from various online databases getting keys corresponding to
 \figref{fig:missing_org_scholar_lookup}, \figref{fig:eptcs_lookup} and
 other structures in one big mess.  One of the users collaborating
 might also be new to using {\bibtex} (could be a student learning) and
-needs to find a nice an consistent way of writing the keys.
+needs to find a nice and consistent way of writing the keys.
 
 A challenge could be to avoid duplicate key names, which with a
 consistent structure is more likely.  The duplicate entry keys can
@@ -659,13 +659,13 @@ have the advantage that it can be an indicator of a duplicate entry
 Section~\ref{sec:problems_look_ups}.
 
 Inconsistencies in keys might range from not a problem at all to fully
-conjectural or structural, highly depending on the one's point of
-view.  A user may simply not care and apart from the potential to
-detect duplicate entries, may not feel a reason to.  In the
-collaboration scenario, the additional way of detecting duplicates may
-be valuable.  In this case, it arguably becomes conjunctural since the
-authors should have agreed on a style - which might also have helped a
-newcomer to have a good practice.  It can also be argued that it is
+conjectural or structural, highly depending on one's point of view.  A
+user may simply not care and apart from the potential to detect
+duplicate entries, may not feel a reason to.  In the collaboration
+scenario, the additional way of detecting duplicates may be valuable.
+In this case, it arguably becomes conjunctural since the authors
+should have agreed on a style - which might also have helped a
+newcomer to acquire a good practice.  It can also be argued that it is
 structural since {\bibtex} does not provide naming guidelines nor
 tools for ensuring a guideline.
 
@@ -695,7 +695,7 @@ the same key, requiring the attention of the user.
   A structural solution is a spell checker that works for names or a
   database with names to verify names.
 
-\item Use of initials can hide people's names to the level where
+\item Use of initials can hide people's names to the point where
   finding a resource is hard.  A structural solution is to detect
   initials and the full names, accounting for when the initials are
   deliberate.
@@ -711,14 +711,14 @@ the same key, requiring the attention of the user.
 \item Conformity to de-facto standards and the {\bibtex} specification
   is desired, but should not prevent new de-facto standards.  A
   structural solution requires something that checks the conformity to
-  a combination of specifications and de-facto standards accounting
-  for changes in de-facto standards.
+  a combination of specifications and de-facto standards, that can
+  account for changes in de-facto standards.
 
 \item Journal abbreviations can be an issue for analyzing tools and
   having full names in {\bibtex} files.  A structural solution will be
   able to ensure that all entries are consistently abbreviated or
-  de-abbreviated, preferably accounting for that people may want to
-  switch between for formats.
+  de-abbreviated, preferably accounting for the fact that people may
+  want to switch between for formats.
 
 \item {\bibtex} strings that end up as part of the text, can result in
   wrong data.  Also text that is contained in a string and should have
