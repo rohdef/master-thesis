@@ -129,15 +129,15 @@ corresponds to the source would make this issue conjunctural.
 \section{Spelling errors in names}
 \label{sec:problems_spelling_names}
 
-Using a spell checker works for most entry tags, except names.  One
+Using a spellchecker works for most entry tags, except names.  One
 citing a name might get the name wrong and write ``Rene Rødhof
 Hansen'' instead of ``René Rydhof Hansen''.  In this misspelling the
-spell checker will be of no help.  The spell checker used in this
+spellchecker will be of no help.  The spellchecker used in this
 document suggests changing ``René'' to ``Rene'', which would introduce
-a mistake.  Using a spell checker on names is likely to be the cause
+a mistake.  Using a spellchecker on names is likely to be the cause
 of more misspellings than corrections, and would thus cause a
 structural issue.  Providing a structural solution to misspelled names
-would require either a spell checker that works for names or some
+would require either a spellchecker that works for names or some
 database containing valid names.
 
 
@@ -436,8 +436,8 @@ be seen in the bbl output in \figref{fig:inconsistent_naming}.
 From the point of view that the style of {\bibtex} should format
 abbreviations properly, the issue is structural.  In cases where the
 abbreviation is wrong (\eg, due to a typo), the issue moves towards
-being conjunctural, unless some kind of abbreviation specific spell
-checker is being used.  Using full names and then formatting them
+being conjunctural, unless some kind of abbreviation specific
+spellchecker is being used.  Using full names and then formatting them
 accordingly is the most sensible idea, since the style of abbreviation
 could be interchanged, should the need arise: it is more readable and
 it would create better conditions for output tools to provide
@@ -685,28 +685,27 @@ the same key, requiring the attention of the user.
   be to detect and merge duplicates, because a duplicate originating
   from missing or wrong data automatically merging may cause issues.
 
-\item Spelling errors in general.  A structural solution will be
+\item Spelling errors are frowned upon.  A structural solution will be
   able to find and correct the spelling errors, preferably by having
   the same spelling as published.  Alternatively, running a spell
   checker and having a way to account for deliberate misspellings,
   domain specific words and choice of language.
 
-\item Spelling errors in names will challenge normal spell checkers.
-  A structural solution is a spell checker that works for names or a
-  database with names to verify names.
+\item Spelling errors in proper names will challenge normal
+  spellcheckers.  A structural solution is a spellchecker that works
+  for names or a database with names to verify names.
 
-\item Use of initials can hide people's names to the point where
-  finding a resource is hard.  A structural solution is to detect
-  initials and the full names, accounting for when the initials are
-  deliberate.
+\item Use of initials in proper names can make it hard to identify an
+  author.  A structural solution is to detect initials and the full
+  names, accounting for when the initials are deliberate.
 
 \item Online lookups can contain wrong data.  Optimally we can detect
   these wrong data reliably: the most realistic idea is to provide a
   way that limits the likelihood of erroneous results.
 
-\item Name change of a forum which can affect detection of
-  inconsistent tag use.  A structural solution will have some way of
-  detecting when sources are from the same forum.
+\item Name change of a forum can affect detection of inconsistent tag
+  use.  A structural solution will have some way of detecting when
+  sources are from the same forum.
 
 \item Conformity to de-facto standards and the {\bibtex} specification
   is desired, but should not prevent new de-facto standards.  A
@@ -734,10 +733,10 @@ the same key, requiring the attention of the user.
   This solution may be challenged by deviations in information and
   forums that change name.
 
-\item Inconsistent entry keys which can be an issue in collaboration
-  and may make it harder to detect duplicates.  A structural solution
-  could be to apply a naming scheme for the entry keys, accounting for
-  similar entries that would result in identical entry keys.
+\item Inconsistent entry keys can be an issue in collaboration and may
+  make it harder to detect duplicates.  A structural solution could be
+  to apply a naming scheme for the entry keys, accounting for similar
+  entries that would result in identical entry keys.
 \end{itemize}
 
 With all these problems at hand, {\bibtex} may not seem like the
