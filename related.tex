@@ -1,30 +1,28 @@
 \section{Introduction}
-The goal of this chapter is to show the tools for managing
-bibliographies and how these tools try to handle the issues covered,
-if they do so.
+The goal of this chapter is to review the existing tools for managing
+bibliographies and how these tools address the issues covered in
+Chapter~\ref{ch:problem-description}.
 
-In this chapter, some of the bibliography tools will be surveyed, with
-a focus on how they tackle the issues covered.  The chapter is
-organized as follows: an overview of the pure tools for {\bibtex}
-\chapref{sec:bibtex_tools}, some of the attempts to replace {\bibtex}
-\chapref{sec:bibtex_alternatives} and bibliography mangers that strive
-to redesign how to manage bibliographies
+The chapter is organized as follows: an overview of the pure tools for
+{\bibtex} \chapref{sec:bibtex_tools}, some of the attempts to replace
+{\bibtex} \chapref{sec:bibtex_alternatives} and bibliography mangers
+that strive to redesign how to manage bibliographies
 \chapref{sec:bibliography_managers}.
 
 
 \section{{\bibtex} tools}
 \label{sec:bibtex_tools}
 There are a few pure {\bibtex} tools for handling reference databases.
-A lot of these tools target some of the issues described.  The
-various tools have either been tested or their functionality verified
-by code inspection.
+Some of these tools target some of the issues described.  The various
+tools have either been tested or their functionality verified by code
+inspection.
 
 \subsection{Bibcleaner}
 Bibcleaner is a tool developed by Joos Buijs for his own use in his
 PhD studies and made publicly available in case someone can get a use
 for it.  The purpose of the tool is to clean {\bibtex} files by using
-online lookups in the DBLP database~\cite{bibcleaner_question,
-  bibcleaner_source}.
+online lookups in the DBLP database~\cite{bibcleaner_source,
+  bibcleaner_question}.
 
 Bibcleaner is quite simple: it runs through each entry comparing it
 with the DBLP database and suggests improvements if it can find the
@@ -54,8 +52,8 @@ and has features for automatic key generation, searching online
 databases and a plugin system~\cite{jabref_features}.  There is a
 feature for handling Journal Abbreviation using predefined lists of
 abbreviations~\cite{jabref_abbreviations}.  Currently, JabRef does not
-have any spell checking features, but is planned for the next full
-release~\cite{jabref_spellchecker}.
+have any spell checking features, but it is planned for implementation
+in the next full release~\cite{jabref_spellchecker}.
 
 The JabRef team is currently working on a tool named CloudRef which
 has a focus on a web based interface for collaboration.  Currently,
@@ -99,18 +97,19 @@ and to provide an easy overview in html with links to relevant sources
 such as Google Scholar and DBLP.
 
 The way {\bibtex} Check works is by running some very simple checks to
-find flaws in bibliographies, the check is things like if the authors
-contains a period(.) then it assumes that the author name has been
-abbreviated and to check if the mandatory fields are present and for
-instance if a proceedings contains the ``pages'' field, to suggest
-that the author might have meant inproceedins instead.
+find flaws in bibliographies.  The checks are things like: check if
+the value for $author$ contains a period(.), to find initials, check
+that the mandatory fields are present, and check if an entry contains
+fields from another entry type.  For instance, if a $@PROCEEDINGS$
+contains the $pages$ tag, to suggest that the user might have meant
+$@INPROCEEDINS$ instead.
 
 
 \section{{\bibtex} alternatives}
 \label{sec:bibtex_alternatives}
-There are also a lot of both variants and alternatives to {\bibtex}.
-A quick overview of a few of the options is provided.  Mostly they do
-not provide many new options.
+There are both variants of and alternatives to {\bibtex}.  A quick
+overview of a few of the options is provided.  Mostly they do not
+provide many new options.
 
 \subsection{{\bibtex}ml} {\bibtex}ML is a version of {\bibtex} where
 the entries are formatted with XML.  It is by design made with strict
@@ -186,17 +185,16 @@ lookups~\cite{mendeley_request_spellcheck, mendeley_request_lowercase,
 EndNote and RefMan are also tools for reference mangement, made by
 Thompson Reuters.  RefMan is an older product and Thompson Reuters
 recommends using EndNote instead~\cite{refman_switch,
-  refman_features}.  There is a lot of focus on the sharing
-capabilities and provides tools for PDF import and management, online
-lookup of references and Journal abbreviation
-detection~\cite{endnote_basic_features, endnote_x7_features}.  Their
-target group is students and university related groups.  EndNote also
-provides a spell check feature that is not mentioned in the feature
-sets~\cite{endnote_spellcheck}.
+  refman_features}.  The focus is on: the sharing capabilities, tools
+for PDF import and management, online lookup of references and
+detection of journal abbreviations~\cite{endnote_basic_features,
+  endnote_x7_features}.  Their target group is students and university
+related groups.  EndNote also provides a spell check feature that is
+not mentioned in the feature sets~\cite{endnote_spellcheck}.
 
 The tool for handling abbreviations in EndNote is only used to format
 the names when exported or used as references.  This is done using a
-mapping from a predefined set of know abbreviations, not fixing the
+mapping from a predefined set of known abbreviations, not fixing the
 naming issues internally in the files~\cite{endnote_terms_journals}.
 
 When trying to remedy the spelling and consistency errors by using DOI
@@ -205,7 +203,7 @@ duplicate entries rather than updating the current one. This is just
 making the issues even worse, as the references then end up with
 duplications too.  The spell checker works on a per entry basis and
 there is no apparent way to spell check an entire bibliography.
-EndNote provides a lot of extra downloads to provide features such as
+EndNote provides of extra downloads to provide features such as
 {\bibtex} support.  However no downloads were found to remedy neither
 the lexical nor the consistency concerns
 further~\cite{endnote_downloads}.
@@ -225,7 +223,7 @@ plugin system.  Plugins to remedy the {\bibtex} issues is neither
 found using the official list of plugins~\cite{zotero_plugins} nor by
 a normal search engine. There is a limited mechanism for detecting
 abbreviations in Zotero, in its \file{jar} there is a list of known
-abbreviations which it can use to chose the correct abbreviation when
+abbreviations which it can use to choose the correct abbreviation when
 exporting.  Entering an abbreviation does not seem to correct it to
 the non-abbreviated version.  This list can be manually edited, and
 overruled~\cite{zotero_abbreviations}.
@@ -233,8 +231,8 @@ overruled~\cite{zotero_abbreviations}.
 It is possible (but not tested) that Zotero can be used to import a
 {\bibtex} file, then export it using the lists of known abbreviations
 and correct the abbreviations already known.  As other tools, such as
-JabRef and Mendeley, already allow this procedure, it has not been
-tested.
+JabRef and Mendeley, already allow this procedure, we did not test for
+this feature.
 
 
 \subsection{RefWorks}
@@ -246,14 +244,14 @@ include online lookups, statistics systems and collaboration
 features~\cite{refworks_features}.
 
 As with the other tools, testing shows that the error detection
-features is limited.  In RefWorks, the work flow for adding references
-is to either enter them manually or to use a browser link called
-``RefGrab-It'' to import from homepages.  RefGrab-It can be used for
-DOI lookups, which enables the same advantages as Mendeey and EndNote.
-Contrary to the other tools, RefWorks try to detect if the author name
-is malformed, although it only seems to detect if one types ``John
-Doe'' rather than ``Doe, John'' as it expects, as can be seen at
-Figure~\ref{fig:refworks-detect-formatting}.
+features are limited.  In RefWorks, the work flow for adding
+references is to either enter them manually or to use a browser link
+called ``RefGrab-It'' to import from homepages.  RefGrab-It can be
+used for DOI lookups, which enables the same advantages as Mendeey and
+EndNote.  Contrary to the other tools, RefWorks tries to detect if the
+author name is malformed, although it only seems to detect if one
+types ``John Doe'' rather than ``Doe, John'' as it expects, as can be
+seen at Figure~\ref{fig:refworks-detect-formatting}.
 
 \begin{figure}
     \centering
@@ -284,15 +282,15 @@ there is relevant features apart from what they mention on their page.
 
 
 \section{Summary and conclusions}
-There are a lot of alternative ways to handle
-bibliographic references.  Right from a multitude of tools that strive
-to assist with maintenance of one's {\bibtex} library, alternatives to
-{\bibtex} and bibliography managers that strive to replace the entire
-management process.  Some of these help by doing online lookups to
-double check entries, finding duplicates, assisting in transforming to
-and from abbreviated forms, enforcing strict rules and spell checking.
+There are various ways to handle bibliographic references.  Right from
+a multitude of tools that strive to assist with maintenance of one's
+{\bibtex} library, alternatives to {\bibtex} and bibliography managers
+that strive to replace the entire management process.  Some of these
+help by doing online lookups to double check entries, finding
+duplicates, assisting in transforming to and from abbreviated forms,
+enforcing strict rules and spell checking.
 
-A lot of these tools do provide partial solutions to the issues with
+Some of these tools do provide partial solutions to the issues with
 {\bibtex}, but none of them provide complete solutions and none of
 them combines the solutions into a more general solution.  The pure
 {\bibtex} tools can of course be combined.  Since Bib{\LaTeX} is
@@ -304,6 +302,11 @@ consolidation on the issues.  The reference managers in general focus
 on the collaboration between authors.  Only a few of the tools provide
 assistance with the issues, such as spell checking and abbreviation
 handling.
+
+Having seen approaches to the {\bibtex} issues and having reviewed how
+others approach them.  How can one analyze {\bibtex} files, to detect
+these issues?  In the next chapter our suggestion for analyzing is
+covered.
 
 
 %%% Local Variables:

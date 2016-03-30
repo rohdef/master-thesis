@@ -1,9 +1,9 @@
 \section{Introduction}
 
-The goal of this chapter is to show how {\bibtex} files are analyzed.
-Covering: what should be done about {\bibtex} in principle and
-practice \chapref{sec:analyzing_what_to_do} and an analyzing prototype
-named {\orangutan} \chapref{sec:analyzing_orangutan}.
+The goal of this chapter is to show how {\bibtex} files are analyzed:
+what should be done about {\bibtex} in principle and practice
+\chapref{sec:analyzing_what_to_do} and an analyzing prototype named
+{\orangutan} \chapref{sec:analyzing_orangutan}.
 
 
 \section{What should be done about {\bibtex}}
@@ -11,10 +11,10 @@ named {\orangutan} \chapref{sec:analyzing_orangutan}.
 \subsection{In principle}
 
 Due to the practical issues in changing or replacing {\bibtex} and to
-ensure separation of concerns an analyzing tool should be an
+ensure separation of concerns, an analyzing tool should be an
 augmenting tool.
 
-To analyze {\bibtex} one would need to parse a {\bibtex} file into a
+To analyze {\bibtex}, one would need to parse a {\bibtex} file into a
 suitable representation.  This representation would need to parse
 {\bibtex} entries and strings at a minimum.  If one intents to
 \newdef{pretty print}, \ie, writing a {\bibtex} file formatted
@@ -24,16 +24,16 @@ technically optional, but should be kept too.
 
 The easiest approach is a two step parse: first taking care of the
 lexical and correctness concerns, then the consistency concerns.  By
-taking care of the lexical and correctness concerns first the optimal
+taking care of the lexical and correctness concerns first, the optimal
 conditions for taking care of the consistency concerns is made.
 
 The term database is used for both local and online databases, since
-it does not matter if one use a local copy, if it is kept consistent
+it does not matter if one uses a local copy, if it is kept consistent
 with the online database.
 
 \subsubsection{First step: Lexical and correctness}
 \begin{itemize}
-\item Spelling errors in general, can be detected either by online
+\item Spelling errors in general can be detected either by online
   lookups or a spell checker.  A combination of the two might be an
   improvement, since it gives a potential indicator of false
   positives.  Using a spell checker requires a way to configure the
@@ -43,13 +43,13 @@ with the online database.
   detection of misspellings.
 
 \item Initials can be detected by finding cases with a single letter,
-  perhaps followed by a punctuation.  For suggestions databases with
+  perhaps followed by a punctuation.  For suggestions, databases with
   names will be useful.  Handling multiple letters combined can be
   done by looking for relatively few (probably up to 3) letters that
   are all capitalized.  Another approach is to use a database to
   detect initials and their corresponding full names.
 
-\item Erroneous online lookups, will be impossible to detect with
+\item Erroneous online lookups will be impossible to detect with
   certainty, because one's intended search result cannot be known by
   software.  The detection of the other issues can give an indicator
   of a bad lookup.  Since online lookups is a likely way to handle the
@@ -62,17 +62,17 @@ with the online database.
 \item Conformity to de-facto standards and the {\bibtex} specification
   requires a set of rules specifying: required tags, optional tags,
   exclusive tags, and inclusive tags.  The values should be validated
-  to the extend possible.
+  to the extent possible.
 
-\item Detecting invalid values should be done when there are clear
-  rules for how a correct value can be specified: such as ISSN, year,
-  and month.  Furthermore, values that can be verified using a
-  database should also be verified.
+\item Detecting invalid values should be done when clear rules for
+  correct values can be specified: such as ISSN, year, and month.
+  Furthermore, values that can be verified using a database should
+  also be verified.
 
-\item To detect journal names, in abbreviated form, or in full form,
+\item Detection of journal names in abbreviated form, or in full form,
   can be done using a database of known journal names and their
   abbreviations.  It can use a database to de-abbreviate or
-  abbreviate.  Furthermore this can be refined by detecting unknown
+  abbreviate.  Furthermore, this can be refined by detecting unknown
   abbreviations.
 
 \item To handle {\bibtex} strings that end up as part of the text, the
@@ -83,12 +83,12 @@ with the online database.
 \subsubsection{Second step: Consistency}
 \begin{itemize}
 \item To detect duplicate entries, the best way is to: first compare
-  unique identifiers, if the identifiers is missing, then identical
-  entries.  Otherwise potential duplicates is detected by a
+  unique identifiers, if the identifiers are missing, then identical
+  entries.  Otherwise, potential duplicates are detected by a
   specification of similarity: having the title and authors as primary
-  indicators.  For duplicated values it should use the strings if
+  indicators.  For duplicated values, it should use the strings if
   possible, to determine when the same source is referenced.  For the
-  duplicated values it should maintain a list of values that are
+  duplicated values, it should maintain a list of values that are
   likely to be repeated (such as journal names) and use that to detect
   duplicates in textual content.
 
@@ -114,31 +114,31 @@ Both of the steps above require ways to configure the behavior, to
 prevent false positives.  The use of configurations should be as close
 to {\bibtex} as possible.
 
-The preference to using the {\bibtex} format allows people to use what
-they are familiar with.  Using a format that are readily supported in
-programming frameworks, \eg, JSON or XML, might be easier by the
+The preference for using the {\bibtex} format allows people to use
+what they are familiar with.  Using a format that is readily supported
+in programming frameworks, \eg, JSON or XML, might be easier by the
 implementer.  However, people outside computer science, such as a
 physicist or the helpful chemist from earlier, will likely not be
 familiar with such formats, nor should they required to.  A user of
 {\bibtex} should at best only be concerned with the {\bibtex} format,
 when working with {\bibtex}.
 
-To use something in anger, is an idiom for: when something has been
-tested in practice.  The idea of coding in anger has been expressed by
-Philip Wadler~\cite{wadler1997_functional}.  For the {\bibtex} user,
-coding in anger, could be the situation where the deadline is getting
-closer and one just need things to work, at best ten minutes ago.
-When faced with the frustrations like that one tend not to care about
-beautiful and elegant solutions, but rather wanting something that
-works with a minimum of personal effort.  To accommodate the user
-writing {\bibtex} in anger, is another reason to keep the
-specification as close to {\bibtex} as possible, since it will
-minimize the effort.
+``To use something in anger'', is an idiom for: when something has
+been tested in practice.  The idea of coding in anger has been
+expressed by Philip Wadler~\cite{wadler1997_functional}.  For the
+{\bibtex} user, coding in anger could be the situation where the
+deadline is getting closer and one just needs things to work, at best
+ten minutes ago.  When faced with frustrations like that, one tends
+not to care about beautiful and elegant solutions, rather wanting
+something that works with a minimum of personal effort.  To
+accommodate the user writing {\bibtex} in anger is another reason to
+keep the specification as close to {\bibtex} as possible, since it
+will minimize the effort.
 
 Configuration should be done via de-facto standards inside the
 \file{bib}, whenever possible.  For some configurations, de-facto
 standards inside the \file{bib} are unreasonable.  These
-configurations is better put into separate files.  However, the
+configurations are better put into separate files.  However, the
 specification should still be designed to match {\bibtex} as closely
 as possible, \ie, still using entries, tags and values to configure.
 

@@ -122,7 +122,7 @@ through the consistency concerns observing their relation gives:
   detecting when there are multiple instances of $@INBOOK$,
   $INCOLLECTION$ and $INPROCEEDINGS$ that reference the same source is
   needed.  For textual content reused content, such as a journal name,
-  should be detected.  For textual values it, should compare the
+  should be detected.  For textual values it should compare the
   values that are likely to be repetitive.  Thus solving the lexical
   concerns will be of use.
 
@@ -242,7 +242,7 @@ mechanism, but that is still not guaranteed.
 Another way to approach the bad lookups could be by doing the same
 lookup in multiple databases and then have some kind of voting system
 that decides on which entry to trust.  This would however require
-knowledge of which information sources each online service use,
+knowledge of which information sources each online service uses,
 because their source of information may be the same and then the same
 error could get multiple votes.  The approach can be refined by having
 increased trust in databases that are likely to be correct.
@@ -250,10 +250,10 @@ increased trust in databases that are likely to be correct.
 The most appropriate strategy is probably selecting the database most
 likely to be correct and then have the user select if one agrees with
 the result.  Doing the vote system would be overkill in most
-situations, and the user would still has to validate the result, since
+situations, and the user would still have to validate the result, since
 the voting system will not provide a certain correct result.  Having
 the user validate the result will make issues partly conjunctural, if
-one just accept any result from the lookup.
+one just accepts any result from the lookup.
 
 
 \subsection{\nameref{sec:problems_name_changes}}
@@ -288,7 +288,7 @@ Validating the values will improve this solution further.  Having
 rules for valid values whenever possible.  Some rules will be very
 easy to set up, \eg, ISBN consists only of numbers and dashes.  Other
 rules such as not allowing numbers inside a name might be able to
-become an issue, \eg., if the queen of Denmark were to write something
+become an issue, \eg, if the queen of Denmark were to write something
 that is later cited, a correct name for the author would be ``Dronning
 Magrethe 2.''.  A structural solution will validate as much as
 possible, but too rigid validation has the potential of causing new
@@ -338,7 +338,7 @@ time.  Also, in some cases, a single item can have additional
 information that is not general to the forum, or for some reason not
 have information according to the general standard.  Optimally, there
 should be a way to account for these cases, either by the user
-enforcing conformity, or having options for when a desired deviation.
+enforcing conformity, or having options for when deviations are desired.
 
 
 \subsection{\nameref{sec:problems_inconsistent_keys}}
@@ -378,9 +378,9 @@ correctness and lexical concerns.
   resources, just as misspellings in names.
 
 \item To get online lookups that contain the correct data is
-  impossible, the results can be improved by selecting the most
-  appropriate database for the lookup and by introducing detection of
-  erroneous lookups.
+  impossible, however, the results can be improved by selecting the
+  most appropriate database for the lookup and by introducing
+  detection of erroneous lookups.
 
 \item Name change of a forum can be handled by a database and by a way
   to specify name changes.
@@ -406,6 +406,10 @@ correctness and lexical concerns.
 Handling the {\bibtex} issues will be done by augmenting {\bibtex}
 with a tool used in multiple phases.  The tool will address the
 correctness and lexical concerns first, then the consistency concerns.
+
+Approaches for handling the issues has been reviewed.  However, how
+are they handled by others?  This topic is reviewed in the next
+chapter.
 
 
 %\begin{figure}
